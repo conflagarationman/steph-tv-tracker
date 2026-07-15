@@ -1,0 +1,1358 @@
+{
+  "1": {
+    "tmdbId": 81747,
+    "title": "Tell Me a Story (US)"
+  },
+  "2": {
+    "tmdbId": 87107,
+    "title": "Los Espookys"
+  },
+  "3": {
+    "tmdbId": 82728,
+    "title": "Bluey (2018)"
+  },
+  "4": {
+    "tmdbId": 89572,
+    "title": "Nancy Drew (2019)"
+  },
+  "5": {
+    "tmdbId": 1420,
+    "title": "New Girl"
+  },
+  "6": {
+    "tmdbId": 88118,
+    "title": "Blood & Treasure"
+  },
+  "7": {
+    "tmdbId": 111815,
+    "title": "Inside Pixar"
+  },
+  "8": {
+    "tmdbId": 129552,
+    "title": "The Night Agent"
+  },
+  "9": {
+    "tmdbId": 60839,
+    "title": "Broad City"
+  },
+  "10": {
+    "tmdbId": 85937,
+    "title": "Demon Slayer: Kimetsu no Yaiba"
+  },
+  "11": {
+    "tmdbId": 95313,
+    "title": "Marvel's Hero Project"
+  },
+  "12": {
+    "tmdbId": 1705,
+    "title": "Fringe"
+  },
+  "13": {
+    "tmdbId": 62126,
+    "title": "Marvel's Luke Cage"
+  },
+  "14": {
+    "tmdbId": 45688,
+    "title": "Ink & Paint"
+  },
+  "15": {
+    "tmdbId": 52814,
+    "title": "Halo"
+  },
+  "16": {
+    "tmdbId": 4556,
+    "title": "Scrubs"
+  },
+  "17": {
+    "tmdbId": 69017,
+    "title": "One Day at a Time (2017)"
+  },
+  "18": {
+    "tmdbId": 91363,
+    "title": "WHAT / IF"
+  },
+  "19": {
+    "tmdbId": 203085,
+    "title": "Star Wars: Tales of the Jedi"
+  },
+  "20": {
+    "tmdbId": 73107,
+    "title": "Barry"
+  },
+  "21": {
+    "tmdbId": 1402,
+    "title": "The Walking Dead"
+  },
+  "22": {
+    "tmdbId": 3498,
+    "title": "Wizards of Waverly Place"
+  },
+  "23": {
+    "tmdbId": 8592,
+    "title": "Parks and Recreation"
+  },
+  "24": {
+    "tmdbId": 106454,
+    "title": "The Afterparty"
+  },
+  "25": {
+    "tmdbId": 1777,
+    "title": "Boy Meets World"
+  },
+  "26": {
+    "tmdbId": 60574,
+    "title": "Peaky Blinders"
+  },
+  "27": {
+    "tmdbId": 93825,
+    "title": "Saved by the Bell (2020)"
+  },
+  "28": {
+    "tmdbId": 243881,
+    "title": "House of David"
+  },
+  "29": {
+    "tmdbId": 80483,
+    "title": "Weird City"
+  },
+  "30": {
+    "tmdbId": 99082,
+    "title": "Ultimate Survival WWII"
+  },
+  "31": {
+    "tmdbId": 90257,
+    "title": "Little Fires Everywhere"
+  },
+  "32": {
+    "tmdbId": 7482,
+    "title": "Leverage"
+  },
+  "33": {
+    "tmdbId": 67195,
+    "title": "Legion"
+  },
+  "34": {
+    "tmdbId": null,
+    "title": "Cinema Relics: Iconic Art of the Movies"
+  },
+  "35": {
+    "tmdbId": 70796,
+    "title": "The Marvelous Mrs. Maisel"
+  },
+  "36": {
+    "tmdbId": 74440,
+    "title": "Harley Quinn"
+  },
+  "37": {
+    "tmdbId": 114471,
+    "title": "Ironheart"
+  },
+  "38": {
+    "tmdbId": 156902,
+    "title": "Kaleidoscope (2023)"
+  },
+  "39": {
+    "tmdbId": 64254,
+    "title": "Master of None"
+  },
+  "40": {
+    "tmdbId": 198178,
+    "title": "Wonder Man"
+  },
+  "41": {
+    "tmdbId": 75450,
+    "title": "Titans (2018)"
+  },
+  "42": {
+    "tmdbId": null,
+    "title": "Star Wars: Lando"
+  },
+  "43": {
+    "tmdbId": 33880,
+    "title": "The Legend of Korra"
+  },
+  "44": {
+    "tmdbId": 88396,
+    "title": "The Falcon and The Winter Soldier"
+  },
+  "45": {
+    "tmdbId": 95396,
+    "title": "Severance"
+  },
+  "46": {
+    "tmdbId": 92782,
+    "title": "Ms. Marvel"
+  },
+  "47": {
+    "tmdbId": 4194,
+    "title": "Star Wars: The Clone Wars"
+  },
+  "48": {
+    "tmdbId": 91239,
+    "title": "Bridgerton"
+  },
+  "49": {
+    "tmdbId": 226751,
+    "title": "Shiny Happy People"
+  },
+  "50": {
+    "tmdbId": 18347,
+    "title": "Community"
+  },
+  "51": {
+    "tmdbId": 90282,
+    "title": "The Morning Show"
+  },
+  "52": {
+    "tmdbId": 1404,
+    "title": "Chuck"
+  },
+  "53": {
+    "tmdbId": 71578,
+    "title": "Atypical"
+  },
+  "54": {
+    "tmdbId": 62017,
+    "title": "The Man in the High Castle"
+  },
+  "55": {
+    "tmdbId": 122226,
+    "title": "Echo"
+  },
+  "56": {
+    "tmdbId": 1421,
+    "title": "Modern Family"
+  },
+  "57": {
+    "tmdbId": 97180,
+    "title": "Selena: The Series"
+  },
+  "58": {
+    "tmdbId": 65292,
+    "title": "Ajin"
+  },
+  "59": {
+    "tmdbId": 1412,
+    "title": "Arrow"
+  },
+  "60": {
+    "tmdbId": 106379,
+    "title": "Fallout"
+  },
+  "61": {
+    "tmdbId": 92830,
+    "title": "Obi-Wan Kenobi"
+  },
+  "62": {
+    "tmdbId": 94951,
+    "title": "Mythic Quest"
+  },
+  "63": {
+    "tmdbId": 107113,
+    "title": "Only Murders in the Building"
+  },
+  "64": {
+    "tmdbId": 4313,
+    "title": "Full House"
+  },
+  "65": {
+    "tmdbId": 63926,
+    "title": "One-Punch Man"
+  },
+  "66": {
+    "tmdbId": 78941,
+    "title": "Aggretsuko"
+  },
+  "67": {
+    "tmdbId": 198109,
+    "title": "Disney Gallery / Star Wars: The Book of Boba Fett"
+  },
+  "68": {
+    "tmdbId": 71912,
+    "title": "The Witcher"
+  },
+  "69": {
+    "tmdbId": 70047,
+    "title": "Rapunzel's Tangled Adventure"
+  },
+  "70": {
+    "tmdbId": 128904,
+    "title": "Dark Winds"
+  },
+  "71": {
+    "tmdbId": 86428,
+    "title": "The Spanish Princess"
+  },
+  "72": {
+    "tmdbId": 128876,
+    "title": "The Beatles: Get Back"
+  },
+  "73": {
+    "tmdbId": 201874,
+    "title": "Blockbuster"
+  },
+  "74": {
+    "tmdbId": 67466,
+    "title": "Marvel's Runaways"
+  },
+  "75": {
+    "tmdbId": 61870,
+    "title": "Signed, Sealed, Delivered"
+  },
+  "76": {
+    "tmdbId": 1668,
+    "title": "Friends"
+  },
+  "77": {
+    "tmdbId": 202213,
+    "title": "History of the World, Part II"
+  },
+  "78": {
+    "tmdbId": 66558,
+    "title": "Voltron: Legendary Defender"
+  },
+  "79": {
+    "tmdbId": 4614,
+    "title": "NCIS"
+  },
+  "80": {
+    "tmdbId": 81356,
+    "title": "Sex Education"
+  },
+  "81": {
+    "tmdbId": 103465,
+    "title": "Into the Unknown: Making Frozen II"
+  },
+  "82": {
+    "tmdbId": 79622,
+    "title": "Hunters (2020)"
+  },
+  "83": {
+    "tmdbId": 4626,
+    "title": "Ugly Betty"
+  },
+  "84": {
+    "tmdbId": 68799,
+    "title": "Gilmore Girls: A Year in the Life"
+  },
+  "85": {
+    "tmdbId": 119051,
+    "title": "Wednesday"
+  },
+  "86": {
+    "tmdbId": 253760,
+    "title": "LEGO Star Wars: Rebuild the Galaxy"
+  },
+  "87": {
+    "tmdbId": 37680,
+    "title": "Suits"
+  },
+  "88": {
+    "tmdbId": 1437,
+    "title": "Firefly"
+  },
+  "89": {
+    "tmdbId": 85720,
+    "title": "Shadow and Bone"
+  },
+  "90": {
+    "tmdbId": 251091,
+    "title": "Star Wars: Tales of the Empire"
+  },
+  "91": {
+    "tmdbId": 7777,
+    "title": "Better Off Ted"
+  },
+  "92": {
+    "tmdbId": 203178,
+    "title": "Not Dead Yet"
+  },
+  "93": {
+    "tmdbId": 33907,
+    "title": "Downton Abbey"
+  },
+  "94": {
+    "tmdbId": 99121,
+    "title": "Walker"
+  },
+  "95": {
+    "tmdbId": 68106,
+    "title": "Kim's Convenience"
+  },
+  "96": {
+    "tmdbId": 85922,
+    "title": "Space Force"
+  },
+  "97": {
+    "tmdbId": 101978,
+    "title": "Disney Gallery / Star Wars: The Mandalorian"
+  },
+  "98": {
+    "tmdbId": 70215,
+    "title": "The White Princess"
+  },
+  "99": {
+    "tmdbId": 102540,
+    "title": "The Shrink Next Door"
+  },
+  "100": {
+    "tmdbId": 2288,
+    "title": "Prison Break"
+  },
+  "101": {
+    "tmdbId": 98892,
+    "title": "Schmigadoon!"
+  },
+  "102": {
+    "tmdbId": 60554,
+    "title": "Star Wars Rebels"
+  },
+  "103": {
+    "tmdbId": 100802,
+    "title": "Disney Insider"
+  },
+  "104": {
+    "tmdbId": 48891,
+    "title": "Brooklyn Nine-Nine"
+  },
+  "105": {
+    "tmdbId": 1429,
+    "title": "Attack on Titan"
+  },
+  "106": {
+    "tmdbId": 101873,
+    "title": "Cells at Work! Code Black"
+  },
+  "107": {
+    "tmdbId": 63623,
+    "title": "Fuller House"
+  },
+  "108": {
+    "tmdbId": 71383,
+    "title": "The Crossing"
+  },
+  "109": {
+    "tmdbId": 95557,
+    "title": "INVINCIBLE (2021)"
+  },
+  "110": {
+    "tmdbId": 114461,
+    "title": "Ahsoka"
+  },
+  "111": {
+    "tmdbId": 320872,
+    "title": "Star Wars: A Droid Story"
+  },
+  "112": {
+    "tmdbId": 84469,
+    "title": "Cowboy Bebop (2021)"
+  },
+  "113": {
+    "tmdbId": 61617,
+    "title": "Over the Garden Wall"
+  },
+  "114": {
+    "tmdbId": 113085,
+    "title": "History's Greatest Mysteries"
+  },
+  "115": {
+    "tmdbId": 124010,
+    "title": "How I Met Your Father"
+  },
+  "116": {
+    "tmdbId": 93219,
+    "title": "The Movies That Made Us"
+  },
+  "117": {
+    "tmdbId": 81723,
+    "title": "The Gilded Age"
+  },
+  "118": {
+    "tmdbId": 105971,
+    "title": "Star Wars: The Bad Batch"
+  },
+  "119": {
+    "tmdbId": 38472,
+    "title": "Marvel's Jessica Jones"
+  },
+  "120": {
+    "tmdbId": 69478,
+    "title": "The Handmaid's Tale"
+  },
+  "121": {
+    "tmdbId": 4087,
+    "title": "The X-Files"
+  },
+  "122": {
+    "tmdbId": 71663,
+    "title": "Black Lightning"
+  },
+  "123": {
+    "tmdbId": 84584,
+    "title": "Dollface"
+  },
+  "124": {
+    "tmdbId": 117303,
+    "title": "Lessons in Chemistry"
+  },
+  "125": {
+    "tmdbId": 4589,
+    "title": "Arrested Development"
+  },
+  "126": {
+    "tmdbId": 68126,
+    "title": "Norsemen"
+  },
+  "127": {
+    "tmdbId": 76178,
+    "title": "My Next Guest Needs No Introduction With David Letterman"
+  },
+  "128": {
+    "tmdbId": 71914,
+    "title": "The Wheel of Time"
+  },
+  "129": {
+    "tmdbId": 302919,
+    "title": "The End of an Era"
+  },
+  "130": {
+    "tmdbId": 114479,
+    "title": "The Acolyte"
+  },
+  "131": {
+    "tmdbId": 1425,
+    "title": "House of Cards (US)"
+  },
+  "132": {
+    "tmdbId": 95941,
+    "title": "Zoey's Extraordinary Playlist"
+  },
+  "133": {
+    "tmdbId": 66732,
+    "title": "Stranger Things"
+  },
+  "134": {
+    "tmdbId": 279299,
+    "title": "SNL50: Beyond Saturday Night"
+  },
+  "135": {
+    "tmdbId": 122066,
+    "title": "The Dropout"
+  },
+  "136": {
+    "tmdbId": 61381,
+    "title": "black-ish"
+  },
+  "137": {
+    "tmdbId": 120089,
+    "title": "SPY x FAMILY"
+  },
+  "138": {
+    "tmdbId": 111803,
+    "title": "The White Lotus"
+  },
+  "139": {
+    "tmdbId": 52,
+    "title": "That '70s Show"
+  },
+  "140": {
+    "tmdbId": 76123,
+    "title": "Encore!"
+  },
+  "141": {
+    "tmdbId": 116799,
+    "title": "The Lincoln Lawyer"
+  },
+  "142": {
+    "tmdbId": 63161,
+    "title": "Crazy Ex-Girlfriend"
+  },
+  "143": {
+    "tmdbId": 295778,
+    "title": "Scrubs (2026)"
+  },
+  "144": {
+    "tmdbId": 62643,
+    "title": "DC's Legends of Tomorrow"
+  },
+  "145": {
+    "tmdbId": 127700,
+    "title": "Welcome to Earth"
+  },
+  "146": {
+    "tmdbId": 71771,
+    "title": "Me, MYSELF & I"
+  },
+  "147": {
+    "tmdbId": 73375,
+    "title": "Tom Clancy's Jack Ryan"
+  },
+  "148": {
+    "tmdbId": 202879,
+    "title": "Star Wars: Skeleton Crew"
+  },
+  "149": {
+    "tmdbId": 99353,
+    "title": "Love is Blind"
+  },
+  "150": {
+    "tmdbId": 91363,
+    "title": "What If…?"
+  },
+  "151": {
+    "tmdbId": 734,
+    "title": "Magnum P.I."
+  },
+  "152": {
+    "tmdbId": 114591,
+    "title": "History of Swear Words"
+  },
+  "153": {
+    "tmdbId": 136311,
+    "title": "Shrinking"
+  },
+  "154": {
+    "tmdbId": 4604,
+    "title": "Smallville"
+  },
+  "155": {
+    "tmdbId": 57276,
+    "title": "TURN: Washington's Spies"
+  },
+  "156": {
+    "tmdbId": 1892,
+    "title": "The Fresh Prince of Bel-Air"
+  },
+  "157": {
+    "tmdbId": 155427,
+    "title": "Reboot (2022)"
+  },
+  "158": {
+    "tmdbId": 218843,
+    "title": "The Seven Deadly Sins"
+  },
+  "159": {
+    "tmdbId": 126308,
+    "title": "Shōgun"
+  },
+  "160": {
+    "tmdbId": 81046,
+    "title": "The Dragon Prince"
+  },
+  "161": {
+    "tmdbId": 2316,
+    "title": "The Office (US)"
+  },
+  "162": {
+    "tmdbId": 114922,
+    "title": "Citadel"
+  },
+  "163": {
+    "tmdbId": 62688,
+    "title": "Supergirl"
+  },
+  "164": {
+    "tmdbId": 83127,
+    "title": "The Politician"
+  },
+  "165": {
+    "tmdbId": 111111,
+    "title": "Blood of Zeus"
+  },
+  "166": {
+    "tmdbId": 69740,
+    "title": "Ozark"
+  },
+  "167": {
+    "tmdbId": 57243,
+    "title": "Doctor Who (2005)"
+  },
+  "168": {
+    "tmdbId": 79501,
+    "title": "Doom Patrol"
+  },
+  "169": {
+    "tmdbId": 99799,
+    "title": "Alex Rider"
+  },
+  "170": {
+    "tmdbId": 83919,
+    "title": "Strange Adventures"
+  },
+  "171": {
+    "tmdbId": 195359,
+    "title": "Transatlantic"
+  },
+  "172": {
+    "tmdbId": 117830,
+    "title": "Tomb Raider: The Legend of Lara Croft"
+  },
+  "173": {
+    "tmdbId": 61671,
+    "title": "Unbreakable Kimmy Schmidt"
+  },
+  "174": {
+    "tmdbId": 71890,
+    "title": "Friends from College"
+  },
+  "175": {
+    "tmdbId": 68708,
+    "title": "Roman Empire"
+  },
+  "176": {
+    "tmdbId": 83867,
+    "title": "Andor"
+  },
+  "177": {
+    "tmdbId": 155594,
+    "title": "Murderville"
+  },
+  "178": {
+    "tmdbId": 71713,
+    "title": "Rise (2018)"
+  },
+  "179": {
+    "tmdbId": 103992,
+    "title": "A Teacher"
+  },
+  "180": {
+    "tmdbId": 31724,
+    "title": "Code Geass: Lelouch of the Rebellion"
+  },
+  "181": {
+    "tmdbId": 91545,
+    "title": "Young Wallander"
+  },
+  "182": {
+    "tmdbId": 4278,
+    "title": "Friday Night Lights"
+  },
+  "183": {
+    "tmdbId": 17610,
+    "title": "NCIS: Los Angeles"
+  },
+  "184": {
+    "tmdbId": 95215,
+    "title": "Reservation Dogs"
+  },
+  "185": {
+    "tmdbId": 65294,
+    "title": "A Series of Unfortunate Events"
+  },
+  "186": {
+    "tmdbId": 62084,
+    "title": "Poldark (2015)"
+  },
+  "187": {
+    "tmdbId": 97546,
+    "title": "Ted Lasso"
+  },
+  "188": {
+    "tmdbId": 124641,
+    "title": "American Auto"
+  },
+  "189": {
+    "tmdbId": 1447,
+    "title": "Psych"
+  },
+  "190": {
+    "tmdbId": 84773,
+    "title": "The Lord of the Rings: The Rings of Power"
+  },
+  "191": {
+    "tmdbId": 97175,
+    "title": "Fate: The Winx Saga"
+  },
+  "192": {
+    "tmdbId": 19885,
+    "title": "Sherlock"
+  },
+  "193": {
+    "tmdbId": 72844,
+    "title": "The Haunting"
+  },
+  "194": {
+    "tmdbId": 1667,
+    "title": "Saturday Night Live"
+  },
+  "195": {
+    "tmdbId": 100698,
+    "title": "Tiger King"
+  },
+  "196": {
+    "tmdbId": 92634,
+    "title": "Sunnyside (2019)"
+  },
+  "197": {
+    "tmdbId": 13789,
+    "title": "Our Mutual Friend"
+  },
+  "198": {
+    "tmdbId": 82744,
+    "title": "Catch-22"
+  },
+  "199": {
+    "tmdbId": 258902,
+    "title": "English Teacher"
+  },
+  "200": {
+    "tmdbId": null,
+    "title": "Armor Wars"
+  },
+  "201": {
+    "tmdbId": 66786,
+    "title": "Timeless (2016)"
+  },
+  "202": {
+    "tmdbId": 86248,
+    "title": "Upload"
+  },
+  "203": {
+    "tmdbId": 114478,
+    "title": "Star Wars: Visions"
+  },
+  "204": {
+    "tmdbId": 71763,
+    "title": "Alex, Inc."
+  },
+  "205": {
+    "tmdbId": 92783,
+    "title": "She-Hulk: Attorney at Law"
+  },
+  "206": {
+    "tmdbId": 222023,
+    "title": "Jury Duty"
+  },
+  "207": {
+    "tmdbId": 197449,
+    "title": "Loot"
+  },
+  "208": {
+    "tmdbId": 220102,
+    "title": "Spider-Noir"
+  },
+  "209": {
+    "tmdbId": 62335,
+    "title": "UnREAL"
+  },
+  "210": {
+    "tmdbId": 301507,
+    "title": "Heated Rivalry"
+  },
+  "211": {
+    "tmdbId": 125935,
+    "title": "Abbott Elementary"
+  },
+  "212": {
+    "tmdbId": 71737,
+    "title": "A.P. Bio"
+  },
+  "213": {
+    "tmdbId": 126027,
+    "title": "Ghosts (US)"
+  },
+  "214": {
+    "tmdbId": 44857,
+    "title": "The Mindy Project"
+  },
+  "215": {
+    "tmdbId": 66870,
+    "title": "Magi: Adventure of Sinbad"
+  },
+  "216": {
+    "tmdbId": null,
+    "title": "The Hardy Boys (2020)"
+  },
+  "217": {
+    "tmdbId": 62687,
+    "title": "Limitless"
+  },
+  "218": {
+    "tmdbId": 105288,
+    "title": "Down to Earth with Zac Efron"
+  },
+  "219": {
+    "tmdbId": 87739,
+    "title": "The Queen's Gambit"
+  },
+  "220": {
+    "tmdbId": 136741,
+    "title": "Roar (2022)"
+  },
+  "221": {
+    "tmdbId": null,
+    "title": "Avatar: The Last Airbender (2021)"
+  },
+  "222": {
+    "tmdbId": 62649,
+    "title": "Superstore"
+  },
+  "223": {
+    "tmdbId": 73157,
+    "title": "Future Man"
+  },
+  "224": {
+    "tmdbId": 62127,
+    "title": "Marvel's Iron Fist"
+  },
+  "225": {
+    "tmdbId": 61662,
+    "title": "Schitt's Creek"
+  },
+  "226": {
+    "tmdbId": 1418,
+    "title": "The Big Bang Theory"
+  },
+  "227": {
+    "tmdbId": 272418,
+    "title": "Robin Hood (2025)"
+  },
+  "228": {
+    "tmdbId": 71340,
+    "title": "Krypton"
+  },
+  "229": {
+    "tmdbId": 70573,
+    "title": "GLOW"
+  },
+  "230": {
+    "tmdbId": 63247,
+    "title": "Westworld"
+  },
+  "231": {
+    "tmdbId": 92749,
+    "title": "Moon Knight"
+  },
+  "232": {
+    "tmdbId": 21510,
+    "title": "White Collar"
+  },
+  "233": {
+    "tmdbId": 95339,
+    "title": "The Imagineering Story"
+  },
+  "234": {
+    "tmdbId": 5739,
+    "title": "Dr. Horrible's Sing-Along Blog"
+  },
+  "235": {
+    "tmdbId": 99657,
+    "title": "The Chair (2021)"
+  },
+  "236": {
+    "tmdbId": 4194,
+    "title": "Star Wars: Clone Wars"
+  },
+  "237": {
+    "tmdbId": 85077,
+    "title": "The Chosen"
+  },
+  "238": {
+    "tmdbId": 69320,
+    "title": "Trial & Error"
+  },
+  "239": {
+    "tmdbId": 71715,
+    "title": "Good Girls"
+  },
+  "240": {
+    "tmdbId": 138501,
+    "title": "Agatha All Along"
+  },
+  "241": {
+    "tmdbId": 39793,
+    "title": "Call the Midwife"
+  },
+  "242": {
+    "tmdbId": 93405,
+    "title": "Squid Game"
+  },
+  "243": {
+    "tmdbId": 88329,
+    "title": "Hawkeye (2021)"
+  },
+  "244": {
+    "tmdbId": 197373,
+    "title": "Based on a True Story"
+  },
+  "245": {
+    "tmdbId": 103540,
+    "title": "Percy Jackson and the Olympians"
+  },
+  "246": {
+    "tmdbId": 64439,
+    "title": "Making a Murderer"
+  },
+  "247": {
+    "tmdbId": 1639,
+    "title": "Heroes"
+  },
+  "248": {
+    "tmdbId": 94605,
+    "title": "Arcane"
+  },
+  "249": {
+    "tmdbId": 95350,
+    "title": "Lanterns"
+  },
+  "250": {
+    "tmdbId": 80671,
+    "title": "Cells at Work!"
+  },
+  "251": {
+    "tmdbId": 256560,
+    "title": "The Promised Land (2024)"
+  },
+  "252": {
+    "tmdbId": 84958,
+    "title": "Loki"
+  },
+  "253": {
+    "tmdbId": 85801,
+    "title": "High School Musical: The Musical: The Series"
+  },
+  "254": {
+    "tmdbId": 1622,
+    "title": "Supernatural"
+  },
+  "255": {
+    "tmdbId": 60735,
+    "title": "The Flash (2014)"
+  },
+  "256": {
+    "tmdbId": 118924,
+    "title": "Marvel Studios: Assembled"
+  },
+  "257": {
+    "tmdbId": 66573,
+    "title": "The Good Place"
+  },
+  "258": {
+    "tmdbId": 65494,
+    "title": "The Crown"
+  },
+  "259": {
+    "tmdbId": 71739,
+    "title": "Ghosted"
+  },
+  "260": {
+    "tmdbId": 2673,
+    "title": "The O.C."
+  },
+  "261": {
+    "tmdbId": 4608,
+    "title": "30 Rock"
+  },
+  "262": {
+    "tmdbId": 115996,
+    "title": "Limitless with Chris Hemsworth"
+  },
+  "263": {
+    "tmdbId": 95665,
+    "title": "Inventing Anna"
+  },
+  "264": {
+    "tmdbId": 113477,
+    "title": "Mr. Mayor"
+  },
+  "265": {
+    "tmdbId": 57092,
+    "title": "The White Queen"
+  },
+  "266": {
+    "tmdbId": 74140,
+    "title": "Waco"
+  },
+  "267": {
+    "tmdbId": 101699,
+    "title": "Prop Culture"
+  },
+  "268": {
+    "tmdbId": 1100,
+    "title": "How I Met Your Mother"
+  },
+  "269": {
+    "tmdbId": 115036,
+    "title": "The Book of Boba Fett"
+  },
+  "270": {
+    "tmdbId": 67133,
+    "title": "MacGyver (2016)"
+  },
+  "271": {
+    "tmdbId": 67178,
+    "title": "Marvel's The Punisher"
+  },
+  "272": {
+    "tmdbId": 61418,
+    "title": "Jane the Virgin"
+  },
+  "273": {
+    "tmdbId": 42009,
+    "title": "Black Mirror"
+  },
+  "274": {
+    "tmdbId": 1396,
+    "title": "Breaking Bad"
+  },
+  "275": {
+    "tmdbId": 196454,
+    "title": "Queen Charlotte: A Bridgerton Story"
+  },
+  "276": {
+    "tmdbId": 71738,
+    "title": "The Orville"
+  },
+  "277": {
+    "tmdbId": 202555,
+    "title": "Daredevil: Born Again"
+  },
+  "278": {
+    "tmdbId": 72351,
+    "title": "Hilda"
+  },
+  "279": {
+    "tmdbId": 87784,
+    "title": "Defending Jacob"
+  },
+  "280": {
+    "tmdbId": 289219,
+    "title": "Star Wars: Maul – Shadow Lord"
+  },
+  "281": {
+    "tmdbId": 95599,
+    "title": "Kipo and the Age of Wonderbeasts"
+  },
+  "282": {
+    "tmdbId": 135959,
+    "title": "That '90s Show"
+  },
+  "283": {
+    "tmdbId": 62285,
+    "title": "Marvel's The Defenders"
+  },
+  "284": {
+    "tmdbId": 95738,
+    "title": "Behind the Attraction"
+  },
+  "285": {
+    "tmdbId": 155421,
+    "title": "All the Light We Cannot See"
+  },
+  "286": {
+    "tmdbId": 1417,
+    "title": "Glee"
+  },
+  "287": {
+    "tmdbId": 70523,
+    "title": "Dark"
+  },
+  "288": {
+    "tmdbId": 5920,
+    "title": "The Mentalist"
+  },
+  "289": {
+    "tmdbId": 255868,
+    "title": "Dream Productions"
+  },
+  "290": {
+    "tmdbId": 76479,
+    "title": "The Boys"
+  },
+  "291": {
+    "tmdbId": 4607,
+    "title": "Lost"
+  },
+  "292": {
+    "tmdbId": 60059,
+    "title": "Better Call Saul"
+  },
+  "293": {
+    "tmdbId": 202307,
+    "title": "So Help Me Todd"
+  },
+  "294": {
+    "tmdbId": 61889,
+    "title": "Marvel's Daredevil"
+  },
+  "295": {
+    "tmdbId": 71885,
+    "title": "grown-ish"
+  },
+  "296": {
+    "tmdbId": 84646,
+    "title": "Hero Mask"
+  },
+  "297": {
+    "tmdbId": 47318,
+    "title": "Graceland"
+  },
+  "298": {
+    "tmdbId": 245026,
+    "title": "Wizards Beyond Waverly Place"
+  },
+  "299": {
+    "tmdbId": 72750,
+    "title": "Killing Eve"
+  },
+  "300": {
+    "tmdbId": 67026,
+    "title": "Designated Survivor"
+  },
+  "301": {
+    "tmdbId": 82452,
+    "title": "Avatar: The Last Airbender (2024)"
+  },
+  "302": {
+    "tmdbId": 68507,
+    "title": "His Dark Materials"
+  },
+  "303": {
+    "tmdbId": 87050,
+    "title": "Hollywood (2020)"
+  },
+  "304": {
+    "tmdbId": 288055,
+    "title": "Star Wars: Tales of the Underworld"
+  },
+  "305": {
+    "tmdbId": 75006,
+    "title": "The Umbrella Academy"
+  },
+  "306": {
+    "tmdbId": 61692,
+    "title": "Fresh Off the Boat"
+  },
+  "307": {
+    "tmdbId": 138505,
+    "title": "Marvel Zombies"
+  },
+  "308": {
+    "tmdbId": 66857,
+    "title": "Shooter"
+  },
+  "309": {
+    "tmdbId": 85271,
+    "title": "WandaVision"
+  },
+  "310": {
+    "tmdbId": 245902,
+    "title": "Quiet on Set: The Dark Side of Kids TV"
+  },
+  "311": {
+    "tmdbId": 82596,
+    "title": "Emily in Paris"
+  },
+  "312": {
+    "tmdbId": 70767,
+    "title": "Dear White People"
+  },
+  "313": {
+    "tmdbId": 82856,
+    "title": "The Mandalorian"
+  },
+  "314": {
+    "tmdbId": 98178,
+    "title": "Amazing Stories (2020)"
+  },
+  "315": {
+    "tmdbId": 94515,
+    "title": "Prank Encounters"
+  },
+  "316": {
+    "tmdbId": 40050,
+    "title": "Daniel Tiger's Neighborhood"
+  },
+  "317": {
+    "tmdbId": 82452,
+    "title": "Avatar: The Last Airbender"
+  },
+  "318": {
+    "tmdbId": 118815,
+    "title": "The Lost Pirate Kingdom"
+  },
+  "319": {
+    "tmdbId": 4586,
+    "title": "Gilmore Girls"
+  },
+  "320": {
+    "tmdbId": 89901,
+    "title": "Dickinson"
+  },
+  "321": {
+    "tmdbId": 100088,
+    "title": "The Last of Us"
+  },
+  "322": {
+    "tmdbId": 114472,
+    "title": "Secret Invasion"
+  },
+  "323": {
+    "tmdbId": 2004,
+    "title": "Malcolm in the Middle"
+  },
+  "324": {
+    "tmdbId": 232125,
+    "title": "I Am Groot"
+  },
+  "325": {
+    "tmdbId": 89563,
+    "title": "mixed-ish"
+  },
+  "326": {
+    "tmdbId": null,
+    "title": "Rangers of the New Republic"
+  },
+  "327": {
+    "tmdbId": 79240,
+    "title": "Swamp Thing (2019)"
+  },
+  "328": {
+    "tmdbId": 77410,
+    "title": "Babies"
+  },
+  "329": {
+    "tmdbId": 33217,
+    "title": "Young Justice"
+  },
+  "330": {
+    "tmdbId": 124834,
+    "title": "Heartstopper"
+  },
+  "331": {
+    "tmdbId": 48866,
+    "title": "The 100"
+  },
+  "332": {
+    "tmdbId": 80986,
+    "title": "Stargirl"
+  },
+  "333": {
+    "tmdbId": 34524,
+    "title": "Teen Wolf"
+  },
+  "334": {
+    "tmdbId": 61698,
+    "title": "Galavant"
+  },
+  "335": {
+    "tmdbId": 90461,
+    "title": "Monsters at Work"
+  },
+  "336": {
+    "tmdbId": 71446,
+    "title": "Money Heist"
+  },
+  "337": {
+    "tmdbId": 214162,
+    "title": "Animal Control"
+  },
+  "338": {
+    "tmdbId": 64896,
+    "title": "Friday Night Tykes"
+  },
+  "339": {
+    "tmdbId": 99652,
+    "title": "Kevin Can F**k Himself"
+  }
+}

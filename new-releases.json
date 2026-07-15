@@ -1,1 +1,92 @@
-[]
+[
+  {
+    "id": 62,
+    "title": "Mythic Quest",
+    "season": 4,
+    "airDate": "2025-01-28"
+  },
+  {
+    "id": 114,
+    "title": "History's Greatest Mysteries",
+    "season": 7,
+    "airDate": "2026-01-26"
+  },
+  {
+    "id": 137,
+    "title": "SPY x FAMILY",
+    "season": 3,
+    "airDate": "2025-10-04"
+  },
+  {
+    "id": 151,
+    "title": "Magnum P.I.",
+    "season": 8,
+    "airDate": "1987-10-07"
+  },
+  {
+    "id": 162,
+    "title": "Citadel",
+    "season": 2,
+    "airDate": "2026-05-06"
+  },
+  {
+    "id": 165,
+    "title": "Blood of Zeus",
+    "season": 3,
+    "airDate": "2025-05-08"
+  },
+  {
+    "id": 167,
+    "title": "Doctor Who (2005)",
+    "season": 13,
+    "airDate": "2021-10-31"
+  },
+  {
+    "id": 202,
+    "title": "Upload",
+    "season": 4,
+    "airDate": "2025-08-25"
+  },
+  {
+    "id": 203,
+    "title": "Star Wars: Visions",
+    "season": 3,
+    "airDate": "2025-10-29"
+  },
+  {
+    "id": 242,
+    "title": "Squid Game",
+    "season": 3,
+    "airDate": "2025-06-27"
+  },
+  {
+    "id": 248,
+    "title": "Arcane",
+    "season": 2,
+    "airDate": "2024-11-09"
+  },
+  {
+    "id": 273,
+    "title": "Black Mirror",
+    "season": 7,
+    "airDate": "2025-04-10"
+  },
+  {
+    "id": 284,
+    "title": "Behind the Attraction",
+    "season": 3,
+    "airDate": "2026-06-24"
+  },
+  {
+    "id": 287,
+    "title": "Dark",
+    "season": 3,
+    "airDate": "2020-06-27"
+  },
+  {
+    "id": 328,
+    "title": "Babies",
+    "season": 3,
+    "airDate": "2021-01-04"
+  }
+]
