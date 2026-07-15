@@ -98,7 +98,8 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .card.dormant{opacity:0.55;}
 .card.faded{opacity:0.6;}
 
-.poster{width:52px;min-width:52px;height:74px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;margin:10px;flex-shrink:0;}
+.poster{width:52px;min-width:52px;height:74px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;margin:10px;flex-shrink:0;position:relative;overflow:hidden;}
+.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 
 .card-content{flex:1;padding:0.65rem 0.9rem 0.65rem 0;display:flex;flex-direction:column;gap:6px;min-width:0;justify-content:center;}
 .row1{display:flex;align-items:center;gap:0.5rem;min-width:0;}
@@ -120,14 +121,20 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .action-btn.primary:hover{filter:brightness(1.08);}
 .action-btn.icon{padding:4px 8px;}
 
-.edit-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:14px;padding:1.1rem;max-width:280px;width:90vw;box-shadow:0 12px 32px var(--shadow);}
+.edit-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:14px;padding:1.1rem;max-width:320px;width:90vw;box-shadow:0 12px 32px var(--shadow);}
 .edit-dialog::backdrop{background:rgba(0,0,0,0.5);}
 .edit-dialog h3{font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.9rem;}
 .edit-fields{display:flex;gap:10px;margin-bottom:1rem;}
 .edit-fields label{flex:1;display:flex;flex-direction:column;gap:4px;font-size:0.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
-.edit-fields input{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;}
-.edit-fields input:focus{outline:none;border-color:var(--yellow);}
+.edit-fields input,.edit-fields select{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
+.edit-fields input:focus,.edit-fields select:focus{outline:none;border-color:var(--yellow);}
 .dialog-actions{display:flex;justify-content:flex-end;gap:8px;}
+
+.hist-row{display:flex;align-items:baseline;gap:10px;padding:7px 2px;border-bottom:1px solid var(--border);font-size:0.78rem;}
+.hist-row:last-child{border-bottom:none;}
+.hist-time{color:var(--dim);font-size:0.64rem;font-weight:600;white-space:nowrap;min-width:100px;}
+.hist-title{font-weight:700;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.hist-action{color:var(--muted);font-size:0.72rem;white-space:nowrap;}
 
 .row2{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;}
 .eps-pill{font-size:0.62rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface2);color:var(--muted);white-space:nowrap;}
@@ -197,6 +204,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
         <input id="search" type="search" class="search-input" placeholder="Search all shows…" oninput="setQuery(this.value)" aria-label="Search shows">
       </div>
       <div class="chip-row" id="chip-row" role="group" aria-label="Filter by status"></div>
+      <button type="button" class="action-btn primary" onclick="openAddDialog()">+ Add show</button>
     </div>
   </div>
 </div>
@@ -222,6 +230,8 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
   <div class="show-list grid" id="results-list"></div>
 </div>
 
+<button class="cr" type="button" onclick="tog('wh')" aria-expanded="false" aria-controls="wh-panel"><span class="chev" aria-hidden="true">▶</span><span id="wh-lbl">Watched history (0)</span></button>
+<div id="wh-panel" class="panel" style="display:none;margin-top:0.75rem;"></div>
 <button class="cr" type="button" onclick="tog('ar')" aria-expanded="false" aria-controls="ar-panel"><span class="chev" aria-hidden="true">▶</span><span id="ar-lbl">Archive (0)</span></button>
 <div id="ar-panel" class="panel" style="display:none;margin-top:0.75rem;"></div>
 <button class="cr" type="button" onclick="tog('yl')" aria-expanded="false" aria-controls="yl-panel"><span class="chev" aria-hidden="true">▶</span><span>Year log</span></button>
@@ -244,10 +254,35 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
   </form>
 </dialog>
 
+<dialog id="add-dialog" class="edit-dialog">
+  <form method="dialog" onsubmit="saveAddShow(event)">
+    <h3>Add a show</h3>
+    <div class="edit-fields">
+      <label>Title<input type="text" id="add-title" required maxlength="200"></label>
+    </div>
+    <div class="edit-fields">
+      <label>Status
+        <select id="add-status" onchange="onAddStatusChange()">
+          <option value="watching">Watching</option>
+          <option value="queue">Up next</option>
+        </select>
+      </label>
+    </div>
+    <div class="edit-fields" id="add-progress-fields">
+      <label>Season<input type="number" id="add-season" min="1" value="1"></label>
+      <label>Episode<input type="number" id="add-ep" min="1" value="1"></label>
+    </div>
+    <div class="dialog-actions">
+      <button type="button" class="action-btn" onclick="document.getElementById('add-dialog').close()">Cancel</button>
+      <button type="submit" class="action-btn primary">Add</button>
+    </div>
+  </form>
+</dialog>
+
 <script>
 const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const NOW = new Date();
-let open={ar:false,yl:false,vs:false};
+let open={ar:false,yl:false,vs:false,wh:false};
 
 // ─── Manual "I watched this" overrides — layered on top of the CSV snapshot,
 // persisted in this browser only (see the banner note in the page).
@@ -255,11 +290,35 @@ const OVERRIDES_KEY='tvtracker-overrides';
 function loadOverrides(){ try{ return JSON.parse(localStorage.getItem(OVERRIDES_KEY))||{}; }catch(e){ return {}; } }
 function saveOverrides(){ try{ localStorage.setItem(OVERRIDES_KEY, JSON.stringify(overrides)); }catch(e){} }
 let overrides=loadOverrides();
-function liveShows(){ return SH.map(g=>overrides[g.id]?{...g,...overrides[g.id]}:g); }
+
+// ─── Shows added by hand (not part of the original export) — stored separately
+// so the original snapshot data never has to be mutated.
+const CUSTOM_KEY='tvtracker-custom-shows';
+function loadCustomShows(){ try{ return JSON.parse(localStorage.getItem(CUSTOM_KEY))||[]; }catch(e){ return []; } }
+function saveCustomShows(list){ try{ localStorage.setItem(CUSTOM_KEY, JSON.stringify(list)); }catch(e){} }
+
+function liveShows(){
+  const withOverride=g=>overrides[g.id]?{...g,...overrides[g.id]}:g;
+  return [...SH.map(withOverride), ...loadCustomShows().map(withOverride)];
+}
 function todayStr(){
   const d=new Date();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
+
+// ─── Watched-history log — every manual action, timestamped, newest first.
+const HISTORY_KEY='tvtracker-history';
+function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HISTORY_KEY))||[]; }catch(e){ return []; } }
+function saveHistory(history){ try{ localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(-300))); }catch(e){} }
+function logHistory(entry){
+  const history=loadHistory();
+  history.push({...entry, at:new Date().toISOString()});
+  saveHistory(history);
+}
+function removeHistoryForShow(id){
+  saveHistory(loadHistory().filter(h=>h.id!==id));
+}
+
 function updateOverride(id,patch){
   overrides[id]={...overrides[id],...patch};
   saveOverrides();
@@ -268,15 +327,27 @@ function updateOverride(id,patch){
 function markWatched(id){
   const g=liveShows().find(x=>x.id===id);
   if(!g) return;
-  updateOverride(id,{ep:(g.ep||0)+1, epsWatched:(g.epsWatched||0)+1, lastWatched:todayStr(), dormant:false});
+  const ep=(g.ep||0)+1;
+  logHistory({id, title:g.t, action:'watched', season:g.season, ep});
+  updateOverride(id,{ep, epsWatched:(g.epsWatched||0)+1, lastWatched:todayStr(), dormant:false});
 }
 function startWatching(id){
+  const g=liveShows().find(x=>x.id===id);
+  if(!g) return;
+  logHistory({id, title:g.t, action:'started', season:1, ep:1});
   updateOverride(id,{s:'watching', season:1, ep:1, epsWatched:1, lastWatched:todayStr(), start:todayStr(), dormant:false});
 }
 function resetShow(id){
   if(!overrides[id]) return;
   delete overrides[id];
   saveOverrides();
+  removeHistoryForShow(id);
+  render();
+}
+function removeCustomShow(id){
+  if(!confirm('Remove this show you added? This can\'t be undone.')) return;
+  saveCustomShows(loadCustomShows().filter(g=>g.id!==id));
+  removeHistoryForShow(id);
   render();
 }
 let editingId=null;
@@ -294,8 +365,45 @@ function saveEdit(e){
   const season=parseInt(document.getElementById('edit-season').value,10);
   const ep=parseInt(document.getElementById('edit-ep').value,10);
   if(isNaN(season)||isNaN(ep)||season<1||ep<1) return;
+  const g=liveShows().find(x=>x.id===editingId);
+  if(g) logHistory({id:editingId, title:g.t, action:'edited', season, ep});
   updateOverride(editingId,{season, ep, lastWatched:todayStr(), dormant:false});
   document.getElementById('edit-dialog').close();
+}
+
+// ─── Add a show by hand ─────────────────────────────────
+function openAddDialog(){
+  document.getElementById('add-title').value='';
+  document.getElementById('add-status').value='watching';
+  document.getElementById('add-season').value=1;
+  document.getElementById('add-ep').value=1;
+  onAddStatusChange();
+  document.getElementById('add-dialog').showModal();
+}
+function onAddStatusChange(){
+  const isWatching=document.getElementById('add-status').value==='watching';
+  document.getElementById('add-progress-fields').style.display=isWatching?'flex':'none';
+}
+function saveAddShow(e){
+  e.preventDefault();
+  const title=document.getElementById('add-title').value.trim();
+  if(!title) return;
+  const status=document.getElementById('add-status').value;
+  const isWatching=status==='watching';
+  const season=isWatching?Math.max(1,parseInt(document.getElementById('add-season').value,10)||1):null;
+  const ep=isWatching?Math.max(1,parseInt(document.getElementById('add-ep').value,10)||1):null;
+  const id=Date.now();
+  const show={
+    id, t:title, s:status, season, ep, epsWatched:isWatching?ep:0,
+    lastWatched:isWatching?todayStr():null, start:isWatching?todayStr():null,
+    queued:status==='queue'?todayStr():null, cy:null, cm:null, dormant:false, custom:true
+  };
+  const list=loadCustomShows();
+  list.push(show);
+  saveCustomShows(list);
+  logHistory({id, title, action:isWatching?'added, watching':'added to Up next', season, ep});
+  document.getElementById('add-dialog').close();
+  render();
 }
 
 // ─── SHOW DATA — loaded async from shows.json (parsed from Steph's TV Time export) ──
@@ -306,6 +414,8 @@ function saveEdit(e){
 // Kept in its own JSON file (rather than inline) so the GitHub Actions season-check job
 // can read it without parsing this page.
 let SH=[];
+// Show id -> TMDB poster_path, populated by the same GitHub Actions job.
+let POSTERS={};
 
 // ─── Real viewing-history stats, pulled from TV Time's own cached stats +
 // historical timeframe counters (not derived/guessed) ──────────────────────
@@ -381,7 +491,9 @@ function pb(g){
 function posterEl(g){
   const color=posterColor(g.t);
   const letter=(g.t.match(/[A-Za-z0-9]/)||['#'])[0].toUpperCase();
-  return `<div class="poster" style="background:${color}18;color:${color}" aria-hidden="true">${letter}</div>`;
+  const path=POSTERS[g.id];
+  const img=path?`<img src="https://image.tmdb.org/t/p/w185${path}" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
+  return `<div class="poster" style="background:${color}18;color:${color}" aria-hidden="true">${letter}${img}</div>`;
 }
 function seasonEpEl(g){
   if(g.season==null||g.ep==null) return '';
@@ -443,6 +555,7 @@ function nowC(g){
         <button type="button" class="action-btn primary" onclick="markWatched(${g.id})">✓ I watched this, bitch!</button>
         <button type="button" class="action-btn icon" onclick="openEdit(${g.id})" aria-label="Edit season and episode">✎</button>
         ${hasOverride?`<button type="button" class="action-btn icon" onclick="resetShow(${g.id})" aria-label="Reset to original snapshot">↺</button>`:''}
+        ${g.custom?`<button type="button" class="action-btn icon" onclick="removeCustomShow(${g.id})" aria-label="Remove this show">🗑</button>`:''}
       </div>
     </div>
   </div>`;
@@ -459,6 +572,7 @@ function qC(g,n){
       </div>
       <div class="card-actions">
         <button type="button" class="action-btn primary" onclick="startWatching(${g.id})">▶ Start watching</button>
+        ${g.custom?`<button type="button" class="action-btn icon" onclick="removeCustomShow(${g.id})" aria-label="Remove this show">🗑</button>`:''}
       </div>
     </div>
   </div>`;
@@ -507,8 +621,24 @@ function tog(k){
   renderPanels();
 }
 
+function renderHistoryPanel(){
+  const history=[...loadHistory()].sort((a,b)=>new Date(b.at)-new Date(a.at));
+  document.getElementById('wh-lbl').textContent=`Watched history (${history.length})`;
+  if(!open.wh) return;
+  const el=document.getElementById('wh-panel');
+  if(!history.length){ el.innerHTML='<div class="empty">No manual updates yet — use "I watched this", "Start watching", or add a show.</div>'; return; }
+  const actionLabel={watched:h=>`watched S${h.season}·E${h.ep}`, started:()=>'started watching', edited:h=>`set to S${h.season}·E${h.ep}`};
+  el.innerHTML=history.map(h=>{
+    const d=new Date(h.at);
+    const when=`${M[d.getMonth()]} ${d.getDate()}, ${d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`;
+    const label=(actionLabel[h.action]||(()=>h.action))(h);
+    return `<div class="hist-row"><span class="hist-time">${when}</span><span class="hist-title">${esc(h.title)}</span><span class="hist-action">${esc(label)}</span></div>`;
+  }).join('');
+}
+
 function renderPanels(){
   const shows=liveShows();
+  renderHistoryPanel();
   const arch=shows.filter(g=>g.s==='done'||g.s==='dropped').sort((a,b)=>(b.cy||0)-(a.cy||0)||((b.cm??-1)-(a.cm??-1)));
   document.getElementById('ar-lbl').textContent=`Archive (${arch.length})`;
   if(open.ar){
@@ -689,9 +819,11 @@ function renderNewReleases(releases){
 // ─── Bootstrap — load the show data (and any new-release alerts) before first render ──
 Promise.all([
   fetch('shows.json').then(r=>r.json()),
-  fetch('new-releases.json').then(r=>r.ok?r.json():[]).catch(()=>[])
-]).then(([showsData,releases])=>{
+  fetch('new-releases.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
+  fetch('posters.json').then(r=>r.ok?r.json():{}).catch(()=>({}))
+]).then(([showsData,releases,postersData])=>{
   SH=showsData;
+  POSTERS=postersData;
   initTheme();
   render();
   renderNewReleases(releases);

@@ -1,9 +1,11 @@
 import fs from 'node:fs/promises';
 
-// Checks TMDB for any 'watching' show whose latest aired season is ahead of what's
-// tracked in shows.json, and writes the results to new-releases.json for the page
-// to show as a banner. Title -> TMDB id matches are cached in tmdb-map.json so
-// repeat runs only need to search once per show.
+// Matches every show in shows.json to a TMDB id (cached in tmdb-map.json so repeat
+// runs only search once per show), and:
+//  - writes each show's poster path to posters.json for the page to render as a
+//    real thumbnail instead of the letter-monogram fallback
+//  - for shows currently 'watching', compares TMDB's latest aired season against
+//    what's tracked and writes anything newer to new-releases.json for the banner
 
 const API_KEY = process.env.TMDB_API_KEY;
 if (!API_KEY) {
@@ -44,12 +46,19 @@ async function main() {
   } catch {
     // first run, no cache yet
   }
+  let posters = {};
+  try {
+    posters = JSON.parse(await fs.readFile('posters.json', 'utf8'));
+  } catch {
+    // first run, no cache yet
+  }
 
-  const tracked = shows.filter((g) => g.s === 'watching');
   const releases = [];
   const today = new Date().toISOString().slice(0, 10);
+  let matched = 0;
+  let checked = 0;
 
-  for (const g of tracked) {
+  for (const g of shows) {
     let entry = map[g.id];
     if (!entry) {
       try {
@@ -62,17 +71,26 @@ async function main() {
       map[g.id] = entry;
       await sleep(250);
     }
-    if (!entry.tmdbId) continue;
+    if (!entry.tmdbId) {
+      posters[g.id] = null;
+      continue;
+    }
 
     try {
       const details = await tmdbGet(`/tv/${entry.tmdbId}`);
-      const airedSeasons = (details.seasons || []).filter(
-        (s) => s.season_number > 0 && s.air_date && s.air_date <= today
-      );
-      if (airedSeasons.length) {
-        const latest = airedSeasons.reduce((a, b) => (a.season_number > b.season_number ? a : b));
-        if (latest.season_number > (g.season || 0)) {
-          releases.push({ id: g.id, title: g.t, season: latest.season_number, airDate: latest.air_date });
+      posters[g.id] = details.poster_path || null;
+      matched++;
+
+      if (g.s === 'watching') {
+        checked++;
+        const airedSeasons = (details.seasons || []).filter(
+          (s) => s.season_number > 0 && s.air_date && s.air_date <= today
+        );
+        if (airedSeasons.length) {
+          const latest = airedSeasons.reduce((a, b) => (a.season_number > b.season_number ? a : b));
+          if (latest.season_number > (g.season || 0)) {
+            releases.push({ id: g.id, title: g.t, season: latest.season_number, airDate: latest.air_date });
+          }
         }
       }
     } catch (e) {
@@ -82,8 +100,9 @@ async function main() {
   }
 
   await fs.writeFile('tmdb-map.json', JSON.stringify(map, null, 2) + '\n');
+  await fs.writeFile('posters.json', JSON.stringify(posters, null, 2) + '\n');
   await fs.writeFile('new-releases.json', JSON.stringify(releases, null, 2) + '\n');
-  console.log(`Checked ${tracked.length} watching shows, found ${releases.length} new season(s).`);
+  console.log(`Matched posters for ${matched}/${shows.length} shows. Checked ${checked} watching shows, found ${releases.length} new season(s).`);
 }
 
 main().catch((e) => {
