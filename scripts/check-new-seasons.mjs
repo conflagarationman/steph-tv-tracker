@@ -4,6 +4,9 @@ import fs from 'node:fs/promises';
 // runs only search once per show), and:
 //  - writes each show's poster path to posters.json for the page to render as a
 //    real thumbnail instead of the letter-monogram fallback
+//  - writes each show's per-season episode counts to episode-counts.json, so the
+//    page knows when "next episode" should roll over into the next season instead
+//    of just incrementing the episode number forever
 //  - for shows currently 'watching', compares TMDB's latest aired season against
 //    what's tracked and writes anything newer to new-releases.json for the banner
 
@@ -52,6 +55,12 @@ async function main() {
   } catch {
     // first run, no cache yet
   }
+  let episodeCounts = {};
+  try {
+    episodeCounts = JSON.parse(await fs.readFile('episode-counts.json', 'utf8'));
+  } catch {
+    // first run, no cache yet
+  }
 
   const releases = [];
   const today = new Date().toISOString().slice(0, 10);
@@ -81,6 +90,12 @@ async function main() {
       posters[g.id] = details.poster_path || null;
       matched++;
 
+      const counts = {};
+      for (const s of details.seasons || []) {
+        if (s.season_number > 0 && s.episode_count) counts[s.season_number] = s.episode_count;
+      }
+      episodeCounts[g.id] = counts;
+
       if (g.s === 'watching') {
         checked++;
         const airedSeasons = (details.seasons || []).filter(
@@ -101,8 +116,9 @@ async function main() {
 
   await fs.writeFile('tmdb-map.json', JSON.stringify(map, null, 2) + '\n');
   await fs.writeFile('posters.json', JSON.stringify(posters, null, 2) + '\n');
+  await fs.writeFile('episode-counts.json', JSON.stringify(episodeCounts, null, 2) + '\n');
   await fs.writeFile('new-releases.json', JSON.stringify(releases, null, 2) + '\n');
-  console.log(`Matched posters for ${matched}/${shows.length} shows. Checked ${checked} watching shows, found ${releases.length} new season(s).`);
+  console.log(`Matched posters/episode-counts for ${matched}/${shows.length} shows. Checked ${checked} watching shows, found ${releases.length} new season(s).`);
 }
 
 main().catch((e) => {

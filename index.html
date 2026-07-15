@@ -171,8 +171,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .yhead{font-size:1.05rem;font-weight:800;margin-bottom:8px;display:flex;align-items:baseline;gap:8px;}
 .ysub{font-size:0.66rem;color:var(--dim);font-weight:600;}
 
-.note-banner{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0.75rem 1rem;font-size:0.72rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.5;}
-.note-banner b{color:var(--text);}
+.love-banner{background:var(--badge-yellow);color:var(--chip-ink);border-radius:14px;padding:1.5rem 1rem;margin-bottom:1.5rem;text-align:center;font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:800;box-shadow:0 6px 20px var(--shadow);}
 
 .nr-banner{background:var(--badge-yellow);color:var(--chip-ink);border-radius:12px;padding:0.85rem 1rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px;box-shadow:0 4px 14px var(--shadow);}
 .nr-banner-body{flex:1;}
@@ -210,7 +209,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 </div>
 <main>
 <p class="updated">Rebuilt from her TV Time export — real watch history, no filler</p>
-<div class="note-banner"><b>Heads up:</b> the export didn't include network, genre, premiere year, or per-show ratings, TV Time just doesn't export that metadata. Season/episode progress and watch dates below are real. Add the missing details as you go. <b>Also:</b> "Watched next" / "Start watching" / edits save in <i>this browser only</i> — they won't show up on another device, and clearing site data resets a show back to this snapshot.</div>
+<div class="love-banner">❤️ I love you spoose ❤️</div>
 <div id="new-releases" style="display:none;"></div>
 <div class="stats-row" id="stats"></div>
 <div class="breakdown" id="breakdown"></div>
@@ -327,9 +326,12 @@ function updateOverride(id,patch){
 function markWatched(id){
   const g=liveShows().find(x=>x.id===id);
   if(!g) return;
-  const ep=(g.ep||0)+1;
-  logHistory({id, title:g.t, action:'watched', season:g.season, ep});
-  updateOverride(id,{ep, epsWatched:(g.epsWatched||0)+1, lastWatched:todayStr(), dormant:false});
+  let season=g.season, ep=(g.ep||0)+1;
+  const counts=EPISODE_COUNTS[id];
+  const seasonLen=counts&&counts[season];
+  if(seasonLen&&ep>seasonLen){ season=season+1; ep=1; }
+  logHistory({id, title:g.t, action:'watched', season, ep});
+  updateOverride(id,{season, ep, epsWatched:(g.epsWatched||0)+1, lastWatched:todayStr(), dormant:false});
 }
 function startWatching(id){
   const g=liveShows().find(x=>x.id===id);
@@ -416,6 +418,9 @@ function saveAddShow(e){
 let SH=[];
 // Show id -> TMDB poster_path, populated by the same GitHub Actions job.
 let POSTERS={};
+// Show id -> {seasonNumber: episodeCount}, so "watched next" knows when to roll
+// over into the next season instead of incrementing the episode number forever.
+let EPISODE_COUNTS={};
 
 // ─── Real viewing-history stats, pulled from TV Time's own cached stats +
 // historical timeframe counters (not derived/guessed) ──────────────────────
@@ -820,10 +825,12 @@ function renderNewReleases(releases){
 Promise.all([
   fetch('shows.json').then(r=>r.json()),
   fetch('new-releases.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
-  fetch('posters.json').then(r=>r.ok?r.json():{}).catch(()=>({}))
-]).then(([showsData,releases,postersData])=>{
+  fetch('posters.json').then(r=>r.ok?r.json():{}).catch(()=>({})),
+  fetch('episode-counts.json').then(r=>r.ok?r.json():{}).catch(()=>({}))
+]).then(([showsData,releases,postersData,episodeCountsData])=>{
   SH=showsData;
   POSTERS=postersData;
+  EPISODE_COUNTS=episodeCountsData;
   initTheme();
   render();
   renderNewReleases(releases);
