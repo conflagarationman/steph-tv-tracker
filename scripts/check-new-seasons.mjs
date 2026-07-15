@@ -64,6 +64,11 @@ async function main() {
 
   const releases = [];
   const today = new Date().toISOString().slice(0, 10);
+  // Only count a season as "new" if it actually aired recently — otherwise a show
+  // that's been sitting a season or two behind (TV Time export never caught up,
+  // or she just hasn't watched it yet) gets falsely flagged as a fresh release.
+  const RECENT_DAYS = 120;
+  const recentCutoff = new Date(Date.now() - RECENT_DAYS * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
   let matched = 0;
   let checked = 0;
 
@@ -99,7 +104,7 @@ async function main() {
       if (g.s === 'watching') {
         checked++;
         const airedSeasons = (details.seasons || []).filter(
-          (s) => s.season_number > 0 && s.air_date && s.air_date <= today
+          (s) => s.season_number > 0 && s.air_date && s.air_date <= today && s.air_date >= recentCutoff
         );
         if (airedSeasons.length) {
           const latest = airedSeasons.reduce((a, b) => (a.season_number > b.season_number ? a : b));
