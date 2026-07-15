@@ -9,6 +9,17 @@ REPO = "conflagarationman/steph-tv-tracker"
 BRANCH = "data"
 ALLOWED_ORIGIN = "https://conflagarationman.github.io"
 
-# Secrets are NOT set here — they'd end up in the public repo. Set them with:
+# Secret *values* are never set here — they'd end up in the public repo. Set them with:
 #   wrangler secret put GITHUB_TOKEN    # fine-grained PAT, Contents: read+write, this repo only
 #   wrangler secret put SYNC_KEY        # any random string; also goes in index.html
+#
+# Naming them is safe (names aren't secrets) and gets a warning in local dev if one is
+# missing. It does NOT gate `wrangler deploy` — a deploy with a missing secret still
+# succeeds and then fails at runtime with a 401 from GitHub.
+[secrets]
+required = ["GITHUB_TOKEN", "SYNC_KEY"]
+
+# Keeps logs queryable for 7 days in the dashboard — which is what you want when a sync
+# fails at 11pm and nobody was sitting there running `wrangler tail`.
+[observability]
+enabled = true
