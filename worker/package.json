@@ -1,0 +1,9 @@
+{
+  "name": "steph-tv-tracker-sync",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node merge.test.mjs && node index.test.mjs",
+    "deploy": "wrangler deploy"
+  }
+}

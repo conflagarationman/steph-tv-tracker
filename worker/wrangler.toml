@@ -1,0 +1,14 @@
+name = "steph-tv-tracker-sync"
+main = "index.mjs"
+compatibility_date = "2026-07-15"
+
+[vars]
+REPO = "conflagarationman/steph-tv-tracker"
+# Progress is committed here, NOT to main: a commit to main would trigger a GitHub Pages
+# rebuild every time she marks an episode watched.
+BRANCH = "data"
+ALLOWED_ORIGIN = "https://conflagarationman.github.io"
+
+# Secrets are NOT set here — they'd end up in the public repo. Set them with:
+#   wrangler secret put GITHUB_TOKEN    # fine-grained PAT, Contents: read+write, this repo only
+#   wrangler secret put SYNC_KEY        # any random string; also goes in index.html

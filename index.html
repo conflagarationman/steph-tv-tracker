@@ -46,6 +46,8 @@ h1{flex:1;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;color:var(--te
 .theme-toggle:hover{border-color:var(--border2);transform:translateY(-1px);}
 .theme-toggle:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
 .updated{font-size:0.72rem;color:var(--dim);margin-bottom:1.25rem;}
+.sync-status{font-size:0.68rem;color:var(--dim);font-weight:600;margin-left:6px;}
+.sync-status.warn{color:var(--yellow);}
 
 .toolbar{display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;}
 .search-wrap{position:relative;flex:1;min-width:180px;}
@@ -209,7 +211,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
   </div>
 </div>
 <main>
-<p class="updated">Rebuilt from her TV Time export — real watch history, no filler</p>
+<p class="updated">Rebuilt from her TV Time export — real watch history, no filler <span id="sync-status" class="sync-status"></span></p>
 <div class="love-banner">❤️ I love you spoose ❤️</div>
 <div id="new-releases" style="display:none;"></div>
 <div class="stats-row" id="stats"></div>
@@ -286,21 +288,61 @@ const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'
 const NOW = new Date();
 let open={ar:false,yl:false,vs:false,wh:false,cu:false};
 
-// ─── Manual "I watched this" overrides — layered on top of the CSV snapshot,
-// persisted in this browser only (see the banner note in the page).
-const OVERRIDES_KEY='tvtracker-overrides';
-function loadOverrides(){ try{ return JSON.parse(localStorage.getItem(OVERRIDES_KEY))||{}; }catch(e){ return {}; } }
-function saveOverrides(){ try{ localStorage.setItem(OVERRIDES_KEY, JSON.stringify(overrides)); }catch(e){} }
-let overrides=loadOverrides();
+// ─── Progress: everything she has changed since the TV Time export ──────────────
+// One document rather than four keys, in the exact shape the sync Worker merges, so
+// there's no translation layer between what's in the browser and what's committed to
+// the repo. Theme is deliberately NOT in here — it's a per-device preference.
+//
+// Deletes record a {__deleted:true} tombstone instead of removing the key: the other
+// device still has the entry, and a merge would otherwise resurrect it.
+const PROGRESS_KEY='tvtracker-progress';
+// A factory, not a shared constant. Spreading a shared object is a *shallow* copy, so
+// every "fresh" doc would alias the same nested overrides/history objects — mutating one
+// would quietly poison the template, and a wiped browser wouldn't really start empty.
+const emptyProgress=()=>({version:1,overrides:{},customShows:{},history:[],dismissed:[]});
+const nowIso=()=>new Date().toISOString();
+const isLive=e=>e&&!e.__deleted;
 
-// ─── Shows added by hand (not part of the original export) — stored separately
-// so the original snapshot data never has to be mutated.
-const CUSTOM_KEY='tvtracker-custom-shows';
-function loadCustomShows(){ try{ return JSON.parse(localStorage.getItem(CUSTOM_KEY))||[]; }catch(e){ return []; } }
-function saveCustomShows(list){ try{ localStorage.setItem(CUSTOM_KEY, JSON.stringify(list)); }catch(e){} }
+// The pre-sync build kept these in four separate keys. Fold them in once, so nobody
+// loses the progress they already had when this version lands.
+function migrateLegacy(){
+  const get=(k,fb)=>{ try{ return JSON.parse(localStorage.getItem(k))??fb; }catch(e){ return fb; } };
+  const legacyOverrides=get('tvtracker-overrides',{});
+  const legacyCustom=get('tvtracker-custom-shows',[]);
+  const legacyHistory=get('tvtracker-history',[]);
+  const legacyDismissed=get('tvtracker-dismissed-releases',[]);
+  if(!Object.keys(legacyOverrides).length&&!legacyCustom.length&&!legacyHistory.length&&!legacyDismissed.length) return null;
+  const stamp=nowIso();
+  const doc={...emptyProgress(),history:legacyHistory,dismissed:legacyDismissed};
+  for(const [id,v] of Object.entries(legacyOverrides)) doc.overrides[id]={...v,updatedAt:stamp};
+  for(const g of legacyCustom) doc.customShows[g.id]={...g,updatedAt:stamp};
+  return doc;
+}
+function loadProgress(){
+  try{
+    const raw=localStorage.getItem(PROGRESS_KEY);
+    if(raw) return {...emptyProgress(),...JSON.parse(raw)};
+  }catch(e){}
+  const migrated=migrateLegacy();
+  if(migrated){ try{ localStorage.setItem(PROGRESS_KEY,JSON.stringify(migrated)); }catch(e){} return migrated; }
+  return emptyProgress();
+}
+let progress=loadProgress();
+// `overrides` stays the name the rest of the page uses to test "has she touched this?".
+let overrides=progress.overrides;
+
+function saveProgress(){
+  progress.overrides=overrides;
+  try{ localStorage.setItem(PROGRESS_KEY,JSON.stringify(progress)); }catch(e){}
+  queueSync();
+}
+
+function loadCustomShows(){ return Object.values(progress.customShows).filter(isLive); }
+function loadHistory(){ return progress.history; }
+function loadDismissed(){ return progress.dismissed; }
 
 function liveShows(){
-  const withOverride=g=>overrides[g.id]?{...g,...overrides[g.id]}:g;
+  const withOverride=g=>isLive(overrides[g.id])?{...g,...overrides[g.id]}:g;
   return [...SH.map(withOverride), ...loadCustomShows().map(withOverride)];
 }
 function todayStr(){
@@ -308,22 +350,18 @@ function todayStr(){
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-// ─── Watched-history log — every manual action, timestamped, newest first.
-const HISTORY_KEY='tvtracker-history';
-function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HISTORY_KEY))||[]; }catch(e){ return []; } }
-function saveHistory(history){ try{ localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(-300))); }catch(e){} }
 function logHistory(entry){
-  const history=loadHistory();
-  history.push({...entry, at:new Date().toISOString()});
-  saveHistory(history);
+  progress.history=[{...entry, at:nowIso()}, ...progress.history].slice(0,500);
+  saveProgress();
 }
 function removeHistoryForShow(id){
-  saveHistory(loadHistory().filter(h=>h.id!==id));
+  progress.history=progress.history.filter(h=>h.id!==id);
+  saveProgress();
 }
 
 function updateOverride(id,patch){
-  overrides[id]={...overrides[id],...patch};
-  saveOverrides();
+  overrides[id]={...(isLive(overrides[id])?overrides[id]:{}),...patch,updatedAt:nowIso()};
+  saveProgress();
   render();
 }
 // True once she's watched the last episode of the last season TMDB knows about —
@@ -370,19 +408,20 @@ function startWatching(id){
   updateOverride(id,{s:'watching', season:1, ep:1, epsWatched:1, lastWatched:todayStr(), start:todayStr(), dormant:false});
 }
 function resetShow(id){
-  if(!overrides[id]) return;
-  delete overrides[id];
-  saveOverrides();
+  if(!isLive(overrides[id])) return;
+  // Tombstone rather than delete: her other device still has this override, and a plain
+  // delete would just come back on the next merge.
+  overrides[id]={__deleted:true, updatedAt:nowIso()};
   removeHistoryForShow(id);
+  saveProgress();
   render();
 }
 function removeCustomShow(id){
   if(!confirm('Remove this show you added? This can\'t be undone.')) return;
-  saveCustomShows(loadCustomShows().filter(g=>g.id!==id));
+  progress.customShows[id]={__deleted:true, updatedAt:nowIso()};
+  if(overrides[id]) overrides[id]={__deleted:true, updatedAt:nowIso()};
   removeHistoryForShow(id);
-  // The show's overrides would otherwise linger in localStorage forever with nothing
-  // left to apply to.
-  if(overrides[id]){ delete overrides[id]; saveOverrides(); }
+  saveProgress();
   render();
 }
 let editingId=null;
@@ -428,14 +467,13 @@ function saveAddShow(e){
   const season=isWatching?Math.max(1,parseInt(document.getElementById('add-season').value,10)||1):null;
   const ep=isWatching?Math.max(1,parseInt(document.getElementById('add-ep').value,10)||1):null;
   const id=Date.now();
-  const show={
+  progress.customShows[id]={
     id, t:title, s:status, season, ep, epsWatched:isWatching?ep:0,
     lastWatched:isWatching?todayStr():null, start:isWatching?todayStr():null,
-    queued:status==='queue'?todayStr():null, cy:null, cm:null, dormant:false, custom:true
+    queued:status==='queue'?todayStr():null, cy:null, cm:null, dormant:false, custom:true,
+    updatedAt:nowIso()
   };
-  const list=loadCustomShows();
-  list.push(show);
-  saveCustomShows(list);
+  saveProgress();
   logHistory({id, title, action:isWatching?'added, watching':'added to Up next', season, ep});
   document.getElementById('add-dialog').close();
   render();
@@ -903,15 +941,12 @@ function renderAll(){
 }
 
 // ─── New-season banner (populated by the GitHub Actions season-check job) ──
-const DISMISSED_KEY='tvtracker-dismissed-releases';
-function loadDismissed(){ try{ return JSON.parse(localStorage.getItem(DISMISSED_KEY))||[]; }catch(e){ return []; } }
 // Keyed by "id:season" (not just id) so dismissing this season's alert doesn't
 // silently swallow a future season's alert for the same show.
 function releaseKey(r){ return `${r.id}:${r.season}`; }
 function dismissReleases(keys){
-  const dismissed=loadDismissed();
-  keys.forEach(k=>{ if(!dismissed.includes(k)) dismissed.push(k); });
-  try{ localStorage.setItem(DISMISSED_KEY, JSON.stringify(dismissed)); }catch(e){}
+  progress.dismissed=[...new Set([...progress.dismissed,...keys])];
+  saveProgress();
   document.getElementById('new-releases').style.display='none';
 }
 function renderNewReleases(){
@@ -935,6 +970,87 @@ function renderNewReleases(){
   <button type="button" class="nr-dismiss" onclick='dismissReleases(${JSON.stringify(fresh.map(releaseKey))})'>Got it</button>`;
 }
 
+// ─── Sync ──────────────────────────────────────────────
+// Points at the Cloudflare Worker that commits progress to the repo's `data` branch.
+// The page can't hold a GitHub token (it'd be public), so the Worker holds it instead.
+//
+// Leaving url empty disables sync entirely and the page behaves exactly as it did
+// before — so this ships safely ahead of the Worker being deployed. Fill both in from
+// the `wrangler deploy` output and the SYNC_KEY secret you set on the Worker.
+//
+// The key is public (this page is public). It deters drive-by writes; it does not
+// authenticate. The real safety net is that every write is a commit on the data branch.
+const SYNC={ url:'', key:'' };
+
+// Local-first: every change is already in localStorage before any of this runs. Sync is
+// a background copy to durable storage, never something she waits on.
+let syncTimer=null,syncing=false,syncAgain=false;
+function setSyncState(s){
+  const el=document.getElementById('sync-status');
+  if(!el) return;
+  if(!SYNC.url){ el.textContent=""; return; }
+  const label={saving:'Saving…',saved:'✓ Backed up',offline:'Saved on this device — will back up when online'};
+  el.textContent=label[s]||'';
+  el.className='sync-status'+(s==='offline'?' warn':'');
+}
+// The Worker returns the merged truth; adopting it is how a second device (or a browser
+// whose storage was cleared) picks up everything it was missing.
+function adoptProgress(merged){
+  if(!merged||typeof merged!=='object') return;
+  progress={...emptyProgress(),...merged};
+  overrides=progress.overrides;
+  try{ localStorage.setItem(PROGRESS_KEY,JSON.stringify(progress)); }catch(e){}
+  render();
+}
+async function pushSync(){
+  if(!SYNC.url) return;
+  if(syncing){ syncAgain=true; return; }
+  syncing=true;
+  setSyncState('saving');
+  try{
+    const res=await fetch(SYNC.url,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Sync-Key':SYNC.key},
+      body:JSON.stringify(progress)
+    });
+    if(!res.ok) throw new Error('sync '+res.status);
+    adoptProgress(await res.json());
+    setSyncState('saved');
+  }catch(e){
+    // Offline or the Worker is down: her data is still in localStorage and the next
+    // change (or the next load) retries. Never surface this as lost.
+    console.warn('sync failed, will retry',e);
+    setSyncState('offline');
+  }finally{
+    syncing=false;
+    if(syncAgain){ syncAgain=false; queueSync(); }
+  }
+}
+function queueSync(){
+  if(!SYNC.url) return;
+  clearTimeout(syncTimer);
+  syncTimer=setTimeout(pushSync,1500);
+}
+// Marking an episode and immediately switching apps is the normal case on a phone, so
+// don't let a pending debounce be the thing that loses it.
+function flushSync(){
+  if(!SYNC.url||syncing) return;
+  clearTimeout(syncTimer);
+  const body=JSON.stringify(progress);
+  // keepalive caps the body at 64KB; past that it would fail silently, so fall through
+  // to a normal request and accept it may be cut short — the next load re-syncs anyway.
+  try{
+    fetch(SYNC.url,{
+      method:'POST',
+      keepalive:body.length<60000,
+      headers:{'Content-Type':'application/json','X-Sync-Key':SYNC.key},
+      body
+    });
+  }catch(e){}
+}
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden') flushSync(); });
+window.addEventListener('pagehide',flushSync);
+
 // ─── Bootstrap ─────────────────────────────────────────
 // Theme goes first and synchronously: it only depends on localStorage, so waiting on
 // the show fetch just means a visible flash of the wrong palette on every load.
@@ -950,6 +1066,10 @@ Promise.all([
   EPISODE_COUNTS=episodeCountsData;
   RELEASES=releases||[];
   render();
+  // Pull on load by pushing: the Worker merges and hands back the truth. This is what
+  // restores her progress on a browser whose storage was cleared, and what picks up
+  // changes she made on the other device.
+  pushSync();
 }).catch(err=>{
   console.error('Failed to load show data', err);
   document.getElementById('now').innerHTML='<div class="empty">Couldn\'t load show data — try refreshing the page.</div>';
