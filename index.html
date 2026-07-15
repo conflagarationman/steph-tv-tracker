@@ -167,6 +167,13 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .note-banner{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0.75rem 1rem;font-size:0.72rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.5;}
 .note-banner b{color:var(--text);}
 
+.nr-banner{background:var(--badge-yellow);color:var(--chip-ink);border-radius:12px;padding:0.85rem 1rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px;box-shadow:0 4px 14px var(--shadow);}
+.nr-banner-body{flex:1;}
+.nr-banner-title{font-family:'Poppins',sans-serif;font-weight:800;font-size:0.85rem;margin-bottom:4px;}
+.nr-banner-list{font-size:0.76rem;font-weight:600;line-height:1.6;}
+.nr-dismiss{background:rgba(20,21,28,0.12);border:none;color:var(--chip-ink);font-weight:700;font-size:0.68rem;padding:5px 10px;border-radius:8px;cursor:pointer;font-family:inherit;flex-shrink:0;}
+.nr-dismiss:hover{background:rgba(20,21,28,0.22);}
+
 .pace-chart{display:flex;align-items:flex-end;gap:3px;height:70px;margin:0.5rem 0 4px;overflow-x:auto;padding-bottom:2px;}
 .pace-bar-wrap{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;flex-shrink:0;width:14px;height:100%;}
 .pace-bar{width:9px;border-radius:2px 2px 0 0;background:var(--yellow);opacity:0.85;}
@@ -196,6 +203,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 <main>
 <p class="updated">Rebuilt from her TV Time export — real watch history, no filler</p>
 <div class="note-banner"><b>Heads up:</b> the export didn't include network, genre, premiere year, or per-show ratings, TV Time just doesn't export that metadata. Season/episode progress and watch dates below are real. Add the missing details as you go. <b>Also:</b> "Watched next" / "Start watching" / edits save in <i>this browser only</i> — they won't show up on another device, and clearing site data resets a show back to this snapshot.</div>
+<div id="new-releases" style="display:none;"></div>
 <div class="stats-row" id="stats"></div>
 <div class="breakdown" id="breakdown"></div>
 
@@ -290,352 +298,14 @@ function saveEdit(e){
   document.getElementById('edit-dialog').close();
 }
 
-// ─── SHOW DATA — parsed from Steph's TV Time export (tracking-prod-records-v2.csv) ──
+// ─── SHOW DATA — loaded async from shows.json (parsed from Steph's TV Time export) ──
 // t=title, s=status(watching/queue/done/dropped), season/ep=most recent watched,
 // epsWatched=total episodes watched, dormant=true if gap since lastWatched exceeds
 // her own historical gap pattern for that show (not a flat cutoff — long between-season
 // gaps that match her normal rhythm for a show are NOT flagged dormant).
-const SH=[
-  {id:1, t:'Tell Me a Story (US)', s:'watching', season:2, ep:10, epsWatched:20, lastWatched:'2024-06-13', start:'2024-05-06', queued:null, cy:null, cm:null, dormant:true},
-  {id:2, t:'Los Espookys', s:'watching', season:2, ep:6, epsWatched:12, lastWatched:'2023-06-26', start:'2023-06-10', queued:null, cy:null, cm:null, dormant:true},
-  {id:3, t:'Bluey (2018)', s:'watching', season:3, ep:36, epsWatched:134, lastWatched:'2026-06-18', start:'2023-06-27', queued:null, cy:null, cm:null, dormant:false},
-  {id:4, t:'Nancy Drew (2019)', s:'watching', season:4, ep:13, epsWatched:61, lastWatched:'2023-08-27', start:'2019-10-27', queued:null, cy:null, cm:null, dormant:true},
-  {id:5, t:'New Girl', s:'watching', season:7, ep:8, epsWatched:146, lastWatched:'2018-11-28', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:6, t:'Blood & Treasure', s:'watching', season:2, ep:13, epsWatched:25, lastWatched:'2024-01-08', start:'2023-10-11', queued:null, cy:null, cm:null, dormant:true},
-  {id:7, t:'Inside Pixar', s:'watching', season:1, ep:20, epsWatched:20, lastWatched:'2023-11-02', start:'2023-08-19', queued:null, cy:null, cm:null, dormant:true},
-  {id:8, t:'The Night Agent', s:'watching', season:3, ep:6, epsWatched:26, lastWatched:'2026-07-15', start:'2023-07-07', queued:null, cy:null, cm:null, dormant:false},
-  {id:9, t:'Broad City', s:'watching', season:5, ep:10, epsWatched:50, lastWatched:'2023-12-12', start:'2023-07-26', queued:null, cy:null, cm:null, dormant:true},
-  {id:10, t:'Demon Slayer: Kimetsu no Yaiba', s:'done', season:2, ep:7, epsWatched:33, lastWatched:'2022-07-10', start:'2022-06-10', queued:null, cy:2022, cm:6, dormant:false},
-  {id:11, t:'Marvel\'s Hero Project', s:'watching', season:1, ep:20, epsWatched:20, lastWatched:'2022-01-19', start:'2022-01-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:12, t:'Fringe', s:'watching', season:5, ep:13, epsWatched:100, lastWatched:'2018-11-28', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:13, t:'Marvel\'s Luke Cage', s:'watching', season:2, ep:13, epsWatched:26, lastWatched:'2018-11-28', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:14, t:'Ink & Paint', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:15, t:'Halo', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:16, t:'Scrubs', s:'done', season:9, ep:13, epsWatched:181, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:2018, cm:2, dormant:false},
-  {id:17, t:'One Day at a Time (2017)', s:'watching', season:4, ep:7, epsWatched:46, lastWatched:'2020-06-21', start:'2019-08-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:18, t:'WHAT / IF', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:19, t:'Star Wars: Tales of the Jedi', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2022-10-30', start:'2022-10-27', queued:null, cy:null, cm:null, dormant:true},
-  {id:20, t:'Barry', s:'watching', season:4, ep:8, epsWatched:32, lastWatched:'2024-04-07', start:'2023-12-17', queued:null, cy:null, cm:null, dormant:true},
-  {id:21, t:'The Walking Dead', s:'done', season:6, ep:16, epsWatched:83, lastWatched:'2021-05-31', start:'2021-05-31', queued:null, cy:2021, cm:4, dormant:false},
-  {id:22, t:'Wizards of Waverly Place', s:'watching', season:4, ep:29, epsWatched:108, lastWatched:'2022-04-06', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:false},
-  {id:23, t:'Parks and Recreation', s:'watching', season:7, ep:13, epsWatched:126, lastWatched:'2020-05-03', start:'2019-08-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:24, t:'The Afterparty', s:'watching', season:2, ep:10, epsWatched:18, lastWatched:'2023-09-07', start:'2022-08-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:25, t:'Boy Meets World', s:'watching', season:7, ep:23, epsWatched:158, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:26, t:'Peaky Blinders', s:'dropped', season:3, ep:6, epsWatched:18, lastWatched:'2017-10-22', start:'2017-10-22', queued:null, cy:2017, cm:9, dormant:false},
-  {id:27, t:'Saved by the Bell (2020)', s:'watching', season:2, ep:10, epsWatched:20, lastWatched:'2023-06-11', start:'2023-05-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:28, t:'House of David', s:'watching', season:2, ep:1, epsWatched:9, lastWatched:'2026-06-27', start:'2025-03-29', queued:null, cy:null, cm:null, dormant:false},
-  {id:29, t:'Weird City', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2021-09-15', start:'2021-09-10', queued:null, cy:null, cm:null, dormant:true},
-  {id:30, t:'Ultimate Survival WWII', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2023-07-29', start:'2023-05-13', queued:null, cy:null, cm:null, dormant:true},
-  {id:31, t:'Little Fires Everywhere', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2022-10-16', start:'2022-09-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:32, t:'Leverage', s:'watching', season:5, ep:15, epsWatched:77, lastWatched:'2021-05-31', start:'2021-05-31', queued:null, cy:null, cm:null, dormant:true},
-  {id:33, t:'Legion', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:34, t:'Cinema Relics: Iconic Art of the Movies', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:35, t:'The Marvelous Mrs. Maisel', s:'watching', season:5, ep:9, epsWatched:43, lastWatched:'2023-05-26', start:'2020-05-31', queued:null, cy:null, cm:null, dormant:true},
-  {id:36, t:'Harley Quinn', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:37, t:'Ironheart', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:38, t:'Kaleidoscope (2023)', s:'watching', season:1, ep:8, epsWatched:5, lastWatched:'2023-01-16', start:'2023-01-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:39, t:'Master of None', s:'done', season:1, ep:9, epsWatched:9, lastWatched:'2020-11-30', start:'2020-11-03', queued:null, cy:2020, cm:10, dormant:false},
-  {id:40, t:'Wonder Man', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:'2026-01-28', cy:null, cm:null, dormant:false},
-  {id:41, t:'Titans (2018)', s:'watching', season:4, ep:12, epsWatched:49, lastWatched:'2023-05-13', start:'2018-11-01', queued:null, cy:null, cm:null, dormant:true},
-  {id:42, t:'Star Wars: Lando', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:43, t:'The Legend of Korra', s:'watching', season:4, ep:13, epsWatched:52, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:44, t:'The Falcon and The Winter Soldier', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2021-04-24', start:'2021-03-19', queued:null, cy:null, cm:null, dormant:true},
-  {id:45, t:'Severance', s:'watching', season:2, ep:10, epsWatched:19, lastWatched:'2025-03-23', start:'2022-05-16', queued:null, cy:null, cm:null, dormant:false},
-  {id:46, t:'Ms. Marvel', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2022-07-17', start:'2022-06-08', queued:null, cy:null, cm:null, dormant:true},
-  {id:47, t:'Star Wars: The Clone Wars', s:'watching', season:7, ep:12, epsWatched:133, lastWatched:'2021-04-18', start:'2020-06-17', queued:null, cy:null, cm:null, dormant:true},
-  {id:48, t:'Bridgerton', s:'watching', season:4, ep:8, epsWatched:32, lastWatched:'2026-03-09', start:'2022-06-05', queued:null, cy:null, cm:null, dormant:false},
-  {id:49, t:'Shiny Happy People', s:'watching', season:2, ep:3, epsWatched:7, lastWatched:'2025-09-06', start:'2023-08-05', queued:null, cy:null, cm:null, dormant:false},
-  {id:50, t:'Community', s:'done', season:6, ep:13, epsWatched:110, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:2018, cm:2, dormant:false},
-  {id:51, t:'The Morning Show', s:'watching', season:4, ep:10, epsWatched:40, lastWatched:'2025-11-20', start:'2022-07-03', queued:null, cy:null, cm:null, dormant:false},
-  {id:52, t:'Chuck', s:'done', season:5, ep:13, epsWatched:91, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:2018, cm:2, dormant:false},
-  {id:53, t:'Atypical', s:'watching', season:4, ep:10, epsWatched:38, lastWatched:'2021-07-22', start:'2020-11-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:54, t:'The Man in the High Castle', s:'watching', season:4, ep:10, epsWatched:40, lastWatched:'2020-03-23', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:55, t:'Echo', s:'watching', season:1, ep:5, epsWatched:5, lastWatched:'2024-01-15', start:'2024-01-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:56, t:'Modern Family', s:'watching', season:11, ep:18, epsWatched:251, lastWatched:'2020-04-13', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:57, t:'Selena: The Series', s:'done', season:1, ep:1, epsWatched:1, lastWatched:'2020-12-06', start:'2020-12-06', queued:null, cy:2020, cm:11, dormant:false},
-  {id:58, t:'Ajin', s:'watching', season:2, ep:13, epsWatched:26, lastWatched:'2017-10-22', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:59, t:'Arrow', s:'watching', season:8, ep:10, epsWatched:170, lastWatched:'2020-03-23', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:60, t:'Fallout', p:'prime', s:'watching', season:2, ep:1, epsWatched:9, lastWatched:'2026-03-19', start:'2024-04-11', queued:null, cy:null, cm:null, dormant:false},
-  {id:61, t:'Obi-Wan Kenobi', p:'disneyplus', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2022-06-23', start:'2022-05-27', queued:null, cy:null, cm:null, dormant:true},
-  {id:62, t:'Mythic Quest', s:'watching', season:3, ep:10, epsWatched:30, lastWatched:'2023-08-06', start:'2022-05-23', queued:null, cy:null, cm:null, dormant:true},
-  {id:63, t:'Only Murders in the Building', s:'watching', season:5, ep:10, epsWatched:50, lastWatched:'2025-11-05', start:'2021-08-31', queued:null, cy:null, cm:null, dormant:false},
-  {id:64, t:'Full House', s:'watching', season:8, ep:24, epsWatched:192, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:65, t:'One-Punch Man', s:'dropped', season:2, ep:12, epsWatched:32, lastWatched:'2021-05-31', start:'2018-09-25', queued:null, cy:2021, cm:4, dormant:false},
-  {id:66, t:'Aggretsuko', s:'watching', season:5, ep:10, epsWatched:50, lastWatched:'2023-04-05', start:'2022-08-28', queued:null, cy:null, cm:null, dormant:true},
-  {id:67, t:'Disney Gallery / Star Wars: The Book of Boba Fett', s:'watching', season:1, ep:1, epsWatched:1, lastWatched:'2022-05-17', start:'2022-05-17', queued:null, cy:null, cm:null, dormant:true},
-  {id:68, t:'The Witcher', s:'dropped', season:3, ep:1, epsWatched:17, lastWatched:'2023-12-24', start:'2021-05-17', queued:null, cy:2023, cm:11, dormant:false},
-  {id:69, t:'Rapunzel\'s Tangled Adventure', s:'watching', season:3, ep:21, epsWatched:61, lastWatched:'2022-05-16', start:'2022-01-06', queued:null, cy:null, cm:null, dormant:true},
-  {id:70, t:'Dark Winds', s:'watching', season:4, ep:8, epsWatched:28, lastWatched:'2026-06-02', start:'2022-08-01', queued:null, cy:null, cm:null, dormant:false},
-  {id:71, t:'The Spanish Princess', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2021-12-28', start:'2021-11-03', queued:null, cy:null, cm:null, dormant:true},
-  {id:72, t:'The Beatles: Get Back', s:'watching', season:1, ep:3, epsWatched:3, lastWatched:'2022-01-04', start:'2021-12-19', queued:null, cy:null, cm:null, dormant:true},
-  {id:73, t:'Blockbuster', s:'done', season:1, ep:6, epsWatched:6, lastWatched:'2022-11-09', start:'2022-11-04', queued:null, cy:2022, cm:10, dormant:false},
-  {id:74, t:'Marvel\'s Runaways', s:'watching', season:3, ep:10, epsWatched:33, lastWatched:'2020-03-23', start:'2018-11-01', queued:null, cy:null, cm:null, dormant:true},
-  {id:75, t:'Signed, Sealed, Delivered', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:76, t:'Friends', s:'watching', season:10, ep:18, epsWatched:236, lastWatched:'2019-02-14', start:'2019-02-14', queued:null, cy:null, cm:null, dormant:true},
-  {id:77, t:'History of the World, Part II', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2024-12-20', start:'2024-12-06', queued:null, cy:null, cm:null, dormant:true},
-  {id:78, t:'Voltron: Legendary Defender', s:'done', season:5, ep:6, epsWatched:43, lastWatched:'2019-03-15', start:'2017-10-22', queued:null, cy:2019, cm:2, dormant:false},
-  {id:79, t:'NCIS', s:'dropped', season:17, ep:1, epsWatched:379, lastWatched:'2019-09-26', start:'2019-07-28', queued:null, cy:2019, cm:8, dormant:false},
-  {id:80, t:'Sex Education', s:'done', season:1, ep:2, epsWatched:2, lastWatched:'2020-10-23', start:'2020-10-13', queued:null, cy:2020, cm:9, dormant:false},
-  {id:81, t:'Into the Unknown: Making Frozen II', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2023-02-25', start:'2023-01-14', queued:null, cy:null, cm:null, dormant:true},
-  {id:82, t:'Hunters (2020)', s:'watching', season:2, ep:8, epsWatched:18, lastWatched:'2023-03-30', start:'2020-03-23', queued:null, cy:null, cm:null, dormant:false},
-  {id:83, t:'Ugly Betty', s:'watching', season:4, ep:20, epsWatched:85, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:84, t:'Gilmore Girls: A Year in the Life', s:'watching', season:1, ep:4, epsWatched:4, lastWatched:'2022-12-11', start:'2022-10-28', queued:null, cy:null, cm:null, dormant:true},
-  {id:85, t:'Wednesday', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2026-06-16', start:'2023-05-02', queued:null, cy:null, cm:null, dormant:false},
-  {id:86, t:'LEGO Star Wars: Rebuild the Galaxy', s:'watching', season:1, ep:4, epsWatched:4, lastWatched:'2024-09-23', start:'2024-09-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:87, t:'Suits', s:'watching', season:9, ep:10, epsWatched:134, lastWatched:'2020-08-20', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:88, t:'Firefly', s:'watching', season:1, ep:14, epsWatched:14, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:89, t:'Shadow and Bone', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2023-04-27', start:'2022-02-16', queued:null, cy:null, cm:null, dormant:true},
-  {id:90, t:'Star Wars: Tales of the Empire', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2024-05-05', start:'2024-05-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:91, t:'Better Off Ted', s:'watching', season:2, ep:13, epsWatched:26, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:92, t:'Not Dead Yet', s:'watching', season:2, ep:10, epsWatched:23, lastWatched:'2024-04-26', start:'2023-02-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:93, t:'Downton Abbey', s:'watching', season:6, ep:8, epsWatched:47, lastWatched:'2022-11-27', start:'2021-05-31', queued:null, cy:null, cm:null, dormant:true},
-  {id:94, t:'Walker', s:'dropped', season:1, ep:13, epsWatched:13, lastWatched:'2021-06-15', start:'2021-01-24', queued:null, cy:2021, cm:5, dormant:false},
-  {id:95, t:'Kim\'s Convenience', s:'watching', season:5, ep:13, epsWatched:65, lastWatched:'2021-05-31', start:'2020-06-16', queued:null, cy:null, cm:null, dormant:true},
-  {id:96, t:'Space Force', s:'watching', season:2, ep:7, epsWatched:17, lastWatched:'2022-03-28', start:'2022-02-28', queued:null, cy:null, cm:null, dormant:true},
-  {id:97, t:'Disney Gallery / Star Wars: The Mandalorian', s:'watching', season:3, ep:1, epsWatched:11, lastWatched:'2023-07-04', start:'2021-05-04', queued:null, cy:null, cm:null, dormant:true},
-  {id:98, t:'The White Princess', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2021-11-02', start:'2021-10-26', queued:null, cy:null, cm:null, dormant:true},
-  {id:99, t:'The Shrink Next Door', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2024-08-13', start:'2024-07-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:100, t:'Prison Break', s:'done', season:2, ep:21, epsWatched:43, lastWatched:'2020-10-05', start:'2020-08-14', queued:null, cy:2020, cm:9, dormant:false},
-  {id:101, t:'Schmigadoon!', s:'watching', season:2, ep:6, epsWatched:12, lastWatched:'2023-10-30', start:'2021-07-25', queued:null, cy:null, cm:null, dormant:true},
-  {id:102, t:'Star Wars Rebels', s:'watching', season:4, ep:16, epsWatched:70, lastWatched:'2021-07-26', start:'2021-04-18', queued:null, cy:null, cm:null, dormant:true},
-  {id:103, t:'Disney Insider', s:'watching', season:1, ep:14, epsWatched:14, lastWatched:'2022-04-26', start:'2022-04-06', queued:null, cy:null, cm:null, dormant:true},
-  {id:104, t:'Brooklyn Nine-Nine', s:'watching', season:8, ep:10, epsWatched:153, lastWatched:'2021-09-19', start:'2018-10-01', queued:null, cy:null, cm:null, dormant:true},
-  {id:105, t:'Attack on Titan', s:'watching', season:4, ep:30, epsWatched:89, lastWatched:'2023-12-31', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:false},
-  {id:106, t:'Cells at Work! Code Black', s:'done', season:1, ep:7, epsWatched:7, lastWatched:'2022-08-01', start:'2022-07-25', queued:null, cy:2022, cm:7, dormant:false},
-  {id:107, t:'Fuller House', s:'watching', season:5, ep:18, epsWatched:75, lastWatched:'2020-06-26', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:108, t:'The Crossing', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:109, t:'INVINCIBLE (2021)', s:'watching', season:4, ep:8, epsWatched:32, lastWatched:'2026-07-10', start:'2021-06-03', queued:null, cy:null, cm:null, dormant:false},
-  {id:110, t:'Ahsoka', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2023-10-04', start:'2023-08-23', queued:null, cy:null, cm:null, dormant:true},
-  {id:111, t:'Star Wars: A Droid Story', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:112, t:'Cowboy Bebop (2021)', s:'dropped', season:1, ep:1, epsWatched:1, lastWatched:'2021-12-05', start:'2021-12-05', queued:null, cy:2021, cm:11, dormant:false},
-  {id:113, t:'Over the Garden Wall', s:'watching', season:1, ep:10, epsWatched:10, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:114, t:'History\'s Greatest Mysteries', s:'watching', season:2, ep:3, epsWatched:10, lastWatched:'2024-12-23', start:'2024-02-10', queued:null, cy:null, cm:null, dormant:true},
-  {id:115, t:'How I Met Your Father', s:'watching', season:2, ep:20, epsWatched:30, lastWatched:'2023-07-12', start:'2022-01-21', queued:null, cy:null, cm:null, dormant:true},
-  {id:116, t:'The Movies That Made Us', s:'watching', season:3, ep:8, epsWatched:15, lastWatched:'2022-08-13', start:'2022-07-09', queued:null, cy:null, cm:null, dormant:true},
-  {id:117, t:'The Gilded Age', s:'watching', season:3, ep:8, epsWatched:25, lastWatched:'2025-08-12', start:'2022-01-25', queued:null, cy:null, cm:null, dormant:false},
-  {id:118, t:'Star Wars: The Bad Batch', s:'watching', season:3, ep:15, epsWatched:47, lastWatched:'2024-05-03', start:'2021-05-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:119, t:'Marvel\'s Jessica Jones', s:'dropped', season:3, ep:1, epsWatched:27, lastWatched:'2019-08-07', start:'2017-10-22', queued:null, cy:2019, cm:7, dormant:false},
-  {id:120, t:'The Handmaid\'s Tale', s:'dropped', season:2, ep:2, epsWatched:12, lastWatched:'2020-06-05', start:'2020-05-31', queued:null, cy:2020, cm:5, dormant:false},
-  {id:121, t:'The X-Files', s:'watching', season:11, ep:10, epsWatched:218, lastWatched:'2018-11-28', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:122, t:'Black Lightning', s:'done', season:2, ep:9, epsWatched:22, lastWatched:'2018-12-22', start:'2018-11-01', queued:null, cy:2018, cm:11, dormant:false},
-  {id:123, t:'Dollface', s:'watching', season:2, ep:10, epsWatched:19, lastWatched:'2022-08-30', start:'2022-08-11', queued:null, cy:null, cm:null, dormant:true},
-  {id:124, t:'Lessons in Chemistry', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2025-04-22', start:'2025-04-13', queued:null, cy:null, cm:null, dormant:true},
-  {id:125, t:'Arrested Development', s:'watching', season:5, ep:16, epsWatched:84, lastWatched:'2019-05-22', start:'2018-03-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:126, t:'Norsemen', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:127, t:'My Next Guest Needs No Introduction With David Letterman', s:'watching', season:6, ep:3, epsWatched:30, lastWatched:'2026-01-18', start:'2020-10-25', queued:null, cy:null, cm:null, dormant:false},
-  {id:128, t:'The Wheel of Time', s:'watching', season:3, ep:8, epsWatched:24, lastWatched:'2025-09-23', start:'2021-11-22', queued:null, cy:null, cm:null, dormant:false},
-  {id:129, t:'The End of an Era', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2026-01-27', start:'2026-01-04', queued:null, cy:null, cm:null, dormant:true},
-  {id:130, t:'The Acolyte', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2024-07-21', start:'2024-06-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:131, t:'House of Cards (US)', s:'done', season:6, ep:0, epsWatched:66, lastWatched:'2017-10-22', start:'2017-10-22', queued:null, cy:2017, cm:9, dormant:false},
-  {id:132, t:'Zoey\'s Extraordinary Playlist', s:'watching', season:2, ep:13, epsWatched:23, lastWatched:'2022-08-02', start:'2022-07-11', queued:null, cy:null, cm:null, dormant:true},
-  {id:133, t:'Stranger Things', s:'watching', season:5, ep:8, epsWatched:42, lastWatched:'2026-01-02', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:false},
-  {id:134, t:'SNL50: Beyond Saturday Night', s:'watching', season:1, ep:4, epsWatched:4, lastWatched:'2025-01-24', start:'2025-01-18', queued:null, cy:null, cm:null, dormant:true},
-  {id:135, t:'The Dropout', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:136, t:'black-ish', s:'watching', season:8, ep:13, epsWatched:174, lastWatched:'2022-04-20', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:137, t:'SPY x FAMILY', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2026-03-16', start:'2023-12-13', queued:null, cy:null, cm:null, dormant:false},
-  {id:138, t:'The White Lotus', s:'watching', season:3, ep:8, epsWatched:21, lastWatched:'2025-04-10', start:'2022-01-28', queued:null, cy:null, cm:null, dormant:false},
-  {id:139, t:'That \'70s Show', s:'watching', season:8, ep:22, epsWatched:200, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:140, t:'Encore!', s:'watching', season:1, ep:12, epsWatched:12, lastWatched:'2021-10-17', start:'2021-09-16', queued:null, cy:null, cm:null, dormant:true},
-  {id:141, t:'The Lincoln Lawyer', s:'done', season:1, ep:10, epsWatched:10, lastWatched:'2023-01-08', start:'2022-10-19', queued:null, cy:2023, cm:0, dormant:false},
-  {id:142, t:'Crazy Ex-Girlfriend', s:'watching', season:4, ep:18, epsWatched:62, lastWatched:'2019-05-22', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:143, t:'Scrubs (2026)', s:'watching', season:1, ep:9, epsWatched:9, lastWatched:'2026-04-29', start:'2026-03-04', queued:null, cy:null, cm:null, dormant:true},
-  {id:144, t:'DC\'s Legends of Tomorrow', s:'dropped', season:6, ep:1, epsWatched:82, lastWatched:'2021-05-04', start:'2017-10-22', queued:null, cy:2021, cm:4, dormant:false},
-  {id:145, t:'Welcome to Earth', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2021-12-16', start:'2021-12-14', queued:null, cy:null, cm:null, dormant:true},
-  {id:146, t:'Me, MYSELF & I', s:'watching', season:1, ep:13, epsWatched:13, lastWatched:'2018-11-28', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:147, t:'Tom Clancy\'s Jack Ryan', s:'watching', season:4, ep:6, epsWatched:30, lastWatched:'2023-07-17', start:'2018-09-25', queued:null, cy:null, cm:null, dormant:false},
-  {id:148, t:'Star Wars: Skeleton Crew', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2025-01-19', start:'2024-12-23', queued:null, cy:null, cm:null, dormant:true},
-  {id:149, t:'Love is Blind', s:'watching', season:10, ep:13, epsWatched:134, lastWatched:'2026-03-16', start:'2020-08-06', queued:null, cy:null, cm:null, dormant:false},
-  {id:150, t:'What If…?', s:'watching', season:3, ep:8, epsWatched:26, lastWatched:'2026-06-09', start:'2021-08-12', queued:null, cy:null, cm:null, dormant:false},
-  {id:151, t:'Magnum P.I.', s:'watching', season:5, ep:20, epsWatched:96, lastWatched:'2024-01-07', start:'2018-11-01', queued:null, cy:null, cm:null, dormant:true},
-  {id:152, t:'History of Swear Words', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2023-07-22', start:'2023-07-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:153, t:'Shrinking', s:'watching', season:3, ep:1, epsWatched:23, lastWatched:'2026-07-08', start:'2023-01-29', queued:null, cy:null, cm:null, dormant:false},
-  {id:154, t:'Smallville', s:'watching', season:10, ep:21, epsWatched:216, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:155, t:'TURN: Washington\'s Spies', s:'watching', season:4, ep:10, epsWatched:40, lastWatched:'2021-05-31', start:'2021-05-31', queued:null, cy:null, cm:null, dormant:true},
-  {id:156, t:'The Fresh Prince of Bel-Air', s:'done', season:6, ep:24, epsWatched:148, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:2018, cm:2, dormant:false},
-  {id:157, t:'Reboot (2022)', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2022-11-01', start:'2022-09-20', queued:null, cy:null, cm:null, dormant:true},
-  {id:158, t:'The Seven Deadly Sins', s:'done', season:3, ep:17, epsWatched:71, lastWatched:'2020-09-07', start:'2017-10-22', queued:null, cy:2020, cm:8, dormant:false},
-  {id:159, t:'Shōgun', s:'watching', season:1, ep:10, epsWatched:10, lastWatched:'2024-05-06', start:'2024-04-04', queued:null, cy:null, cm:null, dormant:true},
-  {id:160, t:'The Dragon Prince', s:'watching', season:7, ep:9, epsWatched:63, lastWatched:'2025-06-21', start:'2019-03-21', queued:null, cy:null, cm:null, dormant:false},
-  {id:161, t:'The Office (US)', s:'watching', season:9, ep:23, epsWatched:203, lastWatched:'2021-05-31', start:'2018-03-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:162, t:'Citadel', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2024-04-03', start:'2024-03-07', queued:null, cy:null, cm:null, dormant:true},
-  {id:163, t:'Supergirl', s:'done', season:5, ep:9, epsWatched:96, lastWatched:'2020-01-03', start:'2017-10-22', queued:null, cy:2020, cm:0, dormant:false},
-  {id:164, t:'The Politician', s:'watching', season:2, ep:7, epsWatched:15, lastWatched:'2020-07-08', start:'2019-10-27', queued:null, cy:null, cm:null, dormant:true},
-  {id:165, t:'Blood of Zeus', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2024-05-22', start:'2020-10-28', queued:null, cy:null, cm:null, dormant:false},
-  {id:166, t:'Ozark', s:'watching', season:4, ep:14, epsWatched:44, lastWatched:'2022-11-13', start:'2022-05-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:167, t:'Doctor Who (2005)', s:'watching', season:12, ep:5, epsWatched:142, lastWatched:'2026-07-06', start:'2023-09-18', queued:null, cy:null, cm:null, dormant:false},
-  {id:168, t:'Doom Patrol', s:'done', season:1, ep:4, epsWatched:4, lastWatched:'2019-05-22', start:'2019-05-22', queued:null, cy:2019, cm:4, dormant:false},
-  {id:169, t:'Alex Rider', s:'watching', season:3, ep:8, epsWatched:24, lastWatched:'2024-04-18', start:'2020-06-28', queued:null, cy:null, cm:null, dormant:false},
-  {id:170, t:'Strange Adventures', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:171, t:'Transatlantic', s:'watching', season:1, ep:7, epsWatched:7, lastWatched:'2024-01-24', start:'2024-01-08', queued:null, cy:null, cm:null, dormant:true},
-  {id:172, t:'Tomb Raider: The Legend of Lara Croft', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:'2024-06-03', cy:null, cm:null, dormant:false},
-  {id:173, t:'Unbreakable Kimmy Schmidt', s:'watching', season:4, ep:12, epsWatched:52, lastWatched:'2020-05-31', start:'2018-03-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:174, t:'Friends from College', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2019-03-15', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:175, t:'Roman Empire', s:'watching', season:3, ep:4, epsWatched:15, lastWatched:'2020-10-25', start:'2020-09-28', queued:null, cy:null, cm:null, dormant:true},
-  {id:176, t:'Andor', s:'watching', season:2, ep:12, epsWatched:25, lastWatched:'2025-05-23', start:'2022-09-22', queued:null, cy:null, cm:null, dormant:false},
-  {id:177, t:'Murderville', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2022-02-06', start:'2022-02-04', queued:null, cy:null, cm:null, dormant:true},
-  {id:178, t:'Rise (2018)', s:'watching', season:1, ep:10, epsWatched:10, lastWatched:'2018-11-01', start:'2018-11-01', queued:null, cy:null, cm:null, dormant:true},
-  {id:179, t:'A Teacher', s:'watching', season:1, ep:10, epsWatched:10, lastWatched:'2025-06-13', start:'2025-06-06', queued:null, cy:null, cm:null, dormant:true},
-  {id:180, t:'Code Geass: Lelouch of the Rebellion', s:'watching', season:2, ep:25, epsWatched:50, lastWatched:'2017-10-22', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:181, t:'Young Wallander', s:'dropped', season:1, ep:6, epsWatched:6, lastWatched:'2022-05-02', start:'2022-04-26', queued:null, cy:2022, cm:4, dormant:false},
-  {id:182, t:'Friday Night Lights', s:'watching', season:5, ep:13, epsWatched:76, lastWatched:'2021-05-04', start:'2020-10-07', queued:null, cy:null, cm:null, dormant:true},
-  {id:183, t:'NCIS: Los Angeles', s:'dropped', season:12, ep:7, epsWatched:269, lastWatched:'2021-01-06', start:'2017-10-22', queued:null, cy:2021, cm:0, dormant:false},
-  {id:184, t:'Reservation Dogs', s:'watching', season:3, ep:10, epsWatched:28, lastWatched:'2023-10-03', start:'2021-08-09', queued:null, cy:null, cm:null, dormant:true},
-  {id:185, t:'A Series of Unfortunate Events', s:'watching', season:3, ep:7, epsWatched:25, lastWatched:'2019-03-15', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:186, t:'Poldark (2015)', s:'watching', season:5, ep:8, epsWatched:43, lastWatched:'2021-08-31', start:'2021-05-25', queued:null, cy:null, cm:null, dormant:true},
-  {id:187, t:'Ted Lasso', s:'watching', season:3, ep:12, epsWatched:34, lastWatched:'2023-11-13', start:'2021-08-10', queued:null, cy:null, cm:null, dormant:true},
-  {id:188, t:'American Auto', s:'watching', season:2, ep:13, epsWatched:23, lastWatched:'2023-04-21', start:'2022-01-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:189, t:'Psych', s:'watching', season:8, ep:10, epsWatched:121, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:190, t:'The Lord of the Rings: The Rings of Power', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2026-06-29', start:'2022-09-02', queued:null, cy:null, cm:null, dormant:false},
-  {id:191, t:'Fate: The Winx Saga', s:'dropped', season:1, ep:6, epsWatched:6, lastWatched:'2022-05-16', start:'2022-05-03', queued:null, cy:2022, cm:4, dormant:false},
-  {id:192, t:'Sherlock', s:'watching', season:4, ep:3, epsWatched:13, lastWatched:'2017-10-22', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:193, t:'The Haunting', s:'done', season:1, ep:10, epsWatched:8, lastWatched:'2022-08-02', start:'2022-07-26', queued:null, cy:2022, cm:7, dormant:false},
-  {id:194, t:'Saturday Night Live', s:'watching', season:51, ep:20, epsWatched:1009, lastWatched:'2026-05-19', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:false},
-  {id:195, t:'Tiger King', s:'watching', season:2, ep:5, epsWatched:13, lastWatched:'2021-11-25', start:'2021-03-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:196, t:'Sunnyside (2019)', s:'watching', season:1, ep:11, epsWatched:11, lastWatched:'2020-01-03', start:'2019-09-29', queued:null, cy:null, cm:null, dormant:true},
-  {id:197, t:'Our Mutual Friend', s:'watching', season:1, ep:4, epsWatched:4, lastWatched:'2025-09-10', start:'2025-09-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:198, t:'Catch-22', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2021-07-08', start:'2021-06-28', queued:null, cy:null, cm:null, dormant:true},
-  {id:199, t:'English Teacher', s:'watching', season:2, ep:10, epsWatched:18, lastWatched:'2025-10-26', start:'2025-01-08', queued:null, cy:null, cm:null, dormant:false},
-  {id:200, t:'Armor Wars', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:201, t:'Timeless (2016)', s:'watching', season:2, ep:12, epsWatched:28, lastWatched:'2019-03-15', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:202, t:'Upload', s:'watching', season:3, ep:8, epsWatched:25, lastWatched:'2023-11-12', start:'2022-01-19', queued:null, cy:null, cm:null, dormant:true},
-  {id:203, t:'Star Wars: Visions', s:'watching', season:2, ep:9, epsWatched:18, lastWatched:'2024-01-23', start:'2021-09-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:204, t:'Alex, Inc.', s:'watching', season:1, ep:10, epsWatched:10, lastWatched:'2018-11-01', start:'2018-11-01', queued:null, cy:null, cm:null, dormant:true},
-  {id:205, t:'She-Hulk: Attorney at Law', s:'watching', season:1, ep:9, epsWatched:9, lastWatched:'2022-10-20', start:'2022-08-18', queued:null, cy:null, cm:null, dormant:true},
-  {id:206, t:'Jury Duty', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2026-04-09', start:'2024-01-28', queued:null, cy:null, cm:null, dormant:false},
-  {id:207, t:'Loot', s:'watching', season:3, ep:10, epsWatched:30, lastWatched:'2025-12-16', start:'2024-09-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:208, t:'Spider-Noir', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:'2026-06-23', cy:null, cm:null, dormant:false},
-  {id:209, t:'UnREAL', s:'watching', season:4, ep:8, epsWatched:38, lastWatched:'2024-06-04', start:'2024-04-18', queued:null, cy:null, cm:null, dormant:true},
-  {id:210, t:'Heated Rivalry', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:'2026-02-04', cy:null, cm:null, dormant:false},
-  {id:211, t:'Abbott Elementary', s:'watching', season:5, ep:22, epsWatched:93, lastWatched:'2026-05-13', start:'2022-01-09', queued:null, cy:null, cm:null, dormant:false},
-  {id:212, t:'A.P. Bio', s:'watching', season:4, ep:8, epsWatched:42, lastWatched:'2021-09-03', start:'2018-11-01', queued:null, cy:null, cm:null, dormant:true},
-  {id:213, t:'Ghosts (US)', s:'watching', season:5, ep:22, epsWatched:94, lastWatched:'2026-06-03', start:'2022-08-04', queued:null, cy:null, cm:null, dormant:false},
-  {id:214, t:'The Mindy Project', s:'watching', season:6, ep:10, epsWatched:117, lastWatched:'2019-08-30', start:'2019-08-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:215, t:'Magi: Adventure of Sinbad', s:'done', season:1, ep:10, epsWatched:10, lastWatched:'2019-10-27', start:'2017-10-22', queued:null, cy:2019, cm:9, dormant:false},
-  {id:216, t:'The Hardy Boys (2020)', s:'watching', season:3, ep:8, epsWatched:31, lastWatched:'2023-08-04', start:'2020-12-11', queued:null, cy:null, cm:null, dormant:true},
-  {id:217, t:'Limitless', s:'done', season:1, ep:22, epsWatched:22, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:2018, cm:2, dormant:false},
-  {id:218, t:'Down to Earth with Zac Efron', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2022-11-26', start:'2021-11-14', queued:null, cy:null, cm:null, dormant:true},
-  {id:219, t:'The Queen\'s Gambit', s:'watching', season:1, ep:7, epsWatched:7, lastWatched:'2021-05-18', start:'2021-05-11', queued:null, cy:null, cm:null, dormant:true},
-  {id:220, t:'Roar (2022)', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2023-07-05', start:'2023-06-27', queued:null, cy:null, cm:null, dormant:true},
-  {id:221, t:'Avatar: The Last Airbender (2021)', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:222, t:'Superstore', s:'watching', season:6, ep:15, epsWatched:113, lastWatched:'2021-03-28', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:223, t:'Future Man', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:224, t:'Marvel\'s Iron Fist', s:'done', season:1, ep:13, epsWatched:13, lastWatched:'2017-10-22', start:'2017-10-22', queued:null, cy:2017, cm:9, dormant:false},
-  {id:225, t:'Schitt\'s Creek', s:'watching', season:6, ep:14, epsWatched:81, lastWatched:'2022-05-10', start:'2020-10-13', queued:null, cy:null, cm:null, dormant:true},
-  {id:226, t:'The Big Bang Theory', s:'watching', season:12, ep:24, epsWatched:280, lastWatched:'2019-06-27', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:227, t:'Robin Hood (2025)', s:'watching', season:1, ep:10, epsWatched:10, lastWatched:'2026-01-28', start:'2025-11-13', queued:null, cy:null, cm:null, dormant:true},
-  {id:228, t:'Krypton', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:229, t:'GLOW', s:'watching', season:3, ep:10, epsWatched:30, lastWatched:'2019-10-01', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:230, t:'Westworld', s:'dropped', season:3, ep:8, epsWatched:28, lastWatched:'2021-05-17', start:'2017-10-22', queued:null, cy:2021, cm:4, dormant:false},
-  {id:231, t:'Moon Knight', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2022-05-05', start:'2022-03-31', queued:null, cy:null, cm:null, dormant:true},
-  {id:232, t:'White Collar', s:'watching', season:6, ep:6, epsWatched:81, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:233, t:'The Imagineering Story', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2021-11-01', start:'2021-10-20', queued:null, cy:null, cm:null, dormant:true},
-  {id:234, t:'Dr. Horrible\'s Sing-Along Blog', s:'watching', season:1, ep:3, epsWatched:3, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:235, t:'The Chair (2021)', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2021-09-09', start:'2021-09-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:236, t:'Star Wars: Clone Wars', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:237, t:'The Chosen', s:'watching', season:5, ep:8, epsWatched:40, lastWatched:'2025-07-07', start:'2021-05-08', queued:null, cy:null, cm:null, dormant:false},
-  {id:238, t:'Trial & Error', s:'watching', season:2, ep:10, epsWatched:23, lastWatched:'2018-11-28', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:239, t:'Good Girls', s:'watching', season:4, ep:16, epsWatched:50, lastWatched:'2023-05-22', start:'2022-09-21', queued:null, cy:null, cm:null, dormant:true},
-  {id:240, t:'Agatha All Along', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2026-07-14', start:'2025-08-15', queued:null, cy:null, cm:null, dormant:false},
-  {id:241, t:'Call the Midwife', s:'watching', season:15, ep:8, epsWatched:117, lastWatched:'2026-05-21', start:'2020-12-18', queued:null, cy:null, cm:null, dormant:false},
-  {id:242, t:'Squid Game', s:'watching', season:2, ep:1, epsWatched:10, lastWatched:'2025-02-02', start:'2021-10-11', queued:null, cy:null, cm:null, dormant:false},
-  {id:243, t:'Hawkeye (2021)', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2022-01-05', start:'2021-11-26', queued:null, cy:null, cm:null, dormant:true},
-  {id:244, t:'Based on a True Story', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2025-05-15', start:'2024-07-03', queued:null, cy:null, cm:null, dormant:true},
-  {id:245, t:'Percy Jackson and the Olympians', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2026-02-01', start:'2023-12-21', queued:null, cy:null, cm:null, dormant:false},
-  {id:246, t:'Making a Murderer', s:'watching', season:2, ep:10, epsWatched:20, lastWatched:'2018-11-01', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:247, t:'Heroes', s:'done', season:4, ep:19, epsWatched:78, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:2018, cm:2, dormant:false},
-  {id:248, t:'Arcane', s:'watching', season:1, ep:9, epsWatched:9, lastWatched:'2022-01-02', start:'2021-11-23', queued:null, cy:null, cm:null, dormant:true},
-  {id:249, t:'Lanterns', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:250, t:'Cells at Work!', s:'watching', season:2, ep:8, epsWatched:20, lastWatched:'2022-07-22', start:'2020-06-06', queued:null, cy:null, cm:null, dormant:true},
-  {id:251, t:'The Promised Land (2024)', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2025-11-11', start:'2024-09-08', queued:null, cy:null, cm:null, dormant:false},
-  {id:252, t:'Loki', s:'watching', season:2, ep:6, epsWatched:12, lastWatched:'2023-11-10', start:'2021-06-10', queued:null, cy:null, cm:null, dormant:false},
-  {id:253, t:'High School Musical: The Musical: The Series', s:'watching', season:4, ep:8, epsWatched:38, lastWatched:'2023-08-21', start:'2023-06-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:254, t:'Supernatural', s:'watching', season:15, ep:20, epsWatched:327, lastWatched:'2020-11-22', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:255, t:'The Flash (2014)', s:'done', season:6, ep:8, epsWatched:126, lastWatched:'2020-01-03', start:'2017-10-22', queued:null, cy:2020, cm:0, dormant:false},
-  {id:256, t:'Marvel Studios: Assembled', s:'watching', season:2, ep:9, epsWatched:23, lastWatched:'2025-02-24', start:'2021-05-06', queued:null, cy:null, cm:null, dormant:true},
-  {id:257, t:'The Good Place', s:'watching', season:4, ep:13, epsWatched:50, lastWatched:'2022-08-26', start:'2022-08-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:258, t:'The Crown', s:'watching', season:6, ep:10, epsWatched:60, lastWatched:'2025-03-19', start:'2020-11-23', queued:null, cy:null, cm:null, dormant:false},
-  {id:259, t:'Ghosted', s:'dropped', season:1, ep:4, epsWatched:4, lastWatched:'2017-10-22', start:'2017-10-22', queued:null, cy:2017, cm:9, dormant:false},
-  {id:260, t:'The O.C.', s:'watching', season:4, ep:16, epsWatched:92, lastWatched:'2023-03-19', start:'2022-12-05', queued:null, cy:null, cm:null, dormant:true},
-  {id:261, t:'30 Rock', s:'done', season:7, ep:13, epsWatched:138, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:2018, cm:2, dormant:false},
-  {id:262, t:'Limitless with Chris Hemsworth', s:'watching', season:2, ep:3, epsWatched:9, lastWatched:'2026-05-02', start:'2022-11-27', queued:null, cy:null, cm:null, dormant:false},
-  {id:263, t:'Inventing Anna', s:'watching', season:1, ep:9, epsWatched:8, lastWatched:'2022-09-27', start:'2022-09-18', queued:null, cy:null, cm:null, dormant:true},
-  {id:264, t:'Mr. Mayor', s:'watching', season:2, ep:10, epsWatched:20, lastWatched:'2022-05-18', start:'2021-01-10', queued:null, cy:null, cm:null, dormant:true},
-  {id:265, t:'The White Queen', s:'watching', season:1, ep:10, epsWatched:10, lastWatched:'2021-10-26', start:'2021-10-06', queued:null, cy:null, cm:null, dormant:true},
-  {id:266, t:'Waco', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2022-06-03', start:'2022-05-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:267, t:'Prop Culture', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2021-08-20', start:'2021-08-02', queued:null, cy:null, cm:null, dormant:true},
-  {id:268, t:'How I Met Your Mother', s:'done', season:9, ep:24, epsWatched:208, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:2018, cm:2, dormant:false},
-  {id:269, t:'The Book of Boba Fett', s:'watching', season:1, ep:7, epsWatched:7, lastWatched:'2022-02-10', start:'2021-12-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:270, t:'MacGyver (2016)', s:'watching', season:5, ep:15, epsWatched:94, lastWatched:'2021-05-02', start:'2020-05-31', queued:null, cy:null, cm:null, dormant:true},
-  {id:271, t:'Marvel\'s The Punisher', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:272, t:'Jane the Virgin', s:'watching', season:5, ep:19, epsWatched:100, lastWatched:'2022-03-21', start:'2021-09-03', queued:null, cy:null, cm:null, dormant:true},
-  {id:273, t:'Black Mirror', s:'watching', season:6, ep:5, epsWatched:28, lastWatched:'2023-07-16', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:false},
-  {id:274, t:'Breaking Bad', s:'watching', season:5, ep:16, epsWatched:63, lastWatched:'2022-04-06', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:false},
-  {id:275, t:'Queen Charlotte: A Bridgerton Story', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2023-06-01', start:'2023-05-25', queued:null, cy:null, cm:null, dormant:true},
-  {id:276, t:'The Orville', s:'done', season:3, ep:3, epsWatched:29, lastWatched:'2022-09-06', start:'2017-10-22', queued:null, cy:2022, cm:8, dormant:false},
-  {id:277, t:'Daredevil: Born Again', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:'2025-03-13', cy:null, cm:null, dormant:false},
-  {id:278, t:'Hilda', s:'watching', season:3, ep:8, epsWatched:34, lastWatched:'2025-08-20', start:'2024-08-14', queued:null, cy:null, cm:null, dormant:true},
-  {id:279, t:'Defending Jacob', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2021-10-04', start:'2021-10-03', queued:null, cy:null, cm:null, dormant:true},
-  {id:280, t:'Star Wars: Maul – Shadow Lord', s:'watching', season:1, ep:10, epsWatched:10, lastWatched:'2026-05-10', start:'2026-04-08', queued:null, cy:null, cm:null, dormant:true},
-  {id:281, t:'Kipo and the Age of Wonderbeasts', s:'dropped', season:2, ep:7, epsWatched:17, lastWatched:'2021-12-28', start:'2020-06-17', queued:null, cy:2021, cm:11, dormant:false},
-  {id:282, t:'That \'90s Show', s:'watching', season:2, ep:16, epsWatched:26, lastWatched:'2025-08-07', start:'2023-04-23', queued:null, cy:null, cm:null, dormant:false},
-  {id:283, t:'Marvel\'s The Defenders', s:'watching', season:1, ep:8, epsWatched:8, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:284, t:'Behind the Attraction', s:'watching', season:2, ep:6, epsWatched:16, lastWatched:'2024-01-28', start:'2021-07-26', queued:null, cy:null, cm:null, dormant:false},
-  {id:285, t:'All the Light We Cannot See', s:'watching', season:1, ep:4, epsWatched:4, lastWatched:'2023-11-09', start:'2023-11-07', queued:null, cy:null, cm:null, dormant:true},
-  {id:286, t:'Glee', s:'watching', season:6, ep:13, epsWatched:121, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:287, t:'Dark', s:'watching', season:1, ep:7, epsWatched:7, lastWatched:'2026-07-14', start:'2025-09-05', queued:null, cy:null, cm:null, dormant:false},
-  {id:288, t:'The Mentalist', s:'watching', season:7, ep:13, epsWatched:151, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:289, t:'Dream Productions', s:'watching', season:1, ep:4, epsWatched:4, lastWatched:'2025-05-15', start:'2025-05-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:290, t:'The Boys', s:'done', season:3, ep:8, epsWatched:24, lastWatched:'2022-07-08', start:'2020-12-16', queued:null, cy:2022, cm:6, dormant:false},
-  {id:291, t:'Lost', s:'watching', season:6, ep:18, epsWatched:121, lastWatched:'2020-08-20', start:'2018-03-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:292, t:'Better Call Saul', s:'watching', season:6, ep:13, epsWatched:63, lastWatched:'2023-07-09', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:false},
-  {id:293, t:'So Help Me Todd', s:'watching', season:2, ep:10, epsWatched:31, lastWatched:'2024-05-17', start:'2022-09-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:294, t:'Marvel\'s Daredevil', s:'watching', season:3, ep:13, epsWatched:39, lastWatched:'2018-12-22', start:'2017-10-22', queued:null, cy:null, cm:null, dormant:true},
-  {id:295, t:'grown-ish', s:'done', season:4, ep:18, epsWatched:69, lastWatched:'2022-03-25', start:'2018-07-26', queued:null, cy:2022, cm:2, dormant:false},
-  {id:296, t:'Hero Mask', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:'2023-12-12', cy:null, cm:null, dormant:false},
-  {id:297, t:'Graceland', s:'watching', season:3, ep:13, epsWatched:38, lastWatched:'2020-09-28', start:'2020-08-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:298, t:'Wizards Beyond Waverly Place', s:'watching', season:2, ep:10, epsWatched:31, lastWatched:'2025-10-29', start:'2024-11-08', queued:null, cy:null, cm:null, dormant:true},
-  {id:299, t:'Killing Eve', s:'watching', season:4, ep:8, epsWatched:31, lastWatched:'2022-07-24', start:'2022-05-08', queued:null, cy:null, cm:null, dormant:true},
-  {id:300, t:'Designated Survivor', s:'dropped', season:2, ep:1, epsWatched:22, lastWatched:'2017-10-22', start:'2017-10-22', queued:null, cy:2017, cm:9, dormant:false},
-  {id:301, t:'Avatar: The Last Airbender (2024)', s:'watching', season:2, ep:1, epsWatched:9, lastWatched:'2026-07-13', start:'2024-02-25', queued:null, cy:null, cm:null, dormant:false},
-  {id:302, t:'His Dark Materials', s:'done', season:1, ep:3, epsWatched:3, lastWatched:'2021-11-18', start:'2021-11-01', queued:null, cy:2021, cm:10, dormant:false},
-  {id:303, t:'Hollywood (2020)', s:'watching', season:1, ep:7, epsWatched:7, lastWatched:'2022-04-05', start:'2022-03-31', queued:null, cy:null, cm:null, dormant:true},
-  {id:304, t:'Star Wars: Tales of the Underworld', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2025-07-02', start:'2025-06-01', queued:null, cy:null, cm:null, dormant:true},
-  {id:305, t:'The Umbrella Academy', s:'done', season:4, ep:2, epsWatched:31, lastWatched:'2024-09-23', start:'2019-03-21', queued:null, cy:2024, cm:8, dormant:false},
-  {id:306, t:'Fresh Off the Boat', s:'watching', season:6, ep:15, epsWatched:116, lastWatched:'2021-09-02', start:'2021-05-04', queued:null, cy:null, cm:null, dormant:true},
-  {id:307, t:'Marvel Zombies', s:'watching', season:1, ep:4, epsWatched:4, lastWatched:'2026-07-05', start:'2026-06-11', queued:null, cy:null, cm:null, dormant:false},
-  {id:308, t:'Shooter', s:'done', season:2, ep:1, epsWatched:11, lastWatched:'2018-03-12', start:'2017-10-22', queued:null, cy:2018, cm:2, dormant:false},
-  {id:309, t:'WandaVision', s:'watching', season:1, ep:9, epsWatched:9, lastWatched:'2021-03-06', start:'2021-01-17', queued:null, cy:null, cm:null, dormant:true},
-  {id:310, t:'Quiet on Set: The Dark Side of Kids TV', s:'watching', season:1, ep:5, epsWatched:5, lastWatched:'2024-04-10', start:'2024-03-20', queued:null, cy:null, cm:null, dormant:true},
-  {id:311, t:'Emily in Paris', s:'done', season:1, ep:2, epsWatched:1, lastWatched:'2022-07-25', start:'2022-07-25', queued:null, cy:2022, cm:6, dormant:false},
-  {id:312, t:'Dear White People', s:'watching', season:4, ep:10, epsWatched:40, lastWatched:'2021-10-11', start:'2021-03-11', queued:null, cy:null, cm:null, dormant:true},
-  {id:313, t:'The Mandalorian', s:'watching', season:3, ep:8, epsWatched:24, lastWatched:'2023-04-19', start:'2019-11-20', queued:null, cy:null, cm:null, dormant:false},
-  {id:314, t:'Amazing Stories (2020)', s:'watching', season:1, ep:5, epsWatched:5, lastWatched:'2022-02-13', start:'2022-02-10', queued:null, cy:null, cm:null, dormant:true},
-  {id:315, t:'Prank Encounters', s:'dropped', season:1, ep:1, epsWatched:1, lastWatched:'2022-09-03', start:'2022-09-03', queued:null, cy:2022, cm:8, dormant:false},
-  {id:316, t:'Daniel Tiger\'s Neighborhood', s:'dropped', season:1, ep:4, epsWatched:4, lastWatched:'2023-11-22', start:'2023-11-08', queued:null, cy:2023, cm:10, dormant:false},
-  {id:317, t:'Avatar: The Last Airbender', s:'watching', season:3, ep:21, epsWatched:61, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:null, cm:null, dormant:true},
-  {id:318, t:'The Lost Pirate Kingdom', s:'watching', season:1, ep:6, epsWatched:6, lastWatched:'2022-09-03', start:'2022-08-13', queued:null, cy:null, cm:null, dormant:true},
-  {id:319, t:'Gilmore Girls', s:'watching', season:7, ep:22, epsWatched:148, lastWatched:'2022-10-26', start:'2022-03-21', queued:null, cy:null, cm:null, dormant:true},
-  {id:320, t:'Dickinson', s:'watching', season:3, ep:10, epsWatched:30, lastWatched:'2024-08-09', start:'2024-06-04', queued:null, cy:null, cm:null, dormant:true},
-  {id:321, t:'The Last of Us', s:'watching', season:2, ep:2, epsWatched:11, lastWatched:'2025-04-27', start:'2023-01-24', queued:null, cy:null, cm:null, dormant:false},
-  {id:322, t:'Secret Invasion', s:'done', season:1, ep:2, epsWatched:2, lastWatched:'2023-07-31', start:'2023-07-26', queued:null, cy:2023, cm:6, dormant:false},
-  {id:323, t:'Malcolm in the Middle', s:'watching', season:7, ep:22, epsWatched:151, lastWatched:'2019-03-15', start:'2019-03-15', queued:null, cy:null, cm:null, dormant:true},
-  {id:324, t:'I Am Groot', s:'watching', season:2, ep:5, epsWatched:10, lastWatched:'2023-09-07', start:'2022-08-10', queued:null, cy:null, cm:null, dormant:true},
-  {id:325, t:'mixed-ish', s:'watching', season:2, ep:13, epsWatched:36, lastWatched:'2021-05-19', start:'2019-09-26', queued:null, cy:null, cm:null, dormant:true},
-  {id:326, t:'Rangers of the New Republic', s:'queue', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:327, t:'Swamp Thing (2019)', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:328, t:'Babies', s:'watching', season:2, ep:6, epsWatched:12, lastWatched:'2023-01-07', start:'2022-09-17', queued:null, cy:null, cm:null, dormant:true},
-  {id:329, t:'Young Justice', s:'dropped', season:3, ep:17, epsWatched:64, lastWatched:'2019-09-26', start:'2017-10-22', queued:null, cy:2019, cm:8, dormant:false},
-  {id:330, t:'Heartstopper', s:'watching', season:3, ep:8, epsWatched:24, lastWatched:'2025-01-08', start:'2022-05-17', queued:null, cy:null, cm:null, dormant:false},
-  {id:331, t:'The 100', s:'watching', season:7, ep:16, epsWatched:100, lastWatched:'2023-09-12', start:'2022-12-28', queued:null, cy:null, cm:null, dormant:true},
-  {id:332, t:'Stargirl', s:'dropped', season:2, ep:10, epsWatched:23, lastWatched:'2021-10-14', start:'2020-06-14', queued:null, cy:2021, cm:9, dormant:false},
-  {id:333, t:'Teen Wolf', s:'watching', season:6, ep:20, epsWatched:100, lastWatched:'2019-09-26', start:'2019-08-30', queued:null, cy:null, cm:null, dormant:true},
-  {id:334, t:'Galavant', s:'done', season:2, ep:10, epsWatched:18, lastWatched:'2018-03-12', start:'2018-03-12', queued:null, cy:2018, cm:2, dormant:false},
-  {id:335, t:'Monsters at Work', s:'done', season:1, ep:10, epsWatched:10, lastWatched:'2022-06-30', start:'2021-07-12', queued:null, cy:2022, cm:5, dormant:false},
-  {id:336, t:'Money Heist', s:'done', season:3, ep:7, epsWatched:22, lastWatched:'2021-09-25', start:'2021-09-01', queued:null, cy:2021, cm:8, dormant:false},
-  {id:337, t:'Animal Control', s:'watching', season:4, ep:12, epsWatched:43, lastWatched:'2026-05-13', start:'2023-02-21', queued:null, cy:null, cm:null, dormant:false},
-  {id:338, t:'Friday Night Tykes', s:'dropped', season:null, ep:null, epsWatched:0, lastWatched:null, start:null, queued:null, cy:null, cm:null, dormant:false},
-  {id:339, t:'Kevin Can F**k Himself', s:'watching', season:2, ep:8, epsWatched:16, lastWatched:'2023-10-04', start:'2023-07-25', queued:null, cy:null, cm:null, dormant:true}
-];
+// Kept in its own JSON file (rather than inline) so the GitHub Actions season-check job
+// can read it without parsing this page.
+let SH=[];
 
 // ─── Real viewing-history stats, pulled from TV Time's own cached stats +
 // historical timeframe counters (not derived/guessed) ──────────────────────
@@ -993,8 +663,42 @@ function render(){
   renderPanels();
 }
 
-initTheme();
-render();
+// ─── New-season banner (populated by the GitHub Actions season-check job) ──
+const DISMISSED_KEY='tvtracker-dismissed-releases';
+function loadDismissed(){ try{ return JSON.parse(localStorage.getItem(DISMISSED_KEY))||[]; }catch(e){ return []; } }
+function dismissReleases(ids){
+  const dismissed=loadDismissed();
+  ids.forEach(id=>{ if(!dismissed.includes(id)) dismissed.push(id); });
+  try{ localStorage.setItem(DISMISSED_KEY, JSON.stringify(dismissed)); }catch(e){}
+  document.getElementById('new-releases').style.display='none';
+}
+function renderNewReleases(releases){
+  const dismissed=loadDismissed();
+  const fresh=(releases||[]).filter(r=>!dismissed.includes(r.id));
+  const el=document.getElementById('new-releases');
+  if(!fresh.length){ el.style.display='none'; return; }
+  el.style.display='flex';
+  el.className='nr-banner';
+  el.innerHTML=`<div class="nr-banner-body">
+    <div class="nr-banner-title">🎉 New season${fresh.length>1?'s':''} out</div>
+    <div class="nr-banner-list">${fresh.map(r=>`${esc(r.title)} — Season ${r.season}${r.airDate?` (${fmtDateShort(r.airDate)})`:''}`).join('<br>')}</div>
+  </div>
+  <button type="button" class="nr-dismiss" onclick="dismissReleases([${fresh.map(r=>r.id).join(',')}])">Got it</button>`;
+}
+
+// ─── Bootstrap — load the show data (and any new-release alerts) before first render ──
+Promise.all([
+  fetch('shows.json').then(r=>r.json()),
+  fetch('new-releases.json').then(r=>r.ok?r.json():[]).catch(()=>[])
+]).then(([showsData,releases])=>{
+  SH=showsData;
+  initTheme();
+  render();
+  renderNewReleases(releases);
+}).catch(err=>{
+  console.error('Failed to load show data', err);
+  document.getElementById('now').innerHTML='<div class="empty">Couldn\'t load show data — try refreshing the page.</div>';
+});
 </script>
 </body>
 </html>
