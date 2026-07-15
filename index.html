@@ -770,7 +770,7 @@ function nowC(g){
         ${g.dormant?'<span class="dormant-pill">💤 on hold</span>':lastWatchedEl(g)}
       </div>
       <div class="card-actions">
-        <button type="button" class="action-btn primary" onclick="markWatched(${g.id})">▶ Watched next</button>
+        <button type="button" class="action-btn primary" onclick="markWatched(${g.id})">✓ I watched this</button>
         <button type="button" class="action-btn icon" onclick="openEdit(${g.id})" aria-label="Edit season and episode">✎</button>
         ${hasOverride?`<button type="button" class="action-btn icon" onclick="resetShow(${g.id})" aria-label="Reset to original snapshot">↺</button>`:''}
       </div>
