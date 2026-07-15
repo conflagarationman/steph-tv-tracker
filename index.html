@@ -13,7 +13,7 @@
   --yellow:#ffc72c; --green:#4ade80; --red:#f87171; --blue:#5cc4ff; --purple:#c49bff;
   --prime-bg:#00a8e120; --prime-fg:#5cc4ff;
   --disney-bg:#113ccf20; --disney-fg:#6c9bff;
-  --red-bg:#f8717120; --purple-bg:#c49bff20;
+  --red-bg:#f8717120; --purple-bg:#c49bff20; --green-bg:#4ade8020;
   --cat-queue:#3987e5; --cat-active:#c98500; --cat-done:#008300; --cat-onhold:#9085e9; --cat-dropped:#e66767;
   --shadow: rgba(0,0,0,0.35);
   /* theme-independent: this one badge always reads gold, in either theme */
@@ -27,7 +27,7 @@
   --yellow:#b45309; --green:#15803d; --red:#dc2626; --blue:#0369a1; --purple:#7c3aed;
   --prime-bg:#0284c722; --prime-fg:#0284c7;
   --disney-bg:#1d4ed822; --disney-fg:#1d4ed8;
-  --red-bg:#dc262622; --purple-bg:#7c3aed22;
+  --red-bg:#dc262622; --purple-bg:#7c3aed22; --green-bg:#15803d22;
   --cat-queue:#2a78d6; --cat-active:#eda100; --cat-done:#008300; --cat-onhold:#4a3aa7; --cat-dropped:#e34948;
   --shadow: rgba(20,24,40,0.10);
   color-scheme: light;
@@ -140,6 +140,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .eps-pill{font-size:0.62rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface2);color:var(--muted);white-space:nowrap;}
 .dormant-pill{font-size:0.6rem;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--surface2);color:var(--dim);white-space:nowrap;}
 .dropped-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--red-bg);color:var(--red);white-space:nowrap;}
+.caught-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--green-bg);color:var(--green);white-space:nowrap;}
 .lp-pill,.queued-pill,.start-pill{font-size:0.62rem;color:var(--dim);font-weight:600;white-space:nowrap;}
 
 .cr{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.78rem;font-weight:700;color:var(--muted);margin-top:1.6rem;user-select:none;background:none;border:none;font-family:inherit;padding:6px 2px;border-radius:8px;}
@@ -215,10 +216,12 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 <div class="breakdown" id="breakdown"></div>
 
 <div id="default-sections">
-  <h2 class="slabel"><span class="dot" aria-hidden="true"></span>Now watching <span class="count" id="now-count"></span></h2>
+  <h2 class="slabel"><span class="dot" aria-hidden="true"></span>Ready to watch <span class="count" id="now-count"></span></h2>
   <div class="show-list grid" id="now"></div>
   <h2 class="slabel"><span class="dot" aria-hidden="true"></span>Up next</h2>
   <div class="show-list grid" id="queue"></div>
+  <button class="cr" type="button" onclick="tog('cu')" aria-expanded="false" aria-controls="cu-panel"><span class="chev" aria-hidden="true">▶</span><span id="cu-lbl">Caught up (0)</span></button>
+  <div id="cu-panel" class="panel" style="display:none;margin-top:0.75rem;"></div>
 </div>
 
 <div id="results-section" style="display:none;">
@@ -281,7 +284,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 <script>
 const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const NOW = new Date();
-let open={ar:false,yl:false,vs:false,wh:false};
+let open={ar:false,yl:false,vs:false,wh:false,cu:false};
 
 // ─── Manual "I watched this" overrides — layered on top of the CSV snapshot,
 // persisted in this browser only (see the banner note in the page).
@@ -323,15 +326,42 @@ function updateOverride(id,patch){
   saveOverrides();
   render();
 }
+// True once she's watched the last episode of the last season TMDB knows about —
+// i.e. there is nothing left to advance to. Returns false when we have no episode
+// data for the show, so an unmatched show still behaves the old (permissive) way.
+function isCaughtUp(g){
+  const counts=EPISODE_COUNTS[g.id];
+  if(!counts) return false;
+  const seasons=Object.keys(counts).map(Number);
+  if(!seasons.length||g.season==null||g.ep==null) return false;
+  const lastSeason=Math.max(...seasons);
+  // g.season>lastSeason catches progress the earlier rollover bug already pushed into a
+  // season that never aired — those are saved in localStorage and outlive this fix.
+  return g.season>lastSeason||(g.season===lastSeason&&g.ep>=counts[lastSeason]);
+}
 function markWatched(id){
   const g=liveShows().find(x=>x.id===id);
-  if(!g) return;
+  if(!g||isCaughtUp(g)) return;
   let season=g.season, ep=(g.ep||0)+1;
   const counts=EPISODE_COUNTS[id];
   const seasonLen=counts&&counts[season];
-  if(seasonLen&&ep>seasonLen){ season=season+1; ep=1; }
+  if(seasonLen&&ep>seasonLen){
+    // Only roll forward if that next season actually exists — otherwise we'd invent
+    // a phantom season (Severance S3E1) that hasn't aired.
+    if(counts[season+1]){ season=season+1; ep=1; }
+    else return;
+  }
   logHistory({id, title:g.t, action:'watched', season, ep});
   updateOverride(id,{season, ep, epsWatched:(g.epsWatched||0)+1, lastWatched:todayStr(), dormant:false});
+}
+// Moves a show out of "watching" and into the archive, stamped with this month so it
+// lands in the right Year log / Archive group.
+function markFinished(id){
+  const g=liveShows().find(x=>x.id===id);
+  if(!g) return;
+  const d=new Date();
+  logHistory({id, title:g.t, action:'finished', season:g.season, ep:g.ep});
+  updateOverride(id,{s:'done', cy:d.getFullYear(), cm:d.getMonth(), dormant:false});
 }
 function startWatching(id){
   const g=liveShows().find(x=>x.id===id);
@@ -350,6 +380,9 @@ function removeCustomShow(id){
   if(!confirm('Remove this show you added? This can\'t be undone.')) return;
   saveCustomShows(loadCustomShows().filter(g=>g.id!==id));
   removeHistoryForShow(id);
+  // The show's overrides would otherwise linger in localStorage forever with nothing
+  // left to apply to.
+  if(overrides[id]){ delete overrides[id]; saveOverrides(); }
   render();
 }
 let editingId=null;
@@ -421,6 +454,9 @@ let POSTERS={};
 // Show id -> {seasonNumber: episodeCount}, so "watched next" knows when to roll
 // over into the next season instead of incrementing the episode number forever.
 let EPISODE_COUNTS={};
+// Newly-aired seasons for shows she's watching, from the same job. Held here (rather
+// than passed straight to the banner) so re-renders can re-check it against progress.
+let RELEASES=[];
 
 // ─── Real viewing-history stats, pulled from TV Time's own cached stats +
 // historical timeframe counters (not derived/guessed) ──────────────────────
@@ -508,20 +544,23 @@ function epsPill(g){
   if(!g.epsWatched) return '';
   return `<span class="eps-pill">${g.epsWatched} ep${g.epsWatched===1?'':'s'} watched</span>`;
 }
+// "2026-07-15" -> local midnight. Plain `new Date("2026-07-15")` parses date-only
+// strings as *UTC* midnight, which west of UTC lands on the previous evening — enough
+// to make a show watched tonight report "watched yesterday" after ~8pm.
+function parseDay(dateStr){
+  const [y,mo,da]=dateStr.split('-').map(Number);
+  return new Date(y,mo-1,da);
+}
 function daysSince(dateStr){
   if(!dateStr) return null;
-  return Math.max(0, Math.floor((NOW-new Date(dateStr))/(1000*60*60*24)));
+  return Math.max(0, Math.floor((NOW-parseDay(dateStr))/(1000*60*60*24)));
 }
 // Clamps to NOW so a mistaken future-dated lastWatched value (data-entry typo)
 // can't sort a show above ones genuinely watched today.
 function effectiveDate(dateStr){
-  const d=new Date(dateStr);
+  if(!dateStr) return new Date(0);
+  const d=parseDay(dateStr);
   return d>NOW?NOW:d;
-}
-function fmtDate(dateStr){
-  if(!dateStr) return null;
-  const [y,mo,da]=dateStr.split('-');
-  return M[parseInt(mo,10)-1]+' '+parseInt(da,10)+', '+y;
 }
 function fmtDateShort(dateStr){
   if(!dateStr) return null;
@@ -547,6 +586,14 @@ function queuedEl(g){
 // ─── Card builders ─────────────────────────────────────
 function nowC(g){
   const hasOverride=!!overrides[g.id];
+  const caught=isCaughtUp(g);
+  // Once she's out of episodes, "I watched this" has nothing to advance to — offer the
+  // move she'd actually want (retire it to the archive) instead of a dead button.
+  // Both variants share one fkey: the button swaps label when a show becomes caught up,
+  // and focus should stay put across that swap rather than jump to another card.
+  const primary=caught
+    ? `<button type="button" class="action-btn primary" data-fkey="act-${g.id}" onclick="markFinished(${g.id})">✓ Mark finished</button>`
+    : `<button type="button" class="action-btn primary" data-fkey="act-${g.id}" onclick="markWatched(${g.id})">✓ I watched this, bitch!</button>`;
   return `<div class="card ${g.dormant?'dormant':'now'}">
     ${posterEl(g)}
     <div class="card-content">
@@ -554,10 +601,11 @@ function nowC(g){
       <div class="row2">
         ${epsPill(g)}
         ${startEl(g)}
+        ${caught?'<span class="caught-pill">✓ all caught up</span>':''}
         ${g.dormant?'<span class="dormant-pill">💤 on hold</span>':lastWatchedEl(g)}
       </div>
       <div class="card-actions">
-        <button type="button" class="action-btn primary" onclick="markWatched(${g.id})">✓ I watched this, bitch!</button>
+        ${primary}
         <button type="button" class="action-btn icon" onclick="openEdit(${g.id})" aria-label="Edit season and episode">✎</button>
         ${hasOverride?`<button type="button" class="action-btn icon" onclick="resetShow(${g.id})" aria-label="Reset to original snapshot">↺</button>`:''}
         ${g.custom?`<button type="button" class="action-btn icon" onclick="removeCustomShow(${g.id})" aria-label="Remove this show">🗑</button>`:''}
@@ -623,7 +671,21 @@ function tog(k){
   open[k]=!open[k];
   document.getElementById(k+'-panel').style.display=open[k]?'block':'none';
   document.querySelector(`[aria-controls="${k}-panel"]`).setAttribute('aria-expanded', open[k]);
-  renderPanels();
+  render();
+}
+// The caught-up shows: watching, but nothing left to air. Collapsed by default and
+// rendered with the normal watching card, so each one carries its "Mark finished"
+// button and she can retire them at whatever pace she likes.
+function renderCaughtUp(list){
+  document.getElementById('cu-lbl').textContent=`Caught up (${list.length})`;
+  const el=document.getElementById('cu-panel');
+  // Throw the markup away when collapsed rather than just hiding it: 219 stale cards
+  // would otherwise linger in the DOM carrying duplicate data-fkey values that focus
+  // restoration could land on invisibly.
+  if(!open.cu){ el.innerHTML=''; return; }
+  el.innerHTML=list.length
+    ?`<div class="show-list grid">${list.map(nowC).join('')}</div>`
+    :'<div class="empty">Nothing caught up yet.</div>';
 }
 
 function renderHistoryPanel(){
@@ -632,7 +694,7 @@ function renderHistoryPanel(){
   if(!open.wh) return;
   const el=document.getElementById('wh-panel');
   if(!history.length){ el.innerHTML='<div class="empty">No manual updates yet — use "I watched this", "Start watching", or add a show.</div>'; return; }
-  const actionLabel={watched:h=>`watched S${h.season}·E${h.ep}`, started:()=>'started watching', edited:h=>`set to S${h.season}·E${h.ep}`};
+  const actionLabel={watched:h=>`watched S${h.season}·E${h.ep}`, started:()=>'started watching', edited:h=>`set to S${h.season}·E${h.ep}`, finished:()=>'marked finished'};
   el.innerHTML=history.map(h=>{
     const d=new Date(h.at);
     const when=`${M[d.getMonth()]} ${d.getDate()}, ${d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`;
@@ -715,17 +777,30 @@ function toggleTheme(){
 // ─── Search & status filter ────────────────────────────
 let filterState={query:'',status:'all'};
 const STATUS_CHIPS=[['all','All'],['active','Active'],['onhold','On hold'],['queue','Up next'],['done','Done'],['dropped','Dropped']];
-function setQuery(v){ filterState.query=v; render(); }
+// Typing re-renders every card, so do it once the keystrokes stop rather than on each
+// one — at 339 shows the per-keystroke rebuild is enough to feel laggy.
+let searchTimer=null;
+function setQuery(v){
+  clearTimeout(searchTimer);
+  searchTimer=setTimeout(()=>{ filterState.query=v; render(); },120);
+}
 function setStatusFilter(key){ filterState.status=key; render(); }
 function clearFilters(){
+  clearTimeout(searchTimer);
   filterState={query:'',status:'all'};
   document.getElementById('search').value='';
   render();
 }
 function renderChips(){
-  document.getElementById('chip-row').innerHTML=STATUS_CHIPS.map(([key,label])=>
-    `<button type="button" class="chip${filterState.status===key?' active':''}" onclick="setStatusFilter('${key}')">${label}</button>`
-  ).join('');
+  const row=document.getElementById('chip-row');
+  if(!row.children.length){
+    row.innerHTML=STATUS_CHIPS.map(([key,label])=>
+      `<button type="button" class="chip" data-fkey="chip-${key}" onclick="setStatusFilter('${key}')">${label}</button>`
+    ).join('');
+  }
+  // Toggle the class rather than rebuilding the row — the labels never change, and
+  // innerHTML here would throw away the chip the keyboard is currently on.
+  STATUS_CHIPS.forEach(([key],i)=>row.children[i].classList.toggle('active',filterState.status===key));
 }
 
 // ─── Status breakdown bar ───────────────────────────────
@@ -739,7 +814,7 @@ function renderBreakdown(counts){
   ];
   const total=segs.reduce((s,x)=>s+x.value,0)||1;
   const bar=segs.map(s=>`<div class="seg" style="width:${s.value/total*100}%;background:${s.color}" data-tip="${esc(s.label)}: ${s.value} (${Math.round(s.value/total*100)}%)"></div>`).join('');
-  const legend=segs.map(s=>`<button type="button" class="legend-item${filterState.status===s.key?' active':''}" onclick="setStatusFilter('${s.key}')"><span class="swatch" style="background:${s.color}"></span>${esc(s.label)}<span class="legend-n">${s.value}</span></button>`).join('');
+  const legend=segs.map(s=>`<button type="button" class="legend-item${filterState.status===s.key?' active':''}" data-fkey="legend-${s.key}" onclick="setStatusFilter('${s.key}')"><span class="swatch" style="background:${s.color}"></span>${esc(s.label)}<span class="legend-n">${s.value}</span></button>`).join('');
   document.getElementById('breakdown').innerHTML=`<div class="breakdown-bar">${bar}</div><div class="legend-row">${legend}</div>`;
 }
 
@@ -760,7 +835,29 @@ function renderResults(pools,allShows){
 }
 
 // ─── Main render ───────────────────────────────────────
+// The stat/legend rows and the cards carry live counts, so they have to be rebuilt via
+// innerHTML — which silently drops keyboard focus back to the top of the document.
+// Elements worth returning to are tagged data-fkey; this puts focus back afterwards.
 function render(){
+  const el=document.activeElement;
+  const fkey=el&&el.dataset?el.dataset.fkey:null;
+  // Also note where it sat among its own kind: an action can remove the focused element
+  // outright (Mark finished retires the card), and landing on whatever took its place
+  // beats dumping her at the top of a 219-item list on every click.
+  let prefix=null,idx=-1;
+  if(fkey){
+    prefix=fkey.split('-')[0];
+    idx=[...document.querySelectorAll(`[data-fkey^="${prefix}-"]`)].indexOf(el);
+  }
+  renderAll();
+  if(!fkey) return;
+  const exact=document.querySelector(`[data-fkey="${CSS.escape(fkey)}"]`);
+  if(exact){ exact.focus({preventScroll:true}); return; }
+  const peers=[...document.querySelectorAll(`[data-fkey^="${prefix}-"]`)];
+  const next=peers[Math.min(idx,peers.length-1)];
+  if(next) next.focus({preventScroll:true});
+}
+function renderAll(){
   const shows=liveShows();
   let watching=shows.filter(g=>g.s==='watching');
   const queue=shows.filter(g=>g.s==='queue');
@@ -777,11 +874,11 @@ function render(){
   renderBreakdown({active:active.length,onHold:onHold.length,queue:queue.length,done:done.length,dropped:dropped.length});
 
   document.getElementById('stats').innerHTML=`
-    <button type="button" class="stat${filterState.status==='active'?' active':''}" style="border-left-color:var(--yellow)" onclick="setStatusFilter('active')"><div class="stat-n" style="color:var(--yellow)">${active.length}</div><div class="stat-l">Active now</div></button>
-    <button type="button" class="stat${filterState.status==='onhold'?' active':''}" style="border-left-color:var(--dim)" onclick="setStatusFilter('onhold')"><div class="stat-n" style="color:var(--dim)">${onHold.length}</div><div class="stat-l">On hold</div></button>
-    <button type="button" class="stat${filterState.status==='queue'?' active':''}" style="border-left-color:var(--muted)" onclick="setStatusFilter('queue')"><div class="stat-n" style="color:var(--muted)">${queue.length}</div><div class="stat-l">Up next</div></button>
-    <button type="button" class="stat${filterState.status==='done'?' active':''}" style="border-left-color:var(--green)" onclick="setStatusFilter('done')"><div class="stat-n" style="color:var(--green)">${done.length}</div><div class="stat-l">Done</div></button>
-    <button type="button" class="stat${filterState.status==='dropped'?' active':''}" style="border-left-color:var(--red)" onclick="setStatusFilter('dropped')"><div class="stat-n" style="color:var(--red)">${dropped.length}</div><div class="stat-l">Dropped</div></button>
+    <button type="button" class="stat${filterState.status==='active'?' active':''}" data-fkey="stat-active" style="border-left-color:var(--yellow)" onclick="setStatusFilter('active')"><div class="stat-n" style="color:var(--yellow)">${active.length}</div><div class="stat-l">Active now</div></button>
+    <button type="button" class="stat${filterState.status==='onhold'?' active':''}" data-fkey="stat-onhold" style="border-left-color:var(--dim)" onclick="setStatusFilter('onhold')"><div class="stat-n" style="color:var(--dim)">${onHold.length}</div><div class="stat-l">On hold</div></button>
+    <button type="button" class="stat${filterState.status==='queue'?' active':''}" data-fkey="stat-queue" style="border-left-color:var(--muted)" onclick="setStatusFilter('queue')"><div class="stat-n" style="color:var(--muted)">${queue.length}</div><div class="stat-l">Up next</div></button>
+    <button type="button" class="stat${filterState.status==='done'?' active':''}" data-fkey="stat-done" style="border-left-color:var(--green)" onclick="setStatusFilter('done')"><div class="stat-n" style="color:var(--green)">${done.length}</div><div class="stat-l">Done</div></button>
+    <button type="button" class="stat${filterState.status==='dropped'?' active':''}" data-fkey="stat-dropped" style="border-left-color:var(--red)" onclick="setStatusFilter('dropped')"><div class="stat-n" style="color:var(--red)">${dropped.length}</div><div class="stat-l">Dropped</div></button>
     <div class="stat" style="border-left-color:var(--blue)"><div class="stat-n" style="color:var(--blue);font-size:1.1rem">${totalEps.toLocaleString()}</div><div class="stat-l">Total eps</div></div>
   `;
 
@@ -791,11 +888,18 @@ function render(){
   if(isFiltering){
     renderResults({active,onHold,queue,done,dropped},shows);
   }else{
-    document.getElementById('now-count').textContent=`(${watching.length})`;
-    document.getElementById('now').innerHTML=watching.length?watching.map(nowC).join(''):'<div class="empty">Nothing watching.</div>';
+    // Split the watching list by whether there's actually anything left to watch. Most
+    // of the list is shows she finished and never unfollowed in TV Time — surfacing all
+    // of them here buries the handful she could actually put on tonight.
+    const ready=watching.filter(g=>!isCaughtUp(g));
+    const caught=watching.filter(g=>isCaughtUp(g));
+    document.getElementById('now-count').textContent=`(${ready.length})`;
+    document.getElementById('now').innerHTML=ready.length?ready.map(nowC).join(''):'<div class="empty">Nothing with unwatched episodes — you\'re caught up on everything.</div>';
     document.getElementById('queue').innerHTML=queue.length?queue.map((g,i)=>qC(g,i+1)).join(''):'<div class="empty">Nothing up next.</div>';
+    renderCaughtUp(caught);
   }
   renderPanels();
+  renderNewReleases();
 }
 
 // ─── New-season banner (populated by the GitHub Actions season-check job) ──
@@ -810,9 +914,16 @@ function dismissReleases(keys){
   try{ localStorage.setItem(DISMISSED_KEY, JSON.stringify(dismissed)); }catch(e){}
   document.getElementById('new-releases').style.display='none';
 }
-function renderNewReleases(releases){
+function renderNewReleases(){
   const dismissed=loadDismissed();
-  const fresh=(releases||[]).filter(r=>!dismissed.includes(releaseKey(r)));
+  const shows=liveShows();
+  const fresh=RELEASES.filter(r=>{
+    if(dismissed.includes(releaseKey(r))) return false;
+    // She's already reached (or passed) the announced season — the banner has served
+    // its purpose, so stop nagging without making her dismiss it by hand.
+    const g=shows.find(x=>x.id===r.id);
+    return !(g&&g.season!=null&&g.season>=r.season);
+  });
   const el=document.getElementById('new-releases');
   if(!fresh.length){ el.style.display='none'; return; }
   el.style.display='flex';
@@ -824,7 +935,10 @@ function renderNewReleases(releases){
   <button type="button" class="nr-dismiss" onclick='dismissReleases(${JSON.stringify(fresh.map(releaseKey))})'>Got it</button>`;
 }
 
-// ─── Bootstrap — load the show data (and any new-release alerts) before first render ──
+// ─── Bootstrap ─────────────────────────────────────────
+// Theme goes first and synchronously: it only depends on localStorage, so waiting on
+// the show fetch just means a visible flash of the wrong palette on every load.
+initTheme();
 Promise.all([
   fetch('shows.json').then(r=>r.json()),
   fetch('new-releases.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
@@ -834,9 +948,8 @@ Promise.all([
   SH=showsData;
   POSTERS=postersData;
   EPISODE_COUNTS=episodeCountsData;
-  initTheme();
+  RELEASES=releases||[];
   render();
-  renderNewReleases(releases);
 }).catch(err=>{
   console.error('Failed to load show data', err);
   document.getElementById('now').innerHTML='<div class="empty">Couldn\'t load show data — try refreshing the page.</div>';
