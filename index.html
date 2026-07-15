@@ -801,15 +801,18 @@ function render(){
 // ─── New-season banner (populated by the GitHub Actions season-check job) ──
 const DISMISSED_KEY='tvtracker-dismissed-releases';
 function loadDismissed(){ try{ return JSON.parse(localStorage.getItem(DISMISSED_KEY))||[]; }catch(e){ return []; } }
-function dismissReleases(ids){
+// Keyed by "id:season" (not just id) so dismissing this season's alert doesn't
+// silently swallow a future season's alert for the same show.
+function releaseKey(r){ return `${r.id}:${r.season}`; }
+function dismissReleases(keys){
   const dismissed=loadDismissed();
-  ids.forEach(id=>{ if(!dismissed.includes(id)) dismissed.push(id); });
+  keys.forEach(k=>{ if(!dismissed.includes(k)) dismissed.push(k); });
   try{ localStorage.setItem(DISMISSED_KEY, JSON.stringify(dismissed)); }catch(e){}
   document.getElementById('new-releases').style.display='none';
 }
 function renderNewReleases(releases){
   const dismissed=loadDismissed();
-  const fresh=(releases||[]).filter(r=>!dismissed.includes(r.id));
+  const fresh=(releases||[]).filter(r=>!dismissed.includes(releaseKey(r)));
   const el=document.getElementById('new-releases');
   if(!fresh.length){ el.style.display='none'; return; }
   el.style.display='flex';
@@ -818,7 +821,7 @@ function renderNewReleases(releases){
     <div class="nr-banner-title">🎉 New season${fresh.length>1?'s':''} out</div>
     <div class="nr-banner-list">${fresh.map(r=>`${esc(r.title)} — Season ${r.season}${r.airDate?` (${fmtDateShort(r.airDate)})`:''}`).join('<br>')}</div>
   </div>
-  <button type="button" class="nr-dismiss" onclick="dismissReleases([${fresh.map(r=>r.id).join(',')}])">Got it</button>`;
+  <button type="button" class="nr-dismiss" onclick='dismissReleases(${JSON.stringify(fresh.map(releaseKey))})'>Got it</button>`;
 }
 
 // ─── Bootstrap — load the show data (and any new-release alerts) before first render ──
