@@ -605,36 +605,101 @@ function posterColor(t){
 // Obi-Wan) which is why it looked like a feature that only worked sometimes — it came
 // from TMDB's JustWatch data for all 339 shows now.
 //
-// Brand colours for the services she actually uses; everything else gets a neutral pill
-// rather than a wrong colour. Keys are lowercased provider names as TMDB spells them.
-const SERVICE_CLASS={
-  'netflix':'sv-netflix',
-  'disney plus':'sv-disney', 'disney+':'sv-disney',
-  'amazon prime video':'sv-prime', 'prime video':'sv-prime', 'amazon video':'sv-prime',
-  'hulu':'sv-hulu',
-  'max':'sv-max', 'hbo max':'sv-max',
-  'apple tv+':'sv-apple', 'apple tv plus':'sv-apple',
-  'paramount plus':'sv-paramount', 'paramount+':'sv-paramount',
-  'peacock':'sv-peacock', 'peacock premium':'sv-peacock'
+// TMDB (via JustWatch) returns every plan tier and reseller as its own "provider" — 72
+// distinct names across her 339 shows — so the raw list reads badly: "Netflix" and
+// "Netflix Standard with Ads" are the same answer, and live-TV bundles (fuboTV, YouTube
+// TV, Philo) ride along on almost everything and crowd out the service she'd name.
+//
+// Deliberately done here rather than in the fetch job: this is a display judgement that
+// will want tuning, and keeping the raw list in show-meta.json means changing our mind
+// later doesn't mean re-fetching all 339 shows.
+
+// "HBO Max Amazon Channel" is HBO Max, billed through Amazon.
+const RESELLER_RE=/\s+(amazon|apple tv|roku premium|roku)\s+channel\s*$/i;
+// Ad-supported tiers of the same service.
+const TIER_RE=/\s+(standard\s+)?with\s+ads$/i;
+const FREE_ADS_RE=/\s+free\s+with\s+ads$/i;
+
+// Applied after the suffixes above are stripped, so "Peacock Premium Plus Amazon Channel"
+// also lands on "Peacock". Keys are lowercase.
+const SERVICE_ALIAS={
+  'amazon prime video':'Prime Video','amazon video':'Prime Video',
+  'disney plus':'Disney+',
+  'apple tv':'Apple TV+','apple tv plus':'Apple TV+',
+  'peacock premium':'Peacock','peacock premium plus':'Peacock',
+  'paramount plus':'Paramount+','paramount plus premium':'Paramount+',
+  'paramount plus essential':'Paramount+','paramount+':'Paramount+',
+  'amc plus':'AMC+','amc+':'AMC+',
+  'mgm plus':'MGM+','mgm+':'MGM+',
+  'britbox':'BritBox','tubi tv':'Tubi','discovery +':'Discovery+',
+  'the roku channel':'Roku Channel'
 };
-// TMDB spells these out; the long forms crowd a narrow card on a phone.
-const SERVICE_SHORT={
-  'amazon prime video':'Prime Video', 'amazon video':'Prime Video',
-  'disney plus':'Disney+', 'paramount plus':'Paramount+',
-  'peacock premium':'Peacock', 'apple tv plus':'Apple TV+'
+
+// Ranked buckets. A show on Netflix *and* YouTube TV should just say Netflix — the bundle
+// is true but useless as an answer to "what can I put on tonight".
+const LIVE_TV=new Set(['youtube tv','philo','fubotv','spectrum on demand','directv','sling tv']);
+const FREE_SVC=new Set(['tubi','pluto tv','roku channel','xumo play','fandango at home free','freevee']);
+// Channel-owned apps — a fine last resort, redundant when the show is also on a service.
+const NETWORK=new Set(['nbc','tbs','tnt','usa network','freeform','pbs','pbs kids','history',
+  'investigation discovery','disneynow','thirteen','kqed','weta+','fox one','angel studios',
+  'the cw','a&e','bravo','syfy','amc','pure flix','ondemandkorea','youtube premium']);
+
+function canonicalService(name){
+  const raw=String(name||'').trim();
+  // Check the raw name first: "The Roku Channel" is a service in its own right, and
+  // stripping the reseller suffix off it would leave the word "The".
+  const direct=SERVICE_ALIAS[raw.toLowerCase()];
+  if(direct) return direct;
+  const n=raw.replace(RESELLER_RE,'').replace(FREE_ADS_RE,'').replace(TIER_RE,'').trim();
+  // A suffix strip that eats the whole name means the pattern didn't apply — keep the
+  // original rather than emitting a fragment.
+  if(!n) return raw;
+  return SERVICE_ALIAS[n.toLowerCase()]||n;
+}
+function serviceTier(name){
+  const k=name.toLowerCase();
+  if(LIVE_TV.has(k)) return 3;
+  if(NETWORK.has(k)) return 2;
+  if(FREE_SVC.has(k)) return 1;
+  return 0;   // a real subscription service — the answer she wants
+}
+// Collapses the raw list to the services worth naming, best tier only.
+function watchServices(g){
+  const w=SHOW_META[g.id]&&SHOW_META[g.id].watch;
+  if(!w||!w.on||!w.on.length) return [];
+  const seen=new Set(),out=[];
+  // TMDB's ordering within a tier is a reasonable ranking, so keep first-seen.
+  for(const raw of w.on){
+    const name=canonicalService(raw);
+    if(!name||seen.has(name.toLowerCase())) continue;
+    seen.add(name.toLowerCase());
+    out.push({name,tier:serviceTier(name)});
+  }
+  if(!out.length) return [];
+  // Only the best tier present. Mixing them is what made Bluey read
+  // "Disney+ · fuboTV · +2" when the honest answer is just Disney+.
+  const best=Math.min(...out.map(s=>s.tier));
+  return out.filter(s=>s.tier===best).map(s=>s.name);
+}
+
+// Brand colours for the ones she'd recognise; everything else gets a neutral pill rather
+// than a wrong colour. Keyed on the canonical name.
+const SERVICE_CLASS={
+  'netflix':'sv-netflix','disney+':'sv-disney','prime video':'sv-prime','hulu':'sv-hulu',
+  'hbo max':'sv-max','max':'sv-max','apple tv+':'sv-apple','paramount+':'sv-paramount','peacock':'sv-peacock'
 };
 function watchEl(g){
-  const w=SHOW_META[g.id]&&SHOW_META[g.id].watch;
-  if(!w||!w.on||!w.on.length) return '';
+  const services=watchServices(g);
+  if(!services.length) return '';
+  const w=SHOW_META[g.id].watch;
   // Cap the row so it can't wrap on a phone. At exactly three, show all three — a "+1"
   // pill is the same width as the name it's hiding, so collapsing there buys nothing.
-  const shown=w.on.length<=3?w.on:w.on.slice(0,2);
-  const extra=w.on.length-shown.length;
-  const pills=shown.map(name=>{
-    const key=name.toLowerCase();
-    return `<span class="net ${SERVICE_CLASS[key]||'sv-other'}">${esc(SERVICE_SHORT[key]||name)}</span>`;
-  }).join('');
-  const more=extra?`<span class="net sv-other">+${extra}</span>`:'';
+  const shown=services.length<=3?services:services.slice(0,2);
+  const extra=services.length-shown.length;
+  const pills=shown.map(name=>
+    `<span class="net ${SERVICE_CLASS[name.toLowerCase()]||'sv-other'}">${esc(name)}</span>`
+  ).join('');
+  const more=extra?`<span class="net sv-other" title="${esc(services.slice(shown.length).join(', '))}">+${extra}</span>`:'';
   // The whole group links to TMDB's watch page, which stays right as deals move around.
   return w.link
     ? `<a class="watch-link" href="${esc(w.link)}" target="_blank" rel="noopener noreferrer" title="Where to watch ${esc(g.t)}">${pills}${more}</a>`
