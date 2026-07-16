@@ -134,7 +134,9 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 
 .hist-row{display:flex;align-items:baseline;gap:10px;padding:7px 2px;border-bottom:1px solid var(--border);font-size:0.78rem;}
 .hist-row:last-child{border-bottom:none;}
-.hist-time{color:var(--dim);font-size:0.64rem;font-weight:600;white-space:nowrap;min-width:100px;}
+.hist-time{color:var(--dim);font-size:0.64rem;font-weight:600;white-space:nowrap;min-width:62px;}
+.hist-day{font-family:'Poppins',sans-serif;font-size:0.7rem;font-weight:800;color:var(--yellow);margin:0.9rem 0 0.3rem;letter-spacing:0.02em;}
+.hist-day:first-child{margin-top:0;}
 .hist-title{font-weight:700;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .hist-action{color:var(--muted);font-size:0.72rem;white-space:nowrap;}
 
@@ -143,10 +145,16 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .dormant-pill{font-size:0.6rem;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--surface2);color:var(--dim);white-space:nowrap;}
 .dropped-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--red-bg);color:var(--red);white-space:nowrap;}
 .caught-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--green-bg);color:var(--green);white-space:nowrap;}
+.waiting-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface2);color:var(--muted);white-space:nowrap;}
+.next-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--badge-yellow-dim);color:var(--yellow);white-space:nowrap;}
 .lp-pill,.queued-pill,.start-pill{font-size:0.62rem;color:var(--dim);font-weight:600;white-space:nowrap;}
 
 .cr{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.78rem;font-weight:700;color:var(--muted);margin-top:1.6rem;user-select:none;background:none;border:none;font-family:inherit;padding:6px 2px;border-radius:8px;}
 .cr:hover{color:var(--text);}
+/* She's asked twice where her history is — give this one row visual weight so it reads
+   as a section rather than another piece of chrome. */
+.cr-primary{color:var(--text);font-size:0.85rem;}
+.cr-primary .chev{color:var(--yellow);}
 .cr:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
 .cr .chev{display:inline-block;transition:transform 0.2s ease;font-size:0.7rem;}
 .cr[aria-expanded="true"] .chev{transform:rotate(90deg);}
@@ -234,7 +242,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
   <div class="show-list grid" id="results-list"></div>
 </div>
 
-<button class="cr" type="button" onclick="tog('wh')" aria-expanded="false" aria-controls="wh-panel"><span class="chev" aria-hidden="true">▶</span><span id="wh-lbl">Watched history (0)</span></button>
+<button class="cr cr-primary" type="button" onclick="tog('wh')" aria-expanded="false" aria-controls="wh-panel"><span class="chev" aria-hidden="true">▶</span><span id="wh-lbl">📖 What you've watched (0)</span></button>
 <div id="wh-panel" class="panel" style="display:none;margin-top:0.75rem;"></div>
 <button class="cr" type="button" onclick="tog('ar')" aria-expanded="false" aria-controls="ar-panel"><span class="chev" aria-hidden="true">▶</span><span id="ar-lbl">Archive (0)</span></button>
 <div id="ar-panel" class="panel" style="display:none;margin-top:0.75rem;"></div>
@@ -377,6 +385,23 @@ function isCaughtUp(g){
   // season that never aired — those are saved in localStorage and outlive this fix.
   return g.season>lastSeason||(g.season===lastSeason&&g.ep>=counts[lastSeason]);
 }
+// Caught up is NOT the same as over. Conflating them is how we ended up offering to
+// "Mark finished" Saturday Night Live — only TMDB's own status knows a show has stopped.
+function hasEnded(g){
+  const m=SHOW_META[g.id];
+  return !!m&&(m.status==='Ended'||m.status==='Canceled');
+}
+// Caught up, but the show is still running — more is coming, it just hasn't aired.
+// Unknown status counts as still-running: telling her to wait is recoverable, telling her
+// a show is finished when it isn't loses it off her list.
+function isWaiting(g){ return isCaughtUp(g)&&!hasEnded(g); }
+// When the next episode is due, if TMDB has dated it.
+function nextAirEl(g){
+  const m=SHOW_META[g.id];
+  if(!m||!m.nextAir||!m.nextAir.airDate) return '';
+  if(m.nextAir.airDate<=todayStr()) return '';   // already aired; not "upcoming"
+  return `<span class="next-pill">📅 S${m.nextAir.season}·E${m.nextAir.ep} ${fmtDateShort(m.nextAir.airDate)}</span>`;
+}
 function markWatched(id){
   const g=liveShows().find(x=>x.id===id);
   if(!g||isCaughtUp(g)) return;
@@ -492,9 +517,9 @@ let POSTERS={};
 // Show id -> {seasonNumber: episodeCount}, so "watched next" knows when to roll
 // over into the next season instead of incrementing the episode number forever.
 let EPISODE_COUNTS={};
-// Newly-aired seasons for shows she's watching, from the same job. Held here (rather
-// than passed straight to the banner) so re-renders can re-check it against progress.
-let RELEASES=[];
+// Show id -> {status, lastAired, nextAir} from TMDB. Distinguishes a show that has
+// actually ENDED from one she's merely caught up on.
+let SHOW_META={};
 
 // ─── Real viewing-history stats, pulled from TV Time's own cached stats +
 // historical timeframe counters (not derived/guessed) ──────────────────────
@@ -625,13 +650,16 @@ function queuedEl(g){
 function nowC(g){
   const hasOverride=!!overrides[g.id];
   const caught=isCaughtUp(g);
-  // Once she's out of episodes, "I watched this" has nothing to advance to — offer the
-  // move she'd actually want (retire it to the archive) instead of a dead button.
-  // Both variants share one fkey: the button swaps label when a show becomes caught up,
-  // and focus should stay put across that swap rather than jump to another card.
-  const primary=caught
-    ? `<button type="button" class="action-btn primary" data-fkey="act-${g.id}" onclick="markFinished(${g.id})">✓ Mark finished</button>`
-    : `<button type="button" class="action-btn primary" data-fkey="act-${g.id}" onclick="markWatched(${g.id})">✓ I watched this, bitch!</button>`;
+  const waiting=isWaiting(g);
+  // Three states, not two. "Caught up" and "over" are different things: offering to
+  // Mark finished on a show that's still running (Saturday Night Live!) is nonsense.
+  // Both variants share one fkey so focus survives the label swap when a show flips
+  // from watchable to caught-up mid-binge.
+  const primary=!caught
+    ? `<button type="button" class="action-btn primary" data-fkey="act-${g.id}" onclick="markWatched(${g.id})">✓ I watched this, bitch!</button>`
+    : waiting
+      ? `<button type="button" class="action-btn" data-fkey="act-${g.id}" onclick="markFinished(${g.id})">Stop following</button>`
+      : `<button type="button" class="action-btn primary" data-fkey="act-${g.id}" onclick="markFinished(${g.id})">✓ Mark finished</button>`;
   return `<div class="card ${g.dormant?'dormant':'now'}">
     ${posterEl(g)}
     <div class="card-content">
@@ -639,7 +667,8 @@ function nowC(g){
       <div class="row2">
         ${epsPill(g)}
         ${startEl(g)}
-        ${caught?'<span class="caught-pill">✓ all caught up</span>':''}
+        ${caught?(waiting?'<span class="waiting-pill">⏳ caught up</span>':'<span class="caught-pill">✓ series finished</span>'):''}
+        ${nextAirEl(g)}
         ${g.dormant?'<span class="dormant-pill">💤 on hold</span>':lastWatchedEl(g)}
       </div>
       <div class="card-actions">
@@ -728,16 +757,21 @@ function renderCaughtUp(list){
 
 function renderHistoryPanel(){
   const history=[...loadHistory()].sort((a,b)=>new Date(b.at)-new Date(a.at));
-  document.getElementById('wh-lbl').textContent=`Watched history (${history.length})`;
+  document.getElementById('wh-lbl').textContent=`📖 What you've watched (${history.length})`;
   if(!open.wh) return;
   const el=document.getElementById('wh-panel');
-  if(!history.length){ el.innerHTML='<div class="empty">No manual updates yet — use "I watched this", "Start watching", or add a show.</div>'; return; }
+  if(!history.length){ el.innerHTML='<div class="empty">Nothing logged yet — every time you hit “I watched this”, it shows up here with the date, newest first.</div>'; return; }
   const actionLabel={watched:h=>`watched S${h.season}·E${h.ep}`, started:()=>'started watching', edited:h=>`set to S${h.season}·E${h.ep}`, finished:()=>'marked finished'};
+  // Group by day so it reads as a diary rather than an undifferentiated list.
+  let lastDay=null;
   el.innerHTML=history.map(h=>{
     const d=new Date(h.at);
-    const when=`${M[d.getMonth()]} ${d.getDate()}, ${d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})}`;
+    const day=`${M[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+    const dayHeader=day!==lastDay?`<div class="hist-day">${day===`${M[NOW.getMonth()]} ${NOW.getDate()}, ${NOW.getFullYear()}`?'Today':day}</div>`:'';
+    lastDay=day;
+    const when=d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
     const label=(actionLabel[h.action]||(()=>h.action))(h);
-    return `<div class="hist-row"><span class="hist-time">${when}</span><span class="hist-title">${esc(h.title)}</span><span class="hist-action">${esc(label)}</span></div>`;
+    return `${dayHeader}<div class="hist-row"><span class="hist-time">${when}</span><span class="hist-title">${esc(h.title)}</span><span class="hist-action">${esc(label)}</span></div>`;
   }).join('');
 }
 
@@ -940,32 +974,55 @@ function renderAll(){
   renderNewReleases();
 }
 
-// ─── New-season banner (populated by the GitHub Actions season-check job) ──
-// Keyed by "id:season" (not just id) so dismissing this season's alert doesn't
-// silently swallow a future season's alert for the same show.
-function releaseKey(r){ return `${r.id}:${r.season}`; }
+// ─── "New stuff to watch" banner ───────────────────────
+// Computed here rather than by the Actions job. The job used to decide this by diffing
+// TMDB against shows.json — but shows.json is a frozen export, so its answer was stale
+// the moment she watched anything. Here we can compare against her live progress, which
+// catches new *episodes* mid-season too, not just whole new seasons.
+//
+// Keyed by "id:season:ep" so dismissing tonight's alert doesn't swallow next week's.
+function releaseKey(r){ return `${r.id}:${r.season}:${r.ep}`; }
 function dismissReleases(keys){
   progress.dismissed=[...new Set([...progress.dismissed,...keys])];
   saveProgress();
   document.getElementById('new-releases').style.display='none';
 }
-function renderNewReleases(){
+// Anything TMDB has aired that she hasn't reached yet.
+function unwatchedReleases(){
   const dismissed=loadDismissed();
-  const shows=liveShows();
-  const fresh=RELEASES.filter(r=>{
-    if(dismissed.includes(releaseKey(r))) return false;
-    // She's already reached (or passed) the announced season — the banner has served
-    // its purpose, so stop nagging without making her dismiss it by hand.
-    const g=shows.find(x=>x.id===r.id);
-    return !(g&&g.season!=null&&g.season>=r.season);
-  });
+  const out=[];
+  for(const g of liveShows()){
+    if(g.s!=='watching') continue;
+    const m=SHOW_META[g.id];
+    if(!m||!m.lastAired||g.season==null||g.ep==null) continue;
+    const {season,ep,airDate}=m.lastAired;
+    if(season==null||ep==null) continue;
+    // Is the most recently aired episode ahead of where she is?
+    const ahead=season>g.season||(season===g.season&&ep>g.ep);
+    if(!ahead) continue;
+    const r={id:g.id,title:g.t,season,ep,airDate,newSeason:season>g.season};
+    if(!dismissed.includes(releaseKey(r))) out.push(r);
+  }
+  // Newest first — if she's behind on several, the freshest is the interesting one.
+  return out.sort((a,b)=>String(b.airDate||'').localeCompare(String(a.airDate||'')));
+}
+function renderNewReleases(){
+  const fresh=unwatchedReleases();
   const el=document.getElementById('new-releases');
   if(!fresh.length){ el.style.display='none'; return; }
   el.style.display='flex';
   el.className='nr-banner';
+  const seasons=fresh.filter(r=>r.newSeason).length;
+  const title=seasons===fresh.length
+    ? `🎉 New season${fresh.length>1?'s':''} out`
+    : seasons
+      ? '🎉 New episodes & seasons out'
+      : `🎉 New episode${fresh.length>1?'s':''} out`;
   el.innerHTML=`<div class="nr-banner-body">
-    <div class="nr-banner-title">🎉 New season${fresh.length>1?'s':''} out</div>
-    <div class="nr-banner-list">${fresh.map(r=>`${esc(r.title)} — Season ${r.season}${r.airDate?` (${fmtDateShort(r.airDate)})`:''}`).join('<br>')}</div>
+    <div class="nr-banner-title">${title}</div>
+    <div class="nr-banner-list">${fresh.slice(0,8).map(r=>
+      `${esc(r.title)} — ${r.newSeason?`Season ${r.season}`:`S${r.season}·E${r.ep}`}${r.airDate?` (${fmtDateShort(r.airDate)})`:''}`
+    ).join('<br>')}${fresh.length>8?`<br><em>+${fresh.length-8} more</em>`:''}</div>
   </div>
   <button type="button" class="nr-dismiss" onclick='dismissReleases(${JSON.stringify(fresh.map(releaseKey))})'>Got it</button>`;
 }
@@ -1058,14 +1115,14 @@ window.addEventListener('pagehide',flushSync);
 initTheme();
 Promise.all([
   fetch('shows.json').then(r=>r.json()),
-  fetch('new-releases.json').then(r=>r.ok?r.json():[]).catch(()=>[]),
   fetch('posters.json').then(r=>r.ok?r.json():{}).catch(()=>({})),
-  fetch('episode-counts.json').then(r=>r.ok?r.json():{}).catch(()=>({}))
-]).then(([showsData,releases,postersData,episodeCountsData])=>{
+  fetch('episode-counts.json').then(r=>r.ok?r.json():{}).catch(()=>({})),
+  fetch('show-meta.json').then(r=>r.ok?r.json():{}).catch(()=>({}))
+]).then(([showsData,postersData,episodeCountsData,metaData])=>{
   SH=showsData;
   POSTERS=postersData;
   EPISODE_COUNTS=episodeCountsData;
-  RELEASES=releases||[];
+  SHOW_META=metaData;
   render();
   // Pull on load by pushing: the Worker merges and hands back the truth. This is what
   // restores her progress on a browser whose storage was cleared, and what picks up
