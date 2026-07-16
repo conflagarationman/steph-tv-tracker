@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-16T18:23:20.097Z",
+  "updatedAt": "2026-07-16T18:23:24.118Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -102,11 +102,11 @@
     },
     "301": {
       "season": 2,
-      "ep": 5,
-      "epsWatched": 16,
-      "lastWatched": "2026-07-15",
+      "ep": 6,
+      "epsWatched": 17,
+      "lastWatched": "2026-07-16",
       "dormant": false,
-      "updatedAt": "2026-07-16T14:23:16.350Z"
+      "updatedAt": "2026-07-16T18:23:22.341Z"
     },
     "321": {
       "ep": 3,
@@ -118,6 +118,14 @@
   },
   "customShows": {},
   "history": [
+    {
+      "id": 301,
+      "title": "Avatar: The Last Airbender (2024)",
+      "action": "watched",
+      "season": 2,
+      "ep": 6,
+      "at": "2026-07-16T18:23:22.340Z"
+    },
     {
       "id": 3,
       "title": "Bluey (2018)",
