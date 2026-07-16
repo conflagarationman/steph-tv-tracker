@@ -1,10 +1,119 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-16T14:23:03.996Z",
+  "updatedAt": "2026-07-16T14:23:16.864Z",
   "overrides": {
     "3": {
       "__deleted": true,
       "updatedAt": "2026-07-16T14:21:06.271Z"
+    },
+    "8": {
+      "ep": 7,
+      "epsWatched": 27,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "60": {
+      "ep": 2,
+      "epsWatched": 10,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "62": {
+      "season": 4,
+      "ep": 1,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "86": {
+      "ep": 1,
+      "epsWatched": 5,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "season": 2,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "114": {
+      "ep": 4,
+      "epsWatched": 11,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "137": {
+      "ep": 7,
+      "epsWatched": 7,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "162": {
+      "ep": 1,
+      "epsWatched": 7,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "season": 2,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "165": {
+      "ep": 1,
+      "epsWatched": 17,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "season": 3,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "202": {
+      "season": 4,
+      "ep": 1,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "203": {
+      "season": 3,
+      "ep": 1,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "248": {
+      "season": 2,
+      "ep": 1,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "273": {
+      "season": 7,
+      "ep": 1,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "287": {
+      "ep": 8,
+      "epsWatched": 8,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "301": {
+      "season": 2,
+      "ep": 5,
+      "epsWatched": 16,
+      "lastWatched": "2026-07-15",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "321": {
+      "ep": 3,
+      "epsWatched": 12,
+      "lastWatched": "2026-07-14",
+      "dormant": false,
+      "updatedAt": "2026-07-16T14:23:16.350Z"
     }
   },
   "customShows": {},
@@ -16,6 +125,70 @@
       "season": 3,
       "ep": 37,
       "at": "2026-07-16T14:20:34.204Z"
+    },
+    {
+      "id": 301,
+      "title": "Avatar: The Last Airbender (2024)",
+      "action": "watched",
+      "season": 2,
+      "ep": 5,
+      "at": "2026-07-16T03:23:39.478Z"
+    },
+    {
+      "id": 301,
+      "title": "Avatar: The Last Airbender (2024)",
+      "action": "watched",
+      "season": 2,
+      "ep": 4,
+      "at": "2026-07-16T02:29:13.009Z"
+    },
+    {
+      "id": 301,
+      "title": "Avatar: The Last Airbender (2024)",
+      "action": "edited",
+      "season": 2,
+      "ep": 3,
+      "at": "2026-07-16T02:29:09.602Z"
+    },
+    {
+      "id": 301,
+      "title": "Avatar: The Last Airbender (2024)",
+      "action": "watched",
+      "season": 2,
+      "ep": 6,
+      "at": "2026-07-16T02:28:58.912Z"
+    },
+    {
+      "id": 301,
+      "title": "Avatar: The Last Airbender (2024)",
+      "action": "watched",
+      "season": 2,
+      "ep": 5,
+      "at": "2026-07-16T02:28:57.810Z"
+    },
+    {
+      "id": 301,
+      "title": "Avatar: The Last Airbender (2024)",
+      "action": "watched",
+      "season": 2,
+      "ep": 4,
+      "at": "2026-07-16T02:28:54.962Z"
+    },
+    {
+      "id": 301,
+      "title": "Avatar: The Last Airbender (2024)",
+      "action": "watched",
+      "season": 2,
+      "ep": 3,
+      "at": "2026-07-15T17:26:49.872Z"
+    },
+    {
+      "id": 301,
+      "title": "Avatar: The Last Airbender (2024)",
+      "action": "watched",
+      "season": 2,
+      "ep": 2,
+      "at": "2026-07-15T17:26:43.128Z"
     }
   ],
   "dismissed": [
