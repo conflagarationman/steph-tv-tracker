@@ -79,6 +79,21 @@ async function findTmdbId(title) {
   return { tmdbId: null };
 }
 
+// Where she can actually stream it, US region, from TMDB's JustWatch data.
+//
+// Only `flatrate` (included with a subscription) and `ads` (free with ads) are useful
+// here: "rent for $3.99" isn't an answer to "what can I put on tonight". `link` goes to
+// TMDB's own watch page, which stays correct even as providers change.
+function watchProviders(details) {
+  const region = details['watch/providers'] && details['watch/providers'].results && details['watch/providers'].results.US;
+  if (!region) return null;
+  const names = (list) => (list || []).map((p) => p.provider_name).filter(Boolean);
+  // display_priority ordering from TMDB is already sensible; dedupe while preserving it.
+  const on = [...new Set([...names(region.flatrate), ...names(region.ads)])];
+  if (!on.length) return region.link ? { on: [], link: region.link } : null;
+  return { on, link: region.link || null };
+}
+
 const readJson = async (path, fallback) => {
   try {
     return JSON.parse(await fs.readFile(path, 'utf8'));
@@ -131,7 +146,9 @@ async function main() {
     }
 
     try {
-      const details = await tmdbGet(`/tv/${entry.tmdbId}`);
+      // append_to_response bundles watch providers into the same request, so knowing
+      // where to stream every show costs zero extra API calls.
+      const details = await tmdbGet(`/tv/${entry.tmdbId}`, { append_to_response: 'watch/providers' });
       posters[g.id] = details.poster_path || null;
       matched++;
 
@@ -146,7 +163,8 @@ async function main() {
         // "Returning Series" | "Ended" | "Canceled" | "In Production" | "Planned"
         status: details.status || null,
         lastAired: ep(details.last_episode_to_air),
-        nextAir: ep(details.next_episode_to_air)
+        nextAir: ep(details.next_episode_to_air),
+        watch: watchProviders(details)
       };
     } catch (e) {
       console.error(`Details lookup failed for "${g.t}" (tmdb ${entry.tmdbId}): ${e.message}`);
@@ -164,9 +182,15 @@ async function main() {
   const ended = Object.values(meta).filter((m) => m.status === 'Ended' || m.status === 'Canceled').length;
   const returning = Object.values(meta).filter((m) => m.status === 'Returning Series').length;
   const upcoming = Object.values(meta).filter((m) => m.nextAir).length;
+  const streamable = Object.values(meta).filter((m) => m.watch && m.watch.on.length).length;
+  const tally = {};
+  for (const m of Object.values(meta)) for (const p of (m.watch && m.watch.on) || []) tally[p] = (tally[p] || 0) + 1;
+  const top = Object.entries(tally).sort((a, b) => b[1] - a[1]).slice(0, 8);
 
   console.log(`Matched ${matched}/${shows.length} shows (${searched} searched, ${retried} retried after an earlier failure).`);
   console.log(`Status: ${ended} ended/canceled, ${returning} returning, ${upcoming} with a next episode dated.`);
+  console.log(`Streaming: ${streamable} shows available on a subscription she may have.`);
+  if (top.length) console.log(`  top services: ${top.map(([n, c]) => `${n} (${c})`).join(', ')}`);
   if (stillUnmatched.length) {
     console.log(`Unmatched (${stillUnmatched.length}):`);
     for (const t of stillUnmatched) console.log(`  - ${t}`);

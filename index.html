@@ -11,8 +11,6 @@
   --border:#2e3245; --border2:#3d4258;
   --text:#ffffff; --muted:#9a9fb5; --dim:#7d83a0;
   --yellow:#ffc72c; --green:#4ade80; --red:#f87171; --blue:#5cc4ff; --purple:#c49bff;
-  --prime-bg:#00a8e120; --prime-fg:#5cc4ff;
-  --disney-bg:#113ccf20; --disney-fg:#6c9bff;
   --red-bg:#f8717120; --purple-bg:#c49bff20; --green-bg:#4ade8020;
   --cat-queue:#3987e5; --cat-active:#c98500; --cat-done:#008300; --cat-onhold:#9085e9; --cat-dropped:#e66767;
   --shadow: rgba(0,0,0,0.35);
@@ -25,8 +23,6 @@
   --border:#e1e4ec; --border2:#cdd1e0;
   --text:#14151c; --muted:#3f435c; --dim:#5a5e82;
   --yellow:#b45309; --green:#15803d; --red:#dc2626; --blue:#0369a1; --purple:#7c3aed;
-  --prime-bg:#0284c722; --prime-fg:#0284c7;
-  --disney-bg:#1d4ed822; --disney-fg:#1d4ed8;
   --red-bg:#dc262622; --purple-bg:#7c3aed22; --green-bg:#15803d22;
   --cat-queue:#2a78d6; --cat-active:#eda100; --cat-done:#008300; --cat-onhold:#4a3aa7; --cat-dropped:#e34948;
   --shadow: rgba(20,24,40,0.10);
@@ -112,8 +108,26 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .season-ep{font-family:'Poppins',sans-serif;font-size:0.7rem;font-weight:800;color:var(--chip-ink);background:var(--badge-yellow);padding:2px 8px;border-radius:6px;white-space:nowrap;flex-shrink:0;}
 .net{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap;display:inline-flex;align-items:center;gap:4px;}
 .net::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;}
-.p-prime{background:var(--prime-bg);color:var(--prime-fg);}
-.p-disneyplus{background:var(--disney-bg);color:var(--disney-fg);}
+.watch-link{display:inline-flex;gap:4px;text-decoration:none;flex-shrink:0;}
+.watch-link:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;border-radius:99px;}
+.watch-link:hover .net{filter:brightness(1.15);}
+.sv-netflix{background:#e5091420;color:#ff5a63;}
+.sv-disney{background:#113ccf20;color:#6c9bff;}
+.sv-prime{background:#00a8e120;color:#5cc4ff;}
+.sv-hulu{background:#1ce78320;color:#3ddc91;}
+.sv-max{background:#8a5cf620;color:#b18cff;}
+.sv-apple{background:#88888820;color:#b9bed4;}
+.sv-paramount{background:#0064ff20;color:#5b9bff;}
+.sv-peacock{background:#ffb80020;color:#ffc94d;}
+.sv-other{background:var(--surface2);color:var(--muted);}
+:root[data-theme="light"] .sv-netflix{background:#e5091418;color:#b1060f;}
+:root[data-theme="light"] .sv-disney{background:#113ccf18;color:#1d4ed8;}
+:root[data-theme="light"] .sv-prime{background:#00a8e118;color:#0369a1;}
+:root[data-theme="light"] .sv-hulu{background:#1ce78320;color:#0f7a43;}
+:root[data-theme="light"] .sv-max{background:#8a5cf618;color:#6d28d9;}
+:root[data-theme="light"] .sv-apple{background:#88888818;color:#44485c;}
+:root[data-theme="light"] .sv-paramount{background:#0064ff18;color:#0047b3;}
+:root[data-theme="light"] .sv-peacock{background:#ffb80028;color:#8a5a00;}
 
 .card-actions{display:flex;gap:6px;margin-top:2px;}
 .action-btn{font-size:0.66rem;font-weight:700;padding:4px 9px;border-radius:99px;border:1px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;font-family:inherit;transition:border-color 0.15s,color 0.15s,background 0.15s;white-space:nowrap;}
@@ -587,10 +601,44 @@ function posterColor(t){
   const palette=document.documentElement.getAttribute('data-theme')==='light'?PALETTE_LIGHT:PALETTE_DARK;
   return palette[h%palette.length];
 }
-const PL={prime:'Prime Video',disneyplus:'Disney+'};
-function pb(g){
-  if(!g.p) return '';
-  return `<span class="net p-${g.p}">${PL[g.p]||g.p}</span>`;
+// Where to stream it. Previously two shows had this hand-typed into shows.json (Fallout,
+// Obi-Wan) which is why it looked like a feature that only worked sometimes — it came
+// from TMDB's JustWatch data for all 339 shows now.
+//
+// Brand colours for the services she actually uses; everything else gets a neutral pill
+// rather than a wrong colour. Keys are lowercased provider names as TMDB spells them.
+const SERVICE_CLASS={
+  'netflix':'sv-netflix',
+  'disney plus':'sv-disney', 'disney+':'sv-disney',
+  'amazon prime video':'sv-prime', 'prime video':'sv-prime', 'amazon video':'sv-prime',
+  'hulu':'sv-hulu',
+  'max':'sv-max', 'hbo max':'sv-max',
+  'apple tv+':'sv-apple', 'apple tv plus':'sv-apple',
+  'paramount plus':'sv-paramount', 'paramount+':'sv-paramount',
+  'peacock':'sv-peacock', 'peacock premium':'sv-peacock'
+};
+// TMDB spells these out; the long forms crowd a narrow card on a phone.
+const SERVICE_SHORT={
+  'amazon prime video':'Prime Video', 'amazon video':'Prime Video',
+  'disney plus':'Disney+', 'paramount plus':'Paramount+',
+  'peacock premium':'Peacock', 'apple tv plus':'Apple TV+'
+};
+function watchEl(g){
+  const w=SHOW_META[g.id]&&SHOW_META[g.id].watch;
+  if(!w||!w.on||!w.on.length) return '';
+  // Cap the row so it can't wrap on a phone. At exactly three, show all three — a "+1"
+  // pill is the same width as the name it's hiding, so collapsing there buys nothing.
+  const shown=w.on.length<=3?w.on:w.on.slice(0,2);
+  const extra=w.on.length-shown.length;
+  const pills=shown.map(name=>{
+    const key=name.toLowerCase();
+    return `<span class="net ${SERVICE_CLASS[key]||'sv-other'}">${esc(SERVICE_SHORT[key]||name)}</span>`;
+  }).join('');
+  const more=extra?`<span class="net sv-other">+${extra}</span>`:'';
+  // The whole group links to TMDB's watch page, which stays right as deals move around.
+  return w.link
+    ? `<a class="watch-link" href="${esc(w.link)}" target="_blank" rel="noopener noreferrer" title="Where to watch ${esc(g.t)}">${pills}${more}</a>`
+    : pills+more;
 }
 function posterEl(g){
   const color=posterColor(g.t);
@@ -663,7 +711,7 @@ function nowC(g){
   return `<div class="card ${g.dormant?'dormant':'now'}">
     ${posterEl(g)}
     <div class="card-content">
-      <div class="row1"><span class="gtitle">${esc(g.t)}</span>${seasonEpEl(g)}${pb(g)}</div>
+      <div class="row1"><span class="gtitle">${esc(g.t)}</span>${seasonEpEl(g)}${watchEl(g)}</div>
       <div class="row2">
         ${epsPill(g)}
         ${startEl(g)}
@@ -685,10 +733,11 @@ function qC(g,n){
   return `<div class="card">
     ${posterEl(g)}
     <div class="card-content">
-      <div class="row1">${n!=null?`<span class="qnum">${n}</span>`:''}<span class="gtitle">${esc(g.t)}</span></div>
+      <div class="row1">${n!=null?`<span class="qnum">${n}</span>`:''}<span class="gtitle">${esc(g.t)}</span>${watchEl(g)}</div>
       <div class="row2">
         ${queuedEl(g)}
         ${n==null?'<span class="dormant-pill">up next</span>':''}
+        ${nextAirEl(g)}
       </div>
       <div class="card-actions">
         <button type="button" class="action-btn primary" onclick="startWatching(${g.id})">▶ Start watching</button>
