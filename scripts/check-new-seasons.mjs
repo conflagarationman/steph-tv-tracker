@@ -47,14 +47,32 @@ function parseTitleYear(title) {
 
 const normalize = (s) =>
   (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+const tokens = (s) => new Set(normalize(s).split(' ').filter(Boolean));
 
-// Guards against silently accepting whatever TMDB ranked first: "Ink & Paint" matched an
-// unrelated id that had no poster and no seasons. A result has to actually look like the
-// thing we searched for.
-function plausible(result, query) {
+// Guards against silently accepting whatever TMDB ranked first: "Ink & Paint" matched
+// "The Ink and Paint Club", an unrelated 1997 show with no poster and no seasons.
+//
+// The rule is asymmetric on purpose. TMDB's name may be a *simplification* of ours
+// ("SPY x FAMILY" -> "SPY×FAMILY" normalises to "spy family", losing a token) — that's
+// fine. But if TMDB's name carries extra meaningful words ours doesn't ("...and...club"),
+// it's a different show. Prefix matching alone got SPY x FAMILY wrong.
+function nameMatches(name, query) {
+  const c = normalize(name);
   const q = normalize(query);
-  const candidates = [result.name, result.original_name].map(normalize).filter(Boolean);
-  return candidates.some((c) => c === q || c.startsWith(q) || q.startsWith(c));
+  if (!c || !q) return false;
+  if (c === q) return true;
+  // q.startsWith(c) only — TMDB dropping a qualifier we carry is fine ("Ghosts (US)" ->
+  // "Ghosts"). The reverse, c.startsWith(q), is what let "Dark" match "Dark Matter" and
+  // "Citadel" match "Citadel: Honey Bunny": extra words appended means a different show.
+  if (q.startsWith(c)) return true;
+  const ct = tokens(c);
+  const qt = tokens(q);
+  // Every word in TMDB's title also appears in ours — catches punctuation-only
+  // differences like "SPY x FAMILY" vs "SPY×FAMILY" that prefix matching misses.
+  return ct.size > 0 && [...ct].every((t) => qt.has(t));
+}
+function plausible(result, query) {
+  return [result.name, result.original_name].filter(Boolean).some((n) => nameMatches(n, query));
 }
 
 async function findTmdbId(title) {
@@ -112,6 +130,7 @@ async function main() {
   let matched = 0;
   let searched = 0;
   let retried = 0;
+  let revalidated = 0;
   let stillUnmatched = [];
 
   for (const g of shows) {
@@ -149,6 +168,35 @@ async function main() {
       // append_to_response bundles watch providers into the same request, so knowing
       // where to stream every show costs zero extra API calls.
       const details = await tmdbGet(`/tv/${entry.tmdbId}`, { append_to_response: 'watch/providers' });
+
+      // Matches cached before the plausibility check existed were never verified. Don't
+      // re-check all of them — a false reject would break a show that works today, and
+      // the check can't be perfect. Only question a match that yielded nothing usable:
+      // no poster and no seasons means it's a stub or the wrong show, so there's nothing
+      // to lose by discarding it.
+      const usable = !!details.poster_path || (details.seasons || []).some((s) => s.season_number > 0 && s.episode_count);
+      if (!usable && !entry.matchedName && !plausible(details, parseTitleYear(g.t).query)) {
+        console.error(`Cached match for "${g.t}" looks wrong (tmdb ${entry.tmdbId} = "${details.name}", no poster/seasons) — re-searching.`);
+        const found = await findTmdbId(g.t);
+        entry = found.tmdbId
+          ? { tmdbId: found.tmdbId, title: g.t, matchedName: found.matchedName }
+          : { tmdbId: null, title: g.t, reason: 'not-found', rejected: found.rejected };
+        map[g.id] = entry;
+        revalidated++;
+        await sleep(250);
+        if (!entry.tmdbId) {
+          posters[g.id] = null;
+          delete episodeCounts[g.id];
+          delete meta[g.id];
+          stillUnmatched.push(`${g.t}${entry.rejected ? ` (rejected: ${entry.rejected.join(', ')})` : ''}`);
+          continue;
+        }
+        // The re-search found something different; fall through and fetch it next run.
+        continue;
+      }
+      // Record what we matched so future runs know this was verified.
+      if (!entry.matchedName && details.name) { entry.matchedName = details.name; map[g.id] = entry; }
+
       posters[g.id] = details.poster_path || null;
       matched++;
 
@@ -187,7 +235,7 @@ async function main() {
   for (const m of Object.values(meta)) for (const p of (m.watch && m.watch.on) || []) tally[p] = (tally[p] || 0) + 1;
   const top = Object.entries(tally).sort((a, b) => b[1] - a[1]).slice(0, 8);
 
-  console.log(`Matched ${matched}/${shows.length} shows (${searched} searched, ${retried} retried after an earlier failure).`);
+  console.log(`Matched ${matched}/${shows.length} shows (${searched} searched, ${retried} retried after an earlier failure, ${revalidated} re-checked for a bad cached match).`);
   console.log(`Status: ${ended} ended/canceled, ${returning} returning, ${upcoming} with a next episode dated.`);
   console.log(`Streaming: ${streamable} shows available on a subscription she may have.`);
   if (top.length) console.log(`  top services: ${top.map(([n, c]) => `${n} (${c})`).join(', ')}`);
