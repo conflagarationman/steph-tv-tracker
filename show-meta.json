@@ -1,0 +1,5429 @@
+{
+  "1": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2020-02-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/81747-tell-me-a-story/watch?locale=US"
+    }
+  },
+  "2": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 6,
+      "airDate": "2022-10-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/87107-los-espookys/watch?locale=US"
+    }
+  },
+  "3": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 49,
+      "airDate": "2024-04-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "fuboTV",
+        "YouTube TV",
+        "DisneyNOW"
+      ],
+      "link": "https://www.themoviedb.org/tv/82728-bluey/watch?locale=US"
+    }
+  },
+  "4": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 13,
+      "airDate": "2023-08-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max",
+        "Xumo Play"
+      ],
+      "link": "https://www.themoviedb.org/tv/89572-nancy-drew/watch?locale=US"
+    }
+  },
+  "5": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 8,
+      "airDate": "2018-05-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/1420-new-girl/watch?locale=US"
+    }
+  },
+  "6": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 13,
+      "airDate": "2022-10-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/88118-blood-treasure/watch?locale=US"
+    }
+  },
+  "7": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 20,
+      "airDate": "2021-05-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/111815-inside-pixar/watch?locale=US"
+    }
+  },
+  "8": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2026-02-19"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/129552-the-night-agent/watch?locale=US"
+    }
+  },
+  "9": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 10,
+      "airDate": "2019-03-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/60839-broad-city/watch?locale=US"
+    }
+  },
+  "10": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 8,
+      "airDate": "2024-06-30"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Hulu",
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel",
+        "YouTube TV",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/85937/watch?locale=US"
+    }
+  },
+  "11": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 20,
+      "airDate": "2020-03-20"
+    },
+    "nextAir": null,
+    "watch": null
+  },
+  "12": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 13,
+      "airDate": "2013-01-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/1705-fringe/watch?locale=US"
+    }
+  },
+  "13": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 13,
+      "airDate": "2018-06-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/62126-marvel-s-luke-cage/watch?locale=US"
+    }
+  },
+  "14": {
+    "status": "Ended",
+    "lastAired": null,
+    "nextAir": null,
+    "watch": null
+  },
+  "15": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2024-03-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/52814-halo/watch?locale=US"
+    }
+  },
+  "16": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 9,
+      "ep": 13,
+      "airDate": "2010-03-17"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/4556-scrubs/watch?locale=US"
+    }
+  },
+  "17": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 4,
+      "ep": 7,
+      "airDate": "2020-06-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/69017-one-day-at-a-time/watch?locale=US"
+    }
+  },
+  "18": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2024-12-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/91363-what-if/watch?locale=US"
+    }
+  },
+  "19": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2022-10-26"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/203085-star-wars-tales-of-the-jedi/watch?locale=US"
+    }
+  },
+  "20": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2023-05-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/73107-barry/watch?locale=US"
+    }
+  },
+  "21": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 11,
+      "ep": 24,
+      "airDate": "2022-11-20"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Philo",
+        "AMC+ Roku Premium Channel",
+        "YouTube TV",
+        "Netflix Standard with Ads",
+        "Pluto TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/1402-the-walking-dead/watch?locale=US"
+    }
+  },
+  "22": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 27,
+      "airDate": "2012-01-06"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/3498-wizards-of-waverly-place/watch?locale=US"
+    }
+  },
+  "23": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 12,
+      "airDate": "2015-02-24"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/8592-parks-and-recreation/watch?locale=US"
+    }
+  },
+  "24": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2023-09-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/106454-the-afterparty/watch?locale=US"
+    }
+  },
+  "25": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 23,
+      "airDate": "2000-05-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "YouTube TV",
+        "Freeform",
+        "Spectrum On Demand"
+      ],
+      "link": "https://www.themoviedb.org/tv/1777-boy-meets-world/watch?locale=US"
+    }
+  },
+  "26": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 6,
+      "airDate": "2022-04-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix"
+      ],
+      "link": "https://www.themoviedb.org/tv/60574-peaky-blinders/watch?locale=US"
+    }
+  },
+  "27": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2021-11-24"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/93825-saved-by-the-bell/watch?locale=US"
+    }
+  },
+  "28": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2025-11-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Wonder Project Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/243881-house-of-david/watch?locale=US"
+    }
+  },
+  "29": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2019-02-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "YouTube Premium"
+      ],
+      "link": "https://www.themoviedb.org/tv/80483-weird-city/watch?locale=US"
+    }
+  },
+  "30": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2019-12-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/99082-ultimate-survival-wwii/watch?locale=US"
+    }
+  },
+  "31": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2020-04-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/90257-little-fires-everywhere/watch?locale=US"
+    }
+  },
+  "32": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 15,
+      "airDate": "2012-12-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Philo",
+        "Amazon Prime Video with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/7482-leverage/watch?locale=US"
+    }
+  },
+  "33": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2019-08-12"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/67195-legion/watch?locale=US"
+    }
+  },
+  "35": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 9,
+      "airDate": "2023-05-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/70796-the-marvelous-mrs-maisel/watch?locale=US"
+    }
+  },
+  "36": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 10,
+      "airDate": "2025-03-20"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/74440-harley-quinn/watch?locale=US"
+    }
+  },
+  "37": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2025-07-01"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/114471-ironheart/watch?locale=US"
+    }
+  },
+  "38": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 9,
+      "airDate": "2023-01-01"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/156902-kaleidoscope/watch?locale=US"
+    }
+  },
+  "39": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 5,
+      "airDate": "2021-05-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/64254-master-of-none/watch?locale=US"
+    }
+  },
+  "40": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2026-01-27"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/198178-wonder-man/watch?locale=US"
+    }
+  },
+  "41": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 12,
+      "airDate": "2023-05-11"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/75450-titans/watch?locale=US"
+    }
+  },
+  "43": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 13,
+      "airDate": "2014-12-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/33880-the-legend-of-korra/watch?locale=US"
+    }
+  },
+  "44": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2021-04-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/88396-the-falcon-and-the-winter-soldier/watch?locale=US"
+    }
+  },
+  "45": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2025-03-20"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/95396-severance/watch?locale=US"
+    }
+  },
+  "46": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2022-07-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/92782-ms-marvel/watch?locale=US"
+    }
+  },
+  "47": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 12,
+      "airDate": "2020-05-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/4194-star-wars-the-clone-wars/watch?locale=US"
+    }
+  },
+  "48": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2026-02-26"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/91239-bridgerton/watch?locale=US"
+    }
+  },
+  "49": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 3,
+      "airDate": "2025-07-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/226751-shiny-happy-people/watch?locale=US"
+    }
+  },
+  "50": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 13,
+      "airDate": "2015-06-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "Peacock Premium",
+        "Philo",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/18347-community/watch?locale=US"
+    }
+  },
+  "51": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 4,
+      "ep": 10,
+      "airDate": "2025-11-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/90282-the-morning-show/watch?locale=US"
+    }
+  },
+  "52": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 13,
+      "airDate": "2012-01-27"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "OnDemandKorea"
+      ],
+      "link": "https://www.themoviedb.org/tv/1404-chuck/watch?locale=US"
+    }
+  },
+  "53": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 10,
+      "airDate": "2021-07-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/71578-atypical/watch?locale=US"
+    }
+  },
+  "54": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 10,
+      "airDate": "2019-11-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Amazon Prime Video",
+        "Netflix Standard with Ads",
+        "Amazon Prime Video with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/62017-the-man-in-the-high-castle/watch?locale=US"
+    }
+  },
+  "55": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 5,
+      "airDate": "2024-01-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/122226-echo/watch?locale=US"
+    }
+  },
+  "56": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 11,
+      "ep": 18,
+      "airDate": "2020-04-08"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "Peacock Premium",
+        "Philo",
+        "YouTube TV",
+        "TBS",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/1421-modern-family/watch?locale=US"
+    }
+  },
+  "57": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 18,
+      "airDate": "2021-05-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/97180-selena-the-series/watch?locale=US"
+    }
+  },
+  "58": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 13,
+      "airDate": "2016-12-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/65292/watch?locale=US"
+    }
+  },
+  "59": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 8,
+      "ep": 10,
+      "airDate": "2020-01-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Pluto TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/1412-arrow/watch?locale=US"
+    }
+  },
+  "60": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2026-02-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/106379-fallout/watch?locale=US"
+    }
+  },
+  "61": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2022-06-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/92830-obi-wan-kenobi/watch?locale=US"
+    }
+  },
+  "62": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 4,
+      "ep": 10,
+      "airDate": "2025-03-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/94951-mythic-quest/watch?locale=US"
+    }
+  },
+  "63": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 5,
+      "ep": 10,
+      "airDate": "2025-10-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/107113-only-murders-in-the-building/watch?locale=US"
+    }
+  },
+  "64": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 8,
+      "ep": 24,
+      "airDate": "1995-05-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/4313-full-house/watch?locale=US"
+    }
+  },
+  "65": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 12,
+      "airDate": "2025-12-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/63926/watch?locale=US"
+    }
+  },
+  "66": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 10,
+      "airDate": "2023-02-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/78941/watch?locale=US"
+    }
+  },
+  "67": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 1,
+      "airDate": "2022-05-04"
+    },
+    "nextAir": null,
+    "watch": null
+  },
+  "68": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2025-10-30"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/71912-the-witcher/watch?locale=US"
+    }
+  },
+  "69": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 17,
+      "airDate": "2020-03-01"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "fuboTV",
+        "YouTube TV",
+        "DisneyNOW"
+      ],
+      "link": "https://www.themoviedb.org/tv/70047-rapunzel-s-tangled-adventure/watch?locale=US"
+    }
+  },
+  "70": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2026-04-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Philo",
+        "AMC Plus Apple TV Channel ",
+        "AMC+ Amazon Channel",
+        "AMC+ Roku Premium Channel",
+        "AMC+",
+        "YouTube TV",
+        "Spectrum On Demand",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/128904-dark-winds/watch?locale=US"
+    }
+  },
+  "71": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2020-11-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Philo",
+        "Starz Apple TV Channel",
+        "Starz Roku Premium Channel",
+        "Starz",
+        "Spectrum On Demand",
+        "Starz Amazon Channel",
+        "The Roku Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/86428-the-spanish-princess/watch?locale=US"
+    }
+  },
+  "72": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 3,
+      "airDate": "2021-11-27"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/128876-the-beatles-get-back/watch?locale=US"
+    }
+  },
+  "73": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2022-11-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/201874-blockbuster/watch?locale=US"
+    }
+  },
+  "74": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2019-12-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Tubi TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/67466-marvel-s-runaways/watch?locale=US"
+    }
+  },
+  "75": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2014-06-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "fuboTV",
+        "Philo",
+        "YouTube TV",
+        "Hallmark+ Amazon Channel",
+        "Hallmark+ Apple TV Channel",
+        "Hallmark TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/61870-signed-sealed-delivered/watch?locale=US"
+    }
+  },
+  "76": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 10,
+      "ep": 17,
+      "airDate": "2004-05-06"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "TBS",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/1668-friends/watch?locale=US"
+    }
+  },
+  "77": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2023-03-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/202213-history-of-the-world-part-ii/watch?locale=US"
+    }
+  },
+  "78": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 8,
+      "ep": 13,
+      "airDate": "2018-12-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/66558-voltron-legendary-defender/watch?locale=US"
+    }
+  },
+  "79": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 23,
+      "ep": 20,
+      "airDate": "2026-05-12"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Hulu",
+        "fuboTV",
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Philo",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "YouTube TV",
+        "Paramount+ Roku Premium Channel",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/4614-ncis/watch?locale=US"
+    }
+  },
+  "80": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2023-09-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/81356-sex-education/watch?locale=US"
+    }
+  },
+  "81": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2020-06-26"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/103465-into-the-unknown-making-frozen-ii/watch?locale=US"
+    }
+  },
+  "82": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2023-01-12"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Amazon Prime Video",
+        "Philo",
+        "Netflix Standard with Ads",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/79622-hunters/watch?locale=US"
+    }
+  },
+  "83": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 20,
+      "airDate": "2010-04-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/4626-ugly-betty/watch?locale=US"
+    }
+  },
+  "84": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 4,
+      "airDate": "2016-11-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/68799-gilmore-girls-a-year-in-the-life/watch?locale=US"
+    }
+  },
+  "85": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2025-09-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/119051-wednesday/watch?locale=US"
+    }
+  },
+  "86": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 4,
+      "airDate": "2024-09-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/253760-lego-star-wars-rebuild-the-galaxy/watch?locale=US"
+    }
+  },
+  "87": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 9,
+      "ep": 10,
+      "airDate": "2019-09-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Peacock Premium",
+        "Netflix Standard with Ads",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/37680-suits/watch?locale=US"
+    }
+  },
+  "88": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 11,
+      "airDate": "2002-12-20"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/1437-firefly/watch?locale=US"
+    }
+  },
+  "89": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2023-03-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/85720-shadow-and-bone/watch?locale=US"
+    }
+  },
+  "90": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2024-05-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/251091-star-wars-tales-of-the-empire/watch?locale=US"
+    }
+  },
+  "91": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 13,
+      "airDate": "2010-08-24"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/7777-better-off-ted/watch?locale=US"
+    }
+  },
+  "92": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2024-04-24"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/203178-not-dead-yet/watch?locale=US"
+    }
+  },
+  "93": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 8,
+      "airDate": "2015-11-08"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Peacock Premium",
+        "Britbox Apple TV Channel ",
+        "PBS",
+        "BritBox",
+        "PBS Masterpiece Amazon Channel",
+        "BritBox Amazon Channel",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus",
+        "WETA+"
+      ],
+      "link": "https://www.themoviedb.org/tv/33907-downton-abbey/watch?locale=US"
+    }
+  },
+  "94": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 13,
+      "airDate": "2024-06-26"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/99121-walker/watch?locale=US"
+    }
+  },
+  "95": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 13,
+      "airDate": "2021-04-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/68106-kim-s-convenience/watch?locale=US"
+    }
+  },
+  "96": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 7,
+      "airDate": "2022-02-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/85922-space-force/watch?locale=US"
+    }
+  },
+  "97": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 1,
+      "airDate": "2023-06-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/101978-disney-gallery-star-wars-the-mandalorian/watch?locale=US"
+    }
+  },
+  "98": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2017-06-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Philo",
+        "Starz Apple TV Channel",
+        "Britbox Apple TV Channel ",
+        "YouTube TV",
+        "Starz",
+        "BritBox",
+        "BritBox Amazon Channel",
+        "Spectrum On Demand",
+        "Starz Amazon Channel",
+        "The Roku Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/70215-the-white-princess/watch?locale=US"
+    }
+  },
+  "99": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2021-12-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/102540-the-shrink-next-door/watch?locale=US"
+    }
+  },
+  "100": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 9,
+      "airDate": "2017-05-30"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/2288-prison-break/watch?locale=US"
+    }
+  },
+  "101": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 6,
+      "airDate": "2023-05-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/98892-schmigadoon/watch?locale=US"
+    }
+  },
+  "102": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 16,
+      "airDate": "2018-03-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/60554-star-wars-rebels/watch?locale=US"
+    }
+  },
+  "103": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 14,
+      "airDate": "2021-12-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/100802-disney-insider/watch?locale=US"
+    }
+  },
+  "104": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 8,
+      "ep": 9,
+      "airDate": "2021-09-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Peacock Premium",
+        "Netflix Standard with Ads",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/48891-brooklyn-nine-nine/watch?locale=US"
+    }
+  },
+  "105": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 28,
+      "airDate": "2022-04-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/1429/watch?locale=US"
+    }
+  },
+  "106": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 13,
+      "airDate": "2021-03-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/101873-black/watch?locale=US"
+    }
+  },
+  "107": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 18,
+      "airDate": "2020-06-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/63623-fuller-house/watch?locale=US"
+    }
+  },
+  "108": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 11,
+      "airDate": "2018-06-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/71383-the-crossing/watch?locale=US"
+    }
+  },
+  "109": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2026-04-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/95557-invincible/watch?locale=US"
+    }
+  },
+  "110": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2023-10-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/114461-ahsoka/watch?locale=US"
+    }
+  },
+  "111": {
+    "status": "Planned",
+    "lastAired": null,
+    "nextAir": null,
+    "watch": null
+  },
+  "112": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2021-11-19"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/84469-cowboy-bebop/watch?locale=US"
+    }
+  },
+  "113": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2014-11-07"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/61617-over-the-garden-wall/watch?locale=US"
+    }
+  },
+  "114": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 7,
+      "ep": 15,
+      "airDate": "2026-05-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Disney Plus",
+        "Hulu",
+        "Philo",
+        "HISTORY Vault Apple TV Channel",
+        "HISTORY Vault Amazon Channel",
+        "Amazon Prime Video with Ads",
+        "History",
+        "The Roku Channel",
+        "Tubi TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/113085-history-s-greatest-mysteries/watch?locale=US"
+    }
+  },
+  "115": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 20,
+      "airDate": "2023-07-11"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/124010-how-i-met-your-father/watch?locale=US"
+    }
+  },
+  "116": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 6,
+      "airDate": "2021-10-12"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/93219-the-movies-that-made-us/watch?locale=US"
+    }
+  },
+  "117": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2025-08-10"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "Spectrum On Demand",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/81723-the-gilded-age/watch?locale=US"
+    }
+  },
+  "118": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 15,
+      "airDate": "2024-05-01"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/105971-star-wars-the-bad-batch/watch?locale=US"
+    }
+  },
+  "119": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 13,
+      "airDate": "2019-06-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/38472-marvel-s-jessica-jones/watch?locale=US"
+    }
+  },
+  "120": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 10,
+      "airDate": "2025-05-27"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/69478-the-handmaid-s-tale/watch?locale=US"
+    }
+  },
+  "121": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 11,
+      "ep": 10,
+      "airDate": "2018-03-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "Pluto TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/4087-the-x-files/watch?locale=US"
+    }
+  },
+  "122": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 13,
+      "airDate": "2021-05-24"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/71663-black-lightning/watch?locale=US"
+    }
+  },
+  "123": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2022-02-11"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/84584-dollface/watch?locale=US"
+    }
+  },
+  "124": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2023-11-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/117303-lessons-in-chemistry/watch?locale=US"
+    }
+  },
+  "125": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 16,
+      "airDate": "2019-03-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/4589-arrested-development/watch?locale=US"
+    }
+  },
+  "126": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 3,
+      "ep": 6,
+      "airDate": "2020-03-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/68126-vikingane/watch?locale=US"
+    }
+  },
+  "127": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 6,
+      "ep": 3,
+      "airDate": "2025-12-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/76178-my-next-guest-needs-no-introduction-with-david-letterman/watch?locale=US"
+    }
+  },
+  "128": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2025-04-17"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/71914-the-wheel-of-time/watch?locale=US"
+    }
+  },
+  "129": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2025-12-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/302919-the-end-of-an-era/watch?locale=US"
+    }
+  },
+  "130": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2024-07-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/114479-the-acolyte/watch?locale=US"
+    }
+  },
+  "131": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 8,
+      "airDate": "2018-11-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix"
+      ],
+      "link": "https://www.themoviedb.org/tv/1425-house-of-cards/watch?locale=US"
+    }
+  },
+  "132": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 13,
+      "airDate": "2021-05-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Peacock Premium",
+        "Peacock Premium Plus",
+        "The Roku Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/95941-zoey-s-extraordinary-playlist/watch?locale=US"
+    }
+  },
+  "133": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 8,
+      "airDate": "2025-12-31"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/66732-stranger-things/watch?locale=US"
+    }
+  },
+  "134": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 4,
+      "airDate": "2025-01-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/279299-snl50-beyond-saturday-night/watch?locale=US"
+    }
+  },
+  "135": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2022-04-07"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/122066-the-dropout/watch?locale=US"
+    }
+  },
+  "136": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 8,
+      "ep": 13,
+      "airDate": "2022-04-19"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Disney Plus",
+        "Hulu",
+        "Philo",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/61381-black-ish/watch?locale=US"
+    }
+  },
+  "137": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 13,
+      "airDate": "2025-12-27"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/120089-spyxfamily/watch?locale=US"
+    }
+  },
+  "138": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2025-04-06"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "Spectrum On Demand",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/111803-the-white-lotus/watch?locale=US"
+    }
+  },
+  "139": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 8,
+      "ep": 22,
+      "airDate": "2006-05-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/52-that-70s-show/watch?locale=US"
+    }
+  },
+  "140": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 13,
+      "airDate": "2018-07-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/76123-fate-extra-last-encore/watch?locale=US"
+    }
+  },
+  "141": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 4,
+      "ep": 10,
+      "airDate": "2026-02-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/116799-the-lincoln-lawyer/watch?locale=US"
+    }
+  },
+  "142": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 18,
+      "airDate": "2019-04-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/63161-crazy-ex-girlfriend/watch?locale=US"
+    }
+  },
+  "143": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 9,
+      "airDate": "2026-04-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu",
+        "fuboTV",
+        "YouTube TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/295778-scrubs/watch?locale=US"
+    }
+  },
+  "144": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 7,
+      "ep": 13,
+      "airDate": "2022-03-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/62643-dc-s-legends-of-tomorrow/watch?locale=US"
+    }
+  },
+  "145": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2021-12-08"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/127700-welcome-to-earth/watch?locale=US"
+    }
+  },
+  "146": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 13,
+      "airDate": "2018-07-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Tubi TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/71771-me-myself-i/watch?locale=US"
+    }
+  },
+  "147": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 6,
+      "airDate": "2023-07-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/73375-tom-clancy-s-jack-ryan/watch?locale=US"
+    }
+  },
+  "148": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2025-01-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/202879-star-wars-skeleton-crew/watch?locale=US"
+    }
+  },
+  "149": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 10,
+      "ep": 12,
+      "airDate": "2026-03-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "YouTube TV",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/99353-love-is-blind/watch?locale=US"
+    }
+  },
+  "150": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2024-12-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/91363-what-if/watch?locale=US"
+    }
+  },
+  "151": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 8,
+      "ep": 13,
+      "airDate": "1988-05-01"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/734-magnum-p-i/watch?locale=US"
+    }
+  },
+  "152": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2021-01-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/114591-history-of-swear-words/watch?locale=US"
+    }
+  },
+  "153": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 11,
+      "airDate": "2026-04-07"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/136311-shrinking/watch?locale=US"
+    }
+  },
+  "154": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 10,
+      "ep": 21,
+      "airDate": "2011-05-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/4604-smallville/watch?locale=US"
+    }
+  },
+  "155": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 10,
+      "airDate": "2017-08-12"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Philo",
+        "AMC Plus Apple TV Channel ",
+        "AMC+ Amazon Channel",
+        "AMC+ Roku Premium Channel",
+        "AMC+",
+        "YouTube TV",
+        "Spectrum On Demand",
+        "Amazon Prime Video with Ads",
+        "The Roku Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/57276-turn-washington-s-spies/watch?locale=US"
+    }
+  },
+  "156": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 24,
+      "airDate": "1996-05-20"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/1892-the-fresh-prince-of-bel-air/watch?locale=US"
+    }
+  },
+  "157": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2022-10-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/155427-reboot/watch?locale=US"
+    }
+  },
+  "158": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 36,
+      "airDate": "2024-12-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/218843/watch?locale=US"
+    }
+  },
+  "159": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2024-04-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=US"
+    }
+  },
+  "160": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 9,
+      "airDate": "2024-12-19"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/81046-the-dragon-prince/watch?locale=US"
+    }
+  },
+  "161": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 9,
+      "ep": 23,
+      "airDate": "2013-05-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Peacock Premium",
+        "YouTube TV",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/2316-the-office/watch?locale=US"
+    }
+  },
+  "162": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 7,
+      "airDate": "2026-05-06"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/114922-citadel/watch?locale=US"
+    }
+  },
+  "163": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 20,
+      "airDate": "2021-11-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/62688-supergirl/watch?locale=US"
+    }
+  },
+  "164": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 7,
+      "airDate": "2020-06-19"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/83127-the-politician/watch?locale=US"
+    }
+  },
+  "165": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2025-05-08"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/111111-blood-of-zeus/watch?locale=US"
+    }
+  },
+  "166": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 14,
+      "airDate": "2022-04-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/69740-ozark/watch?locale=US"
+    }
+  },
+  "167": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 13,
+      "ep": 6,
+      "airDate": "2021-12-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Philo",
+        "AMC Plus Apple TV Channel ",
+        "AMC+ Amazon Channel",
+        "AMC+ Roku Premium Channel",
+        "YouTube TV",
+        "Spectrum On Demand",
+        "Amazon Prime Video with Ads",
+        "The Roku Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/57243-doctor-who/watch?locale=US"
+    }
+  },
+  "168": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 12,
+      "airDate": "2023-11-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/79501-doom-patrol/watch?locale=US"
+    }
+  },
+  "169": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2024-04-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/99799-alex-rider/watch?locale=US"
+    }
+  },
+  "170": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 12,
+      "airDate": "2017-09-19"
+    },
+    "nextAir": null,
+    "watch": null
+  },
+  "171": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 7,
+      "airDate": "2023-04-07"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/195359-transatlantic/watch?locale=US"
+    }
+  },
+  "172": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2025-12-11"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/117830-tomb-raider-the-legend-of-lara-croft/watch?locale=US"
+    }
+  },
+  "173": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 12,
+      "airDate": "2019-01-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/61671-unbreakable-kimmy-schmidt/watch?locale=US"
+    }
+  },
+  "174": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2019-01-11"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/71890-friends-from-college/watch?locale=US"
+    }
+  },
+  "175": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 4,
+      "airDate": "2019-04-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "The Great Courses Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/68708-roman-empire/watch?locale=US"
+    }
+  },
+  "176": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 12,
+      "airDate": "2025-05-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/83867-andor/watch?locale=US"
+    }
+  },
+  "177": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2022-02-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/155594-murderville/watch?locale=US"
+    }
+  },
+  "178": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2018-05-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/71713-rise/watch?locale=US"
+    }
+  },
+  "179": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2020-12-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/103992-a-teacher/watch?locale=US"
+    }
+  },
+  "180": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 25,
+      "airDate": "2008-09-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/31724/watch?locale=US"
+    }
+  },
+  "181": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 6,
+      "airDate": "2022-02-17"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/91545-young-wallander/watch?locale=US"
+    }
+  },
+  "182": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 13,
+      "airDate": "2011-02-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel",
+        "Amazon Prime Video with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/4278-friday-night-lights/watch?locale=US"
+    }
+  },
+  "183": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 14,
+      "ep": 21,
+      "airDate": "2023-05-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "YouTube TV",
+        "USA Network"
+      ],
+      "link": "https://www.themoviedb.org/tv/17610-ncis-los-angeles/watch?locale=US"
+    }
+  },
+  "184": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2023-09-27"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/95215-reservation-dogs/watch?locale=US"
+    }
+  },
+  "185": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 7,
+      "airDate": "2019-01-01"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/65294-a-series-of-unfortunate-events/watch?locale=US"
+    }
+  },
+  "186": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 8,
+      "airDate": "2019-08-26"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "PBS",
+        "PBS Masterpiece Amazon Channel",
+        "Netflix Standard with Ads",
+        "Thirteen",
+        "WETA+",
+        "KQED"
+      ],
+      "link": "https://www.themoviedb.org/tv/62084-poldark/watch?locale=US"
+    }
+  },
+  "187": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 12,
+      "airDate": "2023-05-30"
+    },
+    "nextAir": {
+      "season": 4,
+      "ep": 1,
+      "airDate": "2026-08-04"
+    },
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=US"
+    }
+  },
+  "188": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 13,
+      "airDate": "2023-04-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/124641-american-auto/watch?locale=US"
+    }
+  },
+  "189": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 8,
+      "ep": 10,
+      "airDate": "2014-03-26"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Peacock Premium",
+        "Philo",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/1447-psych/watch?locale=US"
+    }
+  },
+  "190": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2024-10-03"
+    },
+    "nextAir": {
+      "season": 3,
+      "ep": 1,
+      "airDate": "2026-11-11"
+    },
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/84773-the-lord-of-the-rings-the-rings-of-power/watch?locale=US"
+    }
+  },
+  "191": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 7,
+      "airDate": "2022-09-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/97175-fate-the-winx-saga/watch?locale=US"
+    }
+  },
+  "192": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 3,
+      "airDate": "2017-01-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "Philo",
+        "AMC Plus Apple TV Channel ",
+        "Britbox Apple TV Channel ",
+        "AMC+ Amazon Channel",
+        "AMC+",
+        "YouTube TV",
+        "PBS",
+        "BritBox",
+        "PBS Masterpiece Amazon Channel",
+        "BritBox Amazon Channel",
+        "Spectrum On Demand",
+        "Thirteen",
+        "WETA+",
+        "Wonder Project Amazon Channel",
+        "KQED"
+      ],
+      "link": "https://www.themoviedb.org/tv/19885-sherlock/watch?locale=US"
+    }
+  },
+  "193": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2018-10-12"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/72844-the-haunting-of-hill-house/watch?locale=US"
+    }
+  },
+  "194": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 51,
+      "ep": 20,
+      "airDate": "2026-05-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "fuboTV",
+        "Peacock Premium",
+        "YouTube TV",
+        "NBC",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/1667-saturday-night-live/watch?locale=US"
+    }
+  },
+  "195": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 5,
+      "airDate": "2021-11-17"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/100698-tiger-king/watch?locale=US"
+    }
+  },
+  "196": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 11,
+      "airDate": "2019-12-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/92634-sunnyside/watch?locale=US"
+    }
+  },
+  "197": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 4,
+      "airDate": "1998-03-30"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Peacock Premium",
+        "BritBox Amazon Channel",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus",
+        "The Roku Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/13789-our-mutual-friend/watch?locale=US"
+    }
+  },
+  "198": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2019-05-17"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/82744-catch-22/watch?locale=US"
+    }
+  },
+  "199": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2025-10-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "fuboTV",
+        "YouTube TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/258902-english-teacher/watch?locale=US"
+    }
+  },
+  "201": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2018-12-20"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
+    }
+  },
+  "202": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 4,
+      "airDate": "2025-08-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/86248-upload/watch?locale=US"
+    }
+  },
+  "203": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 9,
+      "airDate": "2025-10-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/114478-star-wars-visions/watch?locale=US"
+    }
+  },
+  "204": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2018-05-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Tubi TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/71763-alex-inc/watch?locale=US"
+    }
+  },
+  "205": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 9,
+      "airDate": "2022-10-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/92783-she-hulk-attorney-at-law/watch?locale=US"
+    }
+  },
+  "206": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2023-04-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/222023-jury-duty/watch?locale=US"
+    }
+  },
+  "207": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2025-12-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/197449-loot/watch?locale=US"
+    }
+  },
+  "208": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2026-05-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/220102-spider-noir/watch?locale=US"
+    }
+  },
+  "209": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2018-07-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/62335-unreal/watch?locale=US"
+    }
+  },
+  "210": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2025-12-26"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/301507-heated-rivalry/watch?locale=US"
+    }
+  },
+  "211": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 5,
+      "ep": 22,
+      "airDate": "2026-04-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "fuboTV",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/125935-abbott-elementary/watch?locale=US"
+    }
+  },
+  "212": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2021-09-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/71737-a-p-bio/watch?locale=US"
+    }
+  },
+  "213": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 5,
+      "ep": 22,
+      "airDate": "2026-05-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "fuboTV",
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "YouTube TV",
+        "Paramount+ Roku Premium Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/126027-ghosts/watch?locale=US"
+    }
+  },
+  "214": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 10,
+      "airDate": "2017-11-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/44857-the-mindy-project/watch?locale=US"
+    }
+  },
+  "215": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 13,
+      "airDate": "2016-07-02"
+    },
+    "nextAir": null,
+    "watch": null
+  },
+  "216": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 13,
+      "airDate": "1995-12-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Pure Flix",
+        "Midnight Pulp Amazon Channel",
+        "The Roku Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/21968-the-hardy-boys/watch?locale=US"
+    }
+  },
+  "217": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 22,
+      "airDate": "2016-04-26"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel",
+        "The Surf Network Amazon Channel",
+        "Pluto TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/62687-limitless/watch?locale=US"
+    }
+  },
+  "218": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2022-11-11"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/105288-down-to-earth-with-zac-efron/watch?locale=US"
+    }
+  },
+  "219": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 7,
+      "airDate": "2020-10-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/87739-the-queen-s-gambit/watch?locale=US"
+    }
+  },
+  "220": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2022-04-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/136741-roar/watch?locale=US"
+    }
+  },
+  "221": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 7,
+      "airDate": "2026-06-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/82452-avatar-the-last-airbender/watch?locale=US"
+    }
+  },
+  "222": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 15,
+      "airDate": "2021-03-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/62649-superstore/watch?locale=US"
+    }
+  },
+  "223": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2020-04-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/73157-future-man/watch?locale=US"
+    }
+  },
+  "224": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2018-09-07"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/62127-marvel-s-iron-fist/watch?locale=US"
+    }
+  },
+  "225": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 14,
+      "airDate": "2020-04-07"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "fuboTV",
+        "HBO Max Amazon Channel",
+        "Philo",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/61662-schitt-s-creek/watch?locale=US"
+    }
+  },
+  "226": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 12,
+      "ep": 24,
+      "airDate": "2019-05-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "TBS",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/1418-the-big-bang-theory/watch?locale=US"
+    }
+  },
+  "227": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2025-12-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "fuboTV",
+        "MGM+ Amazon Channel",
+        "Philo",
+        "MGM Plus Roku Premium Channel",
+        "YouTube TV",
+        "MGM Plus",
+        "Spectrum On Demand"
+      ],
+      "link": "https://www.themoviedb.org/tv/272418-robin-hood/watch?locale=US"
+    }
+  },
+  "228": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2019-08-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/71340-krypton/watch?locale=US"
+    }
+  },
+  "229": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2019-08-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/70573-glow/watch?locale=US"
+    }
+  },
+  "230": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2022-08-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/63247-westworld/watch?locale=US"
+    }
+  },
+  "231": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2022-05-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/92749-moon-knight/watch?locale=US"
+    }
+  },
+  "232": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 6,
+      "airDate": "2014-12-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/21510-white-collar/watch?locale=US"
+    }
+  },
+  "233": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2019-12-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/95339-the-imagineering-story/watch?locale=US"
+    }
+  },
+  "234": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 3,
+      "airDate": "2008-07-19"
+    },
+    "nextAir": null,
+    "watch": null
+  },
+  "235": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2021-08-20"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/99657-the-chair/watch?locale=US"
+    }
+  },
+  "236": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 12,
+      "airDate": "2020-05-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/4194-star-wars-the-clone-wars/watch?locale=US"
+    }
+  },
+  "237": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 5,
+      "ep": 8,
+      "airDate": "2025-06-29"
+    },
+    "nextAir": {
+      "season": 6,
+      "ep": 1,
+      "airDate": "2026-11-15"
+    },
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "fuboTV",
+        "YouTube TV",
+        "Pure Flix",
+        "Amazon Prime Video with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/85077-the-chosen/watch?locale=US"
+    }
+  },
+  "238": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2018-08-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/69320-trial-error/watch?locale=US"
+    }
+  },
+  "239": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 4,
+      "ep": 16,
+      "airDate": "2021-07-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/71715-good-girls/watch?locale=US"
+    }
+  },
+  "240": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 9,
+      "airDate": "2024-10-30"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/138501-agatha-all-along/watch?locale=US"
+    }
+  },
+  "241": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 15,
+      "ep": 8,
+      "airDate": "2026-03-08"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/39793-call-the-midwife/watch?locale=US"
+    }
+  },
+  "242": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 6,
+      "airDate": "2025-06-27"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/93405/watch?locale=US"
+    }
+  },
+  "243": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2021-12-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/88329-hawkeye/watch?locale=US"
+    }
+  },
+  "244": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2024-11-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/197373-based-on-a-true-story/watch?locale=US"
+    }
+  },
+  "245": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2026-01-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/103540-percy-jackson-and-the-olympians/watch?locale=US"
+    }
+  },
+  "246": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2018-10-19"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/64439-making-a-murderer/watch?locale=US"
+    }
+  },
+  "247": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 4,
+      "ep": 19,
+      "airDate": "2010-02-08"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads",
+        "Tubi TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/1639-heroes/watch?locale=US"
+    }
+  },
+  "248": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 9,
+      "airDate": "2024-11-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/94605-arcane/watch?locale=US"
+    }
+  },
+  "249": {
+    "status": "In Production",
+    "lastAired": null,
+    "nextAir": {
+      "season": 1,
+      "ep": 1,
+      "airDate": "2026-08-16"
+    },
+    "watch": null
+  },
+  "250": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2021-02-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/80671/watch?locale=US"
+    }
+  },
+  "251": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2025-10-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Angel Studios"
+      ],
+      "link": "https://www.themoviedb.org/tv/256560-the-promised-land/watch?locale=US"
+    }
+  },
+  "252": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 6,
+      "airDate": "2023-11-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/84958-loki/watch?locale=US"
+    }
+  },
+  "253": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2023-08-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/85801-high-school-musical-the-musical-the-series/watch?locale=US"
+    }
+  },
+  "254": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 15,
+      "ep": 20,
+      "airDate": "2020-11-19"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Peacock Premium",
+        "TNT",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/1622-supernatural/watch?locale=US"
+    }
+  },
+  "255": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 9,
+      "ep": 13,
+      "airDate": "2023-05-24"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "YouTube TV",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/60735-the-flash/watch?locale=US"
+    }
+  },
+  "256": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2021-11-12"
+    },
+    "nextAir": null,
+    "watch": null
+  },
+  "257": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 13,
+      "airDate": "2020-01-30"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Hulu",
+        "Peacock Premium",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/66573-the-good-place/watch?locale=US"
+    }
+  },
+  "258": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 10,
+      "airDate": "2023-12-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/65494-the-crown/watch?locale=US"
+    }
+  },
+  "259": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 16,
+      "airDate": "2018-07-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/71739-ghosted/watch?locale=US"
+    }
+  },
+  "260": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 16,
+      "airDate": "2007-02-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/2673-the-o-c/watch?locale=US"
+    }
+  },
+  "261": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 13,
+      "airDate": "2013-01-31"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Hulu",
+        "Peacock Premium",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/4608-30-rock/watch?locale=US"
+    }
+  },
+  "262": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2022-11-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/115996-limitless-with-chris-hemsworth/watch?locale=US"
+    }
+  },
+  "263": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 9,
+      "airDate": "2022-02-11"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/95665-inventing-anna/watch?locale=US"
+    }
+  },
+  "264": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2022-05-17"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/113477-mr-mayor/watch?locale=US"
+    }
+  },
+  "265": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2013-08-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Philo",
+        "Starz Apple TV Channel",
+        "Starz Roku Premium Channel",
+        "YouTube TV",
+        "Starz",
+        "Spectrum On Demand",
+        "Starz Amazon Channel",
+        "The Roku Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/57092-the-white-queen/watch?locale=US"
+    }
+  },
+  "266": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2018-02-28"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/74140-waco/watch?locale=US"
+    }
+  },
+  "267": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2020-05-01"
+    },
+    "nextAir": null,
+    "watch": null
+  },
+  "268": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 9,
+      "ep": 24,
+      "airDate": "2014-03-31"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "YouTube TV",
+        "USA Network"
+      ],
+      "link": "https://www.themoviedb.org/tv/1100-how-i-met-your-mother/watch?locale=US"
+    }
+  },
+  "269": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 7,
+      "airDate": "2022-02-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/115036-the-book-of-boba-fett/watch?locale=US"
+    }
+  },
+  "270": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 5,
+      "ep": 15,
+      "airDate": "2021-04-30"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/67133-macgyver/watch?locale=US"
+    }
+  },
+  "271": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 13,
+      "airDate": "2019-01-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/67178-marvel-s-the-punisher/watch?locale=US"
+    }
+  },
+  "272": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 19,
+      "airDate": "2019-07-31"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=US"
+    }
+  },
+  "273": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 7,
+      "ep": 6,
+      "airDate": "2025-04-10"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/42009-black-mirror/watch?locale=US"
+    }
+  },
+  "274": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 16,
+      "airDate": "2013-09-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/1396-breaking-bad/watch?locale=US"
+    }
+  },
+  "275": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2023-05-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/196454-queen-charlotte-a-bridgerton-story/watch?locale=US"
+    }
+  },
+  "276": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2022-08-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/71738-the-orville/watch?locale=US"
+    }
+  },
+  "277": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2026-05-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/202555-daredevil-born-again/watch?locale=US"
+    }
+  },
+  "278": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 32,
+      "airDate": "1998-07-23"
+    },
+    "nextAir": null,
+    "watch": null
+  },
+  "279": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2020-05-29"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/87784-defending-jacob/watch?locale=US"
+    }
+  },
+  "280": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2026-05-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/289219-star-wars-maul-shadow-lord/watch?locale=US"
+    }
+  },
+  "281": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2020-10-12"
+    },
+    "nextAir": null,
+    "watch": null
+  },
+  "282": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 16,
+      "airDate": "2024-08-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/135959-that-90s-show/watch?locale=US"
+    }
+  },
+  "283": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 8,
+      "airDate": "2017-08-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/62285-marvel-s-the-defenders/watch?locale=US"
+    }
+  },
+  "284": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 3,
+      "ep": 2,
+      "airDate": "2026-06-24"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/95738-behind-the-attraction/watch?locale=US"
+    }
+  },
+  "285": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 4,
+      "airDate": "2023-11-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/155421-all-the-light-we-cannot-see/watch?locale=US"
+    }
+  },
+  "286": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 13,
+      "airDate": "2015-03-20"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/1417-glee/watch?locale=US"
+    }
+  },
+  "287": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2020-06-27"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/70523-dark/watch?locale=US"
+    }
+  },
+  "288": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 13,
+      "airDate": "2015-02-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/5920-the-mentalist/watch?locale=US"
+    }
+  },
+  "289": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 4,
+      "airDate": "2024-12-11"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/255868-dream-productions/watch?locale=US"
+    }
+  },
+  "290": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 5,
+      "ep": 8,
+      "airDate": "2026-05-20"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "The Roku Channel",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/76479-the-boys/watch?locale=US"
+    }
+  },
+  "291": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 17,
+      "airDate": "2010-05-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu",
+        "fuboTV"
+      ],
+      "link": "https://www.themoviedb.org/tv/4607-lost/watch?locale=US"
+    }
+  },
+  "292": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 13,
+      "airDate": "2022-08-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/60059-better-call-saul/watch?locale=US"
+    }
+  },
+  "293": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2024-05-16"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/202307-so-help-me-todd/watch?locale=US"
+    }
+  },
+  "294": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 3,
+      "ep": 13,
+      "airDate": "2018-10-19"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/61889-marvel-s-daredevil/watch?locale=US"
+    }
+  },
+  "295": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 18,
+      "airDate": "2024-05-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/71885-grown-ish/watch?locale=US"
+    }
+  },
+  "296": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 9,
+      "airDate": "2019-08-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/84646/watch?locale=US"
+    }
+  },
+  "297": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 3,
+      "ep": 13,
+      "airDate": "2015-09-17"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/47318-graceland/watch?locale=US"
+    }
+  },
+  "298": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2025-10-17"
+    },
+    "nextAir": {
+      "season": 3,
+      "ep": 1,
+      "airDate": "2026-08-04"
+    },
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "fuboTV",
+        "YouTube TV",
+        "DisneyNOW"
+      ],
+      "link": "https://www.themoviedb.org/tv/245026-wizards-beyond-waverly-place/watch?locale=US"
+    }
+  },
+  "299": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 8,
+      "airDate": "2022-04-10"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "fuboTV",
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Britbox Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "AMC+ Amazon Channel",
+        "YouTube TV",
+        "BritBox",
+        "BritBox Amazon Channel",
+        "Spectrum On Demand",
+        "Netflix Standard with Ads",
+        "Tubi TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/72750-killing-eve/watch?locale=US"
+    }
+  },
+  "300": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2019-06-07"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/67026-designated-survivor/watch?locale=US"
+    }
+  },
+  "301": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 7,
+      "airDate": "2026-06-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/82452-avatar-the-last-airbender/watch?locale=US"
+    }
+  },
+  "302": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2023-02-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/68507-his-dark-materials/watch?locale=US"
+    }
+  },
+  "303": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 7,
+      "airDate": "2020-05-01"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/87050-hollywood/watch?locale=US"
+    }
+  },
+  "304": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2025-05-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/288055-star-wars-tales-of-the-underworld/watch?locale=US"
+    }
+  },
+  "305": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 6,
+      "airDate": "2024-08-08"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/75006-the-umbrella-academy/watch?locale=US"
+    }
+  },
+  "306": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 15,
+      "airDate": "2020-02-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/61692-fresh-off-the-boat/watch?locale=US"
+    }
+  },
+  "307": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 1,
+      "ep": 4,
+      "airDate": "2025-09-24"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/138505-marvel-zombies/watch?locale=US"
+    }
+  },
+  "308": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 3,
+      "ep": 13,
+      "airDate": "2018-09-13"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
+        "Tubi TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/66857-shooter/watch?locale=US"
+    }
+  },
+  "309": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 9,
+      "airDate": "2021-03-05"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/85271-wandavision/watch?locale=US"
+    }
+  },
+  "310": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 5,
+      "airDate": "2024-04-07"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Philo",
+        "YouTube TV",
+        "Investigation Discovery",
+        "HBO Max",
+        "Discovery +"
+      ],
+      "link": "https://www.themoviedb.org/tv/245902-quiet-on-set-the-dark-side-of-kids-tv/watch?locale=US"
+    }
+  },
+  "311": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 5,
+      "ep": 10,
+      "airDate": "2025-12-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/82596-emily-in-paris/watch?locale=US"
+    }
+  },
+  "312": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 10,
+      "airDate": "2021-09-22"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/70767-dear-white-people/watch?locale=US"
+    }
+  },
+  "313": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2023-04-19"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/82856-the-mandalorian/watch?locale=US"
+    }
+  },
+  "314": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 5,
+      "airDate": "2020-04-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/98178-amazing-stories/watch?locale=US"
+    }
+  },
+  "315": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 7,
+      "airDate": "2021-04-01"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/94515-prank-encounters/watch?locale=US"
+    }
+  },
+  "316": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 7,
+      "ep": 29,
+      "airDate": "2025-06-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "YouTube TV",
+        "PBS Kids Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/40050-daniel-tiger-s-neighborhood/watch?locale=US"
+    }
+  },
+  "317": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 7,
+      "airDate": "2026-06-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/82452-avatar-the-last-airbender/watch?locale=US"
+    }
+  },
+  "318": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2021-03-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/118815-the-lost-pirate-kingdom/watch?locale=US"
+    }
+  },
+  "319": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 7,
+      "ep": 22,
+      "airDate": "2007-05-15"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Amazon Prime Video",
+        "Hulu",
+        "Philo",
+        "Amazon Prime Video with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/4586-gilmore-girls/watch?locale=US"
+    }
+  },
+  "320": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2021-12-23"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Apple TV",
+        "Apple TV Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/89901-dickinson/watch?locale=US"
+    }
+  },
+  "321": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 2,
+      "ep": 7,
+      "airDate": "2025-05-25"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "Spectrum On Demand",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/100088-the-last-of-us/watch?locale=US"
+    }
+  },
+  "322": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 1,
+      "ep": 6,
+      "airDate": "2023-07-26"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/114472-secret-invasion/watch?locale=US"
+    }
+  },
+  "323": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 22,
+      "airDate": "2006-05-14"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/2004-malcolm-in-the-middle/watch?locale=US"
+    }
+  },
+  "324": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 5,
+      "airDate": "2023-09-06"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/232125-i-am-groot/watch?locale=US"
+    }
+  },
+  "325": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 13,
+      "airDate": "2021-05-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/89563-mixed-ish/watch?locale=US"
+    }
+  },
+  "327": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 1,
+      "ep": 10,
+      "airDate": "2019-08-02"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/79240-swamp-thing/watch?locale=US"
+    }
+  },
+  "328": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 59,
+      "airDate": "2022-02-18"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/77410-muppet-babies/watch?locale=US"
+    }
+  },
+  "329": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 4,
+      "ep": 26,
+      "airDate": "2022-06-09"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/33217-young-justice/watch?locale=US"
+    }
+  },
+  "330": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 3,
+      "ep": 8,
+      "airDate": "2024-10-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/124834-heartstopper/watch?locale=US"
+    }
+  },
+  "331": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 7,
+      "ep": 16,
+      "airDate": "2020-09-30"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Pluto TV"
+      ],
+      "link": "https://www.themoviedb.org/tv/48866-the-100/watch?locale=US"
+    }
+  },
+  "332": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 3,
+      "ep": 13,
+      "airDate": "2022-12-07"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "link": "https://www.themoviedb.org/tv/80986-dc-s-stargirl/watch?locale=US"
+    }
+  },
+  "333": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 6,
+      "ep": 20,
+      "airDate": "2017-09-24"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Amazon Prime Video",
+        "fuboTV",
+        "MGM+ Amazon Channel",
+        "Philo",
+        "MGM Plus Roku Premium Channel",
+        "YouTube TV",
+        "MGM Plus",
+        "Spectrum On Demand",
+        "Netflix Standard with Ads",
+        "Amazon Prime Video with Ads",
+        "Amazon Prime Video Free with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/34524-teen-wolf/watch?locale=US"
+    }
+  },
+  "334": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2016-01-31"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [],
+      "link": "https://www.themoviedb.org/tv/61698-galavant/watch?locale=US"
+    }
+  },
+  "335": {
+    "status": "Canceled",
+    "lastAired": {
+      "season": 2,
+      "ep": 10,
+      "airDate": "2024-05-04"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Disney Plus"
+      ],
+      "link": "https://www.themoviedb.org/tv/90461-monsters-at-work/watch?locale=US"
+    }
+  },
+  "336": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 3,
+      "ep": 10,
+      "airDate": "2021-12-03"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "link": "https://www.themoviedb.org/tv/71446-la-casa-de-papel/watch?locale=US"
+    }
+  },
+  "337": {
+    "status": "Returning Series",
+    "lastAired": {
+      "season": 4,
+      "ep": 12,
+      "airDate": "2026-04-23"
+    },
+    "nextAir": {
+      "season": 5,
+      "ep": 1,
+      "airDate": "2026-09-27"
+    },
+    "watch": {
+      "on": [
+        "Netflix",
+        "Hulu",
+        "fuboTV",
+        "YouTube TV",
+        "Netflix Standard with Ads",
+        "FOX One Amazon Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/214162-animal-control/watch?locale=US"
+    }
+  },
+  "338": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 4,
+      "ep": 10,
+      "airDate": "2017-03-21"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "The Roku Channel",
+        "Fandango at Home Free"
+      ],
+      "link": "https://www.themoviedb.org/tv/64896-friday-night-tykes/watch?locale=US"
+    }
+  },
+  "339": {
+    "status": "Ended",
+    "lastAired": {
+      "season": 2,
+      "ep": 8,
+      "airDate": "2022-10-10"
+    },
+    "nextAir": null,
+    "watch": {
+      "on": [
+        "Philo",
+        "AMC Plus Apple TV Channel ",
+        "AMC+ Amazon Channel",
+        "AMC+ Roku Premium Channel",
+        "AMC+",
+        "YouTube TV",
+        "Spectrum On Demand",
+        "The Roku Channel"
+      ],
+      "link": "https://www.themoviedb.org/tv/99652-kevin-can-f-k-himself/watch?locale=US"
+    }
+  }
+}

@@ -133,7 +133,8 @@
   },
   "34": {
     "tmdbId": null,
-    "title": "Cinema Relics: Iconic Art of the Movies"
+    "title": "Cinema Relics: Iconic Art of the Movies",
+    "reason": "not-found"
   },
   "35": {
     "tmdbId": 70796,
@@ -165,7 +166,8 @@
   },
   "42": {
     "tmdbId": null,
-    "title": "Star Wars: Lando"
+    "title": "Star Wars: Lando",
+    "reason": "not-found"
   },
   "43": {
     "tmdbId": 33880,
@@ -797,7 +799,8 @@
   },
   "200": {
     "tmdbId": null,
-    "title": "Armor Wars"
+    "title": "Armor Wars",
+    "reason": "not-found"
   },
   "201": {
     "tmdbId": 66786,
@@ -860,8 +863,9 @@
     "title": "Magi: Adventure of Sinbad"
   },
   "216": {
-    "tmdbId": null,
-    "title": "The Hardy Boys (2020)"
+    "tmdbId": 21968,
+    "title": "The Hardy Boys (2020)",
+    "matchedName": "The Hardy Boys"
   },
   "217": {
     "tmdbId": 62687,
@@ -880,8 +884,9 @@
     "title": "Roar (2022)"
   },
   "221": {
-    "tmdbId": null,
-    "title": "Avatar: The Last Airbender (2021)"
+    "tmdbId": 82452,
+    "title": "Avatar: The Last Airbender (2021)",
+    "matchedName": "Avatar: The Last Airbender"
   },
   "222": {
     "tmdbId": 62649,
@@ -1301,7 +1306,8 @@
   },
   "326": {
     "tmdbId": null,
-    "title": "Rangers of the New Republic"
+    "title": "Rangers of the New Republic",
+    "reason": "not-found"
   },
   "327": {
     "tmdbId": 79240,
