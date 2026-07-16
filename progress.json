@@ -1,38 +1,7 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-16T14:21:08.191Z",
-  "overrides": {
-    "3": {
-      "__deleted": true,
-      "updatedAt": "2026-07-16T14:21:06.271Z"
-    }
-  },
+  "overrides": {},
   "customShows": {},
-  "history": [
-    {
-      "id": 3,
-      "title": "Bluey (2018)",
-      "action": "watched",
-      "season": 3,
-      "ep": 37,
-      "at": "2026-07-16T14:20:34.204Z"
-    }
-  ],
-  "dismissed": [
-    114,
-    137,
-    151,
-    162,
-    165,
-    167,
-    202,
-    203,
-    242,
-    248,
-    273,
-    284,
-    287,
-    328,
-    62
-  ]
+  "history": [],
+  "dismissed": []
 }
