@@ -974,13 +974,14 @@ function renderNewReleases(){
 // Points at the Cloudflare Worker that commits progress to the repo's `data` branch.
 // The page can't hold a GitHub token (it'd be public), so the Worker holds it instead.
 //
-// Leaving url empty disables sync entirely and the page behaves exactly as it did
-// before — so this ships safely ahead of the Worker being deployed. Fill both in from
-// the `wrangler deploy` output and the SYNC_KEY secret you set on the Worker.
+// Leaving url empty disables sync entirely and the page falls back to local-only.
 //
 // The key is public (this page is public). It deters drive-by writes; it does not
 // authenticate. The real safety net is that every write is a commit on the data branch.
-const SYNC={ url:'', key:'' };
+const SYNC={
+  url:'https://steph-tv-tracker-sync.jonny-wilczynski.workers.dev/progress',
+  key:'17a6060922fbcb9bea48c3a0efde3033'
+};
 
 // Local-first: every change is already in localStorage before any of this runs. Sync is
 // a background copy to durable storage, never something she waits on.
