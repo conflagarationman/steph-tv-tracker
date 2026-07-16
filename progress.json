@@ -1,23 +1,7 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-16T14:12:49.059Z",
-  "overrides": {
-    "999": {
-      "season": 1,
-      "ep": 1,
-      "updatedAt": "2026-07-16T14:12:48.894Z"
-    }
-  },
+  "overrides": {},
   "customShows": {},
-  "history": [
-    {
-      "id": 999,
-      "title": "SMOKE TEST",
-      "action": "watched",
-      "season": 1,
-      "ep": 1,
-      "at": "2026-07-16T14:12:48.895Z"
-    }
-  ],
+  "history": [],
   "dismissed": []
 }
