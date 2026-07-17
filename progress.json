@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-17T02:36:27.825Z",
+  "updatedAt": "2026-07-17T02:57:10.957Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -81,11 +81,11 @@
     },
     "240": {
       "season": 1,
-      "ep": 8,
-      "epsWatched": 8,
+      "ep": 9,
+      "epsWatched": 9,
       "lastWatched": "2026-07-16",
       "dormant": false,
-      "updatedAt": "2026-07-17T02:36:14.865Z"
+      "updatedAt": "2026-07-17T02:57:08.843Z"
     },
     "248": {
       "season": 2,
@@ -126,6 +126,14 @@
   },
   "customShows": {},
   "history": [
+    {
+      "id": 240,
+      "title": "Agatha All Along",
+      "action": "watched",
+      "season": 1,
+      "ep": 9,
+      "at": "2026-07-17T02:57:08.843Z"
+    },
     {
       "id": 240,
       "title": "Agatha All Along",
