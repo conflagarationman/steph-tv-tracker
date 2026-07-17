@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-17T02:36:00.547Z",
+  "updatedAt": "2026-07-17T02:36:27.825Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -79,6 +79,14 @@
       "dormant": false,
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
+    "240": {
+      "season": 1,
+      "ep": 8,
+      "epsWatched": 8,
+      "lastWatched": "2026-07-16",
+      "dormant": false,
+      "updatedAt": "2026-07-17T02:36:14.865Z"
+    },
     "248": {
       "season": 2,
       "ep": 1,
@@ -118,6 +126,22 @@
   },
   "customShows": {},
   "history": [
+    {
+      "id": 240,
+      "title": "Agatha All Along",
+      "action": "watched",
+      "season": 1,
+      "ep": 8,
+      "at": "2026-07-17T02:36:14.864Z"
+    },
+    {
+      "id": 240,
+      "title": "Agatha All Along",
+      "action": "watched",
+      "season": 1,
+      "ep": 7,
+      "at": "2026-07-17T02:36:11.260Z"
+    },
     {
       "id": 301,
       "title": "Avatar: The Last Airbender (2024)",
