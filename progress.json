@@ -1,14 +1,10 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-18T12:50:09.381Z",
+  "updatedAt": "2026-07-18T12:50:12.386Z",
   "overrides": {
     "3": {
-      "season": 3,
-      "ep": 37,
-      "epsWatched": 135,
-      "lastWatched": "2026-07-18",
-      "dormant": false,
-      "updatedAt": "2026-07-18T12:50:06.639Z"
+      "__deleted": true,
+      "updatedAt": "2026-07-18T12:50:09.697Z"
     },
     "8": {
       "ep": 7,
@@ -130,14 +126,6 @@
   },
   "customShows": {},
   "history": [
-    {
-      "id": 3,
-      "title": "Bluey (2018)",
-      "action": "watched",
-      "season": 3,
-      "ep": 37,
-      "at": "2026-07-18T12:50:06.639Z"
-    },
     {
       "id": 240,
       "title": "Agatha All Along",
@@ -261,6 +249,7 @@
     62
   ],
   "historyRemoved": [
-    "3@2026-07-18T12:49:50.869Z"
+    "3@2026-07-18T12:49:50.869Z",
+    "3@2026-07-18T12:50:06.639Z"
   ]
 }
