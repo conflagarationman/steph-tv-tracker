@@ -108,6 +108,59 @@ test('garbage history entries are skipped, not fatal', () => {
   assert.equal(m.history[0].id, 9);
 });
 
+// ── undo: removing a history entry has to survive the merge ────────────────────
+test('an undone history entry does not resurrect from the server', () => {
+  // The exact bug: she undoes on her phone, the server still has the entry.
+  const server = { history: [{ id: 3, at: T1, action: 'watched' }, { id: 3, at: T0, action: 'watched' }] };
+  const phone = { history: [{ id: 3, at: T0, action: 'watched' }], historyRemoved: [`3@${T1}`] };
+  const m = merge(phone, server);
+  assert.equal(m.history.length, 1, 'the undone entry stays gone');
+  assert.equal(m.history[0].at, T0, 'the entry she kept survives');
+  assert.deepEqual(m.historyRemoved, [`3@${T1}`]);
+});
+
+test('undo removal survives a round trip in either direction', () => {
+  const server = { history: [{ id: 3, at: T1 }] };
+  const phone = { history: [], historyRemoved: [`3@${T1}`] };
+  assert.equal(merge(phone, server).history.length, 0);
+  assert.equal(merge(server, phone).history.length, 0, 'order must not matter');
+});
+
+test('undoing one entry does not touch the others', () => {
+  const doc = {
+    history: [{ id: 3, at: T2 }, { id: 3, at: T1 }, { id: 9, at: T0 }],
+    historyRemoved: [`3@${T1}`]
+  };
+  const m = merge(doc, {});
+  assert.deepEqual(m.history.map((h) => `${h.id}@${h.at}`), [`3@${T2}`, `9@${T0}`]);
+});
+
+test('historyRemoved unions across devices', () => {
+  const m = merge({ historyRemoved: [`3@${T1}`] }, { historyRemoved: [`9@${T2}`] });
+  assert.deepEqual(m.historyRemoved, [`3@${T1}`, `9@${T2}`].sort());
+});
+
+test('re-watching after an undo is a NEW entry and survives', () => {
+  // She undoes, then genuinely watches it again later. Different `at`, so the removal
+  // key can't match and the new entry must live.
+  const doc = { history: [{ id: 3, at: T2 }], historyRemoved: [`3@${T1}`] };
+  const m = merge(doc, { history: [{ id: 3, at: T1 }] });
+  assert.equal(m.history.length, 1);
+  assert.equal(m.history[0].at, T2, 'only the undone entry is suppressed');
+});
+
+test('old undo tombstones are pruned, recent ones kept', () => {
+  const now = Date.parse('2026-07-15T00:00:00.000Z');
+  const doc = {
+    historyRemoved: ['3@2026-01-01T00:00:00.000Z', '9@2026-07-01T00:00:00.000Z', 'garbage-key'],
+    overrides: {}, customShows: {}
+  };
+  const p = pruneTombstones(doc, now);
+  assert.ok(!p.historyRemoved.includes('3@2026-01-01T00:00:00.000Z'), '~195d old, dropped');
+  assert.ok(p.historyRemoved.includes('9@2026-07-01T00:00:00.000Z'), '~14d old, kept');
+  assert.ok(p.historyRemoved.includes('garbage-key'), 'undateable keys kept rather than guessed at');
+});
+
 // ── convergence: the property that actually matters ─────────────────────────────
 test('merging is idempotent — syncing twice changes nothing', () => {
   const a = { overrides: { 5: { ep: 3, updatedAt: T1 } }, history: [{ id: 5, at: T1 }], dismissed: ['1:1'] };

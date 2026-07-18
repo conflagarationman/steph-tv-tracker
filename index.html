@@ -212,6 +212,20 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .pace-lbl{font-size:0.5rem;color:var(--dim);width:14px;flex-shrink:0;text-align:center;}
 .rewatch-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.4rem;}
 .rewatch-pill{font-size:0.62rem;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--purple-bg);color:var(--purple);}
+
+/* Sits above the iPhone home indicator via env(safe-area-inset-bottom). */
+.undo-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:40;
+  display:flex;align-items:center;gap:10px;max-width:min(440px,calc(100vw - 2rem));
+  background:var(--surface2);border:1px solid var(--border2);border-radius:12px;
+  padding:0.6rem 0.6rem 0.6rem 0.9rem;box-shadow:0 8px 28px var(--shadow);animation:undoIn 0.18s ease;}
+@keyframes undoIn{from{opacity:0;transform:translate(-50%,8px);}to{opacity:1;transform:translate(-50%,0);}}
+.undo-label{font-size:0.76rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.undo-btn{background:var(--badge-yellow);border:none;color:var(--chip-ink);font-family:inherit;font-size:0.72rem;font-weight:800;
+  padding:5px 12px;border-radius:8px;cursor:pointer;flex-shrink:0;}
+.undo-btn:hover{filter:brightness(1.08);}
+.undo-btn:focus-visible,.undo-x:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
+.undo-x{background:none;border:none;color:var(--dim);font-family:inherit;font-size:0.72rem;cursor:pointer;padding:4px 6px;flex-shrink:0;}
+.undo-x:hover{color:var(--text);}
 </style>
 </head>
 <body>
@@ -265,6 +279,12 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 <button class="cr" type="button" onclick="tog('vs')" aria-expanded="false" aria-controls="vs-panel"><span class="chev" aria-hidden="true">▶</span><span>Viewing stats</span></button>
 <div id="vs-panel" class="panel" style="display:none;margin-top:0.75rem;"></div>
 </main>
+
+<div id="undo-bar" class="undo-bar" style="display:none;" role="status" aria-live="polite">
+  <span id="undo-label" class="undo-label"></span>
+  <button type="button" class="undo-btn" onclick="undoLast()">Undo</button>
+  <button type="button" class="undo-x" onclick="hideUndoBar()" aria-label="Dismiss">✕</button>
+</div>
 
 <dialog id="edit-dialog" class="edit-dialog">
   <form method="dialog" onsubmit="saveEdit(event)">
@@ -321,7 +341,7 @@ const PROGRESS_KEY='tvtracker-progress';
 // A factory, not a shared constant. Spreading a shared object is a *shallow* copy, so
 // every "fresh" doc would alias the same nested overrides/history objects — mutating one
 // would quietly poison the template, and a wiped browser wouldn't really start empty.
-const emptyProgress=()=>({version:1,overrides:{},customShows:{},history:[],dismissed:[]});
+const emptyProgress=()=>({version:1,overrides:{},customShows:{},history:[],dismissed:[],historyRemoved:[]});
 const nowIso=()=>new Date().toISOString();
 const isLive=e=>e&&!e.__deleted;
 
@@ -360,7 +380,13 @@ function saveProgress(){
 }
 
 function loadCustomShows(){ return Object.values(progress.customShows).filter(isLive); }
-function loadHistory(){ return progress.history; }
+// An entry is identified by which show and exactly when — two devices can't produce the
+// same pair for different events. Undo suppresses by this key.
+const histKey=h=>`${h.id}@${h.at}`;
+function loadHistory(){
+  const removed=new Set(progress.historyRemoved||[]);
+  return progress.history.filter(h=>!removed.has(histKey(h)));
+}
 function loadDismissed(){ return progress.dismissed; }
 
 function liveShows(){
@@ -372,13 +398,57 @@ function todayStr(){
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
+// Returns the entry's key so an undo can suppress exactly this one.
 function logHistory(entry){
-  progress.history=[{...entry, at:nowIso()}, ...progress.history].slice(0,500);
+  const h={...entry, at:nowIso()};
+  progress.history=[h, ...progress.history].slice(0,500);
   saveProgress();
+  return histKey(h);
+}
+// Dropping entries from the array isn't enough: the other device still has them and the
+// merge would union them straight back. Record the removal so the merge can subtract it.
+function removeHistoryKeys(keys){
+  if(!keys.length) return;
+  const set=new Set(progress.historyRemoved||[]);
+  keys.forEach(k=>set.add(k));
+  progress.historyRemoved=[...set];
+  progress.history=progress.history.filter(h=>!set.has(histKey(h)));
 }
 function removeHistoryForShow(id){
-  progress.history=progress.history.filter(h=>h.id!==id);
+  removeHistoryKeys(progress.history.filter(h=>h.id===id).map(histKey));
   saveProgress();
+}
+
+// ─── Undo ──────────────────────────────────────────────
+// Reset (↺) reverts a show to the original TV Time snapshot — that's "start this show
+// over", not "undo my last tap". Marking the wrong show had no way back: Edit fixes the
+// episode number but never decrements epsWatched, so every misclick silently inflated her
+// lifetime count, and Reset threw away every episode she'd logged since the export.
+//
+// The stack is per-session and deliberately NOT synced: it's for "I just tapped the wrong
+// thing", which you notice immediately. The undo itself writes a fresh updatedAt, so it
+// still wins the merge against a wrong value another device already received.
+let undoStack=[];
+const UNDO_LIMIT=20;
+function pushUndo(id,label,histKeyOfAction){
+  undoStack.push({
+    id,label,histKey:histKeyOfAction,
+    // The whole prior override, or null if she'd never touched this show — restoring
+    // null has to mean "no override", not "an empty one".
+    prev:isLive(overrides[id])?{...overrides[id]}:null
+  });
+  if(undoStack.length>UNDO_LIMIT) undoStack.shift();
+  showUndoBar(label);
+}
+function undoLast(){
+  const u=undoStack.pop();
+  if(!u) return;
+  if(u.prev) overrides[u.id]={...u.prev,updatedAt:nowIso()};
+  else overrides[u.id]={__deleted:true,updatedAt:nowIso()};
+  if(u.histKey) removeHistoryKeys([u.histKey]);
+  saveProgress();
+  hideUndoBar();
+  render();
 }
 
 function updateOverride(id,patch){
@@ -428,7 +498,9 @@ function markWatched(id){
     if(counts[season+1]){ season=season+1; ep=1; }
     else return;
   }
-  logHistory({id, title:g.t, action:'watched', season, ep});
+  // Snapshot before mutating — pushUndo reads the *current* override.
+  const k=logHistory({id, title:g.t, action:'watched', season, ep});
+  pushUndo(id,`Marked ${g.t} S${season}·E${ep}`,k);
   updateOverride(id,{season, ep, epsWatched:(g.epsWatched||0)+1, lastWatched:todayStr(), dormant:false});
 }
 // Moves a show out of "watching" and into the archive, stamped with this month so it
@@ -437,13 +509,15 @@ function markFinished(id){
   const g=liveShows().find(x=>x.id===id);
   if(!g) return;
   const d=new Date();
-  logHistory({id, title:g.t, action:'finished', season:g.season, ep:g.ep});
+  const k=logHistory({id, title:g.t, action:'finished', season:g.season, ep:g.ep});
+  pushUndo(id,`Finished ${g.t}`,k);
   updateOverride(id,{s:'done', cy:d.getFullYear(), cm:d.getMonth(), dormant:false});
 }
 function startWatching(id){
   const g=liveShows().find(x=>x.id===id);
   if(!g) return;
-  logHistory({id, title:g.t, action:'started', season:1, ep:1});
+  const k=logHistory({id, title:g.t, action:'started', season:1, ep:1});
+  pushUndo(id,`Started ${g.t}`,k);
   updateOverride(id,{s:'watching', season:1, ep:1, epsWatched:1, lastWatched:todayStr(), start:todayStr(), dormant:false});
 }
 function resetShow(id){
@@ -479,7 +553,10 @@ function saveEdit(e){
   const ep=parseInt(document.getElementById('edit-ep').value,10);
   if(isNaN(season)||isNaN(ep)||season<1||ep<1) return;
   const g=liveShows().find(x=>x.id===editingId);
-  if(g) logHistory({id:editingId, title:g.t, action:'edited', season, ep});
+  if(g){
+    const k=logHistory({id:editingId, title:g.t, action:'edited', season, ep});
+    pushUndo(editingId,`Set ${g.t} to S${season}·E${ep}`,k);
+  }
   updateOverride(editingId,{season, ep, lastWatched:todayStr(), dormant:false});
   document.getElementById('edit-dialog').close();
 }
@@ -936,6 +1013,26 @@ function renderPanels(){
     </div>`;
     document.getElementById('vs-panel').innerHTML=h;
   }
+}
+
+// ─── Undo bar ──────────────────────────────────────────
+// A fixed bar rather than a button on the card: marking a show sets lastWatched to today,
+// which re-sorts it to the top of the list, so a per-card undo would slide out from under
+// her finger the moment she needed it.
+let undoTimer=null;
+function showUndoBar(label){
+  const el=document.getElementById('undo-bar');
+  if(!el) return;
+  document.getElementById('undo-label').textContent=label;
+  el.style.display='flex';
+  clearTimeout(undoTimer);
+  // Long enough to notice a mistake, short enough not to sit there nagging.
+  undoTimer=setTimeout(hideUndoBar,12000);
+}
+function hideUndoBar(){
+  clearTimeout(undoTimer);
+  const el=document.getElementById('undo-bar');
+  if(el) el.style.display='none';
 }
 
 // ─── Theme ─────────────────────────────────────────────
