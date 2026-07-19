@@ -1,17 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-19T03:29:52.464Z",
+  "updatedAt": "2026-07-19T03:56:12.153Z",
   "overrides": {
     "3": {
       "__deleted": true,
       "updatedAt": "2026-07-18T12:50:09.697Z"
     },
     "8": {
-      "ep": 7,
-      "epsWatched": 27,
-      "lastWatched": "2026-07-14",
+      "ep": 8,
+      "epsWatched": 28,
+      "lastWatched": "2026-07-18",
       "dormant": false,
-      "updatedAt": "2026-07-16T14:23:16.350Z"
+      "updatedAt": "2026-07-19T03:56:10.005Z",
+      "season": 3
     },
     "60": {
       "ep": 2,
@@ -126,6 +127,14 @@
   },
   "customShows": {},
   "history": [
+    {
+      "id": 8,
+      "title": "The Night Agent",
+      "action": "watched",
+      "season": 3,
+      "ep": 8,
+      "at": "2026-07-19T03:56:10.003Z"
+    },
     {
       "id": 240,
       "title": "Agatha All Along",
