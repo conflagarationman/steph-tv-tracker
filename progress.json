@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-20T02:53:54.760Z",
+  "updatedAt": "2026-07-20T02:53:57.866Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -68,11 +68,11 @@
     },
     "167": {
       "season": 12,
-      "ep": 6,
-      "epsWatched": 143,
+      "ep": 7,
+      "epsWatched": 144,
       "lastWatched": "2026-07-19",
       "dormant": false,
-      "updatedAt": "2026-07-20T02:09:46.836Z"
+      "updatedAt": "2026-07-20T02:53:56.178Z"
     },
     "190": {
       "season": 3,
@@ -143,6 +143,14 @@
   },
   "customShows": {},
   "history": [
+    {
+      "id": 167,
+      "title": "Doctor Who (2005)",
+      "action": "watched",
+      "season": 12,
+      "ep": 7,
+      "at": "2026-07-20T02:53:56.177Z"
+    },
     {
       "id": 190,
       "title": "The Lord of the Rings: The Rings of Power",
