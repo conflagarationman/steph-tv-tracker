@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-20T02:09:14.586Z",
+  "updatedAt": "2026-07-20T02:09:49.406Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -66,6 +66,14 @@
       "season": 3,
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
+    "167": {
+      "season": 12,
+      "ep": 6,
+      "epsWatched": 143,
+      "lastWatched": "2026-07-19",
+      "dormant": false,
+      "updatedAt": "2026-07-20T02:09:46.836Z"
+    },
     "202": {
       "season": 4,
       "ep": 1,
@@ -127,6 +135,14 @@
   },
   "customShows": {},
   "history": [
+    {
+      "id": 167,
+      "title": "Doctor Who (2005)",
+      "action": "watched",
+      "season": 12,
+      "ep": 6,
+      "at": "2026-07-20T02:09:46.835Z"
+    },
     {
       "id": 8,
       "title": "The Night Agent",
