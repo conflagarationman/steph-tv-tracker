@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-20T18:58:54.990Z",
+  "updatedAt": "2026-07-20T18:58:58.662Z",
   "overrides": {
     "3": {
       "__deleted": true,
       "updatedAt": "2026-07-18T12:50:09.697Z"
     },
     "8": {
-      "ep": 8,
-      "epsWatched": 28,
-      "lastWatched": "2026-07-18",
+      "ep": 9,
+      "epsWatched": 29,
+      "lastWatched": "2026-07-20",
       "dormant": false,
-      "updatedAt": "2026-07-19T03:56:10.005Z",
+      "updatedAt": "2026-07-20T18:58:56.995Z",
       "season": 3
     },
     "60": {
@@ -143,6 +143,14 @@
   },
   "customShows": {},
   "history": [
+    {
+      "id": 8,
+      "title": "The Night Agent",
+      "action": "watched",
+      "season": 3,
+      "ep": 9,
+      "at": "2026-07-20T18:58:56.994Z"
+    },
     {
       "id": 167,
       "title": "Doctor Who (2005)",
