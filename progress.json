@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-22T16:36:40.247Z",
+  "updatedAt": "2026-07-22T16:37:04.824Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -119,11 +119,12 @@
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
     "287": {
-      "ep": 8,
-      "epsWatched": 8,
-      "lastWatched": "2026-07-14",
+      "ep": 9,
+      "epsWatched": 9,
+      "lastWatched": "2026-07-22",
       "dormant": false,
-      "updatedAt": "2026-07-16T14:23:16.350Z"
+      "updatedAt": "2026-07-22T16:37:03.157Z",
+      "season": 1
     },
     "301": {
       "season": 2,
@@ -143,6 +144,14 @@
   },
   "customShows": {},
   "history": [
+    {
+      "id": 287,
+      "title": "Dark",
+      "action": "watched",
+      "season": 1,
+      "ep": 9,
+      "at": "2026-07-22T16:37:03.156Z"
+    },
     {
       "id": 8,
       "title": "The Night Agent",
