@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-22T04:40:26.331Z",
+  "updatedAt": "2026-07-22T04:40:37.137Z",
   "overrides": {
     "3": {
       "__deleted": true,
       "updatedAt": "2026-07-18T12:50:09.697Z"
     },
     "8": {
-      "ep": 9,
-      "epsWatched": 29,
-      "lastWatched": "2026-07-20",
+      "ep": 10,
+      "epsWatched": 30,
+      "lastWatched": "2026-07-22",
       "dormant": false,
-      "updatedAt": "2026-07-20T18:58:56.995Z",
+      "updatedAt": "2026-07-22T04:40:35.471Z",
       "season": 3
     },
     "60": {
@@ -143,6 +143,14 @@
   },
   "customShows": {},
   "history": [
+    {
+      "id": 8,
+      "title": "The Night Agent",
+      "action": "watched",
+      "season": 3,
+      "ep": 10,
+      "at": "2026-07-22T04:40:35.470Z"
+    },
     {
       "id": 8,
       "title": "The Night Agent",
