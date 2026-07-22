@@ -531,7 +531,7 @@
     }
   },
   "36": {
-    "status": "Ended",
+    "status": "Returning Series",
     "lastAired": {
       "season": 5,
       "ep": 10,
@@ -1364,7 +1364,6 @@
     "watch": {
       "on": [
         "Netflix",
-        "fuboTV",
         "Peacock Premium",
         "Netflix Standard with Ads",
         "Peacock Premium Plus"
@@ -4616,7 +4615,6 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "The Roku Channel",
         "Amazon Prime Video Free with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/76479-the-boys/watch?locale=US"
