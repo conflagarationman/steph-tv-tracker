@@ -1222,7 +1222,11 @@
       "ep": 20,
       "airDate": "2026-05-12"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 24,
+      "ep": 1,
+      "airDate": "2026-10-06"
+    },
     "watch": {
       "on": [
         "Netflix",
@@ -3914,7 +3918,11 @@
       "ep": 8,
       "airDate": "2026-01-21"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 3,
+      "ep": 1,
+      "airDate": "2026-11-20"
+    },
     "watch": {
       "on": [
         "Disney Plus"
