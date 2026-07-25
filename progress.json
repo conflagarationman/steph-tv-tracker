@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-25T03:23:34.489Z",
+  "updatedAt": "2026-07-25T03:23:46.509Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -13,6 +13,14 @@
       "dormant": false,
       "updatedAt": "2026-07-22T04:41:32.968Z",
       "season": 3
+    },
+    "28": {
+      "season": 2,
+      "ep": 2,
+      "epsWatched": 10,
+      "lastWatched": "2026-07-24",
+      "dormant": false,
+      "updatedAt": "2026-07-25T03:23:44.839Z"
     },
     "60": {
       "ep": 2,
@@ -177,6 +185,14 @@
     }
   },
   "history": [
+    {
+      "id": 28,
+      "title": "House of David",
+      "action": "watched",
+      "season": 2,
+      "ep": 2,
+      "at": "2026-07-25T03:23:44.839Z"
+    },
     {
       "id": 1784868238318,
       "title": "The Paper",
