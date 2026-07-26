@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-26T04:37:48.536Z",
+  "updatedAt": "2026-07-26T04:37:52.248Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -151,11 +151,11 @@
     },
     "1784868238318": {
       "season": 1,
-      "ep": 2,
-      "epsWatched": 2,
+      "ep": 3,
+      "epsWatched": 3,
       "lastWatched": "2026-07-26",
       "dormant": false,
-      "updatedAt": "2026-07-26T04:37:46.859Z"
+      "updatedAt": "2026-07-26T04:37:50.612Z"
     }
   },
   "customShows": {
@@ -193,6 +193,14 @@
     }
   },
   "history": [
+    {
+      "id": 1784868238318,
+      "title": "The Paper",
+      "action": "watched",
+      "season": 1,
+      "ep": 3,
+      "at": "2026-07-26T04:37:50.611Z"
+    },
     {
       "id": 1784868238318,
       "title": "The Paper",
