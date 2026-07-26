@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-26T04:11:49.378Z",
+  "updatedAt": "2026-07-26T04:11:54.456Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -76,11 +76,11 @@
     },
     "167": {
       "season": 12,
-      "ep": 7,
-      "epsWatched": 144,
-      "lastWatched": "2026-07-19",
+      "ep": 8,
+      "epsWatched": 145,
+      "lastWatched": "2026-07-26",
       "dormant": false,
-      "updatedAt": "2026-07-20T02:53:56.178Z"
+      "updatedAt": "2026-07-26T04:11:52.799Z"
     },
     "190": {
       "season": 3,
@@ -185,6 +185,14 @@
     }
   },
   "history": [
+    {
+      "id": 167,
+      "title": "Doctor Who (2005)",
+      "action": "watched",
+      "season": 12,
+      "ep": 8,
+      "at": "2026-07-26T04:11:52.798Z"
+    },
     {
       "id": 28,
       "title": "House of David",
