@@ -1368,6 +1368,7 @@
     "watch": {
       "on": [
         "Netflix",
+        "fuboTV",
         "Peacock Premium",
         "Netflix Standard with Ads",
         "Peacock Premium Plus"
