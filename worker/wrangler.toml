@@ -12,12 +12,14 @@ ALLOWED_ORIGIN = "https://conflagarationman.github.io"
 # Secret *values* are never set here — they'd end up in the public repo. Set them with:
 #   wrangler secret put GITHUB_TOKEN    # fine-grained PAT, Contents: read+write, this repo only
 #   wrangler secret put SYNC_KEY        # any random string; also goes in index.html
+#   wrangler secret put TMDB_API_KEY    # same key already used by the nightly Actions job
+#                                        # (repo secret of the same name) — TMDB, not GitHub
 #
 # Naming them is safe (names aren't secrets) and gets a warning in local dev if one is
 # missing. It does NOT gate `wrangler deploy` — a deploy with a missing secret still
-# succeeds and then fails at runtime with a 401 from GitHub.
+# succeeds; a request that needs it then gets a clean 502 instead of a crash.
 [secrets]
-required = ["GITHUB_TOKEN", "SYNC_KEY"]
+required = ["GITHUB_TOKEN", "SYNC_KEY", "TMDB_API_KEY"]
 
 # Keeps logs queryable for 7 days in the dashboard — which is what you want when a sync
 # fails at 11pm and nobody was sitting there running `wrangler tail`.

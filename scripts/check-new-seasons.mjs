@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { findTmdbId, watchProviders, parseTitleYear, plausible, tmdbGet } from '../tmdb.mjs';
 
 // Matches every show in shows.json to a TMDB id (cached in tmdb-map.json so repeat runs
 // only search once per show), then writes what TMDB knows about each one:
@@ -14,6 +15,11 @@ import fs from 'node:fs/promises';
 // TMDB against shows.json, but shows.json is a frozen export — her real progress now
 // lives in the data branch and changes daily, so anything computed here was stale the
 // moment she watched something. The page does the comparison against live progress.
+//
+// The actual TMDB matching/fetch logic (findTmdbId, watchProviders, etc.) lives in
+// ../tmdb.mjs, shared with the Worker's on-demand /tmdb-lookup endpoint (used for shows she
+// adds herself) — one copy so a future fix to the matching heuristic can't silently apply to
+// only one of the two callers.
 
 const API_KEY = process.env.TMDB_API_KEY;
 if (!API_KEY) {
@@ -21,96 +27,7 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-const BASE = 'https://api.themoviedb.org/3';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function tmdbGet(path, params = {}) {
-  const url = new URL(BASE + path);
-  url.searchParams.set('api_key', API_KEY);
-  for (const [k, v] of Object.entries(params)) if (v != null) url.searchParams.set(k, v);
-  const res = await fetch(url);
-  if (!res.ok) {
-    const err = new Error(`TMDB ${path} -> ${res.status}`);
-    // 4xx (other than rate limiting) means the request itself was wrong and retrying
-    // won't help. 429/5xx are transient — the caller must not cache those as a miss.
-    err.transient = res.status === 429 || res.status >= 500;
-    throw err;
-  }
-  return res.json();
-}
-
-// "Avatar: The Last Airbender (2024)" -> query "Avatar: The Last Airbender", year hint 2024
-function parseTitleYear(title) {
-  const m = title.match(/^(.*?)\s*\((\d{4})\)$/);
-  return m ? { query: m[1].trim(), year: m[2] } : { query: title, year: null };
-}
-
-const normalize = (s) =>
-  (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-const tokens = (s) => new Set(normalize(s).split(' ').filter(Boolean));
-
-// Guards against silently accepting whatever TMDB ranked first: "Ink & Paint" matched
-// "The Ink and Paint Club", an unrelated 1997 show with no poster and no seasons.
-//
-// The rule is asymmetric on purpose. TMDB's name may be a *simplification* of ours
-// ("SPY x FAMILY" -> "SPY×FAMILY" normalises to "spy family", losing a token) — that's
-// fine. But if TMDB's name carries extra meaningful words ours doesn't ("...and...club"),
-// it's a different show. Prefix matching alone got SPY x FAMILY wrong.
-function nameMatches(name, query) {
-  const c = normalize(name);
-  const q = normalize(query);
-  if (!c || !q) return false;
-  if (c === q) return true;
-  // q.startsWith(c) only — TMDB dropping a qualifier we carry is fine ("Ghosts (US)" ->
-  // "Ghosts"). The reverse, c.startsWith(q), is what let "Dark" match "Dark Matter" and
-  // "Citadel" match "Citadel: Honey Bunny": extra words appended means a different show.
-  if (q.startsWith(c)) return true;
-  const ct = tokens(c);
-  const qt = tokens(q);
-  // Every word in TMDB's title also appears in ours — catches punctuation-only
-  // differences like "SPY x FAMILY" vs "SPY×FAMILY" that prefix matching misses.
-  return ct.size > 0 && [...ct].every((t) => qt.has(t));
-}
-function plausible(result, query) {
-  return [result.name, result.original_name].filter(Boolean).some((n) => nameMatches(n, query));
-}
-
-async function findTmdbId(title) {
-  const { query, year } = parseTitleYear(title);
-
-  // The year in her export is the year TV Time recorded, which is often the year of a
-  // *different* production of the same name — "Avatar: The Last Airbender (2021)" is the
-  // 2024 Netflix series. Passing it to TMDB is a hard filter, not a hint, so a wrong year
-  // means zero results forever. Try it first (it disambiguates remakes), then without.
-  const attempts = year ? [{ query, first_air_date_year: year }, { query }] : [{ query }];
-  for (const params of attempts) {
-    const data = await tmdbGet('/search/tv', params);
-    const results = data.results || [];
-    const match = results.find((r) => plausible(r, query)) || null;
-    if (match) return { tmdbId: match.id, matchedName: match.name };
-    if (results.length && !params.first_air_date_year) {
-      // Results came back but none looked like the show — record that rather than
-      // pretending we found it.
-      return { tmdbId: null, rejected: results.slice(0, 3).map((r) => r.name) };
-    }
-  }
-  return { tmdbId: null };
-}
-
-// Where she can actually stream it, US region, from TMDB's JustWatch data.
-//
-// Only `flatrate` (included with a subscription) and `ads` (free with ads) are useful
-// here: "rent for $3.99" isn't an answer to "what can I put on tonight". `link` goes to
-// TMDB's own watch page, which stays correct even as providers change.
-function watchProviders(details) {
-  const region = details['watch/providers'] && details['watch/providers'].results && details['watch/providers'].results.US;
-  if (!region) return null;
-  const names = (list) => (list || []).map((p) => p.provider_name).filter(Boolean);
-  // display_priority ordering from TMDB is already sensible; dedupe while preserving it.
-  const on = [...new Set([...names(region.flatrate), ...names(region.ads)])];
-  if (!on.length) return region.link ? { on: [], link: region.link } : null;
-  return { on, link: region.link || null };
-}
 
 const readJson = async (path, fallback) => {
   try {
@@ -145,7 +62,7 @@ async function main() {
       if (entry) retried++;
       searched++;
       try {
-        const found = await findTmdbId(g.t);
+        const found = await findTmdbId(g.t, API_KEY);
         entry = found.tmdbId
           ? { tmdbId: found.tmdbId, title: g.t, matchedName: found.matchedName }
           : { tmdbId: null, title: g.t, reason: 'not-found', rejected: found.rejected };
@@ -167,7 +84,7 @@ async function main() {
     try {
       // append_to_response bundles watch providers into the same request, so knowing
       // where to stream every show costs zero extra API calls.
-      const details = await tmdbGet(`/tv/${entry.tmdbId}`, { append_to_response: 'watch/providers' });
+      const details = await tmdbGet(`/tv/${entry.tmdbId}`, API_KEY, { append_to_response: 'watch/providers' });
 
       // Matches cached before the plausibility check existed were never verified. Don't
       // re-check all of them — a false reject would break a show that works today, and
@@ -177,7 +94,7 @@ async function main() {
       const usable = !!details.poster_path || (details.seasons || []).some((s) => s.season_number > 0 && s.episode_count);
       if (!usable && !entry.matchedName && !plausible(details, parseTitleYear(g.t).query)) {
         console.error(`Cached match for "${g.t}" looks wrong (tmdb ${entry.tmdbId} = "${details.name}", no poster/seasons) — re-searching.`);
-        const found = await findTmdbId(g.t);
+        const found = await findTmdbId(g.t, API_KEY);
         entry = found.tmdbId
           ? { tmdbId: found.tmdbId, title: g.t, matchedName: found.matchedName }
           : { tmdbId: null, title: g.t, reason: 'not-found', rejected: found.rejected };

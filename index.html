@@ -327,7 +327,6 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 
 <script>
 const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const NOW = new Date();
 let open={ar:false,yl:false,vs:false,wh:false,cu:false};
 
 // ─── Progress: everything she has changed since the TV Time export ──────────────
@@ -373,13 +372,35 @@ let progress=loadProgress();
 // `overrides` stays the name the rest of the page uses to test "has she touched this?".
 let overrides=progress.overrides;
 
+// Purely client-side, never persisted or sent to the Worker (unlike progress itself) — just
+// a guard so a slow sync response can't clobber an edit that landed after the request went
+// out. Kept off the progress object on purpose: the server's merge logic has no idea what to
+// do with a field it doesn't recognize.
+let lastLocalEdit=0;
 function saveProgress(){
   progress.overrides=overrides;
+  lastLocalEdit=Date.now();
   try{ localStorage.setItem(PROGRESS_KEY,JSON.stringify(progress)); }catch(e){}
   queueSync();
 }
 
 function loadCustomShows(){ return Object.values(progress.customShows).filter(isLive); }
+// A show she adds herself isn't in shows.json, so it's never touched by the nightly TMDB
+// batch job (posters.json/episode-counts.json/show-meta.json). enrichCustomShow() fetches
+// the same shape of data on demand and caches it on the customShows entry itself (synced,
+// so every device gets it once one of them looks it up). This copies that cached data into
+// the same POSTERS/EPISODE_COUNTS/SHOW_META objects the original 339 shows use, so posterEl/
+// watchEl/isCaughtUp/hasEnded/nextAirEl all work on a custom show with zero changes to any
+// of them — the only thing that differs is where the data came from.
+function hydrateCustomTmdbData(){
+  for(const g of loadCustomShows()){
+    const t=g.tmdb;
+    if(!t) continue;
+    if(t.poster) POSTERS[g.id]=t.poster;
+    if(t.epCounts) EPISODE_COUNTS[g.id]=t.epCounts;
+    if(t.meta) SHOW_META[g.id]=t.meta;
+  }
+}
 // An entry is identified by which show and exactly when — two devices can't produce the
 // same pair for different events. Undo suppresses by this key.
 const histKey=h=>`${h.id}@${h.at}`;
@@ -593,6 +614,7 @@ function saveAddShow(e){
   logHistory({id, title, action:isWatching?'added, watching':'added to Up next', season, ep});
   document.getElementById('add-dialog').close();
   render();
+  enrichCustomShow(id,title); // background — poster/streaming badges fill in once it resolves
 }
 
 // ─── SHOW DATA — loaded async from shows.json (parsed from Steph's TV Time export) ──
@@ -666,10 +688,16 @@ const BADGES={marathoner:135, quickWatcher:40, serialWatcherTiers:4};
 
 // ─── Helpers ──────────────────────────────────────────
 // Escapes strings sourced from the CSV export before they're interpolated into innerHTML.
+// Regex-based rather than a throwaway DOM node: renderAll() calls this per-string across
+// hundreds of shows every render, and allocating a <div> that many times churns the GC.
 function esc(s){
-  const d=document.createElement('div');
-  d.textContent=s;
-  return d.innerHTML;
+  if(s==null) return '';
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
 }
 const PALETTE_DARK=['#ffc72c','#5cc4ff','#c49bff','#4ade80','#ff8fa3','#ff9f5c'];
 const PALETTE_LIGHT=['#b45309','#0369a1','#7c3aed','#15803d','#be123c','#c2410c'];
@@ -786,7 +814,7 @@ function posterEl(g){
   const color=posterColor(g.t);
   const letter=(g.t.match(/[A-Za-z0-9]/)||['#'])[0].toUpperCase();
   const path=POSTERS[g.id];
-  const img=path?`<img src="https://image.tmdb.org/t/p/w185${path}" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
+  const img=path?`<img src="https://image.tmdb.org/t/p/w185${path}" width="52" height="74" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
   return `<div class="poster" style="background:${color}18;color:${color}" aria-hidden="true">${letter}${img}</div>`;
 }
 function seasonEpEl(g){
@@ -804,16 +832,21 @@ function parseDay(dateStr){
   const [y,mo,da]=dateStr.split('-').map(Number);
   return new Date(y,mo-1,da);
 }
+// Computed fresh each call rather than a module-level constant — she keeps this tab open
+// on her phone for days at a stretch, and a frozen "now" would silently drift: dormancy
+// gaps stop growing and the watching-list sort order stops updating once real time moves
+// past whatever moment the page happened to load.
 function daysSince(dateStr){
   if(!dateStr) return null;
-  return Math.max(0, Math.floor((NOW-parseDay(dateStr))/(1000*60*60*24)));
+  return Math.max(0, Math.floor((new Date()-parseDay(dateStr))/(1000*60*60*24)));
 }
-// Clamps to NOW so a mistaken future-dated lastWatched value (data-entry typo)
+// Clamps to now so a mistaken future-dated lastWatched value (data-entry typo)
 // can't sort a show above ones genuinely watched today.
 function effectiveDate(dateStr){
   if(!dateStr) return new Date(0);
   const d=parseDay(dateStr);
-  return d>NOW?NOW:d;
+  const now=new Date();
+  return d>now?now:d;
 }
 function fmtDateShort(dateStr){
   if(!dateStr) return null;
@@ -955,10 +988,12 @@ function renderHistoryPanel(){
   const actionLabel={watched:h=>`watched S${h.season}·E${h.ep}`, started:()=>'started watching', edited:h=>`set to S${h.season}·E${h.ep}`, finished:()=>'marked finished'};
   // Group by day so it reads as a diary rather than an undifferentiated list.
   let lastDay=null;
+  const today=new Date();
+  const todayLabel=`${M[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
   el.innerHTML=history.map(h=>{
     const d=new Date(h.at);
     const day=`${M[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-    const dayHeader=day!==lastDay?`<div class="hist-day">${day===`${M[NOW.getMonth()]} ${NOW.getDate()}, ${NOW.getFullYear()}`?'Today':day}</div>`:'';
+    const dayHeader=day!==lastDay?`<div class="hist-day">${day===todayLabel?'Today':day}</div>`:'';
     lastDay=day;
     const when=d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
     const label=(actionLabel[h.action]||(()=>h.action))(h);
@@ -1250,6 +1285,10 @@ const SYNC={
   url:'https://steph-tv-tracker-sync.jonny-wilczynski.workers.dev/progress',
   key:'17a6060922fbcb9bea48c3a0efde3033'
 };
+// Same Worker, different route — derived rather than a second hardcoded URL so the two
+// can't drift apart. No sync configured means no Worker to ask, same as everywhere else
+// that guards on SYNC.url.
+const tmdbLookupUrl=()=>SYNC.url?SYNC.url.replace(/\/progress$/,'/tmdb-lookup'):null;
 
 // Local-first: every change is already in localStorage before any of this runs. Sync is
 // a background copy to durable storage, never something she waits on.
@@ -1269,6 +1308,9 @@ function adoptProgress(merged){
   progress={...emptyProgress(),...merged};
   overrides=progress.overrides;
   try{ localStorage.setItem(PROGRESS_KEY,JSON.stringify(progress)); }catch(e){}
+  // Picks up TMDB data another device already found for a custom show she added there —
+  // without this, this device would show that show poster-less until it re-looked it up.
+  hydrateCustomTmdbData();
   render();
 }
 async function pushSync(){
@@ -1276,6 +1318,12 @@ async function pushSync(){
   if(syncing){ syncAgain=true; return; }
   syncing=true;
   setSyncState('saving');
+  // Snapshot before the request goes out. If another tap edits progress (and bumps
+  // lastLocalEdit) while this request is in flight, the response below reflects a merge
+  // that doesn't include that tap — adopting it would silently roll it back. The edit isn't
+  // lost either way: saveProgress() already queued its own sync, this just skips adopting a
+  // now-stale response instead of overwriting newer local state with it.
+  const requestEditTime=lastLocalEdit;
   try{
     const res=await fetch(SYNC.url,{
       method:'POST',
@@ -1283,7 +1331,8 @@ async function pushSync(){
       body:JSON.stringify(progress)
     });
     if(!res.ok) throw new Error('sync '+res.status);
-    adoptProgress(await res.json());
+    const merged=await res.json();
+    if(lastLocalEdit<=requestEditTime) adoptProgress(merged);
     setSyncState('saved');
   }catch(e){
     // Offline or the Worker is down: her data is still in localStorage and the next
@@ -1317,6 +1366,34 @@ function flushSync(){
     });
   }catch(e){}
 }
+// Fire-and-forget, called right after a custom show is saved: looks it up on TMDB via the
+// Worker (which holds the API key — the page never does) and caches whatever it finds on
+// the show itself so it syncs and survives a reload. Same "instant local save, richness
+// fills in after" pattern as posters already have for the original 339 on a slow network —
+// nothing here blocks the Add dialog closing.
+async function enrichCustomShow(id,title){
+  const url=tmdbLookupUrl();
+  if(!url) return;
+  let data;
+  try{
+    const res=await fetch(`${url}?title=${encodeURIComponent(title)}`,{headers:{'X-Sync-Key':SYNC.key}});
+    if(!res.ok) return;
+    data=await res.json();
+  }catch(e){
+    console.warn('TMDB enrich failed for',title,e);
+    return; // Show already saved with just a title — same degraded-but-fine state as
+             // any of her 4 legitimately-unmatched original shows. Not retried; adding
+             // the show again would retry, same as it would for a show.json entry.
+  }
+  const g=progress.customShows[id];
+  // Deleted or replaced while the lookup was in flight — discard rather than resurrect it.
+  if(!g||!isLive(g)) return;
+  g.tmdb=data;
+  g.updatedAt=nowIso();
+  saveProgress();
+  hydrateCustomTmdbData();
+  render();
+}
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden') flushSync(); });
 window.addEventListener('pagehide',flushSync);
 
@@ -1334,6 +1411,7 @@ Promise.all([
   POSTERS=postersData;
   EPISODE_COUNTS=episodeCountsData;
   SHOW_META=metaData;
+  hydrateCustomTmdbData();
   render();
   // Pull on load by pushing: the Worker merges and hands back the truth. This is what
   // restores her progress on a browser whose storage was cleared, and what picks up

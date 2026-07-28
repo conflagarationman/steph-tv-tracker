@@ -161,5 +161,72 @@ await test('GET returns the stored copy for hand-restoring', async () => {
   assert.equal((await res.json()).overrides[9].ep, 4);
 });
 
+// ── /tmdb-lookup ─────────────────────────────────────────────────────────────────────────
+// lookupShow() itself (matching heuristic, provider parsing) is covered in ../tmdb.test.mjs —
+// these only exercise the route: param validation, missing-secret handling, method/origin/
+// key checks still applying to the new path.
+
+const lookup = (params, headers = {}) => worker.fetch(new Request(`https://w.dev/tmdb-lookup?${params}`, {
+  method: 'GET',
+  headers: { Origin: ORIGIN, 'X-Sync-Key': 'k', ...headers }
+}), { ...env, TMDB_API_KEY: 'fake-tmdb-key' });
+
+await test('tmdb-lookup returns show data for a found title', async () => {
+  globalThis.fetch = async (url) => {
+    const u = String(url);
+    if (u.includes('/search/tv')) {
+      return new Response(JSON.stringify({ results: [{ id: 7, name: 'Ted Lasso', original_name: 'Ted Lasso' }] }), { status: 200 });
+    }
+    if (u.includes('/tv/7')) {
+      return new Response(JSON.stringify({
+        name: 'Ted Lasso', status: 'Ended', poster_path: '/tedlasso.jpg',
+        seasons: [{ season_number: 1, episode_count: 10 }],
+        last_episode_to_air: { season_number: 1, episode_number: 10, air_date: '2020-10-02' },
+        next_episode_to_air: null,
+        'watch/providers': { results: { US: { flatrate: [{ provider_name: 'Apple TV+' }] } } }
+      }), { status: 200 });
+    }
+    throw new Error(`unexpected fetch ${u}`);
+  };
+  const res = await lookup('title=Ted+Lasso');
+  assert.equal(res.status, 200);
+  const out = await res.json();
+  assert.equal(out.tmdbId, 7);
+  assert.equal(out.poster, '/tedlasso.jpg');
+  assert.deepEqual(out.epCounts, { 1: 10 });
+});
+
+await test('tmdb-lookup requires a title', async () => {
+  const res = await lookup('');
+  assert.equal(res.status, 400);
+});
+
+await test('tmdb-lookup fails cleanly (502, not a crash) when the server has no TMDB key configured', async () => {
+  const res = await worker.fetch(new Request('https://w.dev/tmdb-lookup?title=Anything', {
+    method: 'GET', headers: { Origin: ORIGIN, 'X-Sync-Key': 'k' }
+  }), env); // env here has no TMDB_API_KEY
+  assert.equal(res.status, 502);
+});
+
+await test('tmdb-lookup only allows GET', async () => {
+  const res = await worker.fetch(new Request('https://w.dev/tmdb-lookup?title=X', {
+    method: 'POST', headers: { Origin: ORIGIN, 'X-Sync-Key': 'k' }
+  }), { ...env, TMDB_API_KEY: 'fake-tmdb-key' });
+  assert.equal(res.status, 405);
+});
+
+await test('tmdb-lookup still enforces the sync key like every other route', async () => {
+  globalThis.fetch = async () => { throw new Error('must not reach TMDB — auth should fail first'); };
+  const res = await lookup('title=X', { 'X-Sync-Key': 'wrong' });
+  assert.equal(res.status, 401);
+});
+
+await test('tmdb-lookup still enforces origin like every other route', async () => {
+  const res = await worker.fetch(new Request('https://w.dev/tmdb-lookup?title=X', {
+    method: 'GET', headers: { Origin: 'https://evil.example', 'X-Sync-Key': 'k' }
+  }), { ...env, TMDB_API_KEY: 'fake-tmdb-key' });
+  assert.equal(res.status, 403);
+});
+
 console.log(`\n${pass}/${pass + fail} passing`);
 process.exit(fail ? 1 : 0);

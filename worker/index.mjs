@@ -1,4 +1,5 @@
 import { merge, pruneTombstones, emptyDoc } from './merge.mjs';
+import { lookupShow } from '../tmdb.mjs';
 
 // Sync endpoint for the tracker. The page can't commit to GitHub itself: doing that needs
 // a token, and anything the page holds is public because the site is a static public repo.
@@ -7,9 +8,16 @@ import { merge, pruneTombstones, emptyDoc } from './merge.mjs';
 // Progress is committed to a separate `data` branch, NOT main — a commit to main would
 // trigger a GitHub Pages rebuild on every episode marked watched.
 //
-// POST /progress  body: the device's local copy -> merged with the stored copy, committed,
-//                 and the merged result returned for the device to adopt.
-// GET  /progress  the stored copy, for debugging and for restoring by hand.
+// POST /progress     body: the device's local copy -> merged with the stored copy, committed,
+//                    and the merged result returned for the device to adopt.
+// GET  /progress     the stored copy, for debugging and for restoring by hand.
+// GET  /tmdb-lookup  ?title=<show title> -> poster/episode-counts/watch-provider data, same
+//                    shape check-new-seasons.mjs writes per-show in its nightly batch, but
+//                    resolved on demand. Lets a show she adds herself (not part of the
+//                    original TV Time export, so never covered by that nightly job) get a
+//                    poster and streaming badges immediately instead of never. TMDB_API_KEY
+//                    is a Worker secret for the same reason GITHUB_TOKEN is — the page must
+//                    never hold it.
 
 const FILE = 'progress.json';
 const UA = 'steph-tv-tracker-sync';
@@ -110,6 +118,20 @@ export default {
     }
 
     const url = new URL(request.url);
+
+    if (url.pathname.endsWith('/tmdb-lookup')) {
+      if (request.method !== 'GET') return json({ error: 'method not allowed' }, 405, origin);
+      const title = url.searchParams.get('title');
+      if (!title || !title.trim()) return json({ error: 'missing title' }, 400, origin);
+      if (!env.TMDB_API_KEY) return json({ error: 'TMDB not configured on this server' }, 502, origin);
+      try {
+        const result = await lookupShow(title.trim(), env.TMDB_API_KEY);
+        return json(result, 200, origin);
+      } catch (e) {
+        return json({ error: String(e.message || e) }, 502, origin);
+      }
+    }
+
     if (!url.pathname.endsWith('/progress')) return json({ error: 'not found' }, 404, origin);
 
     try {
