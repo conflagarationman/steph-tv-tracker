@@ -531,7 +531,7 @@
     }
   },
   "36": {
-    "status": "Returning Series",
+    "status": "Ended",
     "lastAired": {
       "season": 5,
       "ep": 10,
@@ -604,8 +604,7 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/198178-wonder-man/watch?locale=US"
     }
@@ -850,7 +849,6 @@
       "on": [
         "Hulu",
         "Peacock Premium",
-        "Philo",
         "YouTube TV",
         "TBS",
         "Peacock Premium Plus"
@@ -2263,7 +2261,11 @@
       "ep": 9,
       "airDate": "2026-04-15"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 2,
+      "ep": 1,
+      "airDate": "2026-09-30"
+    },
     "watch": {
       "on": [
         "Disney Plus",
@@ -3219,6 +3221,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -3374,7 +3377,11 @@
       "ep": 22,
       "airDate": "2026-04-22"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 6,
+      "ep": 1,
+      "airDate": "2026-10-07"
+    },
     "watch": {
       "on": [
         "Hulu",
@@ -3408,7 +3415,11 @@
       "ep": 22,
       "airDate": "2026-05-21"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 6,
+      "ep": 1,
+      "airDate": "2026-10-29"
+    },
     "watch": {
       "on": [
         "fuboTV",
