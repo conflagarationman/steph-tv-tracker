@@ -209,6 +209,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .ysub{font-size:0.66rem;color:var(--dim);font-weight:600;}
 
 .love-banner{background:var(--badge-yellow);color:var(--chip-ink);border-radius:14px;padding:1.5rem 1rem;margin-bottom:1.5rem;text-align:center;font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:800;box-shadow:0 6px 20px var(--shadow);}
+.love-banner.tiny{font-size:0.62rem;letter-spacing:0.02em;}
 
 .nr-banner{background:var(--badge-yellow);color:var(--chip-ink);border-radius:12px;padding:0.85rem 1rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px;box-shadow:0 4px 14px var(--shadow);}
 .nr-banner-body{flex:1;}
@@ -260,7 +261,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 </div>
 <main>
 <p class="updated">Rebuilt from her TV Time export — real watch history, no filler <span id="sync-status" class="sync-status"></span></p>
-<div class="love-banner">❤️ I love you spoose ❤️</div>
+<div class="love-banner" id="love-banner">❤️ I love you spoose ❤️</div>
 <div id="new-releases" style="display:none;"></div>
 <div class="stats-row" id="stats"></div>
 <div class="breakdown" id="breakdown"></div>
@@ -1460,10 +1461,60 @@ async function enrichCustomShow(id,title){
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden') flushSync(); });
 window.addEventListener('pagehide',flushSync);
 
+// ─── Love banner ────────────────────────────────────────
+// Shuffle-bag randomization: draw messages from a shuffled queue persisted in
+// localStorage so nothing repeats until every message has shown once, across
+// reloads too, not just within one page view.
+const LOVE_MESSAGES=[
+  {text:'❤️ I love you spoose ❤️'},
+  {text:'boof.'},
+  {text:'MEENO MEENO MY'},
+  {text:'Foshooooooooveee'},
+  {text:'TINY LITTLE TINY LITTLE TINY LITTLE',tiny:true},
+  {dynamic:'goodDay'},
+  {text:'fat tractor'},
+  {text:'My love, my enemy'},
+  {text:"Captain America's got nothing on that ass"},
+  {text:'Enjoy your TV show, published author'}
+];
+const LOVE_BAG_KEY='stv_love_bag_v1';
+function loveMessageText(m){
+  if(m.dynamic==='goodDay'){
+    const day=new Date().toLocaleDateString('en-US',{weekday:'long'});
+    return `Spoose is gonna have a good ${day}`;
+  }
+  return m.text;
+}
+function shuffled(arr){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function nextLoveIndex(){
+  let bag=[];
+  try{ bag=JSON.parse(localStorage.getItem(LOVE_BAG_KEY)||'[]'); }catch(e){}
+  if(!Array.isArray(bag)||!bag.length) bag=shuffled(LOVE_MESSAGES.map((_,i)=>i));
+  const idx=bag.shift();
+  try{ localStorage.setItem(LOVE_BAG_KEY,JSON.stringify(bag)); }catch(e){}
+  return idx;
+}
+function rotateLoveBanner(){
+  const el=document.getElementById('love-banner');
+  if(!el) return;
+  const m=LOVE_MESSAGES[nextLoveIndex()];
+  el.textContent=loveMessageText(m);
+  el.classList.toggle('tiny',!!m.tiny);
+}
+
 // ─── Bootstrap ─────────────────────────────────────────
 // Theme goes first and synchronously: it only depends on localStorage, so waiting on
 // the show fetch just means a visible flash of the wrong palette on every load.
 initTheme();
+rotateLoveBanner();
+setInterval(rotateLoveBanner,45000);
 Promise.all([
   fetch('shows.json').then(r=>r.json()),
   fetch('posters.json').then(r=>r.ok?r.json():{}).catch(()=>({})),
