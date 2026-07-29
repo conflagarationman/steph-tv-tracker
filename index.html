@@ -140,6 +140,18 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .edit-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:14px;padding:1.1rem;max-width:320px;width:90vw;box-shadow:0 12px 32px var(--shadow);}
 .edit-dialog::backdrop{background:rgba(0,0,0,0.5);}
 .edit-dialog h3{font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.9rem;}
+
+/* Episode seen/unseen dialog — wider than the edit dialogs since it holds a wrapping grid,
+   not two side-by-side number inputs. */
+#episodes-dialog{max-width:420px;}
+.ep-sub{font-size:0.72rem;color:var(--dim);margin:-0.6rem 0 0.9rem;}
+.ep-season-block{margin-bottom:1rem;}
+.ep-season-label{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.5rem;}
+.ep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px;}
+.ep-chip{display:flex;align-items:center;justify-content:center;padding:0.45rem 0;border-radius:8px;font-size:0.7rem;font-weight:700;border:1px solid var(--border2);}
+.ep-chip.seen{background:var(--surface2);color:var(--dim);opacity:0.65;}
+.ep-chip.unseen{background:var(--blue)18;color:var(--blue);border-color:var(--blue)44;}
+.ep-empty{font-size:0.78rem;color:var(--dim);padding:0.5rem 0;}
 .edit-fields{display:flex;gap:10px;margin-bottom:1rem;}
 .edit-fields label{flex:1;display:flex;flex-direction:column;gap:4px;font-size:0.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
 .edit-fields input,.edit-fields select{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
@@ -323,6 +335,15 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
       <button type="submit" class="action-btn primary">Add</button>
     </div>
   </form>
+</dialog>
+
+<dialog id="episodes-dialog" class="edit-dialog">
+  <h3 id="episodes-title">Episodes</h3>
+  <div class="ep-sub" id="episodes-sub"></div>
+  <div id="episodes-body"></div>
+  <div class="dialog-actions">
+    <button type="button" class="action-btn" onclick="document.getElementById('episodes-dialog').close()">Close</button>
+  </div>
 </dialog>
 
 <script>
@@ -567,6 +588,48 @@ function openEdit(id){
   document.getElementById('edit-season').value=g.season||1;
   document.getElementById('edit-ep').value=g.ep||1;
   document.getElementById('edit-dialog').showModal();
+}
+
+// One season's worth of chips: watched episodes greyed out, the rest highlighted. Takes a
+// season number rather than assuming "the current one" so a future all-seasons view is just
+// calling this in a loop instead of a rewrite — openEpisodes below only ever calls it once
+// today, for g.season, per "current season only for now."
+function renderSeasonBlock(seasonNum,epCount,currentSeason,currentEp){
+  const chips=[];
+  for(let ep=1;ep<=epCount;ep++){
+    const seen=seasonNum<currentSeason||(seasonNum===currentSeason&&ep<=currentEp);
+    chips.push(`<div class="ep-chip ${seen?'seen':'unseen'}">${seen?'✓ ':''}${ep}</div>`);
+  }
+  return `<div class="ep-season-block">
+    <div class="ep-season-label">Season ${seasonNum}</div>
+    <div class="ep-grid">${chips.join('')}</div>
+  </div>`;
+}
+
+// Reads EPISODE_COUNTS, already loaded at bootstrap for every original show and filled in
+// for custom ones the moment enrichCustomShow() finds them (see hydrateCustomTmdbData) — no
+// network call needed here, this is purely a client-side view over data already in memory.
+function openEpisodes(id){
+  const g=liveShows().find(x=>x.id===id);
+  if(!g) return;
+  document.getElementById('episodes-title').textContent=g.t;
+  const body=document.getElementById('episodes-body');
+  const sub=document.getElementById('episodes-sub');
+  if(g.season==null||g.ep==null){
+    sub.textContent='';
+    body.innerHTML='<div class="ep-empty">Hasn\'t been started yet — nothing to show.</div>';
+  }else{
+    const counts=EPISODE_COUNTS[id];
+    const epCount=counts&&counts[g.season];
+    if(!epCount){
+      sub.textContent='';
+      body.innerHTML='<div class="ep-empty">No episode data for this show yet.</div>';
+    }else{
+      sub.textContent=`Currently at S${g.season} · E${g.ep}`;
+      body.innerHTML=renderSeasonBlock(g.season,epCount,g.season,g.ep);
+    }
+  }
+  document.getElementById('episodes-dialog').showModal();
 }
 function saveEdit(e){
   e.preventDefault();
@@ -886,7 +949,7 @@ function nowC(g){
   return `<div class="card ${g.dormant?'dormant':'now'}">
     ${posterEl(g)}
     <div class="card-content">
-      <div class="row1"><span class="gtitle">${esc(g.t)}</span>${seasonEpEl(g)}${watchEl(g)}</div>
+      <div class="row1"><span class="gtitle" role="button" tabindex="0" aria-label="See ${esc(g.t)}'s current season" onclick="openEpisodes(${g.id})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openEpisodes(${g.id});}" style="cursor:pointer;">${esc(g.t)}</span>${seasonEpEl(g)}${watchEl(g)}</div>
       <div class="row2">
         ${epsPill(g)}
         ${startEl(g)}
