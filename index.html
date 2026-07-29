@@ -417,7 +417,14 @@ function loadCustomShows(){ return Object.values(progress.customShows).filter(is
 function hydrateCustomTmdbData(){
   for(const g of loadCustomShows()){
     const t=g.tmdb;
-    if(!t) continue;
+    if(!t){
+      // The one-shot enrich fired at add-time can miss (tab closed early, network blip,
+      // cold Worker) and nothing ever retried it, leaving a show poster-less forever. A
+      // confirmed no-match still saves {tmdbId:null,...} (see enrichCustomShow), so "no
+      // tmdb key at all" only ever means "never successfully tried" — safe to retry here.
+      enrichCustomShow(g.id,g.t);
+      continue;
+    }
     if(t.poster) POSTERS[g.id]=t.poster;
     if(t.epCounts) EPISODE_COUNTS[g.id]=t.epCounts;
     if(t.meta) SHOW_META[g.id]=t.meta;
