@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T04:32:32.217Z",
+  "updatedAt": "2026-07-30T05:20:09.105Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -127,12 +127,12 @@
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
     "287": {
-      "ep": 10,
-      "epsWatched": 10,
+      "ep": 1,
+      "epsWatched": 11,
       "lastWatched": "2026-07-30",
       "dormant": false,
-      "updatedAt": "2026-07-30T04:32:29.921Z",
-      "season": 1
+      "updatedAt": "2026-07-30T05:20:06.804Z",
+      "season": 2
     },
     "301": {
       "season": 2,
@@ -255,6 +255,14 @@
     }
   },
   "history": [
+    {
+      "id": 287,
+      "title": "Dark",
+      "action": "watched",
+      "season": 2,
+      "ep": 1,
+      "at": "2026-07-30T05:20:06.801Z"
+    },
     {
       "id": 287,
       "title": "Dark",
