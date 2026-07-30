@@ -53,6 +53,11 @@ h1{flex:1;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;color:var(--te
 .search-input::placeholder{color:var(--dim);}
 .search-input:focus{outline:none;border-color:var(--yellow);}
 .chip-row{display:flex;gap:6px;flex-wrap:wrap;}
+@media (max-width:480px){
+  .chip-row{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .chip-row::-webkit-scrollbar{display:none;}
+  .chip{flex-shrink:0;}
+}
 .chip{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-size:0.7rem;font-weight:700;padding:0.42rem 0.75rem;border-radius:99px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:border-color 0.15s,color 0.15s,background 0.15s;}
 .chip:hover{color:var(--text);border-color:var(--border2);}
 .chip.active{background:var(--yellow);border-color:var(--yellow);color:var(--chip-ink);}
