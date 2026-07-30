@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T03:31:44.759Z",
+  "updatedAt": "2026-07-30T04:32:32.217Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -127,11 +127,11 @@
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
     "287": {
-      "ep": 9,
-      "epsWatched": 9,
-      "lastWatched": "2026-07-22",
+      "ep": 10,
+      "epsWatched": 10,
+      "lastWatched": "2026-07-30",
       "dormant": false,
-      "updatedAt": "2026-07-22T16:37:03.157Z",
+      "updatedAt": "2026-07-30T04:32:29.921Z",
       "season": 1
     },
     "301": {
@@ -255,6 +255,14 @@
     }
   },
   "history": [
+    {
+      "id": 287,
+      "title": "Dark",
+      "action": "watched",
+      "season": 1,
+      "ep": 10,
+      "at": "2026-07-30T04:32:29.916Z"
+    },
     {
       "id": 1784868238318,
       "title": "The Paper",
