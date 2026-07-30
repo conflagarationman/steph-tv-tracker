@@ -33,7 +33,8 @@ body{background:var(--bg);color:var(--text);font-family:'Nunito Sans',sans-serif
 h1,.gtitle,.yhead{font-family:'Poppins',sans-serif;}
 main{max-width:1400px;margin:0 auto;padding:1.5rem 1.25rem 2rem;}
 
-.appbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--border);padding:1.25rem 1.25rem 0.9rem;}
+.appbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--border);padding:1.25rem 1.25rem 0.9rem;transition:transform 0.2s ease;will-change:transform;}
+.appbar.appbar--hidden{transform:translateY(-100%);}
 .appbar-inner{max-width:1400px;margin:0 auto;}
 .appbar-top{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.9rem;}
 .header-icon{width:30px;height:30px;border-radius:8px;background:var(--badge-yellow);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
@@ -1467,6 +1468,33 @@ async function enrichCustomShow(id,title){
 }
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden') flushSync(); });
 window.addEventListener('pagehide',flushSync);
+
+// ─── Hide top bar on scroll down, show on scroll up ────────
+(function(){
+  const appbar=document.querySelector('.appbar');
+  if(!appbar) return;
+  let lastY=window.scrollY;
+  let ticking=false;
+  function onScroll(){
+    const y=window.scrollY;
+    const delta=y-lastY;
+    if(y<=appbar.offsetHeight){
+      appbar.classList.remove('appbar--hidden');
+    }else if(delta>10){
+      appbar.classList.add('appbar--hidden');
+    }else if(delta<-10){
+      appbar.classList.remove('appbar--hidden');
+    }
+    lastY=y;
+    ticking=false;
+  }
+  window.addEventListener('scroll',()=>{
+    if(!ticking){
+      requestAnimationFrame(onScroll);
+      ticking=true;
+    }
+  },{passive:true});
+})();
 
 // ─── Love banner ────────────────────────────────────────
 // Shuffle-bag randomization: draw messages from a shuffled queue persisted in
