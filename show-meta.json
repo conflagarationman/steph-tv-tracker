@@ -1376,7 +1376,6 @@
     "watch": {
       "on": [
         "Netflix",
-        "fuboTV",
         "Peacock Premium",
         "Netflix Standard with Ads",
         "Peacock Premium Plus"
@@ -3122,7 +3121,11 @@
       "ep": 20,
       "airDate": "2026-05-16"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 52,
+      "ep": 1,
+      "airDate": "2026-09-26"
+    },
     "watch": {
       "on": [
         "Amazon Prime Video",
@@ -3212,7 +3215,8 @@
       "on": [
         "Hulu",
         "fuboTV",
-        "YouTube TV"
+        "YouTube TV",
+        "FXNow"
       ],
       "link": "https://www.themoviedb.org/tv/258902-english-teacher/watch?locale=US"
     }
