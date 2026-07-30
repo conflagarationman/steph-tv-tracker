@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T03:26:36.044Z",
+  "updatedAt": "2026-07-30T03:26:38.700Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -181,7 +181,32 @@
       "cm": null,
       "dormant": false,
       "custom": true,
-      "updatedAt": "2026-07-24T04:43:16.939Z"
+      "updatedAt": "2026-07-30T03:26:35.948Z",
+      "tmdb": {
+        "tmdbId": 241609,
+        "matchedName": "Your Friends & Neighbors",
+        "poster": "/lcp63INKEsVHUly9eayx7gEEOcG.jpg",
+        "epCounts": {
+          "1": 9,
+          "2": 10
+        },
+        "meta": {
+          "status": "Returning Series",
+          "lastAired": {
+            "season": 2,
+            "ep": 10,
+            "airDate": "2026-06-04"
+          },
+          "nextAir": null,
+          "watch": {
+            "on": [
+              "Apple TV",
+              "Apple TV Amazon Channel"
+            ],
+            "link": "https://www.themoviedb.org/tv/241609-your-friends-neighbors/watch?locale=US"
+          }
+        }
+      }
     },
     "1784868238318": {
       "id": 1784868238318,
@@ -197,7 +222,36 @@
       "cm": null,
       "dormant": false,
       "custom": true,
-      "updatedAt": "2026-07-24T04:43:58.318Z"
+      "updatedAt": "2026-07-30T03:26:36.069Z",
+      "tmdb": {
+        "tmdbId": 253941,
+        "matchedName": "The Paper",
+        "poster": "/ySA5MvhoxTdezNUMe0ifPmhxH4w.jpg",
+        "epCounts": {
+          "1": 10,
+          "2": 10
+        },
+        "meta": {
+          "status": "Returning Series",
+          "lastAired": {
+            "season": 1,
+            "ep": 10,
+            "airDate": "2025-09-04"
+          },
+          "nextAir": {
+            "season": 2,
+            "ep": 1,
+            "airDate": "2026-09-09"
+          },
+          "watch": {
+            "on": [
+              "Peacock Premium",
+              "Peacock Premium Plus"
+            ],
+            "link": "https://www.themoviedb.org/tv/253941-the-paper/watch?locale=US"
+          }
+        }
+      }
     }
   },
   "history": [
