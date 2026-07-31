@@ -605,7 +605,7 @@
     }
   },
   "40": {
-    "status": "Returning Series",
+    "status": "Canceled",
     "lastAired": {
       "season": 1,
       "ep": 8,
@@ -3501,7 +3501,6 @@
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel",
-        "The Surf Network Amazon Channel",
         "Pluto TV"
       ],
       "link": "https://www.themoviedb.org/tv/62687-limitless/watch?locale=US"
