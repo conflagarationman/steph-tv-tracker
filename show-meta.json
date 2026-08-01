@@ -614,7 +614,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/198178-wonder-man/watch?locale=US"
     }
@@ -1788,7 +1789,9 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [],
+      "on": [
+        "Hulu"
+      ],
       "link": "https://www.themoviedb.org/tv/61617-over-the-garden-wall/watch?locale=US"
     }
   },
@@ -2276,6 +2279,7 @@
     "watch": {
       "on": [
         "Disney Plus",
+        "Hulu",
         "fuboTV",
         "YouTube TV"
       ],
@@ -2990,7 +2994,9 @@
     },
     "watch": {
       "on": [
+        "Amazon Prime Video",
         "Apple TV",
+        "Amazon Prime Video with Ads",
         "Apple TV Amazon Channel"
       ],
       "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=US"
@@ -3232,7 +3238,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
