@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-02T03:37:06.209Z",
+  "updatedAt": "2026-08-02T03:37:30.303Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -129,12 +129,12 @@
     "277": {
       "s": "watching",
       "season": 1,
-      "ep": 1,
-      "epsWatched": 1,
+      "ep": 2,
+      "epsWatched": 2,
       "lastWatched": "2026-08-01",
       "start": "2026-08-01",
       "dormant": false,
-      "updatedAt": "2026-08-02T03:37:04.399Z"
+      "updatedAt": "2026-08-02T03:37:28.608Z"
     },
     "287": {
       "ep": 1,
@@ -265,6 +265,14 @@
     }
   },
   "history": [
+    {
+      "id": 277,
+      "title": "Daredevil: Born Again",
+      "action": "watched",
+      "season": 1,
+      "ep": 2,
+      "at": "2026-08-02T03:37:28.608Z"
+    },
     {
       "id": 277,
       "title": "Daredevil: Born Again",
