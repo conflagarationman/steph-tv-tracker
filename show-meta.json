@@ -2142,12 +2142,7 @@
       "airDate": "2022-04-07"
     },
     "nextAir": null,
-    "watch": {
-      "on": [
-        "Hulu"
-      ],
-      "link": "https://www.themoviedb.org/tv/122066-the-dropout/watch?locale=US"
-    }
+    "watch": null
   },
   "136": {
     "status": "Ended",
@@ -2665,14 +2660,12 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Philo",
         "AMC Plus Apple TV Channel ",
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "YouTube TV",
         "Spectrum On Demand",
-        "Amazon Prime Video with Ads",
         "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/57243-doctor-who/watch?locale=US"
@@ -4350,7 +4343,8 @@
         "Paramount Plus Essential",
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
-        "Paramount+ Roku Premium Channel"
+        "Paramount+ Roku Premium Channel",
+        "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/67133-macgyver/watch?locale=US"
     }
