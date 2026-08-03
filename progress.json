@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-03T16:12:12.039Z",
+  "updatedAt": "2026-08-03T16:12:19.243Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -169,11 +169,11 @@
     },
     "1784868196939": {
       "season": 1,
-      "ep": 2,
-      "epsWatched": 2,
-      "lastWatched": "2026-07-26",
+      "ep": 3,
+      "epsWatched": 3,
+      "lastWatched": "2026-08-03",
       "dormant": false,
-      "updatedAt": "2026-07-27T01:42:55.195Z"
+      "updatedAt": "2026-08-03T16:12:17.583Z"
     }
   },
   "customShows": {
@@ -265,6 +265,14 @@
     }
   },
   "history": [
+    {
+      "id": 1784868196939,
+      "title": "Your Friends and Neighbors",
+      "action": "watched",
+      "season": 1,
+      "ep": 3,
+      "at": "2026-08-03T16:12:17.583Z"
+    },
     {
       "id": 277,
       "title": "Daredevil: Born Again",
