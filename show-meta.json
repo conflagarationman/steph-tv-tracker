@@ -2142,7 +2142,13 @@
       "airDate": "2022-04-07"
     },
     "nextAir": null,
-    "watch": null
+    "watch": {
+      "on": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "link": "https://www.themoviedb.org/tv/122066-the-dropout/watch?locale=US"
+    }
   },
   "136": {
     "status": "Ended",
@@ -2461,7 +2467,6 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Philo",
         "AMC Plus Apple TV Channel ",
         "AMC+ Amazon Channel",
@@ -2469,7 +2474,6 @@
         "AMC+",
         "YouTube TV",
         "Spectrum On Demand",
-        "Amazon Prime Video with Ads",
         "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/57276-turn-washington-s-spies/watch?locale=US"
@@ -3624,7 +3628,6 @@
     "watch": {
       "on": [
         "Hulu",
-        "fuboTV",
         "HBO Max Amazon Channel",
         "Philo",
         "YouTube TV",
@@ -5065,9 +5068,9 @@
   "316": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 7,
-      "ep": 29,
-      "airDate": "2025-06-03"
+      "season": 8,
+      "ep": 2,
+      "airDate": "2026-06-29"
     },
     "nextAir": null,
     "watch": {
