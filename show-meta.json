@@ -649,6 +649,7 @@
       "on": [
         "Paramount Plus Premium",
         "Paramount Plus Essential",
+        "Philo",
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
@@ -1102,11 +1103,11 @@
     "watch": {
       "on": [
         "Philo",
+        "Starz Amazon Channel",
+        "Spectrum On Demand",
+        "Starz",
         "Starz Apple TV Channel",
         "Starz Roku Premium Channel",
-        "Starz",
-        "Spectrum On Demand",
-        "Starz Amazon Channel",
         "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/86428-the-spanish-princess/watch?locale=US"
@@ -1554,14 +1555,14 @@
     "watch": {
       "on": [
         "Philo",
-        "Starz Apple TV Channel",
         "Britbox Apple TV Channel ",
         "YouTube TV",
-        "Starz",
         "BritBox",
         "BritBox Amazon Channel",
-        "Spectrum On Demand",
         "Starz Amazon Channel",
+        "Spectrum On Demand",
+        "Starz",
+        "Starz Apple TV Channel",
         "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/70215-the-white-princess/watch?locale=US"
@@ -2991,8 +2992,8 @@
     },
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Apple TV",
+        "Amazon Prime Video",
         "Amazon Prime Video with Ads",
         "Apple TV Amazon Channel"
       ],
@@ -4260,12 +4261,12 @@
     "watch": {
       "on": [
         "Philo",
+        "YouTube TV",
+        "Starz Amazon Channel",
+        "Spectrum On Demand",
+        "Starz",
         "Starz Apple TV Channel",
         "Starz Roku Premium Channel",
-        "YouTube TV",
-        "Starz",
-        "Spectrum On Demand",
-        "Starz Amazon Channel",
         "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/57092-the-white-queen/watch?locale=US"
