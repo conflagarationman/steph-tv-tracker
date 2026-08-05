@@ -2229,13 +2229,7 @@
       "airDate": "2018-07-29"
     },
     "nextAir": null,
-    "watch": {
-      "on": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
-      "link": "https://www.themoviedb.org/tv/76123-fate-extra-last-encore/watch?locale=US"
-    }
+    "watch": null
   },
   "141": {
     "status": "Returning Series",
@@ -2981,14 +2975,14 @@
   "187": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 3,
-      "ep": 12,
-      "airDate": "2023-05-30"
-    },
-    "nextAir": {
       "season": 4,
       "ep": 1,
       "airDate": "2026-08-04"
+    },
+    "nextAir": {
+      "season": 4,
+      "ep": 2,
+      "airDate": "2026-08-11"
     },
     "watch": {
       "on": [
@@ -3236,6 +3230,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -3629,6 +3624,7 @@
     "watch": {
       "on": [
         "Hulu",
+        "fuboTV",
         "HBO Max Amazon Channel",
         "Philo",
         "YouTube TV",
@@ -4761,17 +4757,13 @@
     }
   },
   "298": {
-    "status": "Returning Series",
+    "status": "Ended",
     "lastAired": {
-      "season": 2,
-      "ep": 10,
-      "airDate": "2025-10-17"
-    },
-    "nextAir": {
       "season": 3,
-      "ep": 1,
+      "ep": 4,
       "airDate": "2026-08-04"
     },
+    "nextAir": null,
     "watch": {
       "on": [
         "Disney Plus",
