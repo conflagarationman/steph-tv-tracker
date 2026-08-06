@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-06T03:03:05.143Z",
+  "updatedAt": "2026-08-06T03:03:11.907Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -76,11 +76,11 @@
     },
     "167": {
       "season": 12,
-      "ep": 9,
-      "epsWatched": 146,
-      "lastWatched": "2026-07-28",
+      "ep": 10,
+      "epsWatched": 147,
+      "lastWatched": "2026-08-05",
       "dormant": false,
-      "updatedAt": "2026-07-29T00:16:13.271Z"
+      "updatedAt": "2026-08-06T03:03:10.169Z"
     },
     "190": {
       "season": 3,
@@ -265,6 +265,14 @@
     }
   },
   "history": [
+    {
+      "id": 167,
+      "title": "Doctor Who (2005)",
+      "action": "watched",
+      "season": 12,
+      "ep": 10,
+      "at": "2026-08-06T03:03:10.168Z"
+    },
     {
       "id": 1784868238318,
       "title": "The Paper",
