@@ -649,7 +649,6 @@
       "on": [
         "Paramount Plus Premium",
         "Paramount Plus Essential",
-        "Philo",
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
@@ -3230,7 +3229,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
