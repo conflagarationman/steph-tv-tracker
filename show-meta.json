@@ -3876,7 +3876,9 @@
     "watch": {
       "on": [
         "Netflix",
-        "Netflix Standard with Ads"
+        "Netflix Standard with Ads",
+        "Thirteen",
+        "WETA+"
       ],
       "link": "https://www.themoviedb.org/tv/39793-call-the-midwife/watch?locale=US"
     }
@@ -4191,10 +4193,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Hulu",
         "Peacock Premium",
-        "Amazon Prime Video with Ads",
         "Peacock Premium Plus"
       ],
       "link": "https://www.themoviedb.org/tv/4608-30-rock/watch?locale=US"
@@ -4936,8 +4936,6 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
-        "Amazon Prime Video with Ads",
         "Tubi TV"
       ],
       "link": "https://www.themoviedb.org/tv/66857-shooter/watch?locale=US"
