@@ -3493,7 +3493,6 @@
     "watch": {
       "on": [
         "Paramount Plus Premium",
-        "Paramount Plus Essential",
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel",
@@ -3999,7 +3998,7 @@
     }
   },
   "249": {
-    "status": "In Production",
+    "status": "Returning Series",
     "lastAired": null,
     "nextAir": {
       "season": 1,
@@ -4277,7 +4276,6 @@
     "watch": {
       "on": [
         "Paramount Plus Premium",
-        "Paramount Plus Essential",
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
