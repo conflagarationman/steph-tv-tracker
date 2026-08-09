@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-09T02:55:46.130Z",
+  "updatedAt": "2026-08-09T02:55:50.691Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -160,12 +160,12 @@
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
     "1784868238318": {
-      "season": 1,
-      "ep": 10,
-      "epsWatched": 10,
-      "lastWatched": "2026-08-06",
+      "season": 2,
+      "ep": 1,
+      "epsWatched": 11,
+      "lastWatched": "2026-08-08",
       "dormant": false,
-      "updatedAt": "2026-08-07T03:40:35.433Z"
+      "updatedAt": "2026-08-09T02:55:48.960Z"
     },
     "1784868196939": {
       "season": 1,
@@ -265,6 +265,14 @@
     }
   },
   "history": [
+    {
+      "id": 1784868238318,
+      "title": "The Paper",
+      "action": "watched",
+      "season": 2,
+      "ep": 1,
+      "at": "2026-08-09T02:55:48.959Z"
+    },
     {
       "id": 1784868196939,
       "title": "Your Friends and Neighbors",
