@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-10T03:28:17.133Z",
+  "updatedAt": "2026-08-10T03:28:24.776Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -75,12 +75,12 @@
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
     "167": {
-      "season": 12,
-      "ep": 10,
-      "epsWatched": 147,
-      "lastWatched": "2026-08-05",
+      "season": 13,
+      "ep": 1,
+      "epsWatched": 148,
+      "lastWatched": "2026-08-09",
       "dormant": false,
-      "updatedAt": "2026-08-06T03:03:10.169Z"
+      "updatedAt": "2026-08-10T03:28:23.089Z"
     },
     "190": {
       "season": 3,
@@ -266,6 +266,14 @@
     }
   },
   "history": [
+    {
+      "id": 167,
+      "title": "Doctor Who (2005)",
+      "action": "watched",
+      "season": 13,
+      "ep": 1,
+      "at": "2026-08-10T03:28:23.089Z"
+    },
     {
       "id": 202,
       "title": "Upload",
