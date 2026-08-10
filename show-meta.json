@@ -2985,8 +2985,8 @@
     },
     "watch": {
       "on": [
-        "Apple TV",
         "Amazon Prime Video",
+        "Apple TV",
         "Amazon Prime Video with Ads",
         "Apple TV Amazon Channel"
       ],
@@ -3276,9 +3276,7 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [
-        "Tubi TV"
-      ],
+      "on": [],
       "link": "https://www.themoviedb.org/tv/71763-alex-inc/watch?locale=US"
     }
   },
