@@ -649,6 +649,7 @@
       "on": [
         "Paramount Plus Premium",
         "Paramount Plus Essential",
+        "Philo",
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
@@ -2663,8 +2664,7 @@
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "YouTube TV",
-        "Spectrum On Demand",
-        "The Roku Channel"
+        "Spectrum On Demand"
       ],
       "link": "https://www.themoviedb.org/tv/57243-doctor-who/watch?locale=US"
     }
@@ -2985,8 +2985,8 @@
     },
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Apple TV",
+        "Amazon Prime Video",
         "Amazon Prime Video with Ads",
         "Apple TV Amazon Channel"
       ],
@@ -3229,6 +3229,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -3491,6 +3492,7 @@
     "watch": {
       "on": [
         "Paramount Plus Premium",
+        "Paramount Plus Essential",
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel",
@@ -4274,6 +4276,7 @@
     "watch": {
       "on": [
         "Paramount Plus Premium",
+        "Paramount Plus Essential",
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
