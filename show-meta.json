@@ -160,7 +160,6 @@
         "Hulu",
         "Crunchyroll",
         "Crunchyroll Amazon Channel",
-        "YouTube TV",
         "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/85937/watch?locale=US"
@@ -299,7 +298,6 @@
     "watch": {
       "on": [
         "HBO Max Amazon Channel",
-        "YouTube TV",
         "HBO Max"
       ],
       "link": "https://www.themoviedb.org/tv/73107-barry/watch?locale=US"
@@ -631,7 +629,6 @@
     "watch": {
       "on": [
         "HBO Max Amazon Channel",
-        "YouTube TV",
         "HBO Max"
       ],
       "link": "https://www.themoviedb.org/tv/75450-titans/watch?locale=US"
@@ -794,9 +791,7 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [
-        "OnDemandKorea"
-      ],
+      "on": [],
       "link": "https://www.themoviedb.org/tv/1404-chuck/watch?locale=US"
     }
   },
@@ -1076,7 +1071,11 @@
       "ep": 8,
       "airDate": "2026-04-05"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 5,
+      "ep": 1,
+      "airDate": "2027-02-07"
+    },
     "watch": {
       "on": [
         "Netflix",
@@ -1509,7 +1508,10 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [],
+      "on": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
       "link": "https://www.themoviedb.org/tv/68106-kim-s-convenience/watch?locale=US"
     }
   },
@@ -1800,14 +1802,18 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 7,
-      "ep": 15,
-      "airDate": "2026-05-18"
+      "ep": 16,
+      "airDate": "2026-08-10"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 7,
+      "ep": 17,
+      "airDate": "2026-08-17"
+    },
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Disney Plus",
+        "Amazon Prime Video",
         "Hulu",
         "Philo",
         "HISTORY Vault Apple TV Channel",
@@ -2467,7 +2473,6 @@
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "AMC+",
-        "YouTube TV",
         "Spectrum On Demand",
         "The Roku Channel"
       ],
@@ -2680,7 +2685,6 @@
     "watch": {
       "on": [
         "HBO Max Amazon Channel",
-        "YouTube TV",
         "HBO Max"
       ],
       "link": "https://www.themoviedb.org/tv/79501-doom-patrol/watch?locale=US"
@@ -2975,18 +2979,18 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 4,
-      "ep": 1,
-      "airDate": "2026-08-04"
-    },
-    "nextAir": {
-      "season": 4,
       "ep": 2,
       "airDate": "2026-08-11"
     },
+    "nextAir": {
+      "season": 4,
+      "ep": 3,
+      "airDate": "2026-08-18"
+    },
     "watch": {
       "on": [
-        "Apple TV",
         "Amazon Prime Video",
+        "Apple TV",
         "Amazon Prime Video with Ads",
         "Apple TV Amazon Channel"
       ],
@@ -3081,7 +3085,6 @@
         "Britbox Apple TV Channel ",
         "AMC+ Amazon Channel",
         "AMC+",
-        "YouTube TV",
         "PBS",
         "BritBox",
         "PBS Masterpiece Amazon Channel",
@@ -4176,7 +4179,6 @@
       "on": [
         "Hulu",
         "HBO Max Amazon Channel",
-        "YouTube TV",
         "HBO Max"
       ],
       "link": "https://www.themoviedb.org/tv/2673-the-o-c/watch?locale=US"
@@ -4254,7 +4256,6 @@
     "watch": {
       "on": [
         "Philo",
-        "YouTube TV",
         "Starz Amazon Channel",
         "Spectrum On Demand",
         "Starz",
@@ -5063,7 +5064,6 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "YouTube TV",
         "PBS Kids Amazon Channel"
       ],
       "link": "https://www.themoviedb.org/tv/40050-daniel-tiger-s-neighborhood/watch?locale=US"
