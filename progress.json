@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-12T00:06:44.744Z",
+  "updatedAt": "2026-08-12T00:18:52.791Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -92,11 +92,11 @@
     },
     "202": {
       "season": 4,
-      "ep": 3,
-      "lastWatched": "2026-08-10",
+      "ep": 4,
+      "lastWatched": "2026-08-11",
       "dormant": false,
-      "updatedAt": "2026-08-10T17:42:10.664Z",
-      "epsWatched": 27
+      "updatedAt": "2026-08-12T00:18:50.760Z",
+      "epsWatched": 28
     },
     "203": {
       "season": 3,
@@ -266,6 +266,14 @@
     }
   },
   "history": [
+    {
+      "id": 202,
+      "title": "Upload",
+      "action": "watched",
+      "season": 4,
+      "ep": 4,
+      "at": "2026-08-12T00:18:50.757Z"
+    },
     {
       "id": 287,
       "title": "Dark",
