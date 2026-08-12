@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-12T02:15:27.552Z",
+  "updatedAt": "2026-08-12T02:15:32.890Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -170,11 +170,11 @@
     },
     "1784868196939": {
       "season": 1,
-      "ep": 5,
-      "epsWatched": 5,
-      "lastWatched": "2026-08-08",
+      "ep": 6,
+      "epsWatched": 6,
+      "lastWatched": "2026-08-11",
       "dormant": false,
-      "updatedAt": "2026-08-09T02:21:21.782Z"
+      "updatedAt": "2026-08-12T02:15:31.164Z"
     }
   },
   "customShows": {
@@ -266,6 +266,14 @@
     }
   },
   "history": [
+    {
+      "id": 1784868196939,
+      "title": "Your Friends and Neighbors",
+      "action": "watched",
+      "season": 1,
+      "ep": 6,
+      "at": "2026-08-12T02:15:31.162Z"
+    },
     {
       "id": 202,
       "title": "Upload",
