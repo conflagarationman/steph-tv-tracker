@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T13:08:39.303Z",
+  "updatedAt": "2026-08-14T13:08:49.500Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -16,11 +16,11 @@
     },
     "28": {
       "season": 2,
-      "ep": 2,
-      "epsWatched": 10,
-      "lastWatched": "2026-07-24",
+      "ep": 3,
+      "epsWatched": 11,
+      "lastWatched": "2026-08-14",
       "dormant": false,
-      "updatedAt": "2026-07-25T03:23:44.839Z"
+      "updatedAt": "2026-08-14T13:08:47.478Z"
     },
     "60": {
       "ep": 2,
@@ -269,6 +269,14 @@
     }
   },
   "history": [
+    {
+      "id": 28,
+      "title": "House of David",
+      "action": "watched",
+      "season": 2,
+      "ep": 3,
+      "at": "2026-08-14T13:08:47.477Z"
+    },
     {
       "id": 202,
       "title": "Upload",
