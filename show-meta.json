@@ -1558,6 +1558,7 @@
         "Spectrum On Demand",
         "Starz",
         "Starz Apple TV Channel",
+        "Howdy Amazon Channel",
         "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/70215-the-white-princess/watch?locale=US"
@@ -3382,6 +3383,7 @@
       "on": [
         "Hulu",
         "fuboTV",
+        "YouTube TV",
         "HBO Max"
       ],
       "link": "https://www.themoviedb.org/tv/125935-abbott-elementary/watch?locale=US"
@@ -5040,8 +5042,8 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 8,
-      "ep": 2,
-      "airDate": "2026-06-29"
+      "ep": 6,
+      "airDate": "2026-08-11"
     },
     "nextAir": null,
     "watch": {
@@ -5372,6 +5374,7 @@
         "Netflix",
         "Hulu",
         "fuboTV",
+        "YouTube TV",
         "Netflix Standard with Ads",
         "FOX One Amazon Channel"
       ],
