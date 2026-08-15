@@ -643,7 +643,6 @@
       "on": [
         "Paramount Plus Premium",
         "Paramount Plus Essential",
-        "Philo",
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
@@ -1103,6 +1102,7 @@
         "Starz",
         "Starz Apple TV Channel",
         "Starz Roku Premium Channel",
+        "Howdy Amazon Channel",
         "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/86428-the-spanish-princess/watch?locale=US"
@@ -1747,7 +1747,11 @@
       "ep": 8,
       "airDate": "2023-10-03"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 2,
+      "ep": 1,
+      "airDate": "2027-01-20"
+    },
     "watch": {
       "on": [
         "Disney Plus"
@@ -3221,7 +3225,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -3854,7 +3857,7 @@
     }
   },
   "241": {
-    "status": "Returning Series",
+    "status": "Ended",
     "lastAired": {
       "season": 15,
       "ep": 8,
@@ -4247,6 +4250,7 @@
         "Starz",
         "Starz Apple TV Channel",
         "Starz Roku Premium Channel",
+        "Howdy Amazon Channel",
         "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/57092-the-white-queen/watch?locale=US"
