@@ -962,9 +962,21 @@ function posterEl(g){
   const img=path?`<img src="https://image.tmdb.org/t/p/w185${path}" width="52" height="74" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
   return `<div class="poster" style="background:${color}18;color:${color}" aria-hidden="true">${letter}${img}</div>`;
 }
+// Only ever reads the local cache (EPISODE_TITLES, populated whenever the episode dialog's
+// been opened for a show) — never fetches. A hover tooltip on the main list firing a network
+// call per show per mouseover isn't worth it; the tooltip just quietly appears once a show's
+// been opened at least once, same "fills in over time" pattern as posters/watch providers.
+function cachedEpisodeTitle(g){
+  const seasonEps=EPISODE_TITLES[g.id]&&EPISODE_TITLES[g.id][g.season];
+  if(!seasonEps) return null;
+  const match=seasonEps.find(e=>e.ep===g.ep);
+  return match&&match.name||null;
+}
 function seasonEpEl(g){
   if(g.season==null||g.ep==null) return '';
-  return `<span class="season-ep">S${g.season} · E${g.ep}</span>`;
+  const title=cachedEpisodeTitle(g);
+  const attr=title?` title="${esc(title)}"`:'';
+  return `<span class="season-ep"${attr}>S${g.season} · E${g.ep}</span>`;
 }
 function epsPill(g){
   if(!g.epsWatched) return '';
