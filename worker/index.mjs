@@ -1,5 +1,5 @@
 import { merge, pruneTombstones, emptyDoc } from './merge.mjs';
-import { lookupShow } from '../tmdb.mjs';
+import { lookupShow, lookupEpisodes } from '../tmdb.mjs';
 
 // Sync endpoint for the tracker. The page can't commit to GitHub itself: doing that needs
 // a token, and anything the page holds is public because the site is a static public repo.
@@ -18,6 +18,13 @@ import { lookupShow } from '../tmdb.mjs';
 //                    poster and streaming badges immediately instead of never. TMDB_API_KEY
 //                    is a Worker secret for the same reason GITHUB_TOKEN is — the page must
 //                    never hold it.
+// GET  /tmdb-episodes ?tmdbId=<id>&seasons=1,2,3 -> {"1":[{ep,name,overview,airDate},...],...}
+//                    Episode titles/synopses, resolved on demand when she opens a show's
+//                    episode list — nightly batch never fetches this for all 339 shows, it'd
+//                    be a lot of TMDB calls for data she'll only look at for a handful of
+//                    shows at a time. The page already knows tmdbId (from tmdb-map.json or a
+//                    custom show's cached tmdb lookup) and which seasons exist (from
+//                    episode-counts.json), so this skips the title-search step entirely.
 
 const FILE = 'progress.json';
 const UA = 'steph-tv-tracker-sync';
@@ -126,6 +133,21 @@ export default {
       if (!env.TMDB_API_KEY) return json({ error: 'TMDB not configured on this server' }, 502, origin);
       try {
         const result = await lookupShow(title.trim(), env.TMDB_API_KEY);
+        return json(result, 200, origin);
+      } catch (e) {
+        return json({ error: String(e.message || e) }, 502, origin);
+      }
+    }
+
+    if (url.pathname.endsWith('/tmdb-episodes')) {
+      if (request.method !== 'GET') return json({ error: 'method not allowed' }, 405, origin);
+      const tmdbId = url.searchParams.get('tmdbId');
+      if (!tmdbId || !/^\d+$/.test(tmdbId)) return json({ error: 'missing or invalid tmdbId' }, 400, origin);
+      const seasonNums = (url.searchParams.get('seasons') || '').split(',').map((s) => s.trim()).filter((s) => /^\d+$/.test(s));
+      if (!seasonNums.length) return json({ error: 'missing seasons' }, 400, origin);
+      if (!env.TMDB_API_KEY) return json({ error: 'TMDB not configured on this server' }, 502, origin);
+      try {
+        const result = await lookupEpisodes(tmdbId, seasonNums, env.TMDB_API_KEY);
         return json(result, 200, origin);
       } catch (e) {
         return json({ error: String(e.message || e) }, 502, origin);

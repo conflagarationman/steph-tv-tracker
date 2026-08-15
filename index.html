@@ -147,17 +147,22 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .edit-dialog::backdrop{background:rgba(0,0,0,0.5);}
 .edit-dialog h3{font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.9rem;}
 
-/* Episode seen/unseen dialog — wider than the edit dialogs since it holds a wrapping grid,
-   not two side-by-side number inputs. */
-#episodes-dialog{max-width:420px;}
+/* Episode titles dialog — wider than the edit dialogs and scrolls internally, since a show
+   can have hundreds of episodes across many seasons. */
+#episodes-dialog{max-width:460px;max-height:80vh;display:flex;flex-direction:column;}
 .ep-sub{font-size:0.72rem;color:var(--dim);margin:-0.6rem 0 0.9rem;}
-.ep-season-block{margin-bottom:1rem;}
+.ep-scroll{overflow-y:auto;}
+.ep-season-block{margin-bottom:1.1rem;}
 .ep-season-label{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.5rem;}
-.ep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px;}
-.ep-chip{display:flex;align-items:center;justify-content:center;padding:0.45rem 0;border-radius:8px;font-size:0.7rem;font-weight:700;border:1px solid var(--border2);}
-.ep-chip.seen{background:var(--surface2);color:var(--dim);opacity:0.65;}
-.ep-chip.unseen{background:var(--blue)18;color:var(--blue);border-color:var(--blue)44;}
+.ep-list{display:flex;flex-direction:column;gap:2px;}
+.ep-row{display:flex;gap:10px;align-items:baseline;padding:0.4rem 0.1rem;border-radius:6px;font-size:0.8rem;}
+.ep-num{flex:none;min-width:2.4rem;font-weight:700;font-size:0.7rem;color:var(--muted);}
+.ep-title{flex:1;}
+.ep-row.seen{color:var(--dim);opacity:0.65;}
+.ep-row.seen .ep-num{color:var(--dim);}
+.ep-row.unseen .ep-num{color:var(--blue);}
 .ep-empty{font-size:0.78rem;color:var(--dim);padding:0.5rem 0;}
+.ep-loading{font-size:0.78rem;color:var(--dim);padding:0.5rem 0;}
 .edit-fields{display:flex;gap:10px;margin-bottom:1rem;}
 .edit-fields label{flex:1;display:flex;flex-direction:column;gap:4px;font-size:0.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
 .edit-fields input,.edit-fields select{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
@@ -347,7 +352,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 <dialog id="episodes-dialog" class="edit-dialog">
   <h3 id="episodes-title">Episodes</h3>
   <div class="ep-sub" id="episodes-sub"></div>
-  <div id="episodes-body"></div>
+  <div class="ep-scroll" id="episodes-body"></div>
   <div class="dialog-actions">
     <button type="button" class="action-btn" onclick="document.getElementById('episodes-dialog').close()">Close</button>
   </div>
@@ -604,26 +609,47 @@ function openEdit(id){
   document.getElementById('edit-dialog').showModal();
 }
 
-// One season's worth of chips: watched episodes greyed out, the rest highlighted. Takes a
-// season number rather than assuming "the current one" so a future all-seasons view is just
-// calling this in a loop instead of a rewrite — openEpisodes below only ever calls it once
-// today, for g.season, per "current season only for now."
-function renderSeasonBlock(seasonNum,epCount,currentSeason,currentEp){
-  const chips=[];
-  for(let ep=1;ep<=epCount;ep++){
-    const seen=seasonNum<currentSeason||(seasonNum===currentSeason&&ep<=currentEp);
-    chips.push(`<div class="ep-chip ${seen?'seen':'unseen'}">${seen?'✓ ':''}${ep}</div>`);
-  }
+// A show's tmdbId comes from one of two places depending on whether it's one of her original
+// 339 (TMDB_MAP, from the nightly batch) or one she added herself (progress.customShows[id]
+// .tmdb, from enrichCustomShow — see hydrateCustomTmdbData's comment for why these differ).
+function getTmdbId(id){
+  const mapped=TMDB_MAP[id];
+  if(mapped&&mapped.tmdbId) return mapped.tmdbId;
+  const custom=progress.customShows[id];
+  return custom&&custom.tmdb&&custom.tmdb.tmdbId||null;
+}
+
+// Episode titles/synopses, once fetched, don't change — cache indefinitely rather than
+// re-hitting the Worker (and TMDB) every time she reopens a show. Purely local: unlike
+// progress this never needs to sync, so plain localStorage is enough.
+const EP_TITLES_KEY='tvtracker-ep-titles';
+let EPISODE_TITLES={};
+try{ EPISODE_TITLES=JSON.parse(localStorage.getItem(EP_TITLES_KEY))||{}; }catch(e){}
+function saveEpisodeTitles(){ try{ localStorage.setItem(EP_TITLES_KEY,JSON.stringify(EPISODE_TITLES)); }catch(e){} }
+
+const tmdbEpisodesUrl=()=>SYNC.url?SYNC.url.replace(/\/progress$/,'/tmdb-episodes'):null;
+
+// One season's worth of episodes. Watched ones (by air order, not literally "seen this
+// title") greyed out with a check, the rest highlighted — same seen/unseen logic the old
+// chip grid used, just rendered as a title list instead of bare numbers now that there's
+// text worth reading.
+function renderSeasonBlock(seasonNum,episodes,currentSeason,currentEp){
+  const rows=episodes.map(e=>{
+    const seen=seasonNum<currentSeason||(seasonNum===currentSeason&&e.ep<=currentEp);
+    const title=e.name?esc(e.name):`Episode ${e.ep}`;
+    return `<div class="ep-row ${seen?'seen':'unseen'}"><span class="ep-num">${seen?'✓ ':''}E${e.ep}</span><span class="ep-title">${title}</span></div>`;
+  }).join('');
   return `<div class="ep-season-block">
     <div class="ep-season-label">Season ${seasonNum}</div>
-    <div class="ep-grid">${chips.join('')}</div>
+    <div class="ep-list">${rows}</div>
   </div>`;
 }
 
-// Reads EPISODE_COUNTS, already loaded at bootstrap for every original show and filled in
-// for custom ones the moment enrichCustomShow() finds them (see hydrateCustomTmdbData) — no
-// network call needed here, this is purely a client-side view over data already in memory.
-function openEpisodes(id){
+// Season episode COUNTS are already loaded at bootstrap (EPISODE_COUNTS), but TITLES are
+// fetched on demand here — pre-fetching titles for all 339 shows' every season on every visit
+// would be hundreds of TMDB calls for data she'll only look at for a handful of shows at a
+// time. Cached in EPISODE_TITLES (localStorage) after the first fetch per show.
+async function openEpisodes(id){
   const g=liveShows().find(x=>x.id===id);
   if(!g) return;
   document.getElementById('episodes-title').textContent=g.t;
@@ -632,18 +658,56 @@ function openEpisodes(id){
   if(g.season==null||g.ep==null){
     sub.textContent='';
     body.innerHTML='<div class="ep-empty">Hasn\'t been started yet — nothing to show.</div>';
-  }else{
-    const counts=EPISODE_COUNTS[id];
-    const epCount=counts&&counts[g.season];
-    if(!epCount){
-      sub.textContent='';
-      body.innerHTML='<div class="ep-empty">No episode data for this show yet.</div>';
-    }else{
-      sub.textContent=`Currently at S${g.season} · E${g.ep}`;
-      body.innerHTML=renderSeasonBlock(g.season,epCount,g.season,g.ep);
-    }
+    document.getElementById('episodes-dialog').showModal();
+    return;
   }
+  const counts=EPISODE_COUNTS[id];
+  if(!counts||!Object.keys(counts).length){
+    sub.textContent='';
+    body.innerHTML='<div class="ep-empty">No episode data for this show yet.</div>';
+    document.getElementById('episodes-dialog').showModal();
+    return;
+  }
+  sub.textContent=`Currently at S${g.season} · E${g.ep}`;
+  // Newest season first — the one she's mid-way through (or about to start) is what she
+  // opened this for, not season 1 of a show she's 8 seasons into.
+  const seasons=Object.keys(counts).map(Number).sort((a,b)=>b-a);
+  const renderKnown=()=>{
+    const cached=EPISODE_TITLES[id]||{};
+    body.innerHTML=seasons.map(s=>{
+      const eps=cached[s];
+      // Titles not fetched (or fetch failed) yet — fall back to bare episode numbers for
+      // that season rather than blocking the whole dialog on one slow/failed season.
+      const episodes=eps||Array.from({length:counts[s]},(_,i)=>({ep:i+1,name:null}));
+      return renderSeasonBlock(s,episodes,g.season,g.ep);
+    }).join('');
+  };
+  renderKnown();
   document.getElementById('episodes-dialog').showModal();
+
+  const tmdbId=getTmdbId(id);
+  const url=tmdbEpisodesUrl();
+  if(!tmdbId||!url) return; // No matched TMDB show (e.g. one of her 4 unproduced ones) —
+                              // bare numbers is all there ever will be for it. Not an error.
+  const cached=EPISODE_TITLES[id]||{};
+  const missing=seasons.filter(s=>!cached[s]);
+  if(!missing.length) return;
+  try{
+    const res=await fetch(`${url}?tmdbId=${tmdbId}&seasons=${missing.join(',')}`,{headers:{'X-Sync-Key':SYNC.key}});
+    if(!res.ok) return;
+    const data=await res.json();
+    EPISODE_TITLES[id]={...cached,...data};
+    saveEpisodeTitles();
+    // Only re-render if she's still looking at this same show — a slow response for a show
+    // she's since closed the dialog on shouldn't repaint whatever she opened next.
+    if(document.getElementById('episodes-title').textContent===g.t&&document.getElementById('episodes-dialog').open){
+      renderKnown();
+    }
+  }catch(e){
+    console.warn('episode title fetch failed for',g.t,e); // Bare numbers stay visible — same
+                                                             // degrade-gracefully pattern as
+                                                             // poster/watch-provider lookups.
+  }
 }
 function saveEdit(e){
   e.preventDefault();
@@ -710,6 +774,10 @@ let EPISODE_COUNTS={};
 // Show id -> {status, lastAired, nextAir} from TMDB. Distinguishes a show that has
 // actually ENDED from one she's merely caught up on.
 let SHOW_META={};
+// Show id -> {tmdbId,...}, so the episode-titles dialog can call the Worker without a
+// title-search round trip. Original 339 shows only — custom shows keep their tmdbId on
+// progress.customShows[id].tmdb instead (see getTmdbId below).
+let TMDB_MAP={};
 
 // ─── Real viewing-history stats, pulled from TV Time's own cached stats +
 // historical timeframe counters (not derived/guessed) ──────────────────────
@@ -1559,12 +1627,14 @@ Promise.all([
   fetch('shows.json').then(r=>r.json()),
   fetch('posters.json').then(r=>r.ok?r.json():{}).catch(()=>({})),
   fetch('episode-counts.json').then(r=>r.ok?r.json():{}).catch(()=>({})),
-  fetch('show-meta.json').then(r=>r.ok?r.json():{}).catch(()=>({}))
-]).then(([showsData,postersData,episodeCountsData,metaData])=>{
+  fetch('show-meta.json').then(r=>r.ok?r.json():{}).catch(()=>({})),
+  fetch('tmdb-map.json').then(r=>r.ok?r.json():{}).catch(()=>({}))
+]).then(([showsData,postersData,episodeCountsData,metaData,tmdbMapData])=>{
   SH=showsData;
   POSTERS=postersData;
   EPISODE_COUNTS=episodeCountsData;
   SHOW_META=metaData;
+  TMDB_MAP=tmdbMapData;
   hydrateCustomTmdbData();
   render();
   // Pull on load by pushing: the Worker merges and hands back the truth. This is what

@@ -1,7 +1,7 @@
 // Covers the matching heuristic's documented edge cases (each one a real false-positive/
 // false-negative caught in production, per tmdb.mjs's own comments) so a future tweak can't
 // silently reintroduce them, plus the lookupShow pipeline shape used by both callers.
-import { nameMatches, plausible, parseTitleYear, watchProviders, lookupShow } from './tmdb.mjs';
+import { nameMatches, plausible, parseTitleYear, watchProviders, lookupShow, lookupEpisodes } from './tmdb.mjs';
 import assert from 'node:assert/strict';
 
 let pass = 0, fail = 0;
@@ -123,6 +123,32 @@ await testAsync('lookupShow rejects a plausible-looking wrong result rather than
   }), { status: 200 }));
   const result = await lookupShow('Ink & Paint', 'fake-key');
   assert.equal(result.tmdbId, null, 'must not accept an unrelated show with overlapping words');
+});
+
+// ── lookupEpisodes (fetch stubbed — no real API key or network) ────────────────────────
+
+await testAsync('lookupEpisodes fetches multiple seasons in a single upstream call', async () => {
+  let calls = 0;
+  stubFetch(async (url) => {
+    calls++;
+    const u = String(url);
+    assert.ok(u.includes('/tv/42'), 'hits the show details endpoint, not a search');
+    assert.ok(u.includes('season%2F1%2Cseason%2F2'), 'both seasons requested via append_to_response in one call');
+    return new Response(JSON.stringify({
+      'season/1': { episodes: [{ episode_number: 1, name: 'Good News About Hell', overview: 'Mark starts work.', air_date: '2022-02-18' }] },
+      'season/2': { episodes: [{ episode_number: 1, name: 'Hello, Ms. Cobel', overview: null, air_date: '2025-01-17' }] }
+    }), { status: 200 });
+  });
+  const result = await lookupEpisodes(42, ['1', '2'], 'fake-key');
+  assert.equal(calls, 1, 'one HTTP call regardless of season count');
+  assert.deepEqual(result['1'], [{ ep: 1, name: 'Good News About Hell', overview: 'Mark starts work.', airDate: '2022-02-18' }]);
+  assert.deepEqual(result['2'], [{ ep: 1, name: 'Hello, Ms. Cobel', overview: null, airDate: '2025-01-17' }]);
+});
+
+await testAsync('lookupEpisodes returns an empty list for a season TMDB has no data for', async () => {
+  stubFetch(async () => new Response(JSON.stringify({ 'season/1': null }), { status: 200 }));
+  const result = await lookupEpisodes(42, ['1'], 'fake-key');
+  assert.deepEqual(result['1'], []);
 });
 
 console.log(`\n${pass}/${pass + fail} passing`);

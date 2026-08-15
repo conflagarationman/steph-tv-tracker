@@ -96,6 +96,27 @@ export function watchProviders(details) {
   return { on, link: region.link || null };
 }
 
+// Episode titles/synopses for a set of seasons, in one upstream call regardless of how many
+// seasons are asked for — TMDB's append_to_response supports season sub-requests
+// (`season/1,season/2,...`) alongside the main /tv/{id} call, so this never costs more than
+// the single-show lookup above does. Keyed by season number (string) to match EPISODE_COUNTS'
+// shape client-side. A season TMDB doesn't have data for yet (e.g. unaired) comes back [].
+export async function lookupEpisodes(tmdbId, seasonNums, apiKey) {
+  const append = seasonNums.map((n) => `season/${n}`).join(',');
+  const data = await tmdbGet(`/tv/${tmdbId}`, apiKey, { append_to_response: append });
+  const result = {};
+  for (const n of seasonNums) {
+    const season = data[`season/${n}`];
+    result[n] = (season && season.episodes || []).map((e) => ({
+      ep: e.episode_number,
+      name: e.name || null,
+      overview: e.overview || null,
+      airDate: e.air_date || null
+    }));
+  }
+  return result;
+}
+
 // Full pipeline for one title: find it, then pull poster/episode-counts/status/watch data —
 // the same shape check-new-seasons.mjs writes per-show, but for a single on-demand lookup
 // rather than a batch. Returns null-poster/no-match fields rather than throwing when TMDB

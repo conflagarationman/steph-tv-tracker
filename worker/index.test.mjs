@@ -228,5 +228,63 @@ await test('tmdb-lookup still enforces origin like every other route', async () 
   assert.equal(res.status, 403);
 });
 
+// ── /tmdb-episodes ───────────────────────────────────────────────────────────────────────
+// lookupEpisodes() itself is covered in ../tmdb.test.mjs — these only exercise the route.
+
+const episodes = (params, headers = {}) => worker.fetch(new Request(`https://w.dev/tmdb-episodes?${params}`, {
+  method: 'GET',
+  headers: { Origin: ORIGIN, 'X-Sync-Key': 'k', ...headers }
+}), { ...env, TMDB_API_KEY: 'fake-tmdb-key' });
+
+await test('tmdb-episodes returns episode titles for the requested seasons', async () => {
+  globalThis.fetch = async (url) => {
+    assert.ok(String(url).includes('/tv/42'));
+    return new Response(JSON.stringify({
+      'season/1': { episodes: [{ episode_number: 1, name: 'Pilot', overview: 'It begins.', air_date: '2020-01-01' }] }
+    }), { status: 200 });
+  };
+  const res = await episodes('tmdbId=42&seasons=1');
+  assert.equal(res.status, 200);
+  const out = await res.json();
+  assert.deepEqual(out['1'], [{ ep: 1, name: 'Pilot', overview: 'It begins.', airDate: '2020-01-01' }]);
+});
+
+await test('tmdb-episodes requires a valid numeric tmdbId', async () => {
+  assert.equal((await episodes('tmdbId=nope&seasons=1')).status, 400);
+  assert.equal((await episodes('seasons=1')).status, 400);
+});
+
+await test('tmdb-episodes requires at least one valid season', async () => {
+  assert.equal((await episodes('tmdbId=42')).status, 400);
+  assert.equal((await episodes('tmdbId=42&seasons=abc')).status, 400);
+});
+
+await test('tmdb-episodes fails cleanly (502, not a crash) when the server has no TMDB key configured', async () => {
+  const res = await worker.fetch(new Request('https://w.dev/tmdb-episodes?tmdbId=42&seasons=1', {
+    method: 'GET', headers: { Origin: ORIGIN, 'X-Sync-Key': 'k' }
+  }), env); // env here has no TMDB_API_KEY
+  assert.equal(res.status, 502);
+});
+
+await test('tmdb-episodes only allows GET', async () => {
+  const res = await worker.fetch(new Request('https://w.dev/tmdb-episodes?tmdbId=42&seasons=1', {
+    method: 'POST', headers: { Origin: ORIGIN, 'X-Sync-Key': 'k' }
+  }), { ...env, TMDB_API_KEY: 'fake-tmdb-key' });
+  assert.equal(res.status, 405);
+});
+
+await test('tmdb-episodes still enforces the sync key like every other route', async () => {
+  globalThis.fetch = async () => { throw new Error('must not reach TMDB — auth should fail first'); };
+  const res = await episodes('tmdbId=42&seasons=1', { 'X-Sync-Key': 'wrong' });
+  assert.equal(res.status, 401);
+});
+
+await test('tmdb-episodes still enforces origin like every other route', async () => {
+  const res = await worker.fetch(new Request('https://w.dev/tmdb-episodes?tmdbId=42&seasons=1', {
+    method: 'GET', headers: { Origin: 'https://evil.example', 'X-Sync-Key': 'k' }
+  }), { ...env, TMDB_API_KEY: 'fake-tmdb-key' });
+  assert.equal(res.status, 403);
+});
+
 console.log(`\n${pass}/${pass + fail} passing`);
 process.exit(fail ? 1 : 0);
