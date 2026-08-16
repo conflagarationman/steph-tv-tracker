@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-16T02:06:56.260Z",
+  "updatedAt": "2026-08-16T02:07:23.512Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -67,12 +67,12 @@
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
     "165": {
-      "ep": 2,
-      "epsWatched": 18,
-      "lastWatched": "2026-08-14",
+      "ep": 3,
+      "epsWatched": 19,
+      "lastWatched": "2026-08-15",
       "dormant": false,
       "season": 3,
-      "updatedAt": "2026-08-14T14:35:34.415Z"
+      "updatedAt": "2026-08-16T02:07:15.412Z"
     },
     "167": {
       "season": 13,
@@ -141,11 +141,11 @@
       "updatedAt": "2026-08-02T03:37:28.608Z"
     },
     "287": {
-      "ep": 3,
-      "epsWatched": 13,
-      "lastWatched": "2026-08-10",
+      "ep": 4,
+      "epsWatched": 14,
+      "lastWatched": "2026-08-15",
       "dormant": false,
-      "updatedAt": "2026-08-10T17:42:12.425Z",
+      "updatedAt": "2026-08-16T02:07:07.863Z",
       "season": 2
     },
     "301": {
@@ -269,6 +269,22 @@
     }
   },
   "history": [
+    {
+      "id": 165,
+      "title": "Blood of Zeus",
+      "action": "watched",
+      "season": 3,
+      "ep": 3,
+      "at": "2026-08-16T02:07:15.412Z"
+    },
+    {
+      "id": 287,
+      "title": "Dark",
+      "action": "watched",
+      "season": 2,
+      "ep": 4,
+      "at": "2026-08-16T02:07:07.862Z"
+    },
     {
       "id": 165,
       "title": "Blood of Zeus",
