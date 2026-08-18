@@ -1800,13 +1800,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 7,
-      "ep": 16,
-      "airDate": "2026-08-10"
+      "ep": 17,
+      "airDate": "2026-08-17"
     },
     "nextAir": {
       "season": 7,
-      "ep": 17,
-      "airDate": "2026-08-17"
+      "ep": 18,
+      "airDate": "2026-08-24"
     },
     "watch": {
       "on": [
@@ -3225,6 +3225,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -4788,8 +4789,7 @@
         "BritBox",
         "BritBox Amazon Channel",
         "Spectrum On Demand",
-        "Netflix Standard with Ads",
-        "Tubi TV"
+        "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/72750-killing-eve/watch?locale=US"
     }
