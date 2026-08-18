@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T02:37:14.621Z",
+  "updatedAt": "2026-08-18T02:37:19.984Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -76,11 +76,11 @@
     },
     "167": {
       "season": 13,
-      "ep": 1,
-      "epsWatched": 148,
-      "lastWatched": "2026-08-09",
+      "ep": 2,
+      "epsWatched": 149,
+      "lastWatched": "2026-08-17",
       "dormant": false,
-      "updatedAt": "2026-08-10T03:28:23.089Z"
+      "updatedAt": "2026-08-18T02:37:18.173Z"
     },
     "190": {
       "season": 3,
@@ -269,6 +269,14 @@
     }
   },
   "history": [
+    {
+      "id": 167,
+      "title": "Doctor Who (2005)",
+      "action": "watched",
+      "season": 13,
+      "ep": 2,
+      "at": "2026-08-18T02:37:18.172Z"
+    },
     {
       "id": 1784868196939,
       "title": "Your Friends and Neighbors",
