@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T02:29:10.166Z",
+  "updatedAt": "2026-08-19T02:54:59.469Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -76,11 +76,11 @@
     },
     "167": {
       "season": 13,
-      "ep": 5,
-      "epsWatched": 152,
+      "ep": 6,
+      "epsWatched": 153,
       "lastWatched": "2026-08-18",
       "dormant": false,
-      "updatedAt": "2026-08-19T02:29:08.460Z"
+      "updatedAt": "2026-08-19T02:54:57.271Z"
     },
     "190": {
       "season": 3,
@@ -269,6 +269,14 @@
     }
   },
   "history": [
+    {
+      "id": 167,
+      "title": "Doctor Who (2005)",
+      "action": "watched",
+      "season": 13,
+      "ep": 6,
+      "at": "2026-08-19T02:54:57.267Z"
+    },
     {
       "id": 167,
       "title": "Doctor Who (2005)",
