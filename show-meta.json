@@ -137,7 +137,7 @@
         "Hulu",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
-        "Paramount Plus Apple TV Channel ",
+        "Paramount Plus Apple TV channel",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
       ],
@@ -216,7 +216,7 @@
         "Netflix",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
-        "Paramount Plus Apple TV Channel ",
+        "Paramount Plus Apple TV channel",
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel",
         "Netflix Standard with Ads"
@@ -1100,7 +1100,7 @@
         "Starz Amazon Channel",
         "Spectrum On Demand",
         "Starz",
-        "Starz Apple TV Channel",
+        "Starz Apple TV channel",
         "Starz Roku Premium Channel",
         "Howdy Amazon Channel",
         "The Roku Channel"
@@ -1465,7 +1465,7 @@
       "on": [
         "Amazon Prime Video",
         "Peacock Premium",
-        "Britbox Apple TV Channel ",
+        "Britbox Apple TV channel",
         "PBS",
         "BritBox",
         "PBS Masterpiece Amazon Channel",
@@ -1814,7 +1814,7 @@
         "Amazon Prime Video",
         "Hulu",
         "Philo",
-        "HISTORY Vault Apple TV Channel",
+        "HISTORY Vault Apple TV channel",
         "HISTORY Vault Amazon Channel",
         "Amazon Prime Video with Ads",
         "History",
@@ -2464,7 +2464,7 @@
     "watch": {
       "on": [
         "Philo",
-        "AMC Plus Apple TV Channel ",
+        "AMC Plus Apple TV channel",
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "AMC+",
@@ -2660,7 +2660,7 @@
     "watch": {
       "on": [
         "Philo",
-        "AMC Plus Apple TV Channel ",
+        "AMC Plus Apple TV channel",
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "Spectrum On Demand"
@@ -3075,8 +3075,8 @@
       "on": [
         "Hulu",
         "Philo",
-        "AMC Plus Apple TV Channel ",
-        "Britbox Apple TV Channel ",
+        "AMC Plus Apple TV channel",
+        "Britbox Apple TV channel",
         "AMC+ Amazon Channel",
         "AMC+",
         "PBS",
@@ -3427,7 +3427,7 @@
         "fuboTV",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
-        "Paramount Plus Apple TV Channel ",
+        "Paramount Plus Apple TV channel",
         "Paramount+ Amazon Channel",
         "YouTube TV",
         "Paramount+ Roku Premium Channel"
@@ -4788,8 +4788,8 @@
         "fuboTV",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
-        "Paramount Plus Apple TV Channel ",
-        "Britbox Apple TV Channel ",
+        "Paramount Plus Apple TV channel",
+        "Britbox Apple TV channel",
         "Paramount+ Amazon Channel",
         "AMC+ Amazon Channel",
         "BritBox",
@@ -5423,7 +5423,7 @@
     "watch": {
       "on": [
         "Philo",
-        "AMC Plus Apple TV Channel ",
+        "AMC Plus Apple TV channel",
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "AMC+",
