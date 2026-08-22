@@ -2402,7 +2402,9 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [],
+      "on": [
+        "Philo"
+      ],
       "link": "https://www.themoviedb.org/tv/734-magnum-p-i/watch?locale=US"
     }
   },
