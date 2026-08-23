@@ -2402,9 +2402,7 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [
-        "Philo"
-      ],
+      "on": [],
       "link": "https://www.themoviedb.org/tv/734-magnum-p-i/watch?locale=US"
     }
   },
@@ -3227,7 +3225,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -4106,7 +4103,6 @@
     "watch": {
       "on": [
         "Netflix",
-        "YouTube TV",
         "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/60735-the-flash/watch?locale=US"
@@ -5430,7 +5426,9 @@
         "AMC+ Roku Premium Channel",
         "AMC+",
         "Spectrum On Demand",
-        "The Roku Channel"
+        "The Roku Channel",
+        "Plex",
+        "Plex Channel"
       ],
       "link": "https://www.themoviedb.org/tv/99652-kevin-can-f-k-himself/watch?locale=US"
     }
