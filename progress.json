@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T01:15:57.096Z",
+  "updatedAt": "2026-08-24T01:15:59.102Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -126,12 +126,12 @@
     "249": {
       "s": "watching",
       "season": 1,
-      "ep": 1,
-      "epsWatched": 1,
+      "ep": 2,
+      "epsWatched": 2,
       "lastWatched": "2026-08-23",
       "start": "2026-08-23",
       "dormant": false,
-      "updatedAt": "2026-08-24T01:15:55.398Z"
+      "updatedAt": "2026-08-24T01:15:57.422Z"
     },
     "273": {
       "season": 7,
@@ -279,6 +279,14 @@
     }
   },
   "history": [
+    {
+      "id": 249,
+      "title": "Lanterns",
+      "action": "watched",
+      "season": 1,
+      "ep": 2,
+      "at": "2026-08-24T01:15:57.421Z"
+    },
     {
       "id": 249,
       "title": "Lanterns",
