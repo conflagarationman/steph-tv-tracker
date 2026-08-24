@@ -3209,6 +3209,7 @@
       "on": [
         "Hulu",
         "fuboTV",
+        "YouTube TV",
         "FXNow"
       ],
       "link": "https://www.themoviedb.org/tv/258902-english-teacher/watch?locale=US"
@@ -3736,7 +3737,7 @@
     }
   },
   "233": {
-    "status": "Ended",
+    "status": "Returning Series",
     "lastAired": {
       "season": 1,
       "ep": 6,
@@ -3994,13 +3995,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 1,
-      "ep": 1,
-      "airDate": "2026-08-16"
+      "ep": 2,
+      "airDate": "2026-08-23"
     },
     "nextAir": {
       "season": 1,
-      "ep": 2,
-      "airDate": "2026-08-23"
+      "ep": 3,
+      "airDate": "2026-08-30"
     },
     "watch": {
       "on": [
@@ -4085,7 +4086,6 @@
       "on": [
         "Amazon Prime Video",
         "Peacock Premium",
-        "TNT",
         "Amazon Prime Video with Ads",
         "Peacock Premium Plus"
       ],
@@ -4424,7 +4424,7 @@
     }
   },
   "276": {
-    "status": "Returning Series",
+    "status": "Ended",
     "lastAired": {
       "season": 3,
       "ep": 10,
