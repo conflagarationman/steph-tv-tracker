@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T01:15:46.855Z",
+  "updatedAt": "2026-08-24T01:15:57.096Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -122,6 +122,16 @@
       "lastWatched": "2026-07-14",
       "dormant": false,
       "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "249": {
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": "2026-08-23",
+      "start": "2026-08-23",
+      "dormant": false,
+      "updatedAt": "2026-08-24T01:15:55.398Z"
     },
     "273": {
       "season": 7,
@@ -269,6 +279,14 @@
     }
   },
   "history": [
+    {
+      "id": 249,
+      "title": "Lanterns",
+      "action": "started",
+      "season": 1,
+      "ep": 1,
+      "at": "2026-08-24T01:15:55.397Z"
+    },
     {
       "id": 167,
       "title": "Doctor Who (2005)",
