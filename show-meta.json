@@ -1800,13 +1800,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 7,
-      "ep": 17,
-      "airDate": "2026-08-17"
+      "ep": 18,
+      "airDate": "2026-08-24"
     },
     "nextAir": {
       "season": 7,
-      "ep": 18,
-      "airDate": "2026-08-24"
+      "ep": 19,
+      "airDate": "2026-08-31"
     },
     "watch": {
       "on": [
@@ -3226,6 +3226,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -5061,6 +5062,7 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "YouTube TV",
         "PBS Kids Amazon Channel"
       ],
       "link": "https://www.themoviedb.org/tv/40050-daniel-tiger-s-neighborhood/watch?locale=US"
