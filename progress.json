@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-25T02:56:57.914Z",
+  "updatedAt": "2026-08-25T02:57:04.388Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -126,12 +126,12 @@
     "249": {
       "s": "watching",
       "season": 1,
-      "ep": 2,
-      "epsWatched": 2,
-      "lastWatched": "2026-08-23",
+      "ep": 3,
+      "epsWatched": 3,
+      "lastWatched": "2026-08-24",
       "start": "2026-08-23",
       "dormant": false,
-      "updatedAt": "2026-08-24T01:15:57.422Z"
+      "updatedAt": "2026-08-25T02:57:02.731Z"
     },
     "273": {
       "season": 7,
@@ -279,6 +279,14 @@
     }
   },
   "history": [
+    {
+      "id": 249,
+      "title": "Lanterns",
+      "action": "watched",
+      "season": 1,
+      "ep": 3,
+      "at": "2026-08-25T02:57:02.730Z"
+    },
     {
       "id": 165,
       "title": "Blood of Zeus",
