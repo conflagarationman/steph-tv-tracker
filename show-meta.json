@@ -961,7 +961,11 @@
       "ep": 10,
       "airDate": "2025-10-28"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 6,
+      "ep": 1,
+      "airDate": "2026-12-08"
+    },
     "watch": {
       "on": [
         "Disney Plus",
@@ -1810,8 +1814,8 @@
     },
     "watch": {
       "on": [
-        "Disney Plus",
         "Amazon Prime Video",
+        "Disney Plus",
         "Hulu",
         "Philo",
         "HISTORY Vault Apple TV channel",
@@ -1862,7 +1866,11 @@
       "ep": 8,
       "airDate": "2025-08-10"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 4,
+      "ep": 1,
+      "airDate": "2026-11-01"
+    },
     "watch": {
       "on": [
         "HBO Max Amazon Channel",
@@ -2973,13 +2981,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 4,
-      "ep": 3,
-      "airDate": "2026-08-18"
+      "ep": 4,
+      "airDate": "2026-08-25"
     },
     "nextAir": {
       "season": 4,
-      "ep": 4,
-      "airDate": "2026-08-25"
+      "ep": 5,
+      "airDate": "2026-09-01"
     },
     "watch": {
       "on": [
@@ -3860,7 +3868,7 @@
     }
   },
   "241": {
-    "status": "Ended",
+    "status": "Returning Series",
     "lastAired": {
       "season": 15,
       "ep": 8,
