@@ -1,10 +1,14 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-27T23:46:47.285Z",
+  "updatedAt": "2026-08-27T23:46:55.063Z",
   "overrides": {
     "3": {
-      "__deleted": true,
-      "updatedAt": "2026-07-18T12:50:09.697Z"
+      "season": 3,
+      "ep": 37,
+      "epsWatched": 135,
+      "lastWatched": "2026-08-27",
+      "dormant": false,
+      "updatedAt": "2026-08-27T23:46:53.316Z"
     },
     "8": {
       "ep": 10,
@@ -279,6 +283,14 @@
     }
   },
   "history": [
+    {
+      "id": 3,
+      "title": "Bluey (2018)",
+      "action": "watched",
+      "season": 3,
+      "ep": 37,
+      "at": "2026-08-27T23:46:53.314Z"
+    },
     {
       "id": 165,
       "title": "Blood of Zeus",
