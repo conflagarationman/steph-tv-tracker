@@ -999,7 +999,9 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu"
+        "Netflix",
+        "Hulu",
+        "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/63926/watch?locale=US"
     }
@@ -3628,7 +3630,6 @@
         "Hulu",
         "fuboTV",
         "HBO Max Amazon Channel",
-        "Philo",
         "YouTube TV",
         "HBO Max"
       ],
@@ -4988,7 +4989,11 @@
       "ep": 10,
       "airDate": "2025-12-18"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 6,
+      "ep": 1,
+      "airDate": "2026-12-24"
+    },
     "watch": {
       "on": [
         "Netflix",
