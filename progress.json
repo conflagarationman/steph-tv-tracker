@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-27T02:45:57.761Z",
+  "updatedAt": "2026-08-27T02:46:03.530Z",
   "overrides": {
     "3": {
       "__deleted": true,
@@ -151,11 +151,11 @@
       "updatedAt": "2026-08-02T03:37:28.608Z"
     },
     "287": {
-      "ep": 4,
-      "epsWatched": 14,
-      "lastWatched": "2026-08-15",
+      "ep": 5,
+      "epsWatched": 15,
+      "lastWatched": "2026-08-26",
       "dormant": false,
-      "updatedAt": "2026-08-16T02:07:07.863Z",
+      "updatedAt": "2026-08-27T02:45:59.680Z",
       "season": 2
     },
     "301": {
@@ -279,6 +279,14 @@
     }
   },
   "history": [
+    {
+      "id": 287,
+      "title": "Dark",
+      "action": "watched",
+      "season": 2,
+      "ep": 5,
+      "at": "2026-08-27T02:45:59.679Z"
+    },
     {
       "id": 165,
       "title": "Blood of Zeus",
