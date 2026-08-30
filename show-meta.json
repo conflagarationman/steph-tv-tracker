@@ -505,7 +505,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu"
+        "Hulu",
+        "Mometu"
       ],
       "link": "https://www.themoviedb.org/tv/67195-legion/watch?locale=US"
     }
