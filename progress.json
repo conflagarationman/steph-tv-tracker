@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-30T02:38:48.919Z",
+  "updatedAt": "2026-08-30T02:38:56.245Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -71,12 +71,12 @@
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
     "165": {
-      "ep": 7,
-      "epsWatched": 23,
-      "lastWatched": "2026-08-26",
+      "ep": 8,
+      "epsWatched": 24,
+      "lastWatched": "2026-08-29",
       "dormant": false,
       "season": 3,
-      "updatedAt": "2026-08-27T03:08:36.434Z"
+      "updatedAt": "2026-08-30T02:38:54.499Z"
     },
     "167": {
       "season": 13,
@@ -283,6 +283,14 @@
     }
   },
   "history": [
+    {
+      "id": 165,
+      "title": "Blood of Zeus",
+      "action": "watched",
+      "season": 3,
+      "ep": 8,
+      "at": "2026-08-30T02:38:54.497Z"
+    },
     {
       "id": 1784868196939,
       "title": "Your Friends and Neighbors",
