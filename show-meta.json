@@ -539,7 +539,7 @@
     }
   },
   "36": {
-    "status": "Ended",
+    "status": "Returning Series",
     "lastAired": {
       "season": 5,
       "ep": 10,
@@ -3237,6 +3237,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -4005,13 +4006,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 1,
-      "ep": 2,
-      "airDate": "2026-08-23"
+      "ep": 3,
+      "airDate": "2026-08-30"
     },
     "nextAir": {
       "season": 1,
-      "ep": 3,
-      "airDate": "2026-08-30"
+      "ep": 4,
+      "airDate": "2026-09-06"
     },
     "watch": {
       "on": [
