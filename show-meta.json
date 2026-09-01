@@ -489,7 +489,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/7482-leverage/watch?locale=US"
@@ -1808,13 +1807,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 7,
-      "ep": 18,
-      "airDate": "2026-08-24"
+      "ep": 19,
+      "airDate": "2026-08-31"
     },
     "nextAir": {
       "season": 7,
-      "ep": 19,
-      "airDate": "2026-08-31"
+      "ep": 20,
+      "airDate": "2026-09-07"
     },
     "watch": {
       "on": [
@@ -3220,7 +3219,6 @@
     "watch": {
       "on": [
         "Hulu",
-        "YouTube TV",
         "FXNow"
       ],
       "link": "https://www.themoviedb.org/tv/258902-english-teacher/watch?locale=US"
@@ -5127,7 +5125,8 @@
         "Amazon Prime Video",
         "Hulu",
         "Philo",
-        "Amazon Prime Video with Ads"
+        "Amazon Prime Video with Ads",
+        "KQED"
       ],
       "link": "https://www.themoviedb.org/tv/4586-gilmore-girls/watch?locale=US"
     }
