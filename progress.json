@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-01T02:06:01.133Z",
+  "updatedAt": "2026-09-01T02:06:12.425Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -20,11 +20,11 @@
     },
     "28": {
       "season": 2,
-      "ep": 3,
-      "epsWatched": 11,
-      "lastWatched": "2026-08-14",
+      "ep": 4,
+      "epsWatched": 12,
+      "lastWatched": "2026-08-31",
       "dormant": false,
-      "updatedAt": "2026-08-14T13:08:47.478Z"
+      "updatedAt": "2026-09-01T02:06:10.677Z"
     },
     "60": {
       "ep": 2,
@@ -283,6 +283,14 @@
     }
   },
   "history": [
+    {
+      "id": 28,
+      "title": "House of David",
+      "action": "watched",
+      "season": 2,
+      "ep": 4,
+      "at": "2026-09-01T02:06:10.676Z"
+    },
     {
       "id": 165,
       "title": "Blood of Zeus",
