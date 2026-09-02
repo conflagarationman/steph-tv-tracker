@@ -381,8 +381,7 @@
         "Disney Plus",
         "fuboTV",
         "YouTube TV",
-        "Freeform",
-        "Spectrum On Demand"
+        "Freeform"
       ],
       "link": "https://www.themoviedb.org/tv/1777-boy-meets-world/watch?locale=US"
     }
@@ -538,7 +537,7 @@
     }
   },
   "36": {
-    "status": "Returning Series",
+    "status": "Canceled",
     "lastAired": {
       "season": 5,
       "ep": 10,
@@ -2984,19 +2983,17 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 4,
-      "ep": 4,
-      "airDate": "2026-08-25"
-    },
-    "nextAir": {
-      "season": 4,
       "ep": 5,
       "airDate": "2026-09-01"
     },
+    "nextAir": {
+      "season": 4,
+      "ep": 6,
+      "airDate": "2026-09-08"
+    },
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Apple TV",
-        "Amazon Prime Video with Ads",
         "Apple TV Amazon Channel"
       ],
       "link": "https://www.themoviedb.org/tv/97546-ted-lasso/watch?locale=US"
@@ -5125,8 +5122,7 @@
         "Amazon Prime Video",
         "Hulu",
         "Philo",
-        "Amazon Prime Video with Ads",
-        "KQED"
+        "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/4586-gilmore-girls/watch?locale=US"
     }
