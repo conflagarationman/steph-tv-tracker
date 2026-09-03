@@ -537,7 +537,7 @@
     }
   },
   "36": {
-    "status": "Canceled",
+    "status": "Ended",
     "lastAired": {
       "season": 5,
       "ep": 10,
@@ -1797,7 +1797,9 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu"
+        "Amazon Prime Video",
+        "Hulu",
+        "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/61617-over-the-garden-wall/watch?locale=US"
     }
@@ -3626,6 +3628,7 @@
         "Hulu",
         "fuboTV",
         "HBO Max Amazon Channel",
+        "Philo",
         "YouTube TV",
         "HBO Max"
       ],
