@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-04T02:12:00.972Z",
+  "updatedAt": "2026-09-04T02:12:03.533Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -20,11 +20,11 @@
     },
     "28": {
       "season": 2,
-      "ep": 5,
-      "epsWatched": 13,
-      "lastWatched": "2026-09-01",
+      "ep": 6,
+      "epsWatched": 14,
+      "lastWatched": "2026-09-03",
       "dormant": false,
-      "updatedAt": "2026-09-02T02:56:48.614Z"
+      "updatedAt": "2026-09-04T02:12:01.777Z"
     },
     "60": {
       "ep": 2,
@@ -283,6 +283,14 @@
     }
   },
   "history": [
+    {
+      "id": 28,
+      "title": "House of David",
+      "action": "watched",
+      "season": 2,
+      "ep": 6,
+      "at": "2026-09-04T02:12:01.776Z"
+    },
     {
       "id": 287,
       "title": "Dark",
