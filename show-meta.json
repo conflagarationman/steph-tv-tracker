@@ -3234,7 +3234,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -4014,8 +4013,7 @@
     },
     "watch": {
       "on": [
-        "HBO Max Amazon Channel",
-        "HBO Max"
+        "HBO Max Amazon Channel"
       ],
       "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=US"
     }
