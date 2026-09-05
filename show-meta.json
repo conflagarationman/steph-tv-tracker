@@ -488,6 +488,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/7482-leverage/watch?locale=US"
@@ -3335,7 +3336,7 @@
     }
   },
   "208": {
-    "status": "Returning Series",
+    "status": "Canceled",
     "lastAired": {
       "season": 1,
       "ep": 8,
@@ -3739,7 +3740,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu"
+        "Hulu",
+        "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/21510-white-collar/watch?locale=US"
     }
