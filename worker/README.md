@@ -12,6 +12,14 @@ holds is public (the site is a public static repo), so a token in the page means
 can push to it. The Worker holds the token as a server-side secret; the browser never
 sees it.
 
+Same architecture as `game-tracker`'s `worker/` (the same `gh()` helper shape, the same
+atob/btoa UTF-8 encoding, the same sha-conflict retry loop, the same Origin/`X-Sync-Key`
+gate) — it writes to `main` instead of a separate `data` branch, since adding/editing a
+game happens rarely enough that a Pages rebuild per write isn't a real cost. The two were
+built independently and don't share code, so a fix to the retry logic or the encoding
+here (or there) doesn't automatically reach the other — worth checking both when you
+touch either.
+
 ## How it works
 
 - Every change is written to `localStorage` **first**. Sync is a background copy — she
