@@ -3188,7 +3188,8 @@
         "BritBox Amazon Channel",
         "Amazon Prime Video with Ads",
         "Peacock Premium Plus",
-        "The Roku Channel"
+        "The Roku Channel",
+        "Tubi TV"
       ],
       "link": "https://www.themoviedb.org/tv/13789-our-mutual-friend/watch?locale=US"
     }
@@ -3235,6 +3236,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -4005,13 +4007,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 1,
-      "ep": 3,
-      "airDate": "2026-08-30"
+      "ep": 4,
+      "airDate": "2026-09-06"
     },
     "nextAir": {
       "season": 1,
-      "ep": 4,
-      "airDate": "2026-09-06"
+      "ep": 5,
+      "airDate": "2026-09-13"
     },
     "watch": {
       "on": [
