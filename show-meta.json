@@ -1809,14 +1809,10 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 7,
-      "ep": 19,
-      "airDate": "2026-08-31"
-    },
-    "nextAir": {
-      "season": 7,
       "ep": 20,
       "airDate": "2026-09-07"
     },
+    "nextAir": null,
     "watch": {
       "on": [
         "Amazon Prime Video",
@@ -3219,8 +3215,7 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "FXNow"
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/258902-english-teacher/watch?locale=US"
     }
