@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-08T00:08:05.892Z",
+  "updatedAt": "2026-09-08T00:32:06.829Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -20,11 +20,11 @@
     },
     "28": {
       "season": 2,
-      "ep": 7,
-      "epsWatched": 15,
-      "lastWatched": "2026-09-04",
+      "ep": 8,
+      "epsWatched": 16,
+      "lastWatched": "2026-09-07",
       "dormant": false,
-      "updatedAt": "2026-09-05T02:37:23.717Z"
+      "updatedAt": "2026-09-08T00:32:04.172Z"
     },
     "60": {
       "ep": 2,
@@ -283,6 +283,14 @@
     }
   },
   "history": [
+    {
+      "id": 28,
+      "title": "House of David",
+      "action": "watched",
+      "season": 2,
+      "ep": 8,
+      "at": "2026-09-08T00:32:04.171Z"
+    },
     {
       "id": 1784868196939,
       "title": "Your Friends and Neighbors",
