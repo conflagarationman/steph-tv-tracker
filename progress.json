@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-09T03:02:11.697Z",
+  "updatedAt": "2026-09-09T03:02:16.443Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -130,12 +130,12 @@
     "249": {
       "s": "watching",
       "season": 1,
-      "ep": 4,
-      "epsWatched": 4,
-      "lastWatched": "2026-09-01",
+      "ep": 5,
+      "epsWatched": 5,
+      "lastWatched": "2026-09-08",
       "start": "2026-08-23",
       "dormant": false,
-      "updatedAt": "2026-09-02T01:43:32.559Z"
+      "updatedAt": "2026-09-09T03:02:14.771Z"
     },
     "273": {
       "season": 7,
@@ -283,6 +283,14 @@
     }
   },
   "history": [
+    {
+      "id": 249,
+      "title": "Lanterns",
+      "action": "watched",
+      "season": 1,
+      "ep": 5,
+      "at": "2026-09-09T03:02:14.769Z"
+    },
     {
       "id": 28,
       "title": "House of David",
