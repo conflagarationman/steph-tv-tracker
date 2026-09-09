@@ -1952,10 +1952,7 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [
-        "Netflix",
-        "Netflix Standard with Ads"
-      ],
+      "on": [],
       "link": "https://www.themoviedb.org/tv/71663-black-lightning/watch?locale=US"
     }
   },
@@ -2982,13 +2979,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 4,
-      "ep": 5,
-      "airDate": "2026-09-01"
+      "ep": 6,
+      "airDate": "2026-09-08"
     },
     "nextAir": {
       "season": 4,
-      "ep": 6,
-      "airDate": "2026-09-08"
+      "ep": 7,
+      "airDate": "2026-09-15"
     },
     "watch": {
       "on": [
@@ -4012,7 +4009,8 @@
     },
     "watch": {
       "on": [
-        "HBO Max Amazon Channel"
+        "HBO Max Amazon Channel",
+        "HBO Max"
       ],
       "link": "https://www.themoviedb.org/tv/95350-lanterns/watch?locale=US"
     }
@@ -5121,7 +5119,6 @@
       "on": [
         "Amazon Prime Video",
         "Hulu",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/4586-gilmore-girls/watch?locale=US"
@@ -5260,7 +5257,8 @@
     "watch": {
       "on": [
         "HBO Max Amazon Channel",
-        "HBO Max"
+        "HBO Max",
+        "DC Amazon Channel"
       ],
       "link": "https://www.themoviedb.org/tv/33217-young-justice/watch?locale=US"
     }
