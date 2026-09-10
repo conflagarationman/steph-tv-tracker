@@ -3874,8 +3874,7 @@
       "on": [
         "Netflix",
         "Netflix Standard with Ads",
-        "Thirteen",
-        "WETA+"
+        "Thirteen"
       ],
       "link": "https://www.themoviedb.org/tv/39793-call-the-midwife/watch?locale=US"
     }
@@ -5119,6 +5118,7 @@
       "on": [
         "Amazon Prime Video",
         "Hulu",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/4586-gilmore-girls/watch?locale=US"
@@ -5305,7 +5305,8 @@
     "watch": {
       "on": [
         "HBO Max Amazon Channel",
-        "HBO Max"
+        "HBO Max",
+        "DC Amazon Channel"
       ],
       "link": "https://www.themoviedb.org/tv/80986-dc-s-stargirl/watch?locale=US"
     }
