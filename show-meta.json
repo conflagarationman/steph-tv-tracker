@@ -1396,7 +1396,9 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu"
+        "Amazon Prime Video",
+        "Hulu",
+        "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/1437-firefly/watch?locale=US"
     }
@@ -3228,7 +3230,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -5305,8 +5306,7 @@
     "watch": {
       "on": [
         "HBO Max Amazon Channel",
-        "HBO Max",
-        "DC Amazon Channel"
+        "HBO Max"
       ],
       "link": "https://www.themoviedb.org/tv/80986-dc-s-stargirl/watch?locale=US"
     }
