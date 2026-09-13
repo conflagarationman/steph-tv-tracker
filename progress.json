@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-13T03:13:41.984Z",
+  "updatedAt": "2026-09-13T03:13:43.896Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -115,12 +115,12 @@
     "210": {
       "s": "watching",
       "season": 1,
-      "ep": 1,
-      "epsWatched": 1,
+      "ep": 2,
+      "epsWatched": 2,
       "lastWatched": "2026-09-12",
       "start": "2026-09-12",
       "dormant": false,
-      "updatedAt": "2026-09-13T03:13:40.317Z"
+      "updatedAt": "2026-09-13T03:13:42.194Z"
     },
     "240": {
       "season": 1,
@@ -293,6 +293,14 @@
     }
   },
   "history": [
+    {
+      "id": 210,
+      "title": "Heated Rivalry",
+      "action": "watched",
+      "season": 1,
+      "ep": 2,
+      "at": "2026-09-13T03:13:42.193Z"
+    },
     {
       "id": 210,
       "title": "Heated Rivalry",
