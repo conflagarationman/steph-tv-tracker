@@ -3230,6 +3230,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -4645,6 +4646,7 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
+        "The Roku Channel",
         "Amazon Prime Video Free with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/76479-the-boys/watch?locale=US"
@@ -5258,8 +5260,7 @@
     "watch": {
       "on": [
         "HBO Max Amazon Channel",
-        "HBO Max",
-        "DC Amazon Channel"
+        "HBO Max"
       ],
       "link": "https://www.themoviedb.org/tv/33217-young-justice/watch?locale=US"
     }
