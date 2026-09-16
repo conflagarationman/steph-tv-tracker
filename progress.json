@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-16T19:45:58.815Z",
+  "updatedAt": "2026-09-16T19:46:02.050Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -115,12 +115,12 @@
     "210": {
       "s": "watching",
       "season": 1,
-      "ep": 3,
-      "epsWatched": 3,
-      "lastWatched": "2026-09-14",
+      "ep": 4,
+      "epsWatched": 4,
+      "lastWatched": "2026-09-16",
       "start": "2026-09-12",
       "dormant": false,
-      "updatedAt": "2026-09-15T00:49:24.325Z"
+      "updatedAt": "2026-09-16T19:46:00.359Z"
     },
     "240": {
       "season": 1,
@@ -293,6 +293,14 @@
     }
   },
   "history": [
+    {
+      "id": 210,
+      "title": "Heated Rivalry",
+      "action": "watched",
+      "season": 1,
+      "ep": 4,
+      "at": "2026-09-16T19:46:00.357Z"
+    },
     {
       "id": 249,
       "title": "Lanterns",
