@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-18T01:02:01.720Z",
+  "updatedAt": "2026-09-18T01:02:05.778Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -115,12 +115,12 @@
     "210": {
       "s": "watching",
       "season": 1,
-      "ep": 4,
-      "epsWatched": 4,
-      "lastWatched": "2026-09-16",
+      "ep": 5,
+      "epsWatched": 5,
+      "lastWatched": "2026-09-17",
       "start": "2026-09-12",
       "dormant": false,
-      "updatedAt": "2026-09-16T19:46:00.359Z"
+      "updatedAt": "2026-09-18T01:02:04.072Z"
     },
     "240": {
       "season": 1,
@@ -293,6 +293,14 @@
     }
   },
   "history": [
+    {
+      "id": 210,
+      "title": "Heated Rivalry",
+      "action": "watched",
+      "season": 1,
+      "ep": 5,
+      "at": "2026-09-18T01:02:04.071Z"
+    },
     {
       "id": 287,
       "title": "Dark",
