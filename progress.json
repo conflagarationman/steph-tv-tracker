@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-18T02:17:11.338Z",
+  "updatedAt": "2026-09-18T02:17:18.857Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -196,12 +196,12 @@
       "updatedAt": "2026-08-09T02:55:57.448Z"
     },
     "1784868196939": {
-      "season": 1,
-      "ep": 9,
-      "epsWatched": 9,
-      "lastWatched": "2026-09-07",
+      "season": 2,
+      "ep": 1,
+      "epsWatched": 10,
+      "lastWatched": "2026-09-17",
       "dormant": false,
-      "updatedAt": "2026-09-08T00:08:00.295Z"
+      "updatedAt": "2026-09-18T02:17:17.152Z"
     }
   },
   "customShows": {
@@ -293,6 +293,14 @@
     }
   },
   "history": [
+    {
+      "id": 1784868196939,
+      "title": "Your Friends and Neighbors",
+      "action": "watched",
+      "season": 2,
+      "ep": 1,
+      "at": "2026-09-18T02:17:17.151Z"
+    },
     {
       "id": 210,
       "title": "Heated Rivalry",
