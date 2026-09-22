@@ -154,8 +154,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Netflix",
         "Hulu",
+        "Netflix",
         "Crunchyroll",
         "Crunchyroll Amazon Channel",
         "Netflix Standard with Ads"
@@ -379,7 +379,6 @@
     "watch": {
       "on": [
         "Disney Plus",
-        "fuboTV",
         "YouTube TV",
         "Freeform"
       ],
@@ -611,8 +610,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/198178-wonder-man/watch?locale=US"
     }
@@ -970,8 +969,8 @@
     },
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/107113-only-murders-in-the-building/watch?locale=US"
     }
@@ -1001,8 +1000,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Netflix",
         "Hulu",
+        "Netflix",
         "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/63926/watch?locale=US"
@@ -1397,8 +1396,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Hulu",
+        "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/1437-firefly/watch?locale=US"
@@ -1801,8 +1800,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Hulu",
+        "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/61617-over-the-garden-wall/watch?locale=US"
@@ -1818,9 +1817,9 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Hulu",
         "Amazon Prime Video",
         "Disney Plus",
-        "Hulu",
         "Philo",
         "HISTORY Vault Apple TV channel",
         "HISTORY Vault Amazon Channel",
@@ -1909,8 +1908,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/38472-marvel-s-jessica-jones/watch?locale=US"
     }
@@ -2157,8 +2156,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/122066-the-dropout/watch?locale=US"
     }
@@ -2173,9 +2172,9 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Hulu",
         "Netflix",
         "Disney Plus",
-        "Hulu",
         "Philo",
         "Netflix Standard with Ads"
       ],
@@ -2285,8 +2284,8 @@
     },
     "watch": {
       "on": [
-        "Disney Plus",
         "Hulu",
+        "Disney Plus",
         "fuboTV",
         "YouTube TV"
       ],
@@ -3247,8 +3246,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Hulu",
+        "Amazon Prime Video",
         "Amazon Prime Video with Ads",
         "Amazon Prime Video Free with Ads"
       ],
@@ -3265,8 +3264,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/114478-star-wars-visions/watch?locale=US"
     }
@@ -4134,8 +4133,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Hulu",
+        "Amazon Prime Video",
         "Peacock Premium",
         "Amazon Prime Video with Ads",
         "Peacock Premium Plus"
@@ -4454,8 +4453,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/202555-daredevil-born-again/watch?locale=US"
     }
@@ -4583,8 +4582,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/1417-glee/watch?locale=US"
     }
@@ -4708,8 +4707,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/61889-marvel-s-daredevil/watch?locale=US"
     }
@@ -4724,8 +4723,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/71885-grown-ish/watch?locale=US"
     }
@@ -5120,8 +5119,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Hulu",
+        "Amazon Prime Video",
         "Philo",
         "Amazon Prime Video with Ads"
       ],
@@ -5186,8 +5185,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Hulu",
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/2004-malcolm-in-the-middle/watch?locale=US"
     }
@@ -5396,9 +5395,8 @@
     },
     "watch": {
       "on": [
-        "Netflix",
         "Hulu",
-        "fuboTV",
+        "Netflix",
         "YouTube TV",
         "Netflix Standard with Ads",
         "FOX One Amazon Channel"
