@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-23T01:47:28.577Z",
+  "updatedAt": "2026-09-23T01:47:33.723Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -140,12 +140,12 @@
     "249": {
       "s": "watching",
       "season": 1,
-      "ep": 6,
-      "epsWatched": 6,
-      "lastWatched": "2026-09-15",
+      "ep": 7,
+      "epsWatched": 7,
+      "lastWatched": "2026-09-22",
       "start": "2026-08-23",
       "dormant": false,
-      "updatedAt": "2026-09-16T03:10:12.738Z"
+      "updatedAt": "2026-09-23T01:47:32.049Z"
     },
     "273": {
       "season": 7,
@@ -293,6 +293,14 @@
     }
   },
   "history": [
+    {
+      "id": 249,
+      "title": "Lanterns",
+      "action": "watched",
+      "season": 1,
+      "ep": 7,
+      "at": "2026-09-23T01:47:32.048Z"
+    },
     {
       "id": 1784868196939,
       "title": "Your Friends and Neighbors",
