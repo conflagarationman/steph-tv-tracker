@@ -102,15 +102,14 @@ cd worker && npm test     # worker/index.test.mjs + worker/merge.test.mjs
 ```
 No token or network needed for any of them.
 
-## Known state as of 2026-07-26
+## Known state as of 2026-09-23
 
-4 real bugs (stale `NOW` module const feeding date math, `esc()` allocating a DOM node per
-call across hundreds of shows every render, `pushSync()` unconditionally adopting a server
-response even if a newer local edit landed mid-flight, missing poster `width`/`height` causing
-layout shift) were found, fixed, and verified locally — but per the "only push when asked"
-rule above, confirm they're actually live on `main` before assuming they are.
+The 4 bugs noted previously (stale `NOW` module const feeding date math, `esc()` allocating a
+DOM node per call across hundreds of shows every render, `pushSync()` unconditionally adopting
+a server response even if a newer local edit landed mid-flight, missing poster `width`/`height`
+causing layout shift) are confirmed fixed and live on `main`.
 
-Queued, not started: an episode browser (browse past episodes per show — titles, synopses —
-not just current position). TMDB's `/tv/{id}/season/{n}` has what's needed; nothing here
-fetches or stores it today. Natural extension point is the existing `/tmdb-lookup` Worker
-route, called on demand rather than pre-fetched for all 339 shows.
+The episode browser (browse past episodes per show — titles, synopses — not just current
+position) has shipped: commit 6df7909 added the browser itself, commit 2ccf798 added the
+episode-title hover tooltip on the main show list. Both build on TMDB's `/tv/{id}/season/{n}`
+via the `/tmdb-lookup` Worker route, called on demand rather than pre-fetched for all 339 shows.
