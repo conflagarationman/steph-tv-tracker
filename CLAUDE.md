@@ -34,6 +34,13 @@ It's a patch on top of `shows.json`, not a parallel copy:
 - This merge logic exists in exactly one place client-side and is mirrored in the Worker —
   if you change one, change both, or the page and the Worker will disagree about what a
   tombstone means.
+- **There is a third copy outside this repo.** The Home Hub (`conflagarationman/home-hub`,
+  `get_steph_shows()` in `status_server.py`) reads `shows.json` from `main` and
+  `progress.json` from the `data` branch over raw.githubusercontent.com and repeats the
+  base + override + `__deleted` + `customShows` merge itself, for Steph's card on the dashboard,
+  the Sunday digest email and the Claude connector. Change the merge shape, a file name, or
+  either branch name, and that card breaks without any test here noticing. Update it in the
+  same change.
 
 ## Streaming pills
 
