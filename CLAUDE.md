@@ -34,6 +34,13 @@ It's a patch on top of `shows.json`, not a parallel copy:
 - This merge logic exists in exactly one place client-side and is mirrored in the Worker —
   if you change one, change both, or the page and the Worker will disagree about what a
   tombstone means.
+- **There is a third copy outside this repo.** The Home Hub (`conflagarationman/home-hub`,
+  `get_steph_shows()` in `status_server.py`) reads `shows.json` from `main` and
+  `progress.json` from the `data` branch over raw.githubusercontent.com and repeats the
+  base + override + `__deleted` + `customShows` merge itself, for Steph's card on the dashboard,
+  the Sunday digest email and the Claude connector. Change the merge shape, a file name, or
+  either branch name, and that card breaks without any test here noticing. Update it in the
+  same change.
 
 ## Streaming pills
 
@@ -102,15 +109,14 @@ cd worker && npm test     # worker/index.test.mjs + worker/merge.test.mjs
 ```
 No token or network needed for any of them.
 
-## Known state as of 2026-07-26
+## Known state as of 2026-09-23
 
-4 real bugs (stale `NOW` module const feeding date math, `esc()` allocating a DOM node per
-call across hundreds of shows every render, `pushSync()` unconditionally adopting a server
-response even if a newer local edit landed mid-flight, missing poster `width`/`height` causing
-layout shift) were found, fixed, and verified locally — but per the "only push when asked"
-rule above, confirm they're actually live on `main` before assuming they are.
+The 4 bugs noted previously (stale `NOW` module const feeding date math, `esc()` allocating a
+DOM node per call across hundreds of shows every render, `pushSync()` unconditionally adopting
+a server response even if a newer local edit landed mid-flight, missing poster `width`/`height`
+causing layout shift) are confirmed fixed and live on `main`.
 
-Queued, not started: an episode browser (browse past episodes per show — titles, synopses —
-not just current position). TMDB's `/tv/{id}/season/{n}` has what's needed; nothing here
-fetches or stores it today. Natural extension point is the existing `/tmdb-lookup` Worker
-route, called on demand rather than pre-fetched for all 339 shows.
+The episode browser (browse past episodes per show — titles, synopses — not just current
+position) has shipped: commit 6df7909 added the browser itself, commit 2ccf798 added the
+episode-title hover tooltip on the main show list. Both build on TMDB's `/tv/{id}/season/{n}`
+via the `/tmdb-lookup` Worker route, called on demand rather than pre-fetched for all 339 shows.

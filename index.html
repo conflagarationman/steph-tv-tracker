@@ -107,7 +107,8 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 
 .card-content{flex:1;padding:0.65rem 0.9rem 0.65rem 0;display:flex;flex-direction:column;gap:6px;min-width:0;justify-content:center;}
 .row1{display:flex;align-items:center;gap:0.5rem;min-width:0;}
-.gtitle{flex:1;font-size:0.92rem;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.gtitle{flex:1;font-size:0.92rem;font-weight:700;min-width:0;overflow:hidden;line-height:1.25;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
 .qnum{font-family:'Poppins',sans-serif;font-size:0.75rem;color:var(--dim);font-weight:700;min-width:16px;}
 .status-pill{font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:99px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.04em;}
 
@@ -221,6 +222,12 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 
 .love-banner{background:var(--badge-yellow);color:var(--chip-ink);border-radius:14px;padding:1.5rem 1rem;margin-bottom:1.5rem;text-align:center;font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:800;box-shadow:0 6px 20px var(--shadow);}
 .love-banner.tiny{font-size:0.62rem;letter-spacing:0.02em;}
+/* Phone sizing for the banner and stat tiles. Has to sit after both base rules: in the
+   earlier 480px block, the base .love-banner/.stat rules came later in the file and won. */
+@media (max-width:480px){
+  .love-banner{font-size:1.15rem;padding:0.9rem 1rem;margin-bottom:1rem;}
+  .stat{padding:0.5rem 0.6rem;min-width:0;flex:1 1 28%;}
+}
 
 .nr-banner{background:var(--badge-yellow);color:var(--chip-ink);border-radius:12px;padding:0.85rem 1rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:10px;box-shadow:0 4px 14px var(--shadow);}
 .nr-banner-body{flex:1;}
