@@ -379,6 +379,7 @@
     "watch": {
       "on": [
         "Disney Plus",
+        "fuboTV",
         "YouTube TV",
         "Freeform"
       ],
@@ -532,7 +533,8 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/70796-the-marvelous-mrs-maisel/watch?locale=US"
     }
@@ -740,7 +742,8 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/226751-shiny-happy-people/watch?locale=US"
     }
@@ -919,7 +922,8 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/106379-fallout/watch?locale=US"
     }
@@ -1240,8 +1244,8 @@
     },
     "watch": {
       "on": [
-        "Netflix",
         "Hulu",
+        "Netflix",
         "fuboTV",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
@@ -1301,7 +1305,8 @@
         "Philo",
         "Netflix Standard with Ads",
         "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/79622-hunters/watch?locale=US"
     }
@@ -1744,7 +1749,8 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/95557-invincible/watch?locale=US"
     }
@@ -2702,7 +2708,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/99799-alex-rider/watch?locale=US"
     }
@@ -2981,13 +2988,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 4,
-      "ep": 7,
-      "airDate": "2026-09-15"
+      "ep": 8,
+      "airDate": "2026-09-22"
     },
     "nextAir": {
       "season": 4,
-      "ep": 8,
-      "airDate": "2026-09-22"
+      "ep": 9,
+      "airDate": "2026-09-29"
     },
     "watch": {
       "on": [
@@ -3048,7 +3055,8 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/84773-the-lord-of-the-rings-the-rings-of-power/watch?locale=US"
     }
@@ -3249,7 +3257,8 @@
         "Hulu",
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/86248-upload/watch?locale=US"
     }
@@ -3310,7 +3319,8 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/222023-jury-duty/watch?locale=US"
     }
@@ -4362,7 +4372,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus"
+        "Disney Plus",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/67178-marvel-s-the-punisher/watch?locale=US"
     }
@@ -4647,7 +4658,8 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
         "The Roku Channel",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/76479-the-boys/watch?locale=US"
     }
@@ -5332,7 +5344,8 @@
         "Spectrum On Demand",
         "Netflix Standard with Ads",
         "Amazon Prime Video with Ads",
-        "Amazon Prime Video Free with Ads"
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/34524-teen-wolf/watch?locale=US"
     }
