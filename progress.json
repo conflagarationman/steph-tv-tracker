@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-24T02:38:15.292Z",
+  "updatedAt": "2026-09-24T02:38:24.273Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -63,12 +63,12 @@
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
     "162": {
-      "ep": 1,
-      "epsWatched": 7,
-      "lastWatched": "2026-07-14",
+      "ep": 2,
+      "epsWatched": 8,
+      "lastWatched": "2026-09-23",
       "dormant": false,
       "season": 2,
-      "updatedAt": "2026-07-16T14:23:16.350Z"
+      "updatedAt": "2026-09-24T02:38:22.433Z"
     },
     "165": {
       "ep": 8,
@@ -293,6 +293,14 @@
     }
   },
   "history": [
+    {
+      "id": 162,
+      "title": "Citadel",
+      "action": "watched",
+      "season": 2,
+      "ep": 2,
+      "at": "2026-09-24T02:38:22.433Z"
+    },
     {
       "id": 210,
       "title": "Heated Rivalry",
