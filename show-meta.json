@@ -3044,7 +3044,7 @@
     }
   },
   "190": {
-    "status": "Planned",
+    "status": "Returning Series",
     "lastAired": {
       "season": 2,
       "ep": 8,
@@ -3129,14 +3129,14 @@
   "194": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 51,
-      "ep": 20,
-      "airDate": "2026-05-16"
-    },
-    "nextAir": {
       "season": 52,
       "ep": 1,
       "airDate": "2026-09-26"
+    },
+    "nextAir": {
+      "season": 52,
+      "ep": 2,
+      "airDate": "2026-10-03"
     },
     "watch": {
       "on": [
