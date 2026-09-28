@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-28T01:59:59.256Z",
+  "updatedAt": "2026-09-28T02:00:13.924Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -93,6 +93,14 @@
       "lastWatched": "2026-07-19",
       "dormant": false,
       "updatedAt": "2026-07-20T02:10:00.626Z"
+    },
+    "194": {
+      "season": 52,
+      "ep": 1,
+      "epsWatched": 1010,
+      "lastWatched": "2026-09-27",
+      "dormant": false,
+      "updatedAt": "2026-09-28T02:00:12.113Z"
     },
     "202": {
       "season": 4,
@@ -293,6 +301,14 @@
     }
   },
   "history": [
+    {
+      "id": 194,
+      "title": "Saturday Night Live",
+      "action": "watched",
+      "season": 52,
+      "ep": 1,
+      "at": "2026-09-28T02:00:12.112Z"
+    },
     {
       "id": 162,
       "title": "Citadel",
