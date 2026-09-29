@@ -857,7 +857,6 @@
         "Hulu",
         "Peacock Premium",
         "YouTube TV",
-        "TBS",
         "Peacock Premium Plus"
       ],
       "link": "https://www.themoviedb.org/tv/1421-modern-family/watch?locale=US"
@@ -2385,7 +2384,11 @@
       "ep": 12,
       "airDate": "2026-03-04"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 11,
+      "ep": 1,
+      "airDate": "2026-10-14"
+    },
     "watch": {
       "on": [
         "Netflix",
