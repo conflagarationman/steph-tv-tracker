@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-30T16:57:22.042Z",
+  "updatedAt": "2026-09-30T16:57:30.117Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -197,11 +197,11 @@
     },
     "337": {
       "season": 5,
-      "ep": 1,
-      "epsWatched": 44,
+      "ep": 2,
+      "epsWatched": 45,
       "lastWatched": "2026-09-30",
       "dormant": false,
-      "updatedAt": "2026-09-30T16:57:20.289Z"
+      "updatedAt": "2026-09-30T16:57:28.395Z"
     },
     "1784868238318": {
       "season": 2,
@@ -309,6 +309,14 @@
     }
   },
   "history": [
+    {
+      "id": 337,
+      "title": "Animal Control",
+      "action": "watched",
+      "season": 5,
+      "ep": 2,
+      "at": "2026-09-30T16:57:28.394Z"
+    },
     {
       "id": 337,
       "title": "Animal Control",
