@@ -1245,7 +1245,6 @@
       "on": [
         "Hulu",
         "Netflix",
-        "fuboTV",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
         "Philo",
@@ -2684,6 +2683,7 @@
         "AMC Plus Apple TV channel",
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
+        "Kanopy",
         "Spectrum On Demand"
       ],
       "link": "https://www.themoviedb.org/tv/57243-doctor-who/watch?locale=US"
@@ -2995,13 +2995,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 4,
-      "ep": 8,
-      "airDate": "2026-09-22"
+      "ep": 9,
+      "airDate": "2026-09-29"
     },
     "nextAir": {
       "season": 4,
-      "ep": 9,
-      "airDate": "2026-09-29"
+      "ep": 10,
+      "airDate": "2026-10-06"
     },
     "watch": {
       "on": [
