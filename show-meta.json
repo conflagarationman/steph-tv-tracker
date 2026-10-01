@@ -2278,14 +2278,14 @@
   "143": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 1,
-      "ep": 9,
-      "airDate": "2026-04-15"
+      "season": 2,
+      "ep": 2,
+      "airDate": "2026-09-30"
     },
     "nextAir": {
       "season": 2,
-      "ep": 1,
-      "airDate": "2026-09-30"
+      "ep": 3,
+      "airDate": "2026-10-07"
     },
     "watch": {
       "on": [
@@ -2684,7 +2684,8 @@
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "Kanopy",
-        "Spectrum On Demand"
+        "Spectrum On Demand",
+        "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/57243-doctor-who/watch?locale=US"
     }
@@ -2933,8 +2934,7 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "YouTube TV",
-        "USA Network"
+        "YouTube TV"
       ],
       "link": "https://www.themoviedb.org/tv/17610-ncis-los-angeles/watch?locale=US"
     }
@@ -3295,7 +3295,9 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [],
+      "on": [
+        "The Roku Channel"
+      ],
       "link": "https://www.themoviedb.org/tv/71763-alex-inc/watch?locale=US"
     }
   },
@@ -3677,12 +3679,15 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Amazon Prime Video",
         "fuboTV",
         "MGM+ Amazon Channel",
         "Philo",
         "MGM Plus Roku Premium Channel",
         "MGM Plus",
-        "Spectrum On Demand"
+        "Spectrum On Demand",
+        "Amazon Prime Video with Ads",
+        "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/272418-robin-hood/watch?locale=US"
     }
@@ -5452,12 +5457,14 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Amazon Prime Video",
         "Philo",
         "AMC Plus Apple TV channel",
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "AMC+",
         "Spectrum On Demand",
+        "Amazon Prime Video with Ads",
         "The Roku Channel",
         "Plex",
         "Plex Channel"
