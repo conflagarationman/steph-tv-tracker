@@ -1382,9 +1382,7 @@
     "watch": {
       "on": [
         "Netflix",
-        "Peacock Premium",
-        "Netflix Standard with Ads",
-        "Peacock Premium Plus"
+        "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/37680-suits/watch?locale=US"
     }
@@ -3245,7 +3243,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -3261,7 +3258,6 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
         "Amazon Prime Video Free with Ads",
@@ -3497,7 +3493,8 @@
       "on": [
         "Pure Flix",
         "Midnight Pulp Amazon Channel",
-        "The Roku Channel"
+        "The Roku Channel",
+        "Tubi TV"
       ],
       "link": "https://www.themoviedb.org/tv/21968-the-hardy-boys/watch?locale=US"
     }
@@ -4020,7 +4017,7 @@
     }
   },
   "249": {
-    "status": "Returning Series",
+    "status": "Ended",
     "lastAired": {
       "season": 1,
       "ep": 7,
@@ -4979,6 +4976,7 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Hulu",
         "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/85271-wandavision/watch?locale=US"
