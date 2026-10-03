@@ -183,7 +183,9 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu"
+        "Hulu",
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/1705-fringe/watch?locale=US"
     }
@@ -2979,9 +2981,11 @@
     "watch": {
       "on": [
         "Netflix",
+        "Amazon Prime Video",
         "PBS",
         "PBS Masterpiece Amazon Channel",
         "Netflix Standard with Ads",
+        "Amazon Prime Video with Ads",
         "Thirteen",
         "WETA+",
         "KQED"
@@ -3258,6 +3262,7 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Hulu",
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
         "Amazon Prime Video Free with Ads",
@@ -4017,7 +4022,7 @@
     }
   },
   "249": {
-    "status": "Ended",
+    "status": "Returning Series",
     "lastAired": {
       "season": 1,
       "ep": 7,
