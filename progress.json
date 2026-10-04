@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-04T01:31:08.497Z",
+  "updatedAt": "2026-10-04T01:42:42.146Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -173,11 +173,11 @@
       "updatedAt": "2026-08-02T03:37:28.608Z"
     },
     "287": {
-      "ep": 7,
-      "epsWatched": 17,
-      "lastWatched": "2026-09-16",
+      "ep": 8,
+      "epsWatched": 18,
+      "lastWatched": "2026-10-03",
       "dormant": false,
-      "updatedAt": "2026-09-17T02:02:42.627Z",
+      "updatedAt": "2026-10-04T01:42:40.120Z",
       "season": 2
     },
     "301": {
@@ -309,6 +309,14 @@
     }
   },
   "history": [
+    {
+      "id": 287,
+      "title": "Dark",
+      "action": "watched",
+      "season": 2,
+      "ep": 8,
+      "at": "2026-10-04T01:42:40.117Z"
+    },
     {
       "id": 162,
       "title": "Citadel",
