@@ -3135,13 +3135,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 52,
-      "ep": 1,
-      "airDate": "2026-09-26"
+      "ep": 2,
+      "airDate": "2026-10-03"
     },
     "nextAir": {
       "season": 52,
-      "ep": 2,
-      "airDate": "2026-10-03"
+      "ep": 3,
+      "airDate": "2026-10-10"
     },
     "watch": {
       "on": [
