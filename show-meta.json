@@ -154,8 +154,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Netflix",
+        "Hulu",
         "Crunchyroll",
         "Crunchyroll Amazon Channel",
         "Netflix Standard with Ads"
@@ -183,8 +183,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Amazon Prime Video",
+        "Hulu",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/1705-fringe/watch?locale=US"
@@ -614,8 +614,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/198178-wonder-man/watch?locale=US"
     }
@@ -974,8 +974,8 @@
     },
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/107113-only-murders-in-the-building/watch?locale=US"
     }
@@ -1245,8 +1245,8 @@
     },
     "watch": {
       "on": [
-        "Hulu",
         "Netflix",
+        "Hulu",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
         "Philo",
@@ -1399,8 +1399,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Amazon Prime Video",
+        "Hulu",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/1437-firefly/watch?locale=US"
@@ -1804,8 +1804,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Amazon Prime Video",
+        "Hulu",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/61617-over-the-garden-wall/watch?locale=US"
@@ -1821,9 +1821,9 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Amazon Prime Video",
         "Disney Plus",
+        "Hulu",
         "Philo",
         "HISTORY Vault Apple TV channel",
         "HISTORY Vault Amazon Channel",
@@ -1912,8 +1912,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/38472-marvel-s-jessica-jones/watch?locale=US"
     }
@@ -2161,8 +2161,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/122066-the-dropout/watch?locale=US"
     }
@@ -2177,9 +2177,9 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Netflix",
         "Disney Plus",
+        "Hulu",
         "Philo",
         "Netflix Standard with Ads"
       ],
@@ -2289,8 +2289,8 @@
     },
     "watch": {
       "on": [
-        "Hulu",
         "Disney Plus",
+        "Hulu",
         "fuboTV",
         "YouTube TV"
       ],
@@ -3247,6 +3247,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -3262,8 +3263,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Amazon Prime Video",
+        "Hulu",
         "Amazon Prime Video with Ads",
         "Amazon Prime Video Free with Ads",
         "Amazon MX Player"
@@ -3281,8 +3282,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/114478-star-wars-visions/watch?locale=US"
     }
@@ -4025,14 +4026,10 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 1,
-      "ep": 7,
-      "airDate": "2026-09-27"
-    },
-    "nextAir": {
-      "season": 1,
       "ep": 8,
       "airDate": "2026-10-04"
     },
+    "nextAir": null,
     "watch": {
       "on": [
         "HBO Max Amazon Channel",
@@ -4158,8 +4155,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Amazon Prime Video",
+        "Hulu",
         "Peacock Premium",
         "Amazon Prime Video with Ads",
         "Peacock Premium Plus"
@@ -4402,7 +4399,9 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [],
+      "on": [
+        "Pluto TV"
+      ],
       "link": "https://www.themoviedb.org/tv/61418-jane-the-virgin/watch?locale=US"
     }
   },
@@ -4479,8 +4478,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/202555-daredevil-born-again/watch?locale=US"
     }
@@ -4608,8 +4607,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/1417-glee/watch?locale=US"
     }
@@ -4734,8 +4733,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/61889-marvel-s-daredevil/watch?locale=US"
     }
@@ -4750,8 +4749,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/71885-grown-ish/watch?locale=US"
     }
@@ -4981,8 +4980,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/85271-wandavision/watch?locale=US"
     }
@@ -5147,8 +5146,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Amazon Prime Video",
+        "Hulu",
         "Philo",
         "Amazon Prime Video with Ads"
       ],
@@ -5213,8 +5212,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
-        "Disney Plus"
+        "Disney Plus",
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/2004-malcolm-in-the-middle/watch?locale=US"
     }
@@ -5414,18 +5413,18 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 5,
-      "ep": 1,
-      "airDate": "2026-09-27"
-    },
-    "nextAir": {
-      "season": 5,
       "ep": 2,
       "airDate": "2026-10-04"
     },
+    "nextAir": {
+      "season": 5,
+      "ep": 3,
+      "airDate": "2026-10-18"
+    },
     "watch": {
       "on": [
-        "Hulu",
         "Netflix",
+        "Hulu",
         "fuboTV",
         "YouTube TV",
         "Netflix Standard with Ads",
