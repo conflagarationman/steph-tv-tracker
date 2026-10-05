@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-05T16:27:06.405Z",
+  "updatedAt": "2026-10-05T16:27:10.990Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -96,11 +96,11 @@
     },
     "194": {
       "season": 52,
-      "ep": 2,
-      "epsWatched": 1011,
-      "lastWatched": "2026-09-27",
+      "ep": 3,
+      "epsWatched": 1012,
+      "lastWatched": "2026-10-05",
       "dormant": false,
-      "updatedAt": "2026-09-28T02:00:21.533Z"
+      "updatedAt": "2026-10-05T16:27:09.246Z"
     },
     "202": {
       "season": 4,
@@ -309,6 +309,14 @@
     }
   },
   "history": [
+    {
+      "id": 194,
+      "title": "Saturday Night Live",
+      "action": "watched",
+      "season": 52,
+      "ep": 3,
+      "at": "2026-10-05T16:27:09.245Z"
+    },
     {
       "id": 287,
       "title": "Dark",
