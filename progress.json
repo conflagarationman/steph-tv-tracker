@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T01:22:57.767Z",
+  "updatedAt": "2026-10-06T01:23:24.832Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -61,6 +61,14 @@
       "lastWatched": "2026-07-14",
       "dormant": false,
       "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "143": {
+      "season": 2,
+      "ep": 1,
+      "epsWatched": 10,
+      "lastWatched": "2026-10-05",
+      "dormant": false,
+      "updatedAt": "2026-10-06T01:23:23.097Z"
     },
     "162": {
       "ep": 6,
@@ -309,6 +317,14 @@
     }
   },
   "history": [
+    {
+      "id": 143,
+      "title": "Scrubs (2026)",
+      "action": "watched",
+      "season": 2,
+      "ep": 1,
+      "at": "2026-10-06T01:23:23.097Z"
+    },
     {
       "id": 162,
       "title": "Citadel",
