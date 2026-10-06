@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T01:23:24.832Z",
+  "updatedAt": "2026-10-06T01:23:32.448Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -64,11 +64,11 @@
     },
     "143": {
       "season": 2,
-      "ep": 1,
-      "epsWatched": 10,
+      "ep": 2,
+      "epsWatched": 11,
       "lastWatched": "2026-10-05",
       "dormant": false,
-      "updatedAt": "2026-10-06T01:23:23.097Z"
+      "updatedAt": "2026-10-06T01:23:30.754Z"
     },
     "162": {
       "ep": 6,
@@ -317,6 +317,14 @@
     }
   },
   "history": [
+    {
+      "id": 143,
+      "title": "Scrubs (2026)",
+      "action": "watched",
+      "season": 2,
+      "ep": 2,
+      "at": "2026-10-06T01:23:30.754Z"
+    },
     {
       "id": 143,
       "title": "Scrubs (2026)",
