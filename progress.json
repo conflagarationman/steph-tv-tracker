@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T01:22:52.276Z",
+  "updatedAt": "2026-10-06T01:22:57.767Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -63,12 +63,12 @@
       "updatedAt": "2026-07-16T14:23:16.350Z"
     },
     "162": {
-      "ep": 7,
-      "epsWatched": 13,
+      "ep": 6,
+      "epsWatched": 12,
       "lastWatched": "2026-10-05",
       "dormant": false,
       "season": 2,
-      "updatedAt": "2026-10-06T01:22:48.769Z"
+      "updatedAt": "2026-10-06T01:22:56.037Z"
     },
     "165": {
       "ep": 8,
@@ -309,14 +309,6 @@
     }
   },
   "history": [
-    {
-      "id": 162,
-      "title": "Citadel",
-      "action": "watched",
-      "season": 2,
-      "ep": 7,
-      "at": "2026-10-06T01:22:48.767Z"
-    },
     {
       "id": 162,
       "title": "Citadel",
@@ -1233,6 +1225,7 @@
     "8:3:10"
   ],
   "historyRemoved": [
+    "162@2026-10-06T01:22:48.767Z",
     "3@2026-07-18T12:49:50.869Z",
     "3@2026-07-18T12:50:06.639Z"
   ]
