@@ -215,13 +215,11 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Netflix",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
         "Paramount Plus Apple TV channel",
         "Paramount+ Amazon Channel",
-        "Paramount+ Roku Premium Channel",
-        "Netflix Standard with Ads"
+        "Paramount+ Roku Premium Channel"
       ],
       "link": "https://www.themoviedb.org/tv/52814-halo/watch?locale=US"
     }
@@ -1005,8 +1003,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu",
         "Netflix",
+        "Hulu",
         "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/63926/watch?locale=US"
@@ -3968,7 +3966,9 @@
     },
     "watch": {
       "on": [
-        "Disney Plus"
+        "Netflix",
+        "Disney Plus",
+        "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/103540-percy-jackson-and-the-olympians/watch?locale=US"
     }
