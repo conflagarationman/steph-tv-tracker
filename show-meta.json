@@ -1232,14 +1232,14 @@
   "79": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 23,
-      "ep": 20,
-      "airDate": "2026-05-12"
-    },
-    "nextAir": {
       "season": 24,
       "ep": 1,
       "airDate": "2026-10-06"
+    },
+    "nextAir": {
+      "season": 24,
+      "ep": 2,
+      "airDate": "2026-10-13"
     },
     "watch": {
       "on": [
@@ -2995,14 +2995,10 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 4,
-      "ep": 9,
-      "airDate": "2026-09-29"
-    },
-    "nextAir": {
-      "season": 4,
       "ep": 10,
       "airDate": "2026-10-06"
     },
+    "nextAir": null,
     "watch": {
       "on": [
         "Apple TV",
@@ -3899,8 +3895,7 @@
     "watch": {
       "on": [
         "Netflix",
-        "Netflix Standard with Ads",
-        "Thirteen"
+        "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/39793-call-the-midwife/watch?locale=US"
     }
