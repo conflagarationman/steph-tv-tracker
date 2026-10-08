@@ -1245,6 +1245,7 @@
       "on": [
         "Netflix",
         "Hulu",
+        "fuboTV",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
         "Philo",
@@ -2194,6 +2195,7 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Netflix",
         "Hulu",
         "Crunchyroll",
         "Crunchyroll Amazon Channel"
@@ -2277,13 +2279,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 2,
-      "ep": 2,
-      "airDate": "2026-09-30"
+      "ep": 3,
+      "airDate": "2026-10-07"
     },
     "nextAir": {
       "season": 2,
-      "ep": 3,
-      "airDate": "2026-10-07"
+      "ep": 4,
+      "airDate": "2026-10-14"
     },
     "watch": {
       "on": [
@@ -2546,6 +2548,7 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Disney Plus",
         "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/126308-shogun/watch?locale=US"
@@ -3396,14 +3399,14 @@
   "211": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 5,
-      "ep": 22,
-      "airDate": "2026-04-22"
-    },
-    "nextAir": {
       "season": 6,
       "ep": 1,
       "airDate": "2026-10-07"
+    },
+    "nextAir": {
+      "season": 6,
+      "ep": 2,
+      "airDate": "2026-10-14"
     },
     "watch": {
       "on": [
