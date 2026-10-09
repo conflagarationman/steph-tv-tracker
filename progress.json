@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-09T03:14:20.536Z",
+  "updatedAt": "2026-10-09T03:14:22.813Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -190,11 +190,11 @@
     },
     "298": {
       "season": 3,
-      "ep": 1,
-      "epsWatched": 32,
+      "ep": 2,
+      "epsWatched": 33,
       "lastWatched": "2026-10-08",
       "dormant": false,
-      "updatedAt": "2026-10-09T03:14:18.703Z"
+      "updatedAt": "2026-10-09T03:14:21.036Z"
     },
     "301": {
       "season": 2,
@@ -325,6 +325,14 @@
     }
   },
   "history": [
+    {
+      "id": 298,
+      "title": "Wizards Beyond Waverly Place",
+      "action": "watched",
+      "season": 3,
+      "ep": 2,
+      "at": "2026-10-09T03:14:21.036Z"
+    },
     {
       "id": 298,
       "title": "Wizards Beyond Waverly Place",
