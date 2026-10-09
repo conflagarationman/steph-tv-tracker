@@ -155,10 +155,12 @@
     "watch": {
       "on": [
         "Netflix",
+        "Amazon Prime Video",
         "Hulu",
         "Crunchyroll",
         "Crunchyroll Amazon Channel",
-        "Netflix Standard with Ads"
+        "Netflix Standard with Ads",
+        "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/85937/watch?locale=US"
     }
@@ -612,8 +614,7 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/198178-wonder-man/watch?locale=US"
     }
@@ -1911,8 +1912,7 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/38472-marvel-s-jessica-jones/watch?locale=US"
     }
@@ -1942,6 +1942,7 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Disney Plus",
         "Hulu",
         "Pluto TV"
       ],
@@ -2565,7 +2566,8 @@
     "watch": {
       "on": [
         "Netflix",
-        "Netflix Standard with Ads"
+        "Netflix Standard with Ads",
+        "WeTV"
       ],
       "link": "https://www.themoviedb.org/tv/81046-the-dragon-prince/watch?locale=US"
     }
@@ -3244,7 +3246,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -4476,8 +4477,7 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/202555-daredevil-born-again/watch?locale=US"
     }
@@ -4731,8 +4731,7 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Disney Plus",
-        "Hulu"
+        "Disney Plus"
       ],
       "link": "https://www.themoviedb.org/tv/61889-marvel-s-daredevil/watch?locale=US"
     }
@@ -4939,7 +4938,7 @@
     }
   },
   "307": {
-    "status": "Returning Series",
+    "status": "Ended",
     "lastAired": {
       "season": 1,
       "ep": 4,
