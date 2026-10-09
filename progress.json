@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-09T03:14:08.938Z",
+  "updatedAt": "2026-10-09T03:14:20.536Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -188,6 +188,14 @@
       "updatedAt": "2026-10-04T01:42:40.120Z",
       "season": 2
     },
+    "298": {
+      "season": 3,
+      "ep": 1,
+      "epsWatched": 32,
+      "lastWatched": "2026-10-08",
+      "dormant": false,
+      "updatedAt": "2026-10-09T03:14:18.703Z"
+    },
     "301": {
       "season": 2,
       "ep": 6,
@@ -317,6 +325,14 @@
     }
   },
   "history": [
+    {
+      "id": 298,
+      "title": "Wizards Beyond Waverly Place",
+      "action": "watched",
+      "season": 3,
+      "ep": 1,
+      "at": "2026-10-09T03:14:18.700Z"
+    },
     {
       "id": 1784868238318,
       "title": "The Paper",
