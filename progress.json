@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-11T03:32:04.721Z",
+  "updatedAt": "2026-10-11T03:32:19.857Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -221,11 +221,11 @@
     },
     "337": {
       "season": 5,
-      "ep": 2,
-      "epsWatched": 45,
-      "lastWatched": "2026-09-30",
+      "ep": 3,
+      "epsWatched": 46,
+      "lastWatched": "2026-10-10",
       "dormant": false,
-      "updatedAt": "2026-09-30T16:57:28.395Z"
+      "updatedAt": "2026-10-11T03:32:18.097Z"
     },
     "1784868238318": {
       "season": 2,
@@ -333,6 +333,14 @@
     }
   },
   "history": [
+    {
+      "id": 337,
+      "title": "Animal Control",
+      "action": "watched",
+      "season": 5,
+      "ep": 3,
+      "at": "2026-10-11T03:32:18.096Z"
+    },
     {
       "id": 284,
       "title": "Behind the Attraction",
