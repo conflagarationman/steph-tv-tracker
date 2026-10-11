@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-11T02:41:26.645Z",
+  "updatedAt": "2026-10-11T02:41:39.783Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -180,6 +180,14 @@
       "dormant": false,
       "updatedAt": "2026-08-02T03:37:28.608Z"
     },
+    "284": {
+      "season": 3,
+      "ep": 1,
+      "epsWatched": 17,
+      "lastWatched": "2026-10-10",
+      "dormant": false,
+      "updatedAt": "2026-10-11T02:41:38.134Z"
+    },
     "287": {
       "ep": 8,
       "epsWatched": 18,
@@ -325,6 +333,14 @@
     }
   },
   "history": [
+    {
+      "id": 284,
+      "title": "Behind the Attraction",
+      "action": "watched",
+      "season": 3,
+      "ep": 1,
+      "at": "2026-10-11T02:41:38.133Z"
+    },
     {
       "id": 298,
       "title": "Wizards Beyond Waverly Place",
