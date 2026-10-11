@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-11T02:41:39.783Z",
+  "updatedAt": "2026-10-11T02:41:41.478Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -182,11 +182,11 @@
     },
     "284": {
       "season": 3,
-      "ep": 1,
-      "epsWatched": 17,
+      "ep": 2,
+      "epsWatched": 18,
       "lastWatched": "2026-10-10",
       "dormant": false,
-      "updatedAt": "2026-10-11T02:41:38.134Z"
+      "updatedAt": "2026-10-11T02:41:39.777Z"
     },
     "287": {
       "ep": 8,
@@ -333,6 +333,14 @@
     }
   },
   "history": [
+    {
+      "id": 284,
+      "title": "Behind the Attraction",
+      "action": "watched",
+      "season": 3,
+      "ep": 2,
+      "at": "2026-10-11T02:41:39.776Z"
+    },
     {
       "id": 284,
       "title": "Behind the Attraction",
