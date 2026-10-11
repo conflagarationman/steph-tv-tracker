@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-11T23:42:54.313Z",
+  "updatedAt": "2026-10-11T23:42:57.834Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -229,11 +229,11 @@
     },
     "1784868238318": {
       "season": 2,
-      "ep": 2,
-      "epsWatched": 12,
-      "lastWatched": "2026-10-07",
+      "ep": 3,
+      "epsWatched": 13,
+      "lastWatched": "2026-10-11",
       "dormant": false,
-      "updatedAt": "2026-10-08T03:52:20.737Z"
+      "updatedAt": "2026-10-11T23:42:56.050Z"
     },
     "1784868196939": {
       "season": 2,
@@ -333,6 +333,14 @@
     }
   },
   "history": [
+    {
+      "id": 1784868238318,
+      "title": "The Paper",
+      "action": "watched",
+      "season": 2,
+      "ep": 3,
+      "at": "2026-10-11T23:42:56.050Z"
+    },
     {
       "id": 337,
       "title": "Animal Control",
