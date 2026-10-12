@@ -41,6 +41,11 @@ It's a patch on top of `shows.json`, not a parallel copy:
   the Sunday digest email and the Claude connector. Change the merge shape, a file name, or
   either branch name, and that card breaks without any test here noticing. Update it in the
   same change.
+- **The hub also pushes new seasons to her phone** (`get_steph_new_seasons()` in home-hub's
+  `status_server.py`), using the same rule as `unwatchedReleases()` here, narrowed to new
+  seasons aired in the last 14 days, and skipping anything in `progress.dismissed`. Change
+  that rule, the `dismissed` key format (`"id:season:ep"`), or `show-meta.json`'s
+  `lastAired`, and update the hub too.
 
 ## Streaming pills
 
