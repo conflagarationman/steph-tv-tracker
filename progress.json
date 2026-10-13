@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-13T04:06:16.843Z",
+  "updatedAt": "2026-10-13T04:06:27.144Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -140,11 +140,11 @@
     },
     "211": {
       "season": 6,
-      "ep": 1,
-      "epsWatched": 94,
+      "ep": 2,
+      "epsWatched": 95,
       "lastWatched": "2026-10-13",
       "dormant": false,
-      "updatedAt": "2026-10-13T04:06:15.100Z"
+      "updatedAt": "2026-10-13T04:06:25.472Z"
     },
     "240": {
       "season": 1,
@@ -341,6 +341,14 @@
     }
   },
   "history": [
+    {
+      "id": 211,
+      "title": "Abbott Elementary",
+      "action": "watched",
+      "season": 6,
+      "ep": 2,
+      "at": "2026-10-13T04:06:25.471Z"
+    },
     {
       "id": 211,
       "title": "Abbott Elementary",
