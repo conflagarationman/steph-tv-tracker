@@ -490,8 +490,8 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads",
+        "Philo",
         "Xumo Play"
       ],
       "link": "https://www.themoviedb.org/tv/7482-leverage/watch?locale=US"
@@ -3450,7 +3450,6 @@
     },
     "watch": {
       "on": [
-        "fuboTV",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
         "Paramount Plus Apple TV channel",
