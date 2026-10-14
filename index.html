@@ -525,18 +525,28 @@ function updateOverride(id,patch){
   render();
 }
 // episode-counts.json counts episodes TMDB has *announced*, not aired (Abbott S6 lists 4
-// with only E1 out), so counts alone let her mark S6E2 a day early. If TMDB dates her next
-// episode in the future, it isn't out yet. Keyed off nextAir rather than lastAired on
-// purpose: a custom show's meta is a snapshot from when she added it, and a stale nextAir
-// only ever drifts into the past (harmless), where a stale lastAired would lock her out.
+// with only E1 out), so counts alone let her mark S6E2 a day early. A show must never sit
+// in Ready to watch for an episode that isn't out, so the next episode counts as available
+// only if TMDB says it has aired (lastAired, refreshed daily) or it's the dated nextAir and
+// that date has *passed*: an air date is the US broadcast night, so on the day itself the
+// episode usually isn't out yet (Abbott airs 9pm, reaches Hulu next day).
+const epCmp=(a,b)=>a.season!==b.season?a.season-b.season:a.ep-b.ep;
+function nextEpisode(g){
+  const counts=EPISODE_COUNTS[g.id];
+  const len=counts&&counts[g.season];
+  return len&&g.ep>=len?{season:g.season+1,ep:1}:{season:g.season,ep:g.ep+1};
+}
 function nextNotAired(g){
   const m=SHOW_META[g.id];
-  const n=m&&m.nextAir;
-  if(!n||!n.airDate||n.airDate<=todayStr()||g.season==null||g.ep==null) return false;
-  if(g.season>n.season||(g.season===n.season&&g.ep+1>=n.ep)) return true;
-  // A dated premiere (S6E1): she's waiting if she's finished the season before it.
-  const counts=EPISODE_COUNTS[g.id];
-  return n.ep===1&&g.season===n.season-1&&!!counts&&counts[g.season]!=null&&g.ep>=counts[g.season];
+  if(!m||g.season==null||g.ep==null) return false;
+  const next=nextEpisode(g), n=m.nextAir, last=m.lastAired;
+  const datedAndPast=n&&n.airDate&&n.airDate<todayStr();
+  if(n&&n.airDate&&!datedAndPast&&epCmp(next,n)>=0) return true;   // dated, not out yet
+  // A custom show's meta is a snapshot from the day she added it, never refreshed, so its
+  // lastAired is stale. Trusting it would lock her out of everything aired since.
+  if(g.custom||!last||last.season==null||last.ep==null) return false;
+  if(epCmp(next,last)<=0) return false;                             // TMDB says it aired
+  return !(datedAndPast&&epCmp(next,n)===0);                        // yesterday's nextAir
 }
 // True once she's watched the last episode of the last season TMDB knows about —
 // i.e. there is nothing left to advance to. Returns false when we have no episode
