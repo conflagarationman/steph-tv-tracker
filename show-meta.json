@@ -1234,13 +1234,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 24,
-      "ep": 1,
-      "airDate": "2026-10-06"
+      "ep": 2,
+      "airDate": "2026-10-13"
     },
     "nextAir": {
       "season": 24,
-      "ep": 2,
-      "airDate": "2026-10-13"
+      "ep": 3,
+      "airDate": "2026-10-20"
     },
     "watch": {
       "on": [
@@ -2983,11 +2983,9 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Netflix",
         "Amazon Prime Video",
         "PBS",
         "PBS Masterpiece Amazon Channel",
-        "Netflix Standard with Ads",
         "Amazon Prime Video with Ads",
         "Thirteen",
         "WETA+",
