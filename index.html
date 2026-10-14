@@ -524,10 +524,25 @@ function updateOverride(id,patch){
   saveProgress();
   render();
 }
+// episode-counts.json counts episodes TMDB has *announced*, not aired (Abbott S6 lists 4
+// with only E1 out), so counts alone let her mark S6E2 a day early. If TMDB dates her next
+// episode in the future, it isn't out yet. Keyed off nextAir rather than lastAired on
+// purpose: a custom show's meta is a snapshot from when she added it, and a stale nextAir
+// only ever drifts into the past (harmless), where a stale lastAired would lock her out.
+function nextNotAired(g){
+  const m=SHOW_META[g.id];
+  const n=m&&m.nextAir;
+  if(!n||!n.airDate||n.airDate<=todayStr()||g.season==null||g.ep==null) return false;
+  if(g.season>n.season||(g.season===n.season&&g.ep+1>=n.ep)) return true;
+  // A dated premiere (S6E1): she's waiting if she's finished the season before it.
+  const counts=EPISODE_COUNTS[g.id];
+  return n.ep===1&&g.season===n.season-1&&!!counts&&counts[g.season]!=null&&g.ep>=counts[g.season];
+}
 // True once she's watched the last episode of the last season TMDB knows about —
 // i.e. there is nothing left to advance to. Returns false when we have no episode
 // data for the show, so an unmatched show still behaves the old (permissive) way.
 function isCaughtUp(g){
+  if(nextNotAired(g)) return true;
   const counts=EPISODE_COUNTS[g.id];
   if(!counts) return false;
   const seasons=Object.keys(counts).map(Number);
