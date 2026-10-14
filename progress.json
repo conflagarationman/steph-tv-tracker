@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-14T13:39:47.858Z",
+  "updatedAt": "2026-10-14T13:39:53.392Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -140,11 +140,11 @@
     },
     "211": {
       "season": 6,
-      "ep": 1,
-      "epsWatched": 94,
-      "lastWatched": "2026-10-13",
+      "ep": 2,
+      "epsWatched": 95,
+      "lastWatched": "2026-10-14",
       "dormant": false,
-      "updatedAt": "2026-10-14T12:53:37.000Z"
+      "updatedAt": "2026-10-14T13:39:51.696Z"
     },
     "240": {
       "season": 1,
@@ -341,6 +341,14 @@
     }
   },
   "history": [
+    {
+      "id": 211,
+      "title": "Abbott Elementary",
+      "action": "watched",
+      "season": 6,
+      "ep": 2,
+      "at": "2026-10-14T13:39:51.695Z"
+    },
     {
       "id": 1784868238318,
       "title": "The Paper",
