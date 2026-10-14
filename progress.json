@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-14T11:02:21.305Z",
+  "updatedAt": "2026-10-14T12:53:37.000Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -140,11 +140,11 @@
     },
     "211": {
       "season": 6,
-      "ep": 2,
-      "epsWatched": 95,
+      "ep": 1,
+      "epsWatched": 94,
       "lastWatched": "2026-10-13",
       "dormant": false,
-      "updatedAt": "2026-10-13T04:06:25.472Z"
+      "updatedAt": "2026-10-14T12:53:37.000Z"
     },
     "240": {
       "season": 1,
@@ -229,11 +229,11 @@
     },
     "337": {
       "season": 5,
-      "ep": 3,
-      "epsWatched": 46,
-      "lastWatched": "2026-10-10",
+      "ep": 2,
+      "epsWatched": 45,
+      "lastWatched": "2026-09-30",
       "dormant": false,
-      "updatedAt": "2026-10-11T03:32:18.097Z"
+      "updatedAt": "2026-10-14T12:53:37.000Z"
     },
     "1784868238318": {
       "season": 2,
@@ -354,14 +354,6 @@
       "title": "Abbott Elementary",
       "action": "watched",
       "season": 6,
-      "ep": 2,
-      "at": "2026-10-13T04:06:25.471Z"
-    },
-    {
-      "id": 211,
-      "title": "Abbott Elementary",
-      "action": "watched",
-      "season": 6,
       "ep": 1,
       "at": "2026-10-13T04:06:15.099Z"
     },
@@ -388,14 +380,6 @@
       "season": 2,
       "ep": 3,
       "at": "2026-10-11T23:42:56.050Z"
-    },
-    {
-      "id": 337,
-      "title": "Animal Control",
-      "action": "watched",
-      "season": 5,
-      "ep": 3,
-      "at": "2026-10-11T03:32:18.096Z"
     },
     {
       "id": 284,
@@ -1387,6 +1371,8 @@
   "historyRemoved": [
     "143@2026-10-06T01:23:30.754Z",
     "162@2026-10-06T01:22:48.767Z",
+    "211@2026-10-13T04:06:25.471Z",
+    "337@2026-10-11T03:32:18.096Z",
     "3@2026-07-18T12:49:50.869Z",
     "3@2026-07-18T12:50:06.639Z"
   ]
