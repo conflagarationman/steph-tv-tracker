@@ -257,6 +257,19 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .undo-btn:focus-visible,.undo-x:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
 .undo-x{background:none;border:none;color:var(--dim);font-family:inherit;font-size:0.72rem;cursor:pointer;padding:4px 6px;flex-shrink:0;}
 .undo-x:hover{color:var(--text);}
+/* Westley hosts the log: one quiet line under the header, never in the way of the list. */
+.westley{display:flex;align-items:center;gap:0.6rem;min-height:40px;margin:0 0 0.85rem;}
+.westley-btn{all:unset;cursor:pointer;flex:none;display:block;line-height:0;border-radius:6px;animation:westley-bob 3s ease-in-out infinite;}
+.westley-btn:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
+.westley-say{font-size:0.82rem;color:var(--muted);font-weight:600;line-height:1.3;}
+@keyframes westley-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+@media (prefers-reduced-motion:reduce){.westley-btn{animation:none;}}
+#recap-dialog{max-width:420px;}
+.recap-head{display:flex;gap:12px;align-items:flex-end;margin-bottom:0.8rem;}
+.recap-head .westley-sprite{flex:none;}
+.recap-say{font-size:0.85rem;font-weight:700;color:var(--yellow);}
+.recap-text{font-size:0.84rem;line-height:1.5;margin:0 0 1rem;}
+.recap-text b{display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.3rem;}
 </style>
 </head>
 <body>
@@ -279,6 +292,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 </div>
 <main>
 <p class="updated">Rebuilt from her TV Time export — real watch history, no filler <span id="sync-status" class="sync-status"></span></p>
+<div class="westley" id="westley"></div>
 <div class="love-banner" id="love-banner">❤️ I love you spoose ❤️</div>
 <div id="new-releases" style="display:none;"></div>
 <div class="stats-row" id="stats"></div>
@@ -365,6 +379,17 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
   </div>
 </dialog>
 
+<dialog id="recap-dialog" class="edit-dialog">
+  <h3 id="recap-title">Previously on…</h3>
+  <div class="ep-sub" id="recap-sub"></div>
+  <div class="recap-head" id="recap-head"></div>
+  <div id="recap-body"></div>
+  <div class="dialog-actions">
+    <button type="button" class="action-btn" onclick="document.getElementById('recap-dialog').close()">Close</button>
+  </div>
+</dialog>
+
+<script src="westley.js"></script>
 <script>
 const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 let open={ar:false,yl:false,vs:false,wh:false,cu:false};
@@ -592,6 +617,7 @@ function markWatched(id){
     else return;
   }
   // Snapshot before mutating — pushUndo reads the *current* override.
+  westleySay(Westley.line('watched',{mostly:Westley.mostlyFinished(counts,season,ep)}));
   const k=logHistory({id, title:g.t, action:'watched', season, ep});
   pushUndo(id,`Marked ${g.t} S${season}·E${ep}`,k);
   updateOverride(id,{season, ep, epsWatched:(g.epsWatched||0)+1, lastWatched:todayStr(), dormant:false});
@@ -602,6 +628,7 @@ function markFinished(id){
   const g=liveShows().find(x=>x.id===id);
   if(!g) return;
   const d=new Date();
+  westleyFinished();
   const k=logHistory({id, title:g.t, action:'finished', season:g.season, ep:g.ep});
   pushUndo(id,`Finished ${g.t}`,k);
   updateOverride(id,{s:'done', cy:d.getFullYear(), cm:d.getMonth(), dormant:false});
@@ -609,6 +636,7 @@ function markFinished(id){
 function startWatching(id){
   const g=liveShows().find(x=>x.id===id);
   if(!g) return;
+  westleySay(Westley.line('started'));
   const k=logHistory({id, title:g.t, action:'started', season:1, ep:1});
   pushUndo(id,`Started ${g.t}`,k);
   updateOverride(id,{s:'watching', season:1, ep:1, epsWatched:1, lastWatched:todayStr(), start:todayStr(), dormant:false});
@@ -1085,6 +1113,7 @@ function nowC(g){
       </div>
       <div class="card-actions">
         ${primary}
+        ${!caught&&g.season!=null&&g.ep!=null&&getTmdbId(g.id)?`<button type="button" class="action-btn" onclick="openRecap(${g.id})">Previously on…</button>`:''}
         <button type="button" class="action-btn icon" onclick="openEdit(${g.id})" aria-label="Edit season and episode">✎</button>
         ${hasOverride?`<button type="button" class="action-btn icon" onclick="resetShow(${g.id})" aria-label="Reset to original snapshot">↺</button>`:''}
         ${g.custom?`<button type="button" class="action-btn icon" onclick="removeCustomShow(${g.id})" aria-label="Remove this show">🗑</button>`:''}
@@ -1357,6 +1386,7 @@ function render(){
     idx=[...document.querySelectorAll(`[data-fkey^="${prefix}-"]`)].indexOf(el);
   }
   renderAll();
+  westleyRefresh();
   if(!fkey) return;
   const exact=document.querySelector(`[data-fkey="${CSS.escape(fkey)}"]`);
   if(exact){ exact.focus({preventScroll:true}); return; }
@@ -1447,6 +1477,7 @@ function renderNewReleases(){
   if(!fresh.length){ el.style.display='none'; return; }
   el.style.display='flex';
   el.className='nr-banner';
+  westleyDrops(fresh);
   const seasons=fresh.filter(r=>r.newSeason).length;
   const title=seasons===fresh.length
     ? `🎉 New season${fresh.length>1?'s':''} out`
@@ -1659,6 +1690,96 @@ function rotateLoveBanner(){
   const m=LOVE_MESSAGES[nextLoveIndex()];
   el.textContent=loveMessageText(m);
   el.classList.toggle('tiny',!!m.tiny);
+}
+
+// ─── Westley ───────────────────────────────────────────
+// He hosts the log (see westley.js). His look and what he has already reacted to live in this
+// browser only: nothing here is synced, so there's no new state for the Worker or the hub to
+// merge. The recap is derived from TMDB overviews already cached for the episode list.
+const WESTLEY_MASK_KEY='westley:mask';          // '' | 'unlocked' | 'on'
+const WESTLEY_DROPS_KEY='westley:drops';        // release keys he has already said "Inconceivable!" about
+function wGet(k){ try{ return localStorage.getItem(k)||''; }catch(e){ return ''; } }
+function wSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+let wMsg=null, wTimer=null, wSeed=Math.floor(Math.random()*1000), wLast='';
+function westleySay(text,ms){
+  wMsg=text; clearTimeout(wTimer);
+  wTimer=setTimeout(()=>{ wMsg=null; wSeed++; westleyRefresh(); },ms||7000);
+  westleyRefresh();
+}
+function westleyIdle(){
+  const watching=liveShows().filter(g=>g.s==='watching'&&!g.dormant);
+  const ready=watching.filter(g=>!isCaughtUp(g)).length;
+  const near=wSeed%3===0?watching.find(g=>Westley.mostlyFinished(EPISODE_COUNTS[g.id],g.season,g.ep)):null;
+  return Westley.line('idle',{ready,seed:wSeed,nearly:near?near.t:null});
+}
+function westleyRefresh(){
+  const el=document.getElementById('westley');
+  if(!el) return;
+  const masked=wGet(WESTLEY_MASK_KEY)==='on';
+  const text=wMsg||westleyIdle();
+  const key=(masked?'1':'0')+text;
+  if(key===wLast) return;
+  wLast=key;
+  el.innerHTML=`<button type="button" class="westley-btn" onclick="westleyTap()" aria-label="Westley, your host. Tap for a word.">${Westley.svg(masked,2)}</button><span class="westley-say" role="status">${esc(text)}</span>`;
+}
+function westleyTap(){
+  const m=wGet(WESTLEY_MASK_KEY);
+  if(m==='unlocked'||m==='on'){
+    wSet(WESTLEY_MASK_KEY,m==='on'?'unlocked':'on');
+    wLast=''; westleyRefresh();
+  }else{ wSeed++; wMsg=null; wLast=''; westleyRefresh(); }
+}
+// Finishing a show earns the mask look, once.
+function westleyFinished(){
+  if(wGet(WESTLEY_MASK_KEY)) return westleySay(Westley.line('finished'));
+  wSet(WESTLEY_MASK_KEY,'unlocked');
+  westleySay(Westley.line('finished')+' '+Westley.line('mask'),9000);
+}
+// "Inconceivable!", once per new season that drops.
+function westleyDrops(fresh){
+  let seen=[]; try{ seen=JSON.parse(wGet(WESTLEY_DROPS_KEY))||[]; }catch(e){}
+  const news=fresh.filter(r=>r.newSeason&&!seen.includes(releaseKey(r)));
+  if(!news.length) return;
+  wSet(WESTLEY_DROPS_KEY,JSON.stringify(seen.concat(news.map(releaseKey)).slice(-200)));
+  westleySay(Westley.line('drop'),8000);
+}
+// "Previously on…": a recap of ONLY the episode she last watched (g.season, g.ep), from the
+// overviews the episode list already fetches and caches. The next episode's overview is never
+// read here (Westley.recap picks the one episode), so it can't spoil anything.
+let recapFor=null;
+async function openRecap(id){
+  const g=liveShows().find(x=>x.id===id);
+  if(!g||g.season==null||g.ep==null) return;
+  recapFor=id;
+  westleySay(Westley.line('recap'),5000);
+  document.getElementById('recap-title').textContent='Previously on '+g.t;
+  document.getElementById('recap-sub').textContent=`Up to S${g.season}·E${g.ep}. Nothing past it.`;
+  document.getElementById('recap-head').innerHTML=Westley.svg(wGet(WESTLEY_MASK_KEY)==='on',3)+`<span class="recap-say">${esc(Westley.ASYOUWISH)}</span>`;
+  const body=document.getElementById('recap-body');
+  const paint=(note)=>{
+    const r=Westley.recap((EPISODE_TITLES[id]||{})[g.season],g.season,g.ep);
+    body.innerHTML=r
+      ?`<p class="recap-text"><b>S${r.season}·E${r.ep}${r.name?' · '+esc(r.name):''}</b>${esc(r.text)}</p>`
+      :`<p class="ep-empty">${esc(note||'No recap on file for that one.')}</p>`;
+  };
+  const cachedOk=!!Westley.recap((EPISODE_TITLES[id]||{})[g.season],g.season,g.ep);
+  if(cachedOk) paint();
+  else body.innerHTML='<div class="ep-loading">Fetching the story so far…</div>';
+  document.getElementById('recap-dialog').showModal();
+  if(cachedOk) return;
+  const tmdbId=getTmdbId(id), url=tmdbEpisodesUrl();
+  if(!tmdbId||!url){ paint(); return; }
+  try{
+    const res=await fetch(`${url}?tmdbId=${tmdbId}&seasons=${g.season}`,{headers:{'X-Sync-Key':SYNC.key}});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    EPISODE_TITLES[id]={...(EPISODE_TITLES[id]||{}),...data};
+    saveEpisodeTitles();
+    if(recapFor===id&&document.getElementById('recap-dialog').open) paint();
+  }catch(e){
+    console.warn('recap fetch failed for',g.t,e);
+    if(recapFor===id&&document.getElementById('recap-dialog').open) paint('Couldn\'t reach the story so far just now. Try again in a bit.');
+  }
 }
 
 // ─── Bootstrap ─────────────────────────────────────────
