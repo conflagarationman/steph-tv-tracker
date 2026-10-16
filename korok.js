@@ -1,7 +1,7 @@
 // Hidden Koroks, and Hestu, who pays them off. Tap a Korok and it says "Yahaha! You found me!".
 // Self-contained: no dependencies, no network, original pixel/leaf art. Include with one tag, e.g.
 //   <script src="korok.js" data-repo="game-tracker" data-total="12"
-//           data-spots="index:8%,index-hang:44%:top,index-end:90%"></script>
+//           data-spots="index:8%,index-hang:44%:top,index-end:90%">   (a script tag, closed as usual)
 // Each spot is `id:left[:top]`: a Korok in the strip at the end of the page at `left`, or (with
 // `:top`) one peeking down from the very top. Finds are stored as `repo/id` under ONE key, so the
 // sites on the same origin share a count (github.io: key korok:all, 12 spots across the tracker,
