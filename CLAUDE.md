@@ -47,6 +47,18 @@ It's a patch on top of `shows.json`, not a parallel copy:
   that rule, the `dismissed` key format (`"id:season:ep"`), or `show-meta.json`'s
   `lastAired`, and update the hub too.
 
+## Westley and "Previously on…"
+
+`westley.js` (DOM-free, `node westley.test.mjs`) holds the farm-boy host: his original lines ("As you wish…"
+on watching / starting / opening a recap, "Inconceivable!" once per new season drop, "mostly finished" for a
+show at 90%+), the pixel sprite and its mask look (unlocked by finishing a show), and **`recap()`**, which
+returns the overview of *only the episode she last watched* (`g.season`, `g.ep`). `index.html` paints him
+and fetches. **Spoiler rule:** never read or request anything past her position; the page asks
+`/tmdb-episodes` for her current season only, and `scripts/westley.browser.mjs` asserts the next episode's
+overview never appears. His look and what he has reacted to live in this browser's localStorage
+(`westley:mask`, `westley:drops`); the recap is derived and cached with the episode titles
+(`tvtracker-ep-titles`). Nothing new is synced, so the three-place merge and the hub are untouched.
+
 ## Koroks and Hestu
 
 `korok.js` is a **verbatim copy of game-tracker's** (edit it there, then copy it here). It keeps
@@ -117,6 +129,8 @@ field is quietly lost on every sync until the Worker catches up.
 
 ```
 node tmdb.test.mjs        # repo root
+node westley.test.mjs     # repo root (26)
+node scripts/westley.browser.mjs   # needs playwright; see the file's header
 node korok.test.mjs       # repo root
 cd worker && npm test     # worker/index.test.mjs + worker/merge.test.mjs
 ```
