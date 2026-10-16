@@ -59,6 +59,13 @@ overview never appears. His look and what he has reacted to live in this browser
 (`westley:mask`, `westley:drops`); the recap is derived and cached with the episode titles
 (`tvtracker-ep-titles`). Nothing new is synced, so the three-place merge and the hub are untouched.
 
+## Koroks and Hestu
+
+`korok.js` is a **verbatim copy of game-tracker's** (edit it there, then copy it here). It keeps
+one localStorage key, `korok:all`, shared with game-tracker (same github.io origin); this page
+holds 2 of the 12 spots (`data-total="12"`). Hestu dances at 3, 6 and all seeds, and six unlock a
+"Korok Forest" theme toggle in the seed counter at the foot of the page. Test: `node korok.test.mjs`.
+
 ## Streaming pills
 
 TMDB returns ~72 distinct provider names across her 339 shows — every plan tier and reseller
@@ -124,6 +131,7 @@ field is quietly lost on every sync until the Worker catches up.
 node tmdb.test.mjs        # repo root
 node westley.test.mjs     # repo root (26)
 node scripts/westley.browser.mjs   # needs playwright; see the file's header
+node korok.test.mjs       # repo root
 cd worker && npm test     # worker/index.test.mjs + worker/merge.test.mjs
 ```
 No token or network needed for any of them.
