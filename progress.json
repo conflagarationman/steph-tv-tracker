@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-17T13:44:17.835Z",
+  "updatedAt": "2026-10-17T13:44:22.461Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -282,6 +282,14 @@
       "lastWatched": "2026-09-17",
       "dormant": false,
       "updatedAt": "2026-09-18T02:17:17.152Z"
+    },
+    "1792244655056": {
+      "season": 1,
+      "ep": 2,
+      "epsWatched": 2,
+      "lastWatched": "2026-10-17",
+      "dormant": false,
+      "updatedAt": "2026-10-17T13:44:20.711Z"
     }
   },
   "customShows": {
@@ -665,6 +673,14 @@
     }
   },
   "history": [
+    {
+      "id": 1792244655056,
+      "title": "Eternally Yours",
+      "action": "watched",
+      "season": 1,
+      "ep": 2,
+      "at": "2026-10-17T13:44:20.711Z"
+    },
     {
       "id": 1792244655056,
       "title": "Eternally Yours",
