@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-17T04:08:19.756Z",
+  "updatedAt": "2026-10-17T12:28:54.679Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -25,6 +25,22 @@
       "lastWatched": "2026-09-09",
       "dormant": false,
       "updatedAt": "2026-09-10T01:51:39.101Z"
+    },
+    "37": {
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "queued": null,
+      "updatedAt": "2026-10-17T12:28:54.203Z"
+    },
+    "40": {
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "queued": null,
+      "updatedAt": "2026-10-17T12:28:54.203Z"
     },
     "60": {
       "ep": 2,
@@ -135,6 +151,14 @@
       "lastWatched": "2026-07-14",
       "dormant": false,
       "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "208": {
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "queued": null,
+      "updatedAt": "2026-10-17T12:28:54.203Z"
     },
     "210": {
       "s": "watching",
@@ -261,6 +285,253 @@
     }
   },
   "customShows": {
+    "1792240134617": {
+      "id": 1792240134617,
+      "t": "Tomb Raider: The Legend of Lara Croft",
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": null,
+      "start": null,
+      "queued": null,
+      "cy": null,
+      "cm": null,
+      "dormant": false,
+      "custom": true,
+      "tmdb": {
+        "tmdbId": 117830,
+        "matchedName": "Tomb Raider: The Legend of Lara Croft",
+        "poster": "/hBqYte464epKcSaOufl3SXPqKfj.jpg",
+        "epCounts": {
+          "1": 8,
+          "2": 8
+        },
+        "meta": {
+          "status": "Ended",
+          "lastAired": {
+            "season": 2,
+            "ep": 8,
+            "airDate": "2025-12-11"
+          },
+          "nextAir": null,
+          "watch": {
+            "on": [
+              "Netflix",
+              "Netflix Standard with Ads"
+            ],
+            "link": "https://www.themoviedb.org/tv/117830-tomb-raider-the-legend-of-lara-croft/watch?locale=US"
+          }
+        }
+      },
+      "updatedAt": "2026-10-17T12:28:54.203Z"
+    },
+    "1792240134618": {
+      "id": 1792240134618,
+      "t": "LEGO Star Wars: Rebuild the Galaxy",
+      "s": "watching",
+      "season": 2,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": null,
+      "start": null,
+      "queued": null,
+      "cy": null,
+      "cm": null,
+      "dormant": false,
+      "custom": true,
+      "tmdb": {
+        "tmdbId": 253760,
+        "matchedName": "LEGO Star Wars: Rebuild the Galaxy",
+        "poster": "/2X2gEEAOFfGlRSmv5QvFU8h5xrV.jpg",
+        "epCounts": {
+          "1": 4
+        },
+        "meta": {
+          "status": "Ended",
+          "lastAired": {
+            "season": 1,
+            "ep": 4,
+            "airDate": "2024-09-13"
+          },
+          "nextAir": null,
+          "watch": {
+            "on": [
+              "Disney Plus"
+            ],
+            "link": "https://www.themoviedb.org/tv/253760-lego-star-wars-rebuild-the-galaxy/watch?locale=US"
+          }
+        }
+      },
+      "updatedAt": "2026-10-17T12:28:54.203Z"
+    },
+    "1792240134619": {
+      "id": 1792240134619,
+      "t": "Avatar: The Last Airbender",
+      "s": "watching",
+      "season": 2,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": null,
+      "start": null,
+      "queued": null,
+      "cy": null,
+      "cm": null,
+      "dormant": false,
+      "custom": true,
+      "tmdb": {
+        "tmdbId": 82452,
+        "matchedName": "Avatar: The Last Airbender",
+        "poster": "/lzZpWEaqzP0qVA5nkCc5ASbNcSy.jpg",
+        "epCounts": {
+          "1": 8,
+          "2": 7
+        },
+        "meta": {
+          "status": "Returning Series",
+          "lastAired": {
+            "season": 2,
+            "ep": 7,
+            "airDate": "2026-06-25"
+          },
+          "nextAir": null,
+          "watch": {
+            "on": [
+              "Netflix",
+              "Netflix Standard with Ads"
+            ],
+            "link": "https://www.themoviedb.org/tv/82452-avatar-the-last-airbender/watch?locale=US"
+          }
+        }
+      },
+      "updatedAt": "2026-10-17T12:28:54.203Z"
+    },
+    "1792240134620": {
+      "id": 1792240134620,
+      "t": "X-Men '97",
+      "s": "watching",
+      "season": 2,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": null,
+      "start": null,
+      "queued": null,
+      "cy": null,
+      "cm": null,
+      "dormant": false,
+      "custom": true,
+      "tmdb": {
+        "tmdbId": 138502,
+        "matchedName": "X-Men '97",
+        "poster": "/2HKBc5UiFw8JrruHq8S1Y7TnlW0.jpg",
+        "epCounts": {
+          "1": 10,
+          "2": 9
+        },
+        "meta": {
+          "status": "Returning Series",
+          "lastAired": {
+            "season": 2,
+            "ep": 9,
+            "airDate": "2026-08-12"
+          },
+          "nextAir": null,
+          "watch": {
+            "on": [
+              "Disney Plus"
+            ],
+            "link": "https://www.themoviedb.org/tv/138502-x-men-97/watch?locale=US"
+          }
+        }
+      },
+      "updatedAt": "2026-10-17T12:28:54.203Z"
+    },
+    "1792240134621": {
+      "id": 1792240134621,
+      "t": "Pluribus",
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": null,
+      "start": null,
+      "queued": null,
+      "cy": null,
+      "cm": null,
+      "dormant": false,
+      "custom": true,
+      "tmdb": {
+        "tmdbId": 225171,
+        "matchedName": "Pluribus",
+        "poster": "/z7Nga7Q9IGFWs5OEduY2gGFxnX3.jpg",
+        "epCounts": {
+          "1": 9
+        },
+        "meta": {
+          "status": "Returning Series",
+          "lastAired": {
+            "season": 1,
+            "ep": 9,
+            "airDate": "2025-12-23"
+          },
+          "nextAir": null,
+          "watch": {
+            "on": [
+              "Apple TV",
+              "Apple TV Amazon Channel"
+            ],
+            "link": "https://www.themoviedb.org/tv/225171-pluribus/watch?locale=US"
+          }
+        }
+      },
+      "updatedAt": "2026-10-17T12:28:54.203Z"
+    },
+    "1792240134622": {
+      "id": 1792240134622,
+      "t": "Avatar: Seven Havens",
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": null,
+      "start": null,
+      "queued": null,
+      "cy": null,
+      "cm": null,
+      "dormant": false,
+      "custom": true,
+      "tmdb": {
+        "tmdbId": 284833,
+        "matchedName": "Avatar: Seven Havens",
+        "poster": "/u62d0BPqsdv2TUDifcMmoePbHPL.jpg",
+        "epCounts": {
+          "1": 13
+        },
+        "meta": {
+          "status": "Returning Series",
+          "lastAired": {
+            "season": 1,
+            "ep": 6,
+            "airDate": "2026-10-16"
+          },
+          "nextAir": {
+            "season": 1,
+            "ep": 7,
+            "airDate": "2026-10-23"
+          },
+          "watch": {
+            "on": [
+              "Paramount Plus Premium",
+              "Paramount Plus Essential",
+              "Paramount Plus Apple TV channel",
+              "Paramount+ Amazon Channel"
+            ],
+            "link": "https://www.themoviedb.org/tv/284833-avatar-seven-havens/watch?locale=US"
+          }
+        }
+      },
+      "updatedAt": "2026-10-17T12:28:54.203Z"
+    },
     "1784868196939": {
       "id": 1784868196939,
       "t": "Your Friends and Neighbors",
