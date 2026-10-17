@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-17T12:36:36.830Z",
+  "updatedAt": "2026-10-17T13:43:14.657Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -285,6 +285,92 @@
     }
   },
   "customShows": {
+    "1784868196939": {
+      "id": 1784868196939,
+      "t": "Your Friends and Neighbors",
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": "2026-07-24",
+      "start": "2026-07-24",
+      "queued": null,
+      "cy": null,
+      "cm": null,
+      "dormant": false,
+      "custom": true,
+      "updatedAt": "2026-07-30T23:28:29.541Z",
+      "tmdb": {
+        "tmdbId": 241609,
+        "matchedName": "Your Friends & Neighbors",
+        "poster": "/lcp63INKEsVHUly9eayx7gEEOcG.jpg",
+        "epCounts": {
+          "1": 9,
+          "2": 10
+        },
+        "meta": {
+          "status": "Returning Series",
+          "lastAired": {
+            "season": 2,
+            "ep": 10,
+            "airDate": "2026-06-04"
+          },
+          "nextAir": null,
+          "watch": {
+            "on": [
+              "Apple TV",
+              "Apple TV Amazon Channel"
+            ],
+            "link": "https://www.themoviedb.org/tv/241609-your-friends-neighbors/watch?locale=US"
+          }
+        }
+      }
+    },
+    "1784868238318": {
+      "id": 1784868238318,
+      "t": "The Paper",
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": "2026-07-24",
+      "start": "2026-07-24",
+      "queued": null,
+      "cy": null,
+      "cm": null,
+      "dormant": false,
+      "custom": true,
+      "updatedAt": "2026-07-30T23:28:29.722Z",
+      "tmdb": {
+        "tmdbId": 253941,
+        "matchedName": "The Paper",
+        "poster": "/ySA5MvhoxTdezNUMe0ifPmhxH4w.jpg",
+        "epCounts": {
+          "1": 10,
+          "2": 10
+        },
+        "meta": {
+          "status": "Returning Series",
+          "lastAired": {
+            "season": 1,
+            "ep": 10,
+            "airDate": "2025-09-04"
+          },
+          "nextAir": {
+            "season": 2,
+            "ep": 1,
+            "airDate": "2026-09-09"
+          },
+          "watch": {
+            "on": [
+              "Peacock Premium",
+              "Peacock Premium Plus"
+            ],
+            "link": "https://www.themoviedb.org/tv/253941-the-paper/watch?locale=US"
+          }
+        }
+      }
+    },
     "1792240134617": {
       "id": 1792240134617,
       "t": "Tomb Raider: The Legend of Lara Croft",
@@ -531,92 +617,6 @@
         }
       },
       "updatedAt": "2026-10-17T12:28:54.203Z"
-    },
-    "1784868196939": {
-      "id": 1784868196939,
-      "t": "Your Friends and Neighbors",
-      "s": "watching",
-      "season": 1,
-      "ep": 1,
-      "epsWatched": 1,
-      "lastWatched": "2026-07-24",
-      "start": "2026-07-24",
-      "queued": null,
-      "cy": null,
-      "cm": null,
-      "dormant": false,
-      "custom": true,
-      "updatedAt": "2026-07-30T23:28:29.541Z",
-      "tmdb": {
-        "tmdbId": 241609,
-        "matchedName": "Your Friends & Neighbors",
-        "poster": "/lcp63INKEsVHUly9eayx7gEEOcG.jpg",
-        "epCounts": {
-          "1": 9,
-          "2": 10
-        },
-        "meta": {
-          "status": "Returning Series",
-          "lastAired": {
-            "season": 2,
-            "ep": 10,
-            "airDate": "2026-06-04"
-          },
-          "nextAir": null,
-          "watch": {
-            "on": [
-              "Apple TV",
-              "Apple TV Amazon Channel"
-            ],
-            "link": "https://www.themoviedb.org/tv/241609-your-friends-neighbors/watch?locale=US"
-          }
-        }
-      }
-    },
-    "1784868238318": {
-      "id": 1784868238318,
-      "t": "The Paper",
-      "s": "watching",
-      "season": 1,
-      "ep": 1,
-      "epsWatched": 1,
-      "lastWatched": "2026-07-24",
-      "start": "2026-07-24",
-      "queued": null,
-      "cy": null,
-      "cm": null,
-      "dormant": false,
-      "custom": true,
-      "updatedAt": "2026-07-30T23:28:29.722Z",
-      "tmdb": {
-        "tmdbId": 253941,
-        "matchedName": "The Paper",
-        "poster": "/ySA5MvhoxTdezNUMe0ifPmhxH4w.jpg",
-        "epCounts": {
-          "1": 10,
-          "2": 10
-        },
-        "meta": {
-          "status": "Returning Series",
-          "lastAired": {
-            "season": 1,
-            "ep": 10,
-            "airDate": "2025-09-04"
-          },
-          "nextAir": {
-            "season": 2,
-            "ep": 1,
-            "airDate": "2026-09-09"
-          },
-          "watch": {
-            "on": [
-              "Peacock Premium",
-              "Peacock Premium Plus"
-            ],
-            "link": "https://www.themoviedb.org/tv/253941-the-paper/watch?locale=US"
-          }
-        }
-      }
     }
   },
   "history": [
