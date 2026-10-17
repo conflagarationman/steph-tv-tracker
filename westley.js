@@ -1,4 +1,4 @@
-// Westley, the farm boy who hosts Steph's TV log. An original pixel character with short,
+// Westley, the farm boy who hosts Steph's TV log. Our own pixel character with short,
 // original lines ("As you wish…" is the one catchphrase, "Inconceivable!" is used once per
 // new-season drop). DOM-free on purpose so it can be unit-tested in Node (westley.test.mjs):
 // index.html does the painting and the fetching, this file decides what he says and what the
@@ -56,26 +56,32 @@ var Westley = (function () {
     }
     return { season: season, ep: ep, name: e.name || null, text: text };
   }
-  // 14x18 pixels. h hair, s skin, S shade, w shirt, v lacing, p trousers, b boots, o mouth, k eye,
-  // m black (the mask look), e eye-white, r sash. Original art.
+  // 16x22 pixels, our own art, redrawn 2026-10-16 when Jonny said the first one didn't look like him.
+  // The farm boy: sandy, wavy hair, a loose cream shirt with a laced V, brown breeches, boots.
+  // h/H hair, s skin, S shade, e eyes, K outline, w/W shirt, v laces, p/P breeches, b boots.
   var GRID = [
-    '....hhhhhh....', '...hhhhhhhh...', '...hssssssh...', '...ssksskss...', '...ssssssss...',
-    '....ssooss....', '.....ssss.....', '..wwwwwwwwww..', '.wwwwwwwwwwww.', '.wwwwvvvvwwww.',
-    'swwwwwwwwwwwws', 'swwwwwwwwwwwws', '..wwwwwwwwww..', '..pppppppppp..', '..pppp..pppp..',
-    '..pppp..pppp..', '..bbbb..bbbb..', '.bbbbb..bbbbb.'
+    '.....hhhhhh.....', '....hhHhhhHh....', '...hhhhhhhhhh...', '...hhssssssKh...',
+    '...hssssssssKh..', '...hssesssesKh..', '....KssssssK....', '....KsSSSSsK....',
+    '.....KssssK.....', '...KKKKKKKKKK...', '.KwwwwwssvWWWWK.', '.KwwwwwwvwWWWWK.',
+    '.KwwwwwvwvWWWWK.', '.KwwwwwwwwWWWWK.', '.KwwwwwwwwWWWWK.', '.sswwwwwwwWWWss.',
+    '...KppppppPPK...', '....ppppppPP....', '....ppppppPP....', '....ppppppPP....',
+    '...bbbb.bbbb....', '..bbbbb.bbbbb...'
   ];
-  var MASK = {
-    2: '...mmmmmmmmm..', 3: '...mmemmemmm..', 0: '....mmmmmm....', 1: '...mmmmmmmm...'
-  };
-  var PAL = { h: '#4a3222', s: '#f0c8a0', S: '#d9ac82', w: '#f3ecd8', v: '#8a5a34', p: '#4d5d7d', b: '#3a2a1c',
-    o: '#a8463a', k: '#2b2418', m: '#1d1d22', e: '#f4f4f4', r: '#a3303a', M: '#34343c' };
-  function grid(masked) {
-    return GRID.map(function (row, y) {
-      if (!masked) return row;
-      if (MASK[y]) return MASK[y];
-      return row.replace(/w/g, 'M').replace(/v/g, 'r').replace(/p/g, 'm').replace(/b/g, 'm');
-    });
-  }
+  // The mask look is the Dread Pirate Roberts: the same silhouette in black with a grey edge (so he
+  // shows on the dark page), a black head wrap and eye mask, a thin moustache, gloves, a rapier.
+  // m/M black, G grey edge, E eyes behind the mask, n moustache, g the rapier.
+  var DPR = [
+    '....GmmmmmmG....', '...GmmmmmmmmG...', '..GmmmmmmmmmmG..', '..GmmmmmmmmmmG..',
+    '..GmmmmmmmmmmmG.', '...msmEmmmEmGm..', '....GssssssG....', '....GsnnnnnG....',
+    '.....GssssG.....', '...GGGGGGGGGG...', '.GmmmmmsssMMMMG.', '.GmmmmmmsmMMMMG.',
+    '.GmmmmmsmsMMMMGg', '.GmmmmmmmmMMMMgg', '.GmmmmmmmmMMMMGg', '.mmmmmmmmmMMMmmg',
+    '...GmmmmmmmmG..g', '....mmmmmmmm...g', '....mmmmmmmm...g', '....mmmmmmmm...g',
+    '...bbbb.bbbb...g', '..bbbbb.bbbbb..g'
+  ];
+  var PAL = { K: '#1d1a17', h: '#c79a55', H: '#a07638', s: '#f0c8a0', S: '#d6a77c', e: '#2b2418',
+    w: '#efe6cf', W: '#cfc3a3', v: '#7a5232', p: '#6b4f34', P: '#4f3a26', b: '#3a2a1c',
+    m: '#1b1b20', M: '#33333b', G: '#7c7c8c', E: '#f4f4f4', n: '#5a3c22', g: '#9aa3b2' };
+  function grid(masked) { return masked ? DPR : GRID; }
   function svg(masked, scale) {
     scale = scale || 2;
     var rects = '';
@@ -85,7 +91,7 @@ var Westley = (function () {
         rects += '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="' + PAL[c] + '"/>';
       }
     });
-    return '<svg class="westley-sprite" viewBox="0 0 14 18" width="' + 14 * scale + '" height="' + 18 * scale +
+    return '<svg class="westley-sprite" viewBox="0 0 16 22" width="' + 16 * scale + '" height="' + 22 * scale +
       '" shape-rendering="crispEdges" aria-hidden="true">' + rects + '</svg>';
   }
   return { line: line, progress: progress, mostlyFinished: mostlyFinished, recap: recap, grid: grid, svg: svg,

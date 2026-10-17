@@ -12,7 +12,8 @@ const st = mem({ "korok:steph-tv-tracker": '["index"]', "korok:game-tracker": '[
 const f = K.load(st, "korok:all", ["korok:game-tracker", "korok:steph-tv-tracker"]);
 t("both repos' index finds survive migration", f.join() === "game-tracker/index,steph-tv-tracker/index");
 t("milestones 3/6/all", K.milestone(3, 12, []).kind === "three" && K.milestone(6, 12, []).unlock && K.milestone(12, 12, []).kind === "all");
-t("Hestu grid is rectangular", K.HESTU.every(r => r.length === 16));
+t("Hestu grid is 26 wide", K.HESTU.every(r => r.length === 26));
+t("Korok sprite renders", /<svg/.test(K.korokSvg(K.variantFor("steph-tv-tracker/index"))));
 
 const html = readFileSync(new URL("./index.html", import.meta.url), "utf8");
 const m = html.match(/<script src="korok\.js"[^>]*>/);

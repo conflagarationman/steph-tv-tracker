@@ -1,5 +1,5 @@
 // Hidden Koroks, and Hestu, who pays them off. Tap a Korok and it says "Yahaha! You found me!".
-// Self-contained: no dependencies, no network, original pixel/leaf art. Include with one tag, e.g.
+// Self-contained: no dependencies, no network, our own pixel art. Include with one tag, e.g.
 //   <script src="korok.js" data-repo="game-tracker" data-total="12"
 //           data-spots="index:8%,index-hang:44%:top,index-end:90%">   (a script tag, closed as usual)
 // Each spot is `id:left[:top]`: a Korok in the strip at the end of the page at `left`, or (with
@@ -60,31 +60,83 @@ var KorokCore = (function () {
     all: 'Every last seed! Shaka-laka-LAKA!'
   };
   var UNLOCK = ' I grew you a Korok Forest: find the leaf at the foot of the page.';
-  // Hestu: 16x23 pixels. m = maraca, y = its stripe, h = handle (they shake); the rest sways.
-  var HESTU = [
-    '......gGGg......', '....gGGGGGGg....', '..ggGGdGGdGGgg..', '.gGGGGGGGGGGGGg.',
-    '.gGdGGGGGGGGdGg.', '..gggGGGGGGggg..', '....bbbbbbbb....', '...bbbbbbbbbb...',
-    '...bwwwwwwwwb...', '...bwkkwwkkwb...', '...bwkkwwkkwb...', '...bwwwwwwwwb...',
-    '...bwwwooowwb...', '...bbwwwwwwbb...', '....bbbbbbbb....', '.mm.bBbbbbBb.mm.',
-    'mymm.bbbbbb.mmym', 'mmmmbBbbbbBbmmmm', '.hh..bbbbbb..hh.', '.hh..bBbbBb..hh.',
-    '.....bbbbbb.....', '....bBb..bBb....', '...bbb....bbb...'
+  // The sprites. Jonny's verdict on the first ones (2026-10-16): none looked like the real thing, so
+  // they were redrawn after references he sent, in our own pixels.
+  // Korok, Wind Waker style: a bark cloak whose top corners rise into twig horns, camo blotches, a
+  // fringed hem, and a heart-shaped leaf mask with slanted eyes. 16x26. Three colourways; each
+  // hiding spot always gets the same one (variantFor). A = cloak, a/X = its blotches, L/l/D = leaf,
+  // o = eye and mouth holes, t = twig tips.
+  var KOROK = [
+    '..t..........t..', '...t........t...', '...DDD....DDD...', '..DllLDDDDLllD..',
+    '.DlLLLLLDLLLLlD.', '.DLLLLLLLLLLLLD.', '.DLLwoLLLLwoLLD.', '.DDLooLLLLooLDD.',
+    '...DLLLLLLLLD...', '...XDLLooLLDA...', '...AADLLLLDAX...', '...AAXDLLDAXX...',
+    '.ttAAXXDDAAXXtt.', 't..AAAAAAAAAA..t', '..AAAAAAAAAAAA..', '..AAAAAAAAAAAA..',
+    '..XAAAAXXAAAAX..', '..XXAAAAXXAAAA..', '..XXAAAAXXAAAA..', '..AAA..AA..AAA..',
+    '...a...aa...a...'
   ];
-  var PAL = { g: '#5fa84a', G: '#86c765', d: '#3d7a34', b: '#8a5a34', B: '#5e3b20', w: '#e9e2c8',
-    k: '#2b2418', o: '#7a2f22', m: '#d94a3a', y: '#f2c94c', h: '#a87a48' };
-  function hestuSvg() {
-    var body = '', l = '', r = '';
-    HESTU.forEach(function (row, y) {
+  var KOROK_PAL = { o: '#1a1510', t: '#4a3626', w: '#f6f3e4' };
+  var KOROK_LOOKS = [
+    { L: '#4f9a32', l: '#8fd055', D: '#2b5e1c', A: '#7a5a40', a: '#5c4230', X: '#3e2c20' },   // green leaf, brown bark
+    { L: '#b8344a', l: '#e0707e', D: '#6e1a2a', A: '#8cc3c6', a: '#6aa3a8', X: '#4c7e84' },   // red leaf, pale-blue bark
+    { L: '#d9b22e', l: '#f2dc78', D: '#8a6a10', A: '#5d8c48', a: '#456f36', X: '#30522a' }    // yellow leaf, green bark
+  ];
+  function variantFor(id) {
+    var h = 0, s = String(id || '');
+    for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+    return h % KOROK_LOOKS.length;
+  }
+  function rects(rows, pal) {
+    var out = '';
+    rows.forEach(function (row, y) {
       for (var x = 0; x < row.length; x++) {
         var c = row.charAt(x); if (c === '.') continue;
-        var rect = '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="' + PAL[c] + '"/>';
-        if ('myh'.indexOf(c) >= 0) { if (x < 8) l += rect; else r += rect; } else body += rect;
+        out += '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="' + pal[c] + '"/>';
       }
     });
-    return '<svg viewBox="0 0 16 23" width="64" height="92" shape-rendering="crispEdges" aria-hidden="true">' +
-      '<g class="hs-body">' + body + '<g class="hs-l">' + l + '</g><g class="hs-r">' + r + '</g></g></svg>';
+    return out;
+  }
+  function korokSvg(look) {
+    var pal = {}, k; var v = KOROK_LOOKS[look] || KOROK_LOOKS[0];
+    for (k in KOROK_PAL) pal[k] = KOROK_PAL[k];
+    for (k in v) pal[k] = v[k];
+    return '<svg viewBox="0 0 16 21" width="26" height="34" shape-rendering="crispEdges" aria-hidden="true">' +
+      rects(KOROK, pal) + '</svg>';
+  }
+  // Hestu: a tall pale bark body, a bonsai crown, a small green leaf face on his chest, a brown sash,
+  // red maracas. 26x29. m = maraca, W = its shine, h = handle (they shake); the rest sways.
+  var HESTU = [
+    '.............ttttt........', '......tttttttttttttt......', '.....ttttttGGgGGgGGttt....',
+    '....GGgGGgGGgGGgGGgGGgGG..', '.....nnnnnnnnnnnngGGgGGg..', '......t.nn...TT....nnn....',
+    '....ttttt...TT............', '....GgGGg..TT.............', '....gGGgG...TT............',
+    '.mm..nnnKCCCCCCCcK.....mm.', 'mWmm....KCCCCCCCcK....mmWm', 'mmmm...KCCCCCCCCssK...mmmm',
+    '.mm...KCCCCCsssscccK...mm.', '..h...KCsssffFFCcccK...h..', '..hCCCKsCCCffFFCcccKCCCh..',
+    '......CCCCffoFoFccCC......', '.....KCCCCCffFFCssssK.....', '.....KCCCCCffoFsccccK.....',
+    '.....KCCssssCCCCccccK.....', '.....KssCCCCCCCCccccK.....', '.....KCbbbbbbbCCcccBB.....',
+    '....KCCCCCCCCCbbbbbbBK....', '....KCCCCCCCssssccccbK....', '....KCCCssssCCCCcccccK....',
+    '....KsssCCCCCCCCcccccK....', '...KCCCCCCCCCCCCccccssK...', '...KCCCCCCCCCCCCssssccK...',
+    '........CCC....CCC........', '........KKK....KKK........'
+  ];
+  var PAL = { K: '#3a2f22', C: '#efe2bc', c: '#d6c497', s: '#b9a274', G: '#2f7a2e', g: '#4f9a3a', t: '#7fb84a',
+    n: '#1f5a24', F: '#3e9a36', f: '#86cc56', o: '#1d3a18', b: '#6b4126', B: '#4c2c18', m: '#c8323a',
+    W: '#ffe9e0', h: '#e8d7b0', T: '#a8875a' };
+  function hestuSvg() {
+    var body = [], l = [], r = [];
+    HESTU.forEach(function (row, y) {
+      var rest = '', left = '', right = '';
+      for (var x = 0; x < row.length; x++) {
+        var c = row.charAt(x);
+        var keep = 'mWh'.indexOf(c) >= 0 ? '.' : c, shake = 'mWh'.indexOf(c) >= 0 ? c : '.';
+        rest += keep; left += x < 13 ? shake : '.'; right += x >= 13 ? shake : '.';
+      }
+      body.push(rest); l.push(left); r.push(right);
+    });
+    return '<svg viewBox="0 0 26 29" width="78" height="87" shape-rendering="crispEdges" aria-hidden="true">' +
+      '<g class="hs-body">' + rects(body, PAL) + '<g class="hs-l">' + rects(l, PAL) + '</g><g class="hs-r">' +
+      rects(r, PAL) + '</g></g></svg>';
   }
   return { parseSpots: parseSpots, load: load, add: add, milestone: milestone, seedsLabel: seedsLabel,
     forestUnlocked: forestUnlocked, LINES: LINES, UNLOCK: UNLOCK, HESTU: HESTU, hestuSvg: hestuSvg,
+    KOROK: KOROK, KOROK_LOOKS: KOROK_LOOKS, korokSvg: korokSvg, variantFor: variantFor,
     MILESTONES: MILESTONES };
 })();
 if (typeof module !== 'undefined' && module.exports) module.exports = KorokCore;
@@ -123,6 +175,8 @@ if (typeof module !== 'undefined' && module.exports) module.exports = KorokCore;
     st.textContent = '.korok-spot{height:22px;overflow:hidden;line-height:0;position:relative;z-index:5}' +
       '.korok-btn{all:unset;display:inline-block;cursor:pointer;width:34px;height:34px;opacity:.9;transition:transform .2s}' +
       '.korok-top .korok-btn{margin-top:-12px}' +
+      // the ones at the top hang upside down, so it's the leaf face that peeks over the edge
+      '.korok-top .korok-btn svg{transform:rotate(180deg)}' +
       '.korok-btn:hover{transform:translateY(-3px)}.korok-btn:focus-visible{outline:2px solid #c8f542;outline-offset:2px}' +
       '.korok-btn.hop{animation:korok-hop .5s ease-out}' +
       '@keyframes korok-hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-12px) rotate(-8deg)}70%{transform:translateY(-3px)}}' +
@@ -183,12 +237,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = KorokCore;
       wrap.setAttribute('style', 'margin:0 0 0 ' + sp.left);
       var b = document.createElement('button'); b.className = 'korok-btn'; b.type = 'button';
       b.setAttribute('aria-label', 'A hidden Korok. Activate to find it.');
-      b.innerHTML = '<svg viewBox="0 0 34 34" width="34" height="34" aria-hidden="true">' +
-        '<path d="M17 2c-6 0-11 4-11 9 4-1 8 0 11 3 3-3 7-4 11-3 0-5-5-9-11-9z" fill="#5fa84a"/>' +
-        '<path d="M17 4c-2 2-3 5-3 9h6c0-4-1-7-3-9z" fill="#86c765"/>' +
-        '<circle cx="17" cy="21" r="11" fill="#e9e2c8"/>' +
-        '<circle cx="12.5" cy="20" r="2" fill="#2b2418"/><circle cx="21.5" cy="20" r="2" fill="#2b2418"/>' +
-        '<ellipse cx="17" cy="26" rx="2" ry="2.4" fill="#2b2418"/></svg>';
+      b.innerHTML = KorokCore.korokSvg(KorokCore.variantFor(repo + '/' + sp.id));
       b.addEventListener('click', function () {
         var r = KorokCore.add(store, key, found, repo + '/' + sp.id); found = r.found;
         say.textContent = (r.isNew ? 'Yahaha! You found me!' : 'Yahaha! You found me again!') +
