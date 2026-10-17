@@ -905,6 +905,8 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads",
         "Pluto TV"
       ],
       "link": "https://www.themoviedb.org/tv/1412-arrow/watch?locale=US"
@@ -1007,6 +1009,7 @@
         "Netflix",
         "Hulu",
         "Crunchyroll",
+        "Crunchyroll Amazon Channel",
         "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/63926/watch?locale=US"
