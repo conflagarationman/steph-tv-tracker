@@ -43,8 +43,9 @@ t("idle rotates by seed", W.line("idle", { ready: 3, seed: 0 }) !== W.line("idle
 t("idle with a huge seed still resolves", typeof W.line("idle", { ready: 3, seed: 12345 }) === "string");
 
 // --- sprite
-t("grid is 14x18", W.GRID.length === 18 && W.GRID.every(r => r.length === 14));
-t("masked grid keeps its shape and swaps the look", W.grid(true).every(r => r.length === 14) && W.grid(true).join() !== W.GRID.join());
+t("grid is 16x22", W.GRID.length === 22 && W.GRID.every(r => r.length === 16));
+t("masked grid keeps its shape and swaps the look", W.grid(true).length === 22 && W.grid(true).every(r => r.length === 16) && W.grid(true).join() !== W.GRID.join());
+t("every letter in both looks has a colour", !/undefined/.test(W.svg(false) + W.svg(true)));
 t("both looks render", /<svg/.test(W.svg(false)) && /<svg/.test(W.svg(true, 4)));
 
 // --- the page is wired to it
