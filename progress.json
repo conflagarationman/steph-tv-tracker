@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-18T22:35:15.402Z",
+  "updatedAt": "2026-10-18T22:40:49.701Z",
   "overrides": {
     "3": {
       "season": 3,
-      "ep": 40,
-      "epsWatched": 138,
+      "ep": 41,
+      "epsWatched": 139,
       "lastWatched": "2026-10-18",
       "dormant": false,
-      "updatedAt": "2026-10-18T22:35:11.300Z"
+      "updatedAt": "2026-10-18T22:40:47.251Z"
     },
     "8": {
       "ep": 10,
@@ -673,6 +673,14 @@
     }
   },
   "history": [
+    {
+      "id": 3,
+      "title": "Bluey (2018)",
+      "action": "watched",
+      "season": 3,
+      "ep": 41,
+      "at": "2026-10-18T22:40:47.250Z"
+    },
     {
       "id": 3,
       "title": "Bluey (2018)",
