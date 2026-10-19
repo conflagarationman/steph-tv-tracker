@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-19T03:44:54.898Z",
+  "updatedAt": "2026-10-19T03:45:03.002Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -269,11 +269,11 @@
     },
     "1784868238318": {
       "season": 2,
-      "ep": 7,
-      "epsWatched": 18,
-      "lastWatched": "2026-10-15",
+      "ep": 8,
+      "epsWatched": 19,
+      "lastWatched": "2026-10-18",
       "dormant": false,
-      "updatedAt": "2026-10-16T03:07:36.533Z"
+      "updatedAt": "2026-10-19T03:45:01.192Z"
     },
     "1784868196939": {
       "season": 2,
@@ -673,6 +673,14 @@
     }
   },
   "history": [
+    {
+      "id": 1784868238318,
+      "title": "The Paper",
+      "action": "watched",
+      "season": 2,
+      "ep": 8,
+      "at": "2026-10-19T03:45:01.192Z"
+    },
     {
       "id": 3,
       "title": "Bluey (2018)",
