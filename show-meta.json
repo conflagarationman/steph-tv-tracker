@@ -3248,6 +3248,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -5146,7 +5147,6 @@
       "on": [
         "Amazon Prime Video",
         "Hulu",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/4586-gilmore-girls/watch?locale=US"
@@ -5411,13 +5411,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 5,
-      "ep": 2,
-      "airDate": "2026-10-04"
+      "ep": 3,
+      "airDate": "2026-10-18"
     },
     "nextAir": {
       "season": 5,
-      "ep": 3,
-      "airDate": "2026-10-18"
+      "ep": 4,
+      "airDate": "2026-10-25"
     },
     "watch": {
       "on": [
