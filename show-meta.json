@@ -381,7 +381,6 @@
     "watch": {
       "on": [
         "Disney Plus",
-        "fuboTV",
         "YouTube TV",
         "Freeform"
       ],
@@ -4934,7 +4933,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu"
+        "Hulu",
+        "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/61692-fresh-off-the-boat/watch?locale=US"
     }
