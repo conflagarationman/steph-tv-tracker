@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-20T02:28:33.070Z",
+  "updatedAt": "2026-10-20T02:28:38.591Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -269,11 +269,11 @@
     },
     "1784868238318": {
       "season": 2,
-      "ep": 8,
-      "epsWatched": 19,
-      "lastWatched": "2026-10-18",
+      "ep": 9,
+      "epsWatched": 20,
+      "lastWatched": "2026-10-19",
       "dormant": false,
-      "updatedAt": "2026-10-19T03:45:01.192Z"
+      "updatedAt": "2026-10-20T02:28:36.704Z"
     },
     "1784868196939": {
       "season": 2,
@@ -673,6 +673,14 @@
     }
   },
   "history": [
+    {
+      "id": 1784868238318,
+      "title": "The Paper",
+      "action": "watched",
+      "season": 2,
+      "ep": 9,
+      "at": "2026-10-20T02:28:36.703Z"
+    },
     {
       "id": 149,
       "title": "Love is Blind",
