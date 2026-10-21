@@ -381,6 +381,7 @@
     "watch": {
       "on": [
         "Disney Plus",
+        "fuboTV",
         "YouTube TV",
         "Freeform"
       ],
@@ -1237,13 +1238,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 24,
-      "ep": 2,
-      "airDate": "2026-10-13"
+      "ep": 3,
+      "airDate": "2026-10-20"
     },
     "nextAir": {
       "season": 24,
-      "ep": 3,
-      "airDate": "2026-10-20"
+      "ep": 4,
+      "airDate": "2026-10-27"
     },
     "watch": {
       "on": [
@@ -3646,7 +3647,6 @@
         "Hulu",
         "fuboTV",
         "HBO Max Amazon Channel",
-        "Philo",
         "YouTube TV",
         "HBO Max"
       ],
