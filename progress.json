@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-21T15:05:14.348Z",
+  "updatedAt": "2026-10-21T15:05:22.132Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -80,11 +80,11 @@
     },
     "143": {
       "season": 2,
-      "ep": 3,
-      "epsWatched": 12,
-      "lastWatched": "2026-10-06",
+      "ep": 4,
+      "epsWatched": 13,
+      "lastWatched": "2026-10-21",
       "dormant": false,
-      "updatedAt": "2026-10-07T03:05:22.544Z"
+      "updatedAt": "2026-10-21T15:05:20.386Z"
     },
     "149": {
       "season": 11,
@@ -673,6 +673,14 @@
     }
   },
   "history": [
+    {
+      "id": 143,
+      "title": "Scrubs (2026)",
+      "action": "watched",
+      "season": 2,
+      "ep": 4,
+      "at": "2026-10-21T15:05:20.385Z"
+    },
     {
       "id": 1784868238318,
       "title": "The Paper",
