@@ -2284,13 +2284,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 2,
-      "ep": 4,
-      "airDate": "2026-10-14"
+      "ep": 5,
+      "airDate": "2026-10-21"
     },
     "nextAir": {
       "season": 2,
-      "ep": 5,
-      "airDate": "2026-10-21"
+      "ep": 6,
+      "airDate": "2026-10-28"
     },
     "watch": {
       "on": [
@@ -2385,13 +2385,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 11,
-      "ep": 5,
-      "airDate": "2026-10-14"
+      "ep": 8,
+      "airDate": "2026-10-21"
     },
     "nextAir": {
       "season": 11,
-      "ep": 6,
-      "airDate": "2026-10-21"
+      "ep": 9,
+      "airDate": "2026-10-28"
     },
     "watch": {
       "on": [
@@ -3404,13 +3404,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 6,
-      "ep": 2,
-      "airDate": "2026-10-14"
+      "ep": 3,
+      "airDate": "2026-10-21"
     },
     "nextAir": {
       "season": 6,
-      "ep": 3,
-      "airDate": "2026-10-21"
+      "ep": 4,
+      "airDate": "2026-10-28"
     },
     "watch": {
       "on": [
@@ -5241,7 +5241,8 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Hulu"
+        "Hulu",
+        "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/89563-mixed-ish/watch?locale=US"
     }
