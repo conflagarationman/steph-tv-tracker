@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-22T15:59:25.088Z",
+  "updatedAt": "2026-10-22T15:59:29.597Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -238,11 +238,11 @@
     },
     "298": {
       "season": 3,
-      "ep": 2,
-      "epsWatched": 33,
-      "lastWatched": "2026-10-08",
+      "ep": 3,
+      "epsWatched": 34,
+      "lastWatched": "2026-10-22",
       "dormant": false,
-      "updatedAt": "2026-10-09T03:14:21.036Z"
+      "updatedAt": "2026-10-22T15:59:27.777Z"
     },
     "301": {
       "season": 2,
@@ -673,6 +673,14 @@
     }
   },
   "history": [
+    {
+      "id": 298,
+      "title": "Wizards Beyond Waverly Place",
+      "action": "watched",
+      "season": 3,
+      "ep": 3,
+      "at": "2026-10-22T15:59:27.776Z"
+    },
     {
       "id": 143,
       "title": "Scrubs (2026)",
