@@ -41,7 +41,8 @@
         "Disney Plus",
         "fuboTV",
         "YouTube TV",
-        "DisneyNOW"
+        "DisneyNOW",
+        "KQED"
       ],
       "link": "https://www.themoviedb.org/tv/82728-bluey/watch?locale=US"
     }
@@ -89,7 +90,13 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [],
+      "on": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV channel",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel"
+      ],
       "link": "https://www.themoviedb.org/tv/88118-blood-treasure/watch?locale=US"
     }
   },
@@ -3248,7 +3255,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
