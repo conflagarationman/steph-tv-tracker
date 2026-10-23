@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-23T03:46:19.198Z",
+  "updatedAt": "2026-10-23T03:46:31.143Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -670,9 +670,60 @@
           }
         }
       }
+    },
+    "1792727189147": {
+      "id": 1792727189147,
+      "t": "VisionQuest",
+      "s": "watching",
+      "season": 1,
+      "ep": 1,
+      "epsWatched": 1,
+      "lastWatched": "2026-10-22",
+      "start": "2026-10-22",
+      "queued": null,
+      "cy": null,
+      "cm": null,
+      "dormant": false,
+      "custom": true,
+      "updatedAt": "2026-10-23T03:46:29.353Z",
+      "tmdb": {
+        "tmdbId": 213375,
+        "matchedName": "VisionQuest",
+        "poster": "/ajbVvETMM7NMq4Gc5FauOoyeEnu.jpg",
+        "epCounts": {
+          "1": 8
+        },
+        "meta": {
+          "status": "Returning Series",
+          "lastAired": {
+            "season": 1,
+            "ep": 4,
+            "airDate": "2026-10-20"
+          },
+          "nextAir": {
+            "season": 1,
+            "ep": 5,
+            "airDate": "2026-10-27"
+          },
+          "watch": {
+            "on": [
+              "Disney Plus"
+            ],
+            "link": "https://www.themoviedb.org/tv/213375-visionquest/watch?locale=US"
+          }
+        }
+      }
     }
   },
   "history": [
+    {
+      "id": 1792727189147,
+      "title": "VisionQuest",
+      "action": "added, watching",
+      "season": 1,
+      "ep": 1,
+      "at": "2026-10-23T03:46:29.147Z"
+    },
     {
       "id": 298,
       "title": "Wizards Beyond Waverly Place",
