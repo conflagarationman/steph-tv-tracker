@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-23T18:55:04.558Z",
+  "updatedAt": "2026-10-23T18:55:07.701Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -293,11 +293,11 @@
     },
     "1792727189147": {
       "season": 1,
-      "ep": 3,
-      "epsWatched": 3,
+      "ep": 4,
+      "epsWatched": 4,
       "lastWatched": "2026-10-23",
       "dormant": false,
-      "updatedAt": "2026-10-23T04:32:48.222Z"
+      "updatedAt": "2026-10-23T18:55:05.747Z"
     }
   },
   "customShows": {
@@ -724,6 +724,14 @@
     }
   },
   "history": [
+    {
+      "id": 1792727189147,
+      "title": "VisionQuest",
+      "action": "watched",
+      "season": 1,
+      "ep": 4,
+      "at": "2026-10-23T18:55:05.746Z"
+    },
     {
       "id": 1792727189147,
       "title": "VisionQuest",
