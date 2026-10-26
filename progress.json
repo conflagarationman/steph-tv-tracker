@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-26T05:10:09.728Z",
+  "updatedAt": "2026-10-26T05:10:12.217Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -238,11 +238,11 @@
     },
     "298": {
       "season": 3,
-      "ep": 3,
-      "epsWatched": 34,
-      "lastWatched": "2026-10-22",
+      "ep": 4,
+      "epsWatched": 35,
+      "lastWatched": "2026-10-26",
       "dormant": false,
-      "updatedAt": "2026-10-22T15:59:27.777Z"
+      "updatedAt": "2026-10-26T05:10:09.720Z"
     },
     "301": {
       "season": 2,
@@ -724,6 +724,14 @@
     }
   },
   "history": [
+    {
+      "id": 298,
+      "title": "Wizards Beyond Waverly Place",
+      "action": "watched",
+      "season": 3,
+      "ep": 4,
+      "at": "2026-10-26T05:10:09.719Z"
+    },
     {
       "id": 149,
       "title": "Love is Blind",
