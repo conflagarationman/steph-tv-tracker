@@ -2191,7 +2191,6 @@
         "Netflix",
         "Disney Plus",
         "Hulu",
-        "Philo",
         "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/61381-black-ish/watch?locale=US"
@@ -3255,6 +3254,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -5418,13 +5418,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 5,
-      "ep": 3,
-      "airDate": "2026-10-18"
+      "ep": 4,
+      "airDate": "2026-10-25"
     },
     "nextAir": {
       "season": 5,
-      "ep": 4,
-      "airDate": "2026-10-25"
+      "ep": 5,
+      "airDate": "2026-11-01"
     },
     "watch": {
       "on": [
