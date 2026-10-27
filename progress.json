@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-27T04:56:50.943Z",
+  "updatedAt": "2026-10-27T04:56:56.400Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -261,11 +261,11 @@
     },
     "337": {
       "season": 5,
-      "ep": 2,
-      "epsWatched": 45,
-      "lastWatched": "2026-09-30",
+      "ep": 3,
+      "epsWatched": 46,
+      "lastWatched": "2026-10-26",
       "dormant": false,
-      "updatedAt": "2026-10-14T12:53:37.000Z"
+      "updatedAt": "2026-10-27T04:56:54.501Z"
     },
     "1784868238318": {
       "season": 2,
@@ -724,6 +724,14 @@
     }
   },
   "history": [
+    {
+      "id": 337,
+      "title": "Animal Control",
+      "action": "watched",
+      "season": 5,
+      "ep": 3,
+      "at": "2026-10-27T04:56:54.500Z"
+    },
     {
       "id": 298,
       "title": "Wizards Beyond Waverly Place",
