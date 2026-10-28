@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-28T05:32:36.804Z",
+  "updatedAt": "2026-10-28T05:32:40.964Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -172,11 +172,11 @@
     },
     "211": {
       "season": 6,
-      "ep": 2,
-      "epsWatched": 95,
-      "lastWatched": "2026-10-20",
+      "ep": 3,
+      "epsWatched": 96,
+      "lastWatched": "2026-10-28",
       "dormant": false,
-      "updatedAt": "2026-10-20T15:21:14.739Z"
+      "updatedAt": "2026-10-28T05:32:39.156Z"
     },
     "240": {
       "season": 1,
@@ -724,6 +724,14 @@
     }
   },
   "history": [
+    {
+      "id": 211,
+      "title": "Abbott Elementary",
+      "action": "watched",
+      "season": 6,
+      "ep": 3,
+      "at": "2026-10-28T05:32:39.155Z"
+    },
     {
       "id": 149,
       "title": "Love is Blind",
