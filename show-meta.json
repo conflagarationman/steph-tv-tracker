@@ -1096,13 +1096,16 @@
     "watch": {
       "on": [
         "Netflix",
+        "Amazon Prime Video",
         "Philo",
         "AMC Plus Apple TV channel",
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "AMC+",
         "Spectrum On Demand",
-        "Netflix Standard with Ads"
+        "Netflix Standard with Ads",
+        "Amazon Prime Video with Ads",
+        "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/128904-dark-winds/watch?locale=US"
     }
@@ -3050,7 +3053,8 @@
         "Peacock Premium",
         "Philo",
         "Amazon Prime Video with Ads",
-        "Peacock Premium Plus"
+        "Peacock Premium Plus",
+        "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/1447-psych/watch?locale=US"
     }
@@ -3142,13 +3146,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 52,
-      "ep": 3,
-      "airDate": "2026-10-10"
+      "ep": 4,
+      "airDate": "2026-10-31"
     },
     "nextAir": {
       "season": 52,
-      "ep": 4,
-      "airDate": "2026-10-31"
+      "ep": 5,
+      "airDate": "2026-11-07"
     },
     "watch": {
       "on": [
@@ -3457,12 +3461,17 @@
     },
     "watch": {
       "on": [
+        "fuboTV",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
         "Paramount Plus Apple TV channel",
         "Paramount+ Amazon Channel",
         "YouTube TV",
-        "Paramount+ Roku Premium Channel"
+        "Paramount+ Roku Premium Channel",
+        "Plex",
+        "Plex Channel",
+        "Amazon Prime Video Free with Ads",
+        "Amazon MX Player"
       ],
       "link": "https://www.themoviedb.org/tv/126027-ghosts/watch?locale=US"
     }
@@ -3652,6 +3661,7 @@
         "Hulu",
         "fuboTV",
         "HBO Max Amazon Channel",
+        "Philo",
         "YouTube TV",
         "HBO Max"
       ],
