@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-30T23:32:08.831Z",
+  "updatedAt": "2026-11-01T20:18:57.956Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -88,11 +88,11 @@
     },
     "149": {
       "season": 11,
-      "ep": 10,
-      "epsWatched": 144,
+      "ep": 11,
+      "epsWatched": 145,
       "lastWatched": "2026-10-30",
       "dormant": false,
-      "updatedAt": "2026-10-30T23:32:04.036Z"
+      "updatedAt": "2026-10-31T00:45:54.641Z"
     },
     "162": {
       "ep": 7,
@@ -724,6 +724,14 @@
     }
   },
   "history": [
+    {
+      "id": 149,
+      "title": "Love is Blind",
+      "action": "watched",
+      "season": 11,
+      "ep": 11,
+      "at": "2026-10-31T00:45:54.640Z"
+    },
     {
       "id": 149,
       "title": "Love is Blind",
