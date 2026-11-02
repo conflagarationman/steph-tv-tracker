@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-02T04:41:19.285Z",
+  "updatedAt": "2026-11-02T04:41:30.410Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -172,11 +172,11 @@
     },
     "211": {
       "season": 6,
-      "ep": 3,
-      "epsWatched": 96,
-      "lastWatched": "2026-10-28",
+      "ep": 4,
+      "epsWatched": 97,
+      "lastWatched": "2026-11-01",
       "dormant": false,
-      "updatedAt": "2026-10-28T05:32:39.156Z"
+      "updatedAt": "2026-11-02T04:41:28.553Z"
     },
     "240": {
       "season": 1,
@@ -724,6 +724,14 @@
     }
   },
   "history": [
+    {
+      "id": 211,
+      "title": "Abbott Elementary",
+      "action": "watched",
+      "season": 6,
+      "ep": 4,
+      "at": "2026-11-02T04:41:28.552Z"
+    },
     {
       "id": 3,
       "title": "Bluey (2018)",
