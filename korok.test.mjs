@@ -14,6 +14,9 @@ t("both repos' index finds survive migration", f.join() === "game-tracker/index,
 t("milestones 3/6/all", K.milestone(3, 12, []).kind === "three" && K.milestone(6, 12, []).unlock && K.milestone(12, 12, []).kind === "all");
 t("Hestu grid is 26 wide", K.HESTU.every(r => r.length === 26));
 t("Korok sprite renders", /<svg/.test(K.korokSvg(K.variantFor("steph-tv-tracker/index"))));
+t("forest skins carried over", ["autumn", "lostwoods", "bloodmoon"].every(k => k in K.SKINS));
+t("Blood Moon only on a full-moon day", K.skinActive("bloodmoon", new Date(2026, 10, 24)) && !K.skinActive("bloodmoon", new Date(2026, 10, 10)));
+t("unknown skin never applies", !K.skinActive("nope", new Date()));
 
 const html = readFileSync(new URL("./index.html", import.meta.url), "utf8");
 const m = html.match(/<script src="korok\.js"[^>]*>/);
