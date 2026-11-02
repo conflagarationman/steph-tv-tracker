@@ -498,7 +498,6 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "Philo",
         "Xumo Play"
       ],
       "link": "https://www.themoviedb.org/tv/7482-leverage/watch?locale=US"
@@ -515,7 +514,8 @@
     "watch": {
       "on": [
         "Hulu",
-        "Mometu"
+        "Mometu",
+        "Tubi TV"
       ],
       "link": "https://www.themoviedb.org/tv/67195-legion/watch?locale=US"
     }
@@ -1882,14 +1882,14 @@
   "117": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 3,
-      "ep": 8,
-      "airDate": "2025-08-10"
-    },
-    "nextAir": {
       "season": 4,
       "ep": 1,
       "airDate": "2026-11-01"
+    },
+    "nextAir": {
+      "season": 4,
+      "ep": 2,
+      "airDate": "2026-11-08"
     },
     "watch": {
       "on": [
@@ -3696,14 +3696,12 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "fuboTV",
         "MGM+ Amazon Channel",
         "Philo",
         "MGM Plus Roku Premium Channel",
         "MGM Plus",
         "Spectrum On Demand",
-        "Amazon Prime Video with Ads",
         "The Roku Channel"
       ],
       "link": "https://www.themoviedb.org/tv/272418-robin-hood/watch?locale=US"
@@ -3961,7 +3959,6 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Peacock Premium",
         "Peacock Premium Plus"
       ],
       "link": "https://www.themoviedb.org/tv/197373-based-on-a-true-story/watch?locale=US"
@@ -5426,13 +5423,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 5,
-      "ep": 4,
-      "airDate": "2026-10-25"
+      "ep": 5,
+      "airDate": "2026-11-01"
     },
     "nextAir": {
       "season": 5,
-      "ep": 5,
-      "airDate": "2026-11-01"
+      "ep": 6,
+      "airDate": "2026-11-08"
     },
     "watch": {
       "on": [
@@ -5472,14 +5469,12 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Amazon Prime Video",
         "Philo",
         "AMC Plus Apple TV channel",
         "AMC+ Amazon Channel",
         "AMC+ Roku Premium Channel",
         "AMC+",
         "Spectrum On Demand",
-        "Amazon Prime Video with Ads",
         "The Roku Channel",
         "Plex",
         "Plex Channel"
