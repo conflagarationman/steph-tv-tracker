@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-02T05:02:58.551Z",
+  "updatedAt": "2026-11-02T05:03:02.219Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -80,11 +80,11 @@
     },
     "143": {
       "season": 2,
-      "ep": 5,
-      "epsWatched": 14,
-      "lastWatched": "2026-10-28",
+      "ep": 6,
+      "epsWatched": 15,
+      "lastWatched": "2026-11-02",
       "dormant": false,
-      "updatedAt": "2026-10-29T04:23:15.052Z"
+      "updatedAt": "2026-11-02T05:03:00.108Z"
     },
     "149": {
       "season": 11,
@@ -724,6 +724,14 @@
     }
   },
   "history": [
+    {
+      "id": 143,
+      "title": "Scrubs (2026)",
+      "action": "watched",
+      "season": 2,
+      "ep": 6,
+      "at": "2026-11-02T05:03:00.107Z"
+    },
     {
       "id": 211,
       "title": "Abbott Elementary",
