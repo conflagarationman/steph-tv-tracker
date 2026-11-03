@@ -134,10 +134,32 @@ var KorokCore = (function () {
       '<g class="hs-body">' + rects(body, PAL) + '<g class="hs-l">' + rects(l, PAL) + '</g><g class="hs-r">' +
       rects(r, PAL) + '</g></g></svg>';
   }
+  // ─── Forest skins (the shop's "Hestu's maracas") ───
+  // Palettes layered on the Korok Forest theme, chosen with the localStorage key <key>:skin. The
+  // page that sells them decides what is owned; here a skin is only ever a name. Blood Moon is
+  // red and only shows on full-moon days, worked out locally from the mean lunar cycle.
+  var SKINS = {
+    autumn: '--bg:#1c120a;--surface:#2a1b0f;--surface2:#382414;--border:#4a3119;--border2:#63421f;' +
+      '--text:#f7e8cf;--muted:#c9a77a;--dim:#8f7350;--accent:#f0a030;--yellow:#f4c95d;--blue:#d98a4a;',
+    lostwoods: '--bg:#0a1412;--surface:#10201d;--surface2:#172b27;--border:#1f3a35;--border2:#2a4d46;' +
+      '--text:#dff0ea;--muted:#86aaa2;--dim:#56776f;--accent:#7fe0c0;--yellow:#b8e6a0;--blue:#6fc8d8;',
+    bloodmoon: '--bg:#14080a;--surface:#220e11;--surface2:#2e1317;--border:#44191f;--border2:#5e2229;' +
+      '--text:#f6dcd8;--muted:#c28a86;--dim:#855553;--accent:#ff5a4d;--yellow:#ffa07a;--blue:#d9728a;'
+  };
+  var SYNODIC = 29.530588853, NEW_MOON = Date.UTC(2000, 0, 6, 18, 14);
+  // Days since the last new moon (0..29.53) at a Date, by the mean cycle.
+  function moonAge(d) { var x = (d.getTime() - NEW_MOON) / 86400000; return ((x % SYNODIC) + SYNODIC) % SYNODIC; }
+  // Full moon "on" a date: within a day of full at that date's local noon, so a night is one or
+  // two calendar days, never a week.
+  function isFullMoon(d) {
+    var noon = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 12);
+    return Math.abs(moonAge(noon) - SYNODIC / 2) <= 1;
+  }
+  function skinActive(skin, d) { return !!SKINS[skin] && (skin !== 'bloodmoon' || isFullMoon(d)); }
   return { parseSpots: parseSpots, load: load, add: add, milestone: milestone, seedsLabel: seedsLabel,
     forestUnlocked: forestUnlocked, LINES: LINES, UNLOCK: UNLOCK, HESTU: HESTU, hestuSvg: hestuSvg,
     KOROK: KOROK, KOROK_LOOKS: KOROK_LOOKS, korokSvg: korokSvg, variantFor: variantFor,
-    MILESTONES: MILESTONES };
+    MILESTONES: MILESTONES, SKINS: SKINS, moonAge: moonAge, isFullMoon: isFullMoon, skinActive: skinActive };
 })();
 if (typeof module !== 'undefined' && module.exports) module.exports = KorokCore;
 
@@ -159,6 +181,10 @@ if (typeof module !== 'undefined' && module.exports) module.exports = KorokCore;
   function applyForest() {
     var on = forestOn() && KorokCore.forestUnlocked(found, total);
     document.documentElement.classList.toggle('korok-forest', on);
+    var skin = ''; try { skin = store.getItem(key + ':skin') || ''; } catch (e) {}
+    Object.keys(KorokCore.SKINS).forEach(function (k) {
+      document.documentElement.classList.toggle('korok-skin-' + k, on && skin === k && KorokCore.skinActive(k, new Date()));
+    });
     var t = document.getElementById('korok-forest-btn');
     if (t) { t.setAttribute('aria-pressed', on ? 'true' : 'false'); t.textContent = on ? '🍃 Korok Forest: on' : '🍃 Korok Forest: off'; }
   }
@@ -167,8 +193,18 @@ if (typeof module !== 'undefined' && module.exports) module.exports = KorokCore;
     'html.korok-forest body{cursor:' + LEAF + '}' +
     'html.korok-forest .glow{background:radial-gradient(60% 42% at 12% 0%,rgba(95,168,74,.22),transparent 62%),' +
     'radial-gradient(50% 36% at 88% 8%,rgba(155,225,93,.14),transparent 60%),linear-gradient(180deg,var(--bg),var(--bg-2,var(--bg)))}';
+  Object.keys(KorokCore.SKINS).forEach(function (k) {
+    fs.textContent += ':root.korok-forest.korok-skin-' + k + '{' + KorokCore.SKINS[k] + '}';
+  });
+  fs.textContent += 'html.korok-skin-lostwoods body::before,html.korok-skin-bloodmoon body::after{content:"";position:fixed;pointer-events:none;z-index:1}' +
+    'html.korok-skin-lostwoods body::before{inset:0;background:radial-gradient(60% 40% at 20% 80%,rgba(200,240,230,.10),transparent 70%),' +
+    'radial-gradient(50% 35% at 80% 70%,rgba(200,240,230,.08),transparent 70%)}' +
+    'html.korok-skin-bloodmoon body::after{top:14px;right:18px;width:26px;height:26px;border-radius:50%;background:#c4372c;box-shadow:0 0 28px 8px rgba(255,70,50,.35)}' +
+    '@media (prefers-reduced-motion:no-preference){html.korok-skin-lostwoods body::before{animation:korok-fog 18s ease-in-out infinite alternate}' +
+    '@keyframes korok-fog{from{transform:translateX(-3%)}to{transform:translateX(3%)}}}';
   document.head ? document.head.appendChild(fs) : document.addEventListener('DOMContentLoaded', function () { document.head.appendChild(fs); });
   applyForest();
+  window.KorokApply = applyForest; // the page that sells skins calls this after writing <key>:skin
 
   function build() {
     var st = document.createElement('style');
