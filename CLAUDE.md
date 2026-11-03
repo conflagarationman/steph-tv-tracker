@@ -61,10 +61,14 @@ overview never appears. His look and what he has reacted to live in this browser
 
 ## Koroks and Hestu
 
-`korok.js` is a **verbatim copy of game-tracker's** (edit it there, then copy it here). It keeps
-one localStorage key, `korok:all`, shared with game-tracker (same github.io origin); this page
-holds 2 of the 12 spots (`data-total="12"`). Hestu dances at 3, 6 and all seeds, and six unlock a
-"Korok Forest" theme toggle in the seed counter at the foot of the page. Test: `node korok.test.mjs`.
+`korok.js` is **loaded from game-tracker's live site** (`<script src="https://conflagarationman.github.io/game-tracker/korok.js">`
+near the end of `index.html`), so there is no copy here to keep in sync. Edit and test it in
+game-tracker (`node scripts/korok.test.mjs` there). The trade-off, chosen on purpose: a korok.js
+change merged in game-tracker goes live on this page too, without a PR here. It keeps one
+localStorage key, `korok:all`, shared with game-tracker (same github.io origin); this page holds
+2 of the 12 spots (`data-total="12"`). Hestu dances at 3, 6 and all seeds, and six unlock a
+"Korok Forest" theme toggle in the seed counter at the foot of the page. If game-tracker is ever
+unreachable, the Koroks simply don't appear; nothing else on the page depends on them.
 
 ## Streaming pills
 
@@ -131,7 +135,6 @@ field is quietly lost on every sync until the Worker catches up.
 node tmdb.test.mjs        # repo root
 node westley.test.mjs     # repo root (26)
 node scripts/westley.browser.mjs   # needs playwright; see the file's header
-node korok.test.mjs       # repo root
 cd worker && npm test     # worker/index.test.mjs + worker/merge.test.mjs
 ```
 No token or network needed for any of them.
