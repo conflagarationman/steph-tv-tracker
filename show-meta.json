@@ -388,7 +388,6 @@
     "watch": {
       "on": [
         "Disney Plus",
-        "fuboTV",
         "YouTube TV",
         "Freeform"
       ],
@@ -3258,6 +3257,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -3468,8 +3468,8 @@
         "Paramount+ Amazon Channel",
         "YouTube TV",
         "Paramount+ Roku Premium Channel",
-        "Plex",
         "Plex Channel",
+        "Plex",
         "Amazon Prime Video Free with Ads",
         "Amazon MX Player"
       ],
@@ -3959,6 +3959,7 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Peacock Premium",
         "Peacock Premium Plus"
       ],
       "link": "https://www.themoviedb.org/tv/197373-based-on-a-true-story/watch?locale=US"
@@ -3980,6 +3981,7 @@
       "on": [
         "Netflix",
         "Disney Plus",
+        "Hulu",
         "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/103540-percy-jackson-and-the-olympians/watch?locale=US"
@@ -5475,9 +5477,9 @@
         "AMC+ Roku Premium Channel",
         "AMC+",
         "Spectrum On Demand",
+        "Plex Channel",
         "The Roku Channel",
-        "Plex",
-        "Plex Channel"
+        "Plex"
       ],
       "link": "https://www.themoviedb.org/tv/99652-kevin-can-f-k-himself/watch?locale=US"
     }
