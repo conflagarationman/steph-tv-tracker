@@ -388,6 +388,7 @@
     "watch": {
       "on": [
         "Disney Plus",
+        "fuboTV",
         "YouTube TV",
         "Freeform"
       ],
@@ -2579,7 +2580,7 @@
       "on": [
         "Netflix",
         "Netflix Standard with Ads",
-        "WeTV"
+        "Tencent Video"
       ],
       "link": "https://www.themoviedb.org/tv/81046-the-dragon-prince/watch?locale=US"
     }
@@ -3468,7 +3469,6 @@
         "Paramount+ Amazon Channel",
         "YouTube TV",
         "Paramount+ Roku Premium Channel",
-        "Plex Channel",
         "Plex",
         "Amazon Prime Video Free with Ads",
         "Amazon MX Player"
@@ -5477,7 +5477,6 @@
         "AMC+ Roku Premium Channel",
         "AMC+",
         "Spectrum On Demand",
-        "Plex Channel",
         "The Roku Channel",
         "Plex"
       ],
