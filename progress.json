@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-04T03:52:03.709Z",
+  "updatedAt": "2026-11-04T03:52:08.476Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -128,11 +128,11 @@
     },
     "194": {
       "season": 52,
-      "ep": 3,
-      "epsWatched": 1012,
-      "lastWatched": "2026-10-05",
+      "ep": 4,
+      "epsWatched": 1013,
+      "lastWatched": "2026-11-03",
       "dormant": false,
-      "updatedAt": "2026-10-05T16:27:09.246Z"
+      "updatedAt": "2026-11-04T03:52:06.726Z"
     },
     "202": {
       "season": 4,
@@ -724,6 +724,14 @@
     }
   },
   "history": [
+    {
+      "id": 194,
+      "title": "Saturday Night Live",
+      "action": "watched",
+      "season": 52,
+      "ep": 4,
+      "at": "2026-11-04T03:52:06.725Z"
+    },
     {
       "id": 143,
       "title": "Scrubs (2026)",
