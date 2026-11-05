@@ -2293,13 +2293,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 2,
-      "ep": 6,
-      "airDate": "2026-10-28"
+      "ep": 7,
+      "airDate": "2026-11-04"
     },
     "nextAir": {
       "season": 2,
-      "ep": 7,
-      "airDate": "2026-11-04"
+      "ep": 8,
+      "airDate": "2026-11-11"
     },
     "watch": {
       "on": [
@@ -2394,13 +2394,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 11,
-      "ep": 11,
-      "airDate": "2026-10-28"
+      "ep": 12,
+      "airDate": "2026-11-04"
     },
     "nextAir": {
       "season": 11,
-      "ep": 12,
-      "airDate": "2026-11-04"
+      "ep": 13,
+      "airDate": "2026-11-08"
     },
     "watch": {
       "on": [
@@ -3414,13 +3414,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 6,
-      "ep": 4,
-      "airDate": "2026-10-28"
+      "ep": 5,
+      "airDate": "2026-11-04"
     },
     "nextAir": {
       "season": 6,
-      "ep": 5,
-      "airDate": "2026-11-04"
+      "ep": 6,
+      "airDate": "2026-11-11"
     },
     "watch": {
       "on": [
@@ -4827,9 +4827,7 @@
     "watch": {
       "on": [
         "Netflix",
-        "Paramount Plus Premium",
         "Paramount Plus Essential",
-        "Paramount Plus Apple TV channel",
         "Britbox Apple TV channel",
         "Paramount+ Amazon Channel",
         "AMC+ Amazon Channel",
