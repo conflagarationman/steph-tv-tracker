@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-05T05:17:44.801Z",
+  "updatedAt": "2026-11-05T05:17:57.711Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -70,6 +70,14 @@
       "lastWatched": "2026-07-14",
       "dormant": false,
       "updatedAt": "2026-07-16T14:23:16.350Z"
+    },
+    "117": {
+      "season": 4,
+      "ep": 1,
+      "epsWatched": 26,
+      "lastWatched": "2026-11-05",
+      "dormant": false,
+      "updatedAt": "2026-11-05T05:17:55.977Z"
     },
     "137": {
       "ep": 7,
@@ -724,6 +732,14 @@
     }
   },
   "history": [
+    {
+      "id": 117,
+      "title": "The Gilded Age",
+      "action": "watched",
+      "season": 4,
+      "ep": 1,
+      "at": "2026-11-05T05:17:55.976Z"
+    },
     {
       "id": 194,
       "title": "Saturday Night Live",
