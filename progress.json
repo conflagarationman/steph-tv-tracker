@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T02:05:47.272Z",
+  "updatedAt": "2026-11-06T02:05:51.834Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -269,11 +269,11 @@
     },
     "337": {
       "season": 5,
-      "ep": 4,
-      "epsWatched": 47,
-      "lastWatched": "2026-10-29",
+      "ep": 5,
+      "epsWatched": 48,
+      "lastWatched": "2026-11-05",
       "dormant": false,
-      "updatedAt": "2026-10-30T04:04:55.354Z"
+      "updatedAt": "2026-11-06T02:05:50.146Z"
     },
     "1784868238318": {
       "season": 2,
@@ -732,6 +732,14 @@
     }
   },
   "history": [
+    {
+      "id": 337,
+      "title": "Animal Control",
+      "action": "watched",
+      "season": 5,
+      "ep": 5,
+      "at": "2026-11-06T02:05:50.145Z"
+    },
     {
       "id": 117,
       "title": "The Gilded Age",
