@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-06T04:45:08.624Z",
+  "updatedAt": "2026-11-06T04:45:21.355Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -96,11 +96,11 @@
     },
     "149": {
       "season": 11,
-      "ep": 11,
-      "epsWatched": 145,
-      "lastWatched": "2026-10-30",
+      "ep": 12,
+      "epsWatched": 146,
+      "lastWatched": "2026-11-05",
       "dormant": false,
-      "updatedAt": "2026-10-31T00:45:54.641Z"
+      "updatedAt": "2026-11-06T04:45:19.532Z"
     },
     "162": {
       "ep": 7,
@@ -732,6 +732,14 @@
     }
   },
   "history": [
+    {
+      "id": 149,
+      "title": "Love is Blind",
+      "action": "watched",
+      "season": 11,
+      "ep": 12,
+      "at": "2026-11-06T04:45:19.531Z"
+    },
     {
       "id": 337,
       "title": "Animal Control",
