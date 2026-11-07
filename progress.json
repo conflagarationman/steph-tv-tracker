@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-07T03:18:22.131Z",
+  "updatedAt": "2026-11-07T03:19:09.293Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -234,7 +234,10 @@
       "epsWatched": 18,
       "lastWatched": "2026-10-10",
       "dormant": false,
-      "updatedAt": "2026-10-11T02:41:39.777Z"
+      "updatedAt": "2026-11-07T03:19:07.462Z",
+      "s": "done",
+      "cy": 2026,
+      "cm": 10
     },
     "287": {
       "ep": 8,
@@ -732,6 +735,14 @@
     }
   },
   "history": [
+    {
+      "id": 284,
+      "title": "Behind the Attraction",
+      "action": "finished",
+      "season": 3,
+      "ep": 2,
+      "at": "2026-11-07T03:19:07.461Z"
+    },
     {
       "id": 211,
       "title": "Abbott Elementary",
