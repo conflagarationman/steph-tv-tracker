@@ -59,6 +59,23 @@ overview never appears. His look and what he has reacted to live in this browser
 (`westley:mask`, `westley:drops`); the recap is derived and cached with the episode titles
 (`tvtracker-ep-titles`). Nothing new is synced, so the three-place merge and the hub are untouched.
 
+## Year in TV (`wrapped.html`, a Christmas 2026 gift)
+
+`wrapped.html` + `wrapped.js` (DOM-free, `node wrapped.test.mjs`) are Steph's year in review: story
+cards (gift box, episodes, month chart, top show, binge, streak, prime time, services, finished, caught
+up, a Westley persona, all-time hours, and a note from Jonny, `NOTE`/`?from=` at the top of the page's
+script), a summary page (`?cards=0`) and a hand-drawn 1080x1920 share image (no posters on the canvas, so
+it never taints). **Unlinked from `index.html` on purpose** until Jonny gives it to her.
+
+- **Read only.** It reads this browser's `tvtracker-progress` and the Worker's `GET /progress`, merges them
+  like the Worker does, and never POSTs.
+- **Two sources, one seam.** Jan to mid-July 2026 is TV Time's monthly counters (`PACE`, the same numbers
+  as `MONTHLY_PACE`); from 2026-07-15 it's her log. Per-show, per-day and per-hour cards say "since July".
+  Log episodes are `watched`/`started` rows, **one per show+S·E** (a mistap she corrected with `edited` and
+  re-marked would otherwise count twice), and the log's first day gets no binge credit (catch-up taps).
+- Its service ranking is a copy of `canonicalService()`; drift only changes the Wrapped card.
+- Days run to 4 AM and are bucketed in America/New_York.
+
 ## Koroks and Hestu
 
 `korok.js` is **loaded from game-tracker's live site** (`<script src="https://conflagarationman.github.io/game-tracker/korok.js">`
@@ -134,7 +151,9 @@ field is quietly lost on every sync until the Worker catches up.
 ```
 node tmdb.test.mjs        # repo root
 node westley.test.mjs     # repo root (26)
+node wrapped.test.mjs     # repo root (28)
 node scripts/westley.browser.mjs   # needs playwright; see the file's header
+node scripts/wrapped.browser.mjs   # needs playwright; every Wrapped card at 390/360/1280px
 cd worker && npm test     # worker/index.test.mjs + worker/merge.test.mjs
 ```
 No token or network needed for any of them.

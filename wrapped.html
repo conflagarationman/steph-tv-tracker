@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Your Year in TV</title>
+<meta name="theme-color" content="#12141c">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#12141c; --surface:#1b1e29; --surface2:#252939; --border:#2e3245;
+  --text:#fff; --muted:#b4b8cc; --dim:#8a90ab; --yellow:#ffc72c; --ink:#14151c;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg);color:var(--text);font-family:'Nunito Sans',sans-serif;min-height:100%;}
+h1,h2,.big,.num{font-family:'Poppins',sans-serif;}
+button{font:inherit;cursor:pointer;}
+.westley-sprite{image-rendering:pixelated;display:block;}
+
+/* ---------- Story (full screen, one card at a time) ---------- */
+#story{position:fixed;inset:0;z-index:10;display:none;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:pan-y;}
+#story.on{display:block;}
+.card{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:calc(64px + env(safe-area-inset-top)) calc(24px + env(safe-area-inset-right)) calc(40px + env(safe-area-inset-bottom)) calc(24px + env(safe-area-inset-left));
+  background:var(--c1,#1b1e29);background:linear-gradient(160deg,var(--c1),var(--c2));gap:14px;}
+.card.on{display:flex;animation:in .45s ease both;}
+@keyframes in{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.card.on{animation:none}.rise{animation:none!important}}
+.card .kick{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.78);}
+.card .big{font-size:clamp(3.2rem,17vw,6.5rem);font-weight:800;line-height:1;letter-spacing:-.03em;}
+.card h2{font-size:clamp(1.5rem,6.4vw,2.4rem);font-weight:800;line-height:1.15;max-width:640px;}
+.card p{font-size:clamp(1rem,4.2vw,1.2rem);color:rgba(255,255,255,.88);max-width:520px;line-height:1.45;}
+.card .small{font-size:.78rem;color:rgba(255,255,255,.62);max-width:460px;}
+.rise{animation:rise .6s .15s ease both;}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.bars{position:absolute;top:calc(12px + env(safe-area-inset-top));left:calc(12px + env(safe-area-inset-left));right:calc(56px + env(safe-area-inset-right));display:flex;gap:4px;z-index:3;}
+.bars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden;}
+.bars i.done{background:#fff;}
+.bars i.now{background:linear-gradient(90deg,#fff 50%,rgba(255,255,255,.3) 50%);background-size:200% 100%;background-position:100% 0;animation:fill 7s linear forwards;}
+@keyframes fill{to{background-position:0 0}}
+#close{position:absolute;top:calc(4px + env(safe-area-inset-top));right:calc(6px + env(safe-area-inset-right));z-index:4;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.25);color:#fff;font-size:1.3rem;}
+.tapnote{position:absolute;bottom:calc(14px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;font-size:.75rem;color:rgba(255,255,255,.6);pointer-events:none;}
+
+/* card parts */
+.gift{font-size:4.5rem;animation:wob 2.4s ease-in-out infinite;}
+@keyframes wob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.speech{background:#fff;color:var(--ink);border-radius:16px;padding:10px 16px;font-weight:700;position:relative;max-width:300px;}
+.speech:after{content:"";position:absolute;left:50%;bottom:-9px;margin-left:-9px;border:9px solid transparent;border-bottom:0;border-top-color:#fff;}
+.chart{display:flex;align-items:flex-end;gap:5px;height:150px;width:min(100%,520px);}
+.chart div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px;font-size:.62rem;color:rgba(255,255,255,.75);}
+.chart b{display:block;width:100%;border-radius:4px 4px 0 0;background:rgba(255,255,255,.35);min-height:2px;}
+.chart .hi b{background:var(--yellow);}
+.poster{width:min(46vw,190px);aspect-ratio:2/3;border-radius:12px;background:rgba(255,255,255,.12) center/cover no-repeat;box-shadow:0 14px 40px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;font:800 3rem Poppins,sans-serif;color:rgba(255,255,255,.5);}
+ol.rank{list-style:none;display:flex;flex-direction:column;gap:6px;width:min(100%,380px);text-align:left;}
+ol.rank li{display:flex;gap:10px;align-items:center;background:rgba(0,0,0,.2);border-radius:10px;padding:8px 12px;font-weight:600;}
+ol.rank li b{font-family:Poppins,sans-serif;width:1.2em;color:var(--yellow);}
+ol.rank li span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+ol.rank li em{font-style:normal;color:rgba(255,255,255,.7);font-size:.85rem;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:560px;}
+.chips span{background:rgba(0,0,0,.22);border-radius:999px;padding:5px 12px;font-size:.85rem;font-weight:600;}
+.svc{display:flex;flex-direction:column;gap:6px;width:min(100%,420px);}
+.svc div{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;text-align:left;}
+.svc div span{width:92px;flex:none;}
+.svc div i{height:14px;border-radius:7px;background:rgba(255,255,255,.85);}
+.svc div:first-child i{background:var(--yellow);}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.btn{border:0;border-radius:999px;padding:12px 20px;font-weight:700;background:#fff;color:var(--ink);min-height:44px;}
+.btn.ghost{background:rgba(255,255,255,.16);color:#fff;}
+.note{font-size:clamp(1.05rem,4.6vw,1.3rem);line-height:1.5;max-width:520px;font-style:italic;}
+
+/* ---------- Summary page ---------- */
+main{max-width:860px;margin:0 auto;padding:calc(24px + env(safe-area-inset-top)) 16px 48px;}
+.hero{text-align:center;padding:24px 0 8px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.hero h1{font-size:clamp(1.8rem,7vw,2.6rem);font-weight:800;letter-spacing:-.02em;}
+.hero p{color:var(--muted);}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:20px;}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;}
+.tile .num{font-size:2rem;font-weight:800;color:var(--yellow);line-height:1.1;}
+.tile .lbl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
+.tile p{color:var(--muted);font-size:.9rem;margin-top:4px;}
+.foot{margin-top:24px;color:var(--dim);font-size:.78rem;text-align:center;line-height:1.5;}
+#msg{padding:40px 16px;text-align:center;color:var(--muted);}
+</style>
+</head>
+<body>
+<div id="msg">Loading your year…</div>
+<main id="summary" hidden></main>
+<div id="story" aria-live="polite"><div class="bars" id="bars"></div><button id="close" aria-label="Close">✕</button><div id="cards"></div></div>
+
+<script src="westley.js"></script>
+<script src="wrapped.js"></script>
+<script>
+(function(){
+// ---------- The note on the last card (edit me before Christmas) ----------
+const FROM = new URLSearchParams(location.search).get('from') || 'Jonny';
+const NOTE = "Merry Christmas, Steph. Another year of shows on the couch together, and I wouldn't trade a single episode.";
+
+// Same Worker and public key as index.html. Read only: this page never POSTs.
+const SYNC = { url:'https://steph-tv-tracker-sync.jonny-wilczynski.workers.dev/progress', key:'17a6060922fbcb9bea48c3a0efde3033' };
+const qs = new URLSearchParams(location.search);
+const YEAR = +qs.get('year') || WrappedTV.defaultYear(new Date());
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtN = n => Math.round(n).toLocaleString('en-US');
+const fmtDay = d => new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric'});
+let POSTERS = {}, S = null, SHOWS_BY_ID = {};
+
+// ---------- Load ----------
+async function getJSON(u){ const r = await fetch(u); if(!r.ok) throw new Error(u+' '+r.status); return r.json(); }
+async function remoteProgress(){
+  if(!SYNC.url) return null;
+  const ac = new AbortController(); const t = setTimeout(()=>ac.abort(), 7000);
+  try{ const r = await fetch(SYNC.url,{headers:{'X-Sync-Key':SYNC.key},signal:ac.signal}); return r.ok ? await r.json() : null; }
+  catch(e){ return null; } finally{ clearTimeout(t); }
+}
+async function load(){
+  const [shows, meta, posters, remote] = await Promise.all([
+    getJSON('shows.json'),
+    getJSON('show-meta.json').catch(()=>({})),
+    getJSON('posters.json').catch(()=>({})),
+    remoteProgress()
+  ]);
+  let local = null;
+  try{ local = JSON.parse(localStorage.getItem('tvtracker-progress')||'null'); }catch(e){}
+  if(!local && !remote){ document.getElementById('msg').textContent = "Couldn't reach your log just now. Try again in a minute."; return; }
+  const progress = WrappedTV.mergeProgress(local, remote);
+  POSTERS = posters;
+  WrappedTV.liveShows(shows, progress).forEach(g => { SHOWS_BY_ID[g.id] = g; });
+  S = WrappedTV.compute({ shows, progress, meta, year: YEAR, now: new Date() });
+  window.__wrapped = S;
+  document.getElementById('msg').remove();
+  renderSummary();
+  buildCards();
+  if(qs.get('cards') !== '0') openStory(0);
+}
+function posterUrl(id){
+  const p = POSTERS[id] || (SHOWS_BY_ID[id] && SHOWS_BY_ID[id].tmdb && SHOWS_BY_ID[id].tmdb.poster);
+  return p ? 'https://image.tmdb.org/t/p/w342' + p : null;
+}
+function posterEl(id, t){
+  const u = posterUrl(id);
+  const letter = (String(t).match(/[A-Za-z0-9]/)||['#'])[0].toUpperCase();
+  return `<div class="poster rise" ${u?`style="background-image:url('${esc(u)}')"`:''}>${u?'':esc(letter)}</div>`;
+}
+const sprite = (masked, scale) => Westley.svg(masked, scale);
+
+// ---------- Cards ----------
+// Each returns null when its data is missing, and is then skipped (never an empty card).
+const sinceJuly = `<div class="small">Counted from your log, July 15 on.</div>`;
+const CARDS = [
+  s => ({ c:['#3b2a63','#1b1e29'], html:`
+    <div class="gift">🎁</div>
+    <div class="kick">For Steph, from ${esc(FROM)}</div>
+    <h2>Your ${s.year} in TV</h2>
+    <p>Tap to open.</p>`, noTimer:true }),
+  s => ({ c:['#20324a','#12141c'], html:`
+    <div class="speech rise">As you wish… let's look back.</div>
+    ${sprite(false, 7)}
+    <p>Your farm boy kept count all year.</p>` }),
+  s => s.episodes ? ({ c:['#7a2f4f','#2a1430'], html:`
+    <div class="kick">This year you watched</div>
+    <div class="big rise">${fmtN(s.episodes)}</div>
+    <h2>episodes</h2>
+    <p>About <b>${fmtN(s.hours)} hours</b> of TV. That's ${fmtN(s.hours/24)} whole days on the couch.</p>` }) : null,
+  s => s.busiest ? ({ c:['#1f4a4a','#10232a'], html:`
+    <div class="kick">Month by month</div>
+    <h2>${esc(s.busiest.name)} was your biggest month</h2>
+    <div class="chart rise">${s.months.map(m=>`<div class="${m===s.busiest?'hi':''}"><b style="height:${s.busiest.eps?Math.max(2,m.eps/s.busiest.eps*100):0}%"></b>${m.short[0]}</div>`).join('')}</div>
+    <p>${s.busiest.eps} episodes in ${esc(s.busiest.name)} alone.</p>` }) : null,
+  s => s.showCount ? ({ c:['#4a3a1a','#1f1a10'], html:`
+    <div class="kick">You spent time with</div>
+    <div class="big rise">${s.showCount}</div>
+    <h2>different shows</h2>
+    ${s.started.length?`<p>${s.started.length} of them brand new to you:</p><div class="chips">${s.started.slice(0,10).map(g=>`<span>${esc(g.t)}</span>`).join('')}</div>`:''}` }) : null,
+  s => s.topShows.length ? ({ c:['#5a1f2a','#1b1e29'], html:`
+    <div class="kick">Your number one show</div>
+    ${posterEl(s.topShows[0].id, s.topShows[0].t)}
+    <h2>${esc(s.topShows[0].t)}</h2>
+    <p>${s.topShows[0].eps} episodes. ${s.topShows[1]&&s.topShows[1].eps*1.4>s.topShows[0].eps?`Just ahead of ${esc(s.topShows[1].t)}.`:'Nothing else came close.'}</p>
+    ${sinceJuly}` }) : null,
+  s => s.topShows.length > 2 ? ({ c:['#2b2f63','#14162e'], html:`
+    <div class="kick">Your top five</div>
+    <ol class="rank rise">${s.topShows.map((g,i)=>`<li><b>${i+1}</b><span>${esc(g.t)}</span><em>${g.eps} eps</em></li>`).join('')}</ol>
+    ${sinceJuly}` }) : null,
+  s => s.binge && s.binge.eps >= 3 ? ({ c:['#6b3a12','#24140a'], html:`
+    <div class="kick">Biggest binge</div>
+    <div class="big rise">${s.binge.eps}</div>
+    <h2>episodes of ${esc(s.binge.t)}</h2>
+    <p>All on ${fmtDay(s.binge.date)}.${/bluey/i.test(s.binge.t)?' (Jayce and Ellie may have had a say in this one.)':' Who needs sleep?'}</p>` }) : null,
+  s => s.streak && s.streak.days >= 3 ? ({ c:['#14514a','#0c2622'], html:`
+    <div class="kick">Longest streak</div>
+    <div class="big rise">${s.streak.days}</div>
+    <h2>days in a row</h2>
+    <p>At least one episode every day from ${fmtDay(s.streak.from)} to ${fmtDay(s.streak.to)}.</p>` }) : null,
+  s => s.clock ? ({ c:['#101a3a','#05070f'], html:`
+    <div class="kick">Prime time</div>
+    <h2>Your favourite hour was ${esc(s.clock.peakLabel)}</h2>
+    <div class="chart rise" style="height:110px">${hourOrder().map(h=>{const v=s.clock.hours[h],mx=Math.max(...s.clock.hours);return `<div class="${h===s.clock.peakHour?'hi':''}"><b style="height:${mx?Math.max(2,v/mx*100):0}%"></b>${h%6===0?hourShort(h):''}</div>`}).join('')}</div>
+    <p>${Math.round(s.clock.nightShare*100)}% of your episodes came after 10 PM, and ${esc(s.clock.favDayName)} was your night.</p>
+    ${sinceJuly}` }) : null,
+  s => s.services.length >= 2 ? ({ c:['#3a1f4a','#170c20'], html:`
+    <div class="kick">Where you watched</div>
+    <h2>${esc(s.services[0].name)} got the most of you</h2>
+    <div class="svc rise">${s.services.slice(0,6).map(v=>`<div><span>${esc(v.name)}</span><i style="width:${Math.max(4,v.eps/s.services[0].eps*100)*.6}%"></i>${v.eps}</div>`).join('')}</div>
+    <div class="small">By where each show streams today. Counted from your log, July 15 on.</div>` }) : null,
+  s => s.finished.length ? ({ c:['#1d4a2a','#0c2012'], html:`
+    <div class="kick">And that is a wrap</div>
+    <div class="big rise">${s.finished.length}</div>
+    <h2>show${s.finished.length>1?'s':''} finished</h2>
+    <div class="chips">${s.finished.map(g=>`<span>${esc(g.t)}</span>`).join('')}</div>` }) : null,
+  s => s.waiting.length ? ({ c:['#4a2a14','#1f120a'], html:`
+    <div class="kick">All caught up</div>
+    <div class="big rise">${s.waiting.length}</div>
+    <h2>shows waiting on new episodes</h2>
+    <p>You've seen every episode out so far. Coming back:</p>
+    <div class="chips">${s.waiting.filter(g=>g.next&&g.next.airDate).sort((a,b)=>a.next.airDate<b.next.airDate?-1:1).slice(0,5).map(g=>`<span>${esc(g.t)} · ${fmtDay(g.next.airDate).replace(/^(\w{3})\w*/,'$1')}</span>`).join('') || s.waiting.slice(0,5).map(g=>`<span>${esc(g.t)}</span>`).join('')}</div>` }) : null,
+  s => ({ c: s.persona.mask ? ['#0b0b10','#2a2a36'] : ['#5a4a14','#1f1a08'], html:`
+    <div class="kick">Your TV persona</div>
+    ${sprite(s.persona.mask, 7)}
+    <h2 class="rise">${esc(s.persona.name)}</h2>
+    <p><b>${esc(s.persona.why)}</b></p>
+    <p>${esc(s.persona.line)}</p>` }),
+  s => ({ c:['#1a2f5a','#0b1430'], html:`
+    <div class="kick">Since ${s.lifetime.since}</div>
+    <div class="big rise">${fmtN(s.lifetime.hours)}</div>
+    <h2>hours of TV, all time</h2>
+    <p>That's ${fmtN(s.lifetime.hours/24)} days of stories, and counting.</p>` }),
+  s => ({ c:['#3b2a63','#12141c'], html:`
+    ${sprite(false, 5)}
+    <p class="note rise">"${esc(NOTE)}"</p>
+    <p>Love, ${esc(FROM)}</p>
+    <div class="btns"><button class="btn" data-act="share">Save my year</button><button class="btn ghost" data-act="close">See it all</button></div>`, noTimer:true, final:true })
+];
+function hourOrder(){ const o=[]; for(let i=0;i<24;i++) o.push((i+12)%24); return o; } // noon to noon, so evenings sit together
+function hourShort(h){ return (h%12||12)+(h<12?'a':'p'); }
+
+let built = [], idx = 0, timer = null;
+function buildCards(){
+  built = CARDS.map(f => { try{ return f(S); }catch(e){ console.warn(e); return null; } }).filter(Boolean);
+  const host = document.getElementById('cards');
+  host.innerHTML = built.map((c,i)=>`<section class="card" data-i="${i}" style="--c1:${c.c[0]};--c2:${c.c[1]}">${c.html}${c.noTimer||c.final?'':''}</section>`).join('');
+  document.getElementById('bars').innerHTML = built.map(()=>'<i></i>').join('');
+}
+function show(i){
+  idx = Math.max(0, Math.min(built.length-1, i));
+  document.querySelectorAll('.card').forEach((el,j)=>el.classList.toggle('on', j===idx));
+  document.querySelectorAll('.bars i').forEach((el,j)=>{ el.className = j<idx?'done':j===idx&&!built[idx].noTimer?'now':j===idx?'done':''; });
+  clearTimeout(timer);
+  if(!built[idx].noTimer) timer = setTimeout(()=>show(idx+1), 7000);
+}
+function openStory(i){ document.getElementById('story').classList.add('on'); document.body.style.overflow='hidden'; show(i||0); }
+function closeStory(){ clearTimeout(timer); document.getElementById('story').classList.remove('on'); document.body.style.overflow=''; }
+const story = document.getElementById('story');
+let sx = null, sy = null;
+story.addEventListener('pointerdown', e => { sx = e.clientX; sy = e.clientY; });
+story.addEventListener('pointerup', e => {
+  if(sx == null) return;
+  const dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+  const act = e.target.closest('[data-act]');
+  if(act){ if(act.dataset.act==='share') shareImage(); else closeStory(); return; }
+  if(e.target.closest('#close')){ closeStory(); return; }
+  if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)){ show(idx + (dx < 0 ? 1 : -1)); return; }
+  if(Math.abs(dx) > 12 || Math.abs(dy) > 12) return;
+  if(e.clientX < innerWidth*0.3) show(idx-1);
+  else if(built[idx].final) return;
+  else show(idx+1);
+});
+addEventListener('keydown', e => {
+  if(!story.classList.contains('on')) return;
+  if(e.key==='ArrowRight'||e.key===' ') show(idx+1);
+  else if(e.key==='ArrowLeft') show(idx-1);
+  else if(e.key==='Escape') closeStory();
+});
+
+// ---------- Summary page ----------
+function renderSummary(){
+  const s = S, m = document.getElementById('summary');
+  const tile = (lbl, num, p) => `<div class="tile"><div class="lbl">${lbl}</div><div class="num">${num}</div>${p?`<p>${p}</p>`:''}</div>`;
+  m.innerHTML = `
+    <div class="hero">${sprite(s.persona.mask, 5)}<h1>Steph's ${s.year} in TV</h1>
+      <p>${esc(s.persona.name)}: ${esc(s.persona.why)}</p>
+      <div class="btns"><button class="btn" id="play">▶ Play the story</button><button class="btn ghost" id="save">Save my year</button></div></div>
+    <div class="grid">
+      ${tile('Episodes', fmtN(s.episodes), `About ${fmtN(s.hours)} hours`)}
+      ${tile('Shows', s.showCount, `${s.started.length} new this year`)}
+      ${s.topShows[0]?tile('Number one', esc(s.topShows[0].t), `${s.topShows[0].eps} episodes since July`):''}
+      ${s.busiest?tile('Biggest month', esc(s.busiest.name), `${s.busiest.eps} episodes`):''}
+      ${s.binge?tile('Biggest binge', s.binge.eps+' eps', `${esc(s.binge.t)}, ${fmtDay(s.binge.date)}`):''}
+      ${s.streak?tile('Longest streak', s.streak.days+' days', `${fmtDay(s.streak.from)} to ${fmtDay(s.streak.to)}`):''}
+      ${s.clock?tile('Prime time', esc(s.clock.peakLabel), `${Math.round(s.clock.nightShare*100)}% after 10 PM · ${esc(s.clock.favDayName)}s`):''}
+      ${s.services[0]?tile('Top service', esc(s.services[0].name), `${s.services[0].eps} episodes since July`):''}
+      ${tile('Finished', s.finished.length, s.finished.map(g=>esc(g.t)).join(', '))}
+      ${tile('Waiting on', s.waiting.length, 'shows you are all caught up on')}
+      ${tile('All time', fmtN(s.lifetime.hours)+' h', `since ${s.lifetime.since}`)}
+    </div>
+    <p class="foot">January to mid-July comes from TV Time's monthly counts; per-show, per-day and per-hour numbers come from your own log, which starts July 15. Hours are estimated from TV Time's average episode length.${s.through?` Counted through ${fmtDay(s.through)}.`:''}</p>`;
+  m.hidden = false;
+  document.getElementById('play').onclick = () => openStory(1);
+  document.getElementById('save').onclick = shareImage;
+}
+
+// ---------- Share image (1080x1920, drawn by hand: no posters, so the canvas never taints) ----------
+function drawImage(){
+  const s = S, W = 1080, H = 1920, c = document.createElement('canvas');
+  c.width = W; c.height = H;
+  const x = c.getContext('2d');
+  const g = x.createLinearGradient(0,0,W,H); g.addColorStop(0,'#3b2a63'); g.addColorStop(1,'#12141c');
+  x.fillStyle = g; x.fillRect(0,0,W,H);
+  // Westley, pixel by pixel from his grid
+  const grid = Westley.grid(s.persona.mask), px = 14, ox = (W - 16*px)/2, oy = 120;
+  const PAL = { K:'#1d1a17',h:'#c79a55',H:'#a07638',s:'#f0c8a0',S:'#d6a77c',e:'#2b2418',w:'#efe6cf',W:'#cfc3a3',v:'#7a5232',p:'#6b4f34',P:'#4f3a26',b:'#3a2a1c',m:'#1b1b20',M:'#33333b',G:'#7c7c8c',E:'#f4f4f4',n:'#5a3c22',g:'#9aa3b2' };
+  grid.forEach((row,yy)=>{ for(let xx=0;xx<row.length;xx++){ const ch=row[xx]; if(ch==='.') continue; x.fillStyle=PAL[ch]||'#fff'; x.fillRect(ox+xx*px, oy+yy*px, px, px); } });
+  x.textAlign = 'center'; x.fillStyle = '#fff';
+  x.font = '800 74px Poppins, sans-serif'; x.fillText(`Steph's ${s.year} in TV`, W/2, 520);
+  x.fillStyle = '#ffc72c'; x.font = '800 54px Poppins, sans-serif'; x.fillText(s.persona.name, W/2, 600);
+  x.fillStyle = 'rgba(255,255,255,.85)'; x.font = '600 34px "Nunito Sans", sans-serif'; x.fillText(s.persona.why, W/2, 652);
+  const box = (bx, by, label, num, sub) => {
+    x.fillStyle = 'rgba(0,0,0,.25)'; roundRect(x, bx, by, 460, 230, 28); x.fill();
+    x.textAlign = 'left'; x.fillStyle = 'rgba(255,255,255,.65)'; x.font = '700 26px "Nunito Sans", sans-serif'; x.fillText(label.toUpperCase(), bx+32, by+52);
+    x.fillStyle = '#fff'; x.font = '800 80px Poppins, sans-serif'; fitText(x, num, bx+32, by+140, 400);
+    x.fillStyle = 'rgba(255,255,255,.75)'; x.font = '600 28px "Nunito Sans", sans-serif'; fitText(x, sub, bx+32, by+190, 400);
+  };
+  box(60, 720, 'Episodes', fmtN(s.episodes), `about ${fmtN(s.hours)} hours`);
+  box(560, 720, 'Shows', String(s.showCount), `${s.started.length} new this year`);
+  if(s.binge) box(60, 980, 'Biggest binge', s.binge.eps+' eps', s.binge.t); else box(60, 980, 'Finished', String(s.finished.length), 'shows');
+  if(s.streak) box(560, 980, 'Longest streak', s.streak.days+' days', `${fmtDay(s.streak.from)} to ${fmtDay(s.streak.to)}`); else box(560, 980, 'All time', fmtN(s.lifetime.hours)+' h', 'of TV');
+  x.textAlign = 'left'; x.fillStyle = 'rgba(255,255,255,.65)'; x.font = '700 26px "Nunito Sans", sans-serif'; x.fillText('TOP SHOWS SINCE JULY', 92, 1290);
+  s.topShows.slice(0,5).forEach((t,i)=>{
+    x.fillStyle = '#ffc72c'; x.font = '800 48px Poppins, sans-serif'; x.fillText(String(i+1), 92, 1360+i*78);
+    x.fillStyle = '#fff'; x.font = '700 44px "Nunito Sans", sans-serif'; fitText(x, t.t, 160, 1360+i*78, 700);
+    x.textAlign = 'right'; x.fillStyle = 'rgba(255,255,255,.7)'; x.font = '600 34px "Nunito Sans", sans-serif'; x.fillText(t.eps+' eps', 990, 1360+i*78); x.textAlign = 'left';
+  });
+  x.textAlign = 'center'; x.fillStyle = 'rgba(255,255,255,.6)'; x.font = '600 30px "Nunito Sans", sans-serif';
+  x.fillText('As you wish.', W/2, 1820);
+  return c;
+}
+function roundRect(x, a, b, w, h, r){ x.beginPath(); x.moveTo(a+r,b); x.arcTo(a+w,b,a+w,b+h,r); x.arcTo(a+w,b+h,a,b+h,r); x.arcTo(a,b+h,a,b,r); x.arcTo(a,b,a+w,b,r); x.closePath(); }
+function fitText(x, t, a, b, max){ t = String(t); while(x.measureText(t).width > max && t.length > 4) t = t.slice(0,-2).trimEnd() + '…'; x.fillText(t.replace(/……$/,'…'), a, b); }
+async function shareImage(){
+  await document.fonts.ready;
+  const c = drawImage();
+  c.toBlob(async blob => {
+    if(!blob) return;
+    const file = new File([blob], `steph-tv-${S.year}.png`, { type:'image/png' });
+    try{ if(navigator.canShare && navigator.canShare({ files:[file] })){ await navigator.share({ files:[file], title:`My ${S.year} in TV` }); return; } }catch(e){ if(e.name==='AbortError') return; }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = file.name; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+  }, 'image/png');
+}
+window.__wrappedImage = full => { const u = drawImage().toDataURL('image/png'); return full ? u : u.length; };
+
+load().catch(e => { console.error(e); const m = document.getElementById('msg'); if(m) m.textContent = 'Something went wrong loading your year.'; });
+})();
+</script>
+</body>
+</html>
