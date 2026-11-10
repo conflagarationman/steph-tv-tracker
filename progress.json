@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-10T04:40:28.914Z",
+  "updatedAt": "2026-11-10T04:40:32.089Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -73,11 +73,11 @@
     },
     "117": {
       "season": 4,
-      "ep": 1,
-      "epsWatched": 26,
-      "lastWatched": "2026-11-05",
+      "ep": 2,
+      "epsWatched": 27,
+      "lastWatched": "2026-11-09",
       "dormant": false,
-      "updatedAt": "2026-11-05T05:17:55.977Z"
+      "updatedAt": "2026-11-10T04:40:30.185Z"
     },
     "137": {
       "ep": 7,
@@ -735,6 +735,14 @@
     }
   },
   "history": [
+    {
+      "id": 117,
+      "title": "The Gilded Age",
+      "action": "watched",
+      "season": 4,
+      "ep": 2,
+      "at": "2026-11-10T04:40:30.184Z"
+    },
     {
       "id": 143,
       "title": "Scrubs (2026)",
