@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-11T05:29:29.415Z",
+  "updatedAt": "2026-11-11T05:29:33.817Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -96,11 +96,11 @@
     },
     "149": {
       "season": 11,
-      "ep": 12,
-      "epsWatched": 146,
-      "lastWatched": "2026-11-05",
+      "ep": 13,
+      "epsWatched": 147,
+      "lastWatched": "2026-11-11",
       "dormant": false,
-      "updatedAt": "2026-11-06T04:45:19.532Z"
+      "updatedAt": "2026-11-11T05:29:30.271Z"
     },
     "162": {
       "ep": 7,
@@ -735,6 +735,14 @@
     }
   },
   "history": [
+    {
+      "id": 149,
+      "title": "Love is Blind",
+      "action": "watched",
+      "season": 11,
+      "ep": 13,
+      "at": "2026-11-11T05:29:30.270Z"
+    },
     {
       "id": 194,
       "title": "Saturday Night Live",
