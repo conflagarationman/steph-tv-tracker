@@ -2294,13 +2294,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 2,
-      "ep": 7,
-      "airDate": "2026-11-04"
+      "ep": 8,
+      "airDate": "2026-11-11"
     },
     "nextAir": {
       "season": 2,
-      "ep": 8,
-      "airDate": "2026-11-11"
+      "ep": 9,
+      "airDate": "2026-11-25"
     },
     "watch": {
       "on": [
@@ -3059,14 +3059,14 @@
   "190": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 2,
-      "ep": 8,
-      "airDate": "2024-10-03"
+      "season": 3,
+      "ep": 4,
+      "airDate": "2026-11-11"
     },
     "nextAir": {
       "season": 3,
-      "ep": 1,
-      "airDate": "2026-11-11"
+      "ep": 5,
+      "airDate": "2026-11-18"
     },
     "watch": {
       "on": [
@@ -3411,13 +3411,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 6,
-      "ep": 5,
-      "airDate": "2026-11-04"
+      "ep": 6,
+      "airDate": "2026-11-11"
     },
     "nextAir": {
       "season": 6,
-      "ep": 6,
-      "airDate": "2026-11-11"
+      "ep": 7,
+      "airDate": "2026-12-02"
     },
     "watch": {
       "on": [
