@@ -169,7 +169,7 @@
         "Netflix Standard with Ads",
         "Amazon Prime Video with Ads"
       ],
-      "link": "https://www.themoviedb.org/tv/85937/watch?locale=US"
+      "link": "https://www.themoviedb.org/tv/85937-gui-mie-no-ren/watch?locale=US"
     }
   },
   "11": {
@@ -900,7 +900,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
-      "link": "https://www.themoviedb.org/tv/65292/watch?locale=US"
+      "link": "https://www.themoviedb.org/tv/65292-ya-ren/watch?locale=US"
     }
   },
   "59": {
@@ -1035,7 +1035,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
-      "link": "https://www.themoviedb.org/tv/78941/watch?locale=US"
+      "link": "https://www.themoviedb.org/tv/78941-aguretshibu-lie-zi/watch?locale=US"
     }
   },
   "67": {
@@ -3255,7 +3255,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -3928,7 +3927,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
-      "link": "https://www.themoviedb.org/tv/93405/watch?locale=US"
+      "link": "https://www.themoviedb.org/tv/93405-ojingeo-geim/watch?locale=US"
     }
   },
   "243": {
