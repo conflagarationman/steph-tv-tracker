@@ -111,6 +111,29 @@ overrides do — a removed history entry goes into a parallel `historyRemoved` s
 `<id>@<isoTimestamp>`), which the merge subtracts from the union. `pruneTombstones` ages these
 out after 90 days.
 
+## On hold, monthly pace, stale tabs (`tvlogic.js`)
+
+`tvlogic.js` (DOM-free, `node tvlogic.test.mjs`) holds two display-time rules. Neither writes anything,
+so the three-place merge and the hub are untouched.
+
+- **On hold.** `dormant` in `shows.json` is the export's frozen per-show flag; in-app actions only ever
+  write `dormant:false`. `liveShows()` therefore derives it for any show she has touched (live override
+  or custom show) via `TvLogic.isOnHold`: `watching`, last watched more than `ONHOLD_DAYS` (45) ago, and
+  not waiting on a new season or a dated upcoming episode. Untouched shows keep the export's flag. The
+  hub does not read `dormant`.
+- **Monthly pace.** `MONTHLY_PACE` is the export and ends 2026-07. Later months come from
+  `progress.history` ('watched' entries, local time) via `TvLogic.paceFromHistory`: episodes only, hours
+  are `null` (never invented). History is capped at 500 entries in the page and `worker/merge.mjs`; at
+  her pace that starts dropping the oldest entries in about a year (raising it is a Worker change).
+- **Stale open tab.** When the tab becomes visible, regains focus or is restored from the bfcache and the
+  last refresh is an hour or more old, the page refetches the five static JSON files and runs the normal
+  sync pull. It skips while a dialog is open, keeps her scroll position (`renderKeepingPosition`), and
+  fails quietly offline (retry no more than every 5 minutes).
+- **Resume / Drop.** Archived cards have Resume (a position-less one says Start watching); Drop lives in
+  the edit dialog. Both use the normal override + history + undo path and only existing fields.
+- **Phone layout.** At 600px and under, `#overview` (stat tiles + breakdown bar) is moved below the
+  watch lists by `placeOverview()`, so Ready to watch is near the top.
+
 ## Deploy order matters when the merge shape changes
 
 **Deploy the Worker before the page.** The old Worker code silently drops fields it doesn't
@@ -133,7 +156,8 @@ field is quietly lost on every sync until the Worker catches up.
 
 ```
 node tmdb.test.mjs        # repo root
-node westley.test.mjs     # repo root (26)
+node westley.test.mjs     # repo root (27)
+node tvlogic.test.mjs     # repo root (30): the on-hold rule and the monthly-pace maths
 node scripts/westley.browser.mjs   # needs playwright; see the file's header
 cd worker && npm test     # worker/index.test.mjs + worker/merge.test.mjs
 ```

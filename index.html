@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TV Tracker</title>
+<title>Steph's TV Log</title>
+<meta name="theme-color" content="#12141c" id="theme-color">
+<meta name="application-name" content="Steph's TV Log">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Steph's TV">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -101,14 +109,21 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .card.now{box-shadow:0 0 0 1.5px var(--badge-yellow-dim) inset;}
 .card.dormant{opacity:0.55;}
 .card.faded{opacity:0.6;}
+.card{scroll-margin-top:84px;}
+/* The banner's tap target: a brief ring so she can see which card it landed on. */
+.card.flash{animation:cardFlash 1.8s ease-out;}
+@keyframes cardFlash{0%,35%{box-shadow:0 0 0 3px var(--yellow),0 0 18px var(--badge-yellow-dim);}100%{box-shadow:0 0 0 0 transparent;}}
+@media (prefers-reduced-motion:reduce){.card.flash{animation:none;outline:3px solid var(--yellow);outline-offset:-3px;}}
 
 .poster{width:52px;min-width:52px;height:74px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;margin:10px;flex-shrink:0;position:relative;overflow:hidden;}
 .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 
 .card-content{flex:1;padding:0.65rem 0.9rem 0.65rem 0;display:flex;flex-direction:column;gap:6px;min-width:0;justify-content:center;}
-.row1{display:flex;align-items:center;gap:0.5rem;min-width:0;}
-.gtitle{flex:1;font-size:0.92rem;font-weight:700;min-width:0;overflow:hidden;line-height:1.25;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.row1{display:flex;align-items:center;gap:0.35rem 0.5rem;min-width:0;flex-wrap:wrap;}
+/* Titles wrap rather than clip. The 2-line clamp plus a flex:1 that shared the row with the S·E and
+   service pills is what cut "Abbott Elementary" down to "Abbott Elementar". The basis keeps a short
+   title beside its pills; a long one takes the whole line and the pills drop underneath. */
+.gtitle{flex:1 1 8.5rem;font-size:0.92rem;font-weight:700;min-width:0;line-height:1.25;overflow-wrap:anywhere;}
 .qnum{font-family:'Poppins',sans-serif;font-size:0.75rem;color:var(--dim);font-weight:700;min-width:16px;}
 .status-pill{font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:99px;white-space:nowrap;flex-shrink:0;text-transform:uppercase;letter-spacing:0.04em;}
 
@@ -143,6 +158,8 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .action-btn.primary{background:var(--badge-yellow);border-color:var(--badge-yellow);color:var(--chip-ink);}
 .action-btn.primary:hover{filter:brightness(1.08);}
 .action-btn.icon{padding:4px 8px;}
+.action-btn.danger{color:var(--red);}
+.action-btn.danger:hover{border-color:var(--red);color:var(--red);}
 
 .edit-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:14px;padding:1.1rem;max-width:320px;width:90vw;box-shadow:0 12px 32px var(--shadow);}
 .edit-dialog::backdrop{background:rgba(0,0,0,0.5);}
@@ -168,7 +185,8 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .edit-fields label{flex:1;display:flex;flex-direction:column;gap:4px;font-size:0.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
 .edit-fields input,.edit-fields select{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
 .edit-fields input:focus,.edit-fields select:focus{outline:none;border-color:var(--yellow);}
-.dialog-actions{display:flex;justify-content:flex-end;gap:8px;}
+.dialog-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;}
+.dialog-actions .spacer{margin-right:auto;}
 
 .hist-row{display:flex;align-items:baseline;gap:10px;padding:7px 2px;border-bottom:1px solid var(--border);font-size:0.78rem;}
 .hist-row:last-child{border-bottom:none;}
@@ -224,6 +242,15 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .love-banner.tiny{font-size:0.62rem;letter-spacing:0.02em;}
 /* Phone sizing for the banner and stat tiles. Has to sit after both base rules: in the
    earlier 480px block, the base .love-banner/.stat rules came later in the file and won. */
+@media (max-width:600px){ #overview{margin-top:1.6rem;} }
+/* Phone: search and + Add show share a row, chips get their own. Saves a whole row of the sticky bar. */
+@media (max-width:480px){
+  .search-wrap{order:1;min-width:0;}
+  .toolbar>.action-btn.primary{order:2;}
+  .chip-row{order:3;flex:1 0 100%;}
+  .updated{margin-bottom:0.75rem;}
+  .card-actions .action-btn{max-width:100%;}
+}
 @media (max-width:480px){
   .love-banner{font-size:1.15rem;padding:0.9rem 1rem;margin-bottom:1rem;}
   .stat{padding:0.5rem 0.6rem;min-width:0;flex:1 1 28%;}
@@ -233,14 +260,24 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .nr-banner-body{flex:1;}
 .nr-banner-title{font-family:'Poppins',sans-serif;font-weight:800;font-size:0.85rem;margin-bottom:4px;}
 .nr-banner-list{font-size:0.76rem;font-weight:600;line-height:1.6;}
+/* Each line jumps to that show's card. Reads as text, not a button; underline says tappable. */
+.nr-link{display:block;width:100%;text-align:left;background:none;border:none;color:inherit;font:inherit;padding:0;cursor:pointer;
+  text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;border-radius:4px;}
+.nr-link:hover{text-decoration-style:solid;}
+@media (pointer:coarse),(max-width:600px){.nr-link{padding:3px 0;}}
+.nr-link:focus-visible{outline:2px solid var(--chip-ink);outline-offset:2px;}
 .nr-dismiss{background:rgba(20,21,28,0.12);border:none;color:var(--chip-ink);font-weight:700;font-size:0.68rem;padding:5px 10px;border-radius:8px;cursor:pointer;font-family:inherit;flex-shrink:0;}
 .nr-dismiss:hover{background:rgba(20,21,28,0.22);}
 
-.pace-chart{display:flex;align-items:flex-end;gap:3px;height:70px;margin:0.5rem 0 4px;overflow-x:auto;padding-bottom:2px;}
+.pace-scroll{overflow-x:auto;margin-bottom:0.4rem;}
+.pace-chart{display:flex;align-items:flex-end;gap:3px;height:70px;margin:0.5rem 0 4px;padding-bottom:2px;width:max-content;}
 .pace-bar-wrap{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;flex-shrink:0;width:14px;height:100%;}
 .pace-bar{width:9px;border-radius:2px 2px 0 0;background:var(--yellow);opacity:0.85;}
-.pace-labels{display:flex;gap:3px;margin-bottom:1.1rem;overflow-x:auto;}
-.pace-lbl{font-size:0.5rem;color:var(--dim);width:14px;flex-shrink:0;text-align:center;}
+/* Months counted from her in-app taps: episodes only, no hours exist for them. */
+.pace-bar.app{background:var(--blue);}
+.pace-key{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:baseline;}
+.pace-labels{display:flex;gap:3px;width:max-content;}
+.pace-lbl{font-size:0.5rem;color:var(--dim);width:14px;flex-shrink:0;text-align:center;white-space:nowrap;overflow:visible;}
 .rewatch-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.4rem;}
 .rewatch-pill{font-size:0.62rem;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--purple-bg);color:var(--purple);}
 
@@ -295,8 +332,12 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 <div class="westley" id="westley"></div>
 <div class="love-banner" id="love-banner">❤️ I love you spoose ❤️</div>
 <div id="new-releases" style="display:none;"></div>
+<!-- On a phone this moves below the watch lists (placeOverview); the chips in the app bar and the
+     tiles themselves are both filters, so nothing is lost by it sitting lower. -->
+<div id="overview">
 <div class="stats-row" id="stats"></div>
 <div class="breakdown" id="breakdown"></div>
+</div>
 
 <div id="default-sections">
   <h2 class="slabel"><span class="dot" aria-hidden="true"></span>Ready to watch <span class="count" id="now-count"></span></h2>
@@ -339,6 +380,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
       <label>Episode<input type="number" id="edit-ep" min="1" required></label>
     </div>
     <div class="dialog-actions">
+      <button type="button" class="action-btn danger spacer" onclick="dropEditing()">Drop show</button>
       <button type="button" class="action-btn" onclick="document.getElementById('edit-dialog').close()">Cancel</button>
       <button type="submit" class="action-btn primary">Save</button>
     </div>
@@ -390,6 +432,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 </dialog>
 
 <script src="westley.js"></script>
+<script src="tvlogic.js"></script>
 <script>
 const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 let open={ar:false,yl:false,vs:false,wh:false,cu:false};
@@ -482,8 +525,22 @@ function loadHistory(){
 }
 function loadDismissed(){ return progress.dismissed; }
 
+// `dormant` is the export's frozen flag; in-app actions only ever write false. So for a show she
+// has touched (or added), on-hold is derived from lastWatched here at display time instead of
+// trusting the stored flag. Never written back: no new synced field. The rule and its cutoff live
+// in tvlogic.js (TvLogic.isOnHold); untouched shows keep the export's per-show flag.
+function hasUpcomingEpisode(g){
+  const m=SHOW_META[g.id];
+  return !!(m&&m.nextAir&&m.nextAir.airDate&&m.nextAir.airDate>todayStr());
+}
+function withHold(g){
+  const touched=!!g.custom||isLive(overrides[g.id]);
+  if(!touched||g.s!=='watching') return g;
+  const dormant=TvLogic.isOnHold(g,{touched,daysSince:daysSince(g.lastWatched),waiting:isWaiting(g),upcoming:hasUpcomingEpisode(g)});
+  return dormant===!!g.dormant?g:{...g,dormant};
+}
 function liveShows(){
-  const withOverride=g=>isLive(overrides[g.id])?{...g,...overrides[g.id]}:g;
+  const withOverride=g=>withHold(isLive(overrides[g.id])?{...g,...overrides[g.id]}:g);
   return [...SH.map(withOverride), ...loadCustomShows().map(withOverride)];
 }
 function todayStr(){
@@ -640,6 +697,34 @@ function startWatching(id){
   const k=logHistory({id, title:g.t, action:'started', season:1, ep:1});
   pushUndo(id,`Started ${g.t}`,k);
   updateOverride(id,{s:'watching', season:1, ep:1, epsWatched:1, lastWatched:todayStr(), start:todayStr(), dormant:false});
+}
+// Archived -> back to watching, at the position the record already holds. lastWatched is stamped
+// today (the same way saving an edit stamps it) so she doesn't come back to a show that is
+// instantly dimmed "on hold" off a gap she was never watching through. A show with no position
+// at all has nothing to resume, so it takes the normal Start watching path instead.
+function resumeShow(id){
+  const g=liveShows().find(x=>x.id===id);
+  if(!g) return;
+  if(g.season==null||g.ep==null) return startWatching(id);
+  westleySay(Westley.line('started'));
+  const k=logHistory({id, title:g.t, action:'resumed', season:g.season, ep:g.ep});
+  pushUndo(id,`Resumed ${g.t} at S${g.season}·E${g.ep}`,k);
+  updateOverride(id,{s:'watching', cy:null, cm:null, lastWatched:todayStr(), dormant:false});
+}
+// Dropped is not Done: same archive, stamped with this month like markFinished, but kept as its own
+// status so the Dropped filter, red pill and counts stay truthful.
+function dropShow(id){
+  const g=liveShows().find(x=>x.id===id);
+  if(!g) return;
+  const d=new Date();
+  const k=logHistory({id, title:g.t, action:'dropped', season:g.season, ep:g.ep});
+  pushUndo(id,`Dropped ${g.t}`,k);
+  updateOverride(id,{s:'dropped', cy:d.getFullYear(), cm:d.getMonth(), dormant:false});
+}
+function dropEditing(){
+  const id=editingId;
+  document.getElementById('edit-dialog').close();
+  if(id!=null) dropShow(id);
 }
 function resetShow(id){
   if(!isLive(overrides[id])) return;
@@ -1100,7 +1185,7 @@ function nowC(g){
     : waiting
       ? `<button type="button" class="action-btn" data-fkey="act-${g.id}" onclick="markFinished(${g.id})">Stop following</button>`
       : `<button type="button" class="action-btn primary" data-fkey="act-${g.id}" onclick="markFinished(${g.id})">✓ Mark finished</button>`;
-  return `<div class="card ${g.dormant?'dormant':'now'}">
+  return `<div class="card ${g.dormant?'dormant':'now'}" data-show="${g.id}">
     ${posterEl(g)}
     <div class="card-content">
       <div class="row1"><span class="gtitle" role="button" tabindex="0" aria-label="See ${esc(g.t)}'s current season" onclick="openEpisodes(${g.id})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openEpisodes(${g.id});}" style="cursor:pointer;">${esc(g.t)}</span>${seasonEpEl(g)}${watchEl(g)}</div>
@@ -1123,7 +1208,7 @@ function nowC(g){
 }
 
 function qC(g,n){
-  return `<div class="card">
+  return `<div class="card" data-show="${g.id}">
     ${posterEl(g)}
     <div class="card-content">
       <div class="row1">${n!=null?`<span class="qnum">${n}</span>`:''}<span class="gtitle">${esc(g.t)}</span>${watchEl(g)}</div>
@@ -1142,7 +1227,8 @@ function qC(g,n){
 
 function aC(g,showStatus){
   const dropped=g.s==='dropped';
-  return `<div class="card faded">
+  const noPos=g.season==null||g.ep==null;
+  return `<div class="card faded" data-show="${g.id}">
     ${posterEl(g)}
     <div class="card-content">
       <div class="row1"><span class="gtitle">${esc(g.t)}</span>${seasonEpEl(g)}</div>
@@ -1150,6 +1236,9 @@ function aC(g,showStatus){
         ${g.cm!=null?`<span class="lp-pill">${M[g.cm]} ${g.cy}</span>`:''}
         ${epsPill(g)}
         ${dropped?'<span class="dropped-pill">dropped</span>':(showStatus?'<span class="dormant-pill">done</span>':'')}
+      </div>
+      <div class="card-actions">
+        <button type="button" class="action-btn" data-fkey="resume-${g.id}" onclick="resumeShow(${g.id})">${noPos?'▶ Start watching':'▶ Resume'}</button>
       </div>
     </div>
   </div>`;
@@ -1203,7 +1292,7 @@ function renderHistoryPanel(){
   if(!open.wh) return;
   const el=document.getElementById('wh-panel');
   if(!history.length){ el.innerHTML='<div class="empty">Nothing logged yet — every time you hit “I watched this”, it shows up here with the date, newest first.</div>'; return; }
-  const actionLabel={watched:h=>`watched S${h.season}·E${h.ep}`, started:()=>'started watching', edited:h=>`set to S${h.season}·E${h.ep}`, finished:()=>'marked finished'};
+  const actionLabel={watched:h=>`watched S${h.season}·E${h.ep}`, started:()=>'started watching', edited:h=>`set to S${h.season}·E${h.ep}`, finished:()=>'marked finished', dropped:()=>'dropped', resumed:h=>`resumed at S${h.season}·E${h.ep}`};
   // Group by day so it reads as a diary rather than an undifferentiated list.
   let lastDay=null;
   const today=new Date();
@@ -1236,14 +1325,22 @@ function renderPanels(){
     document.getElementById('yl-panel').innerHTML=yrs.length?yrs.map(yr=>{const list=by[yr];return `<div class="yg"><div class="yhead">${yr}<span class="ysub">${list.length} shows</span></div>${ystats(list)}<div class="show-list grid">${list.map(g=>aC(g)).join('')}</div></div>`;}).join(''):'<div class="empty">No archived shows yet.</div>';
   }
   if(open.vs){
-    const maxEps=Math.max(...MONTHLY_PACE.map(p=>p.eps));
-    const chart=MONTHLY_PACE.map(p=>`<div class="pace-bar-wrap"><div class="pace-bar" style="height:${Math.max(Math.round(p.eps/maxEps*60),2)}px" title="${p.m}: ${p.eps} episodes, ${p.hrs}h"></div></div>`).join('');
-    const labels=MONTHLY_PACE.map((p,i)=>`<div class="pace-lbl">${i%3===0?p.m.slice(2):''}</div>`).join('');
-    const totalEps=MONTHLY_PACE.reduce((s,p)=>s+p.eps,0);
-    const totalHrs=MONTHLY_PACE.reduce((s,p)=>s+p.hrs,0);
-    let h=`<div class="bsec"><div class="blbl">Monthly pace (Mar 2023 – Jul 2026, real data — Feb–Jul 2025 gap is unrecorded, not zero)</div>
-      <div class="pace-chart">${chart}</div><div class="pace-labels">${labels}</div>
-      <div class="hl-s">${totalEps.toLocaleString()} episodes · ${Math.round(totalHrs).toLocaleString()} hours across this window</div>
+    // The export ends at its last full month; months after it come from her own in-app history
+    // (watched taps, local time) via TvLogic. Those have episodes only: no hours exist for them,
+    // so the hours total below counts export months alone and says so.
+    const series=[...MONTHLY_PACE,...TvLogic.paceFromHistory(loadHistory(),MONTHLY_PACE[MONTHLY_PACE.length-1].m)];
+    const sum=TvLogic.paceSummary(series);
+    const maxEps=Math.max(...series.map(p=>p.eps),1);
+    const chart=series.map(p=>`<div class="pace-bar-wrap"><div class="pace-bar${p.app?' app':''}" style="height:${Math.max(Math.round(p.eps/maxEps*60),2)}px" title="${p.m}: ${p.eps} episode${p.eps===1?'':'s'}${p.hrs==null?' (hours not tracked in the app)':`, ${p.hrs}h`}"></div></div>`).join('');
+    const labels=series.map((p,i)=>`<div class="pace-lbl">${i%3===0?p.m.slice(2):''}</div>`).join('');
+    // Keep the chart where she left it across re-renders (every tap rebuilds this panel); the
+    // first time, start at the newest month rather than March 2023.
+    const prev=document.getElementById('pace-scroll');
+    const keepLeft=prev?prev.scrollLeft:null;
+    let h=`<div class="bsec"><div class="blbl">Monthly pace (${TvLogic.monthLabel(sum.first)} – ${TvLogic.monthLabel(sum.last)}${sum.appMonths?'':', real data'}; Feb–Jul 2025 gap is unrecorded, not zero)</div>
+      <div class="pace-scroll" id="pace-scroll"><div class="pace-chart">${chart}</div><div class="pace-labels">${labels}</div></div>
+      <div class="hl-s">${sum.eps.toLocaleString()} episodes across this window${sum.hrsMonths?` · ${Math.round(sum.hrs).toLocaleString()} hours from the TV Time months`:''}</div>
+      ${sum.appMonths?`<div class="hl-s"><span class="pace-key" style="background:var(--yellow)"></span>from her TV Time export <span class="pace-key" style="background:var(--blue);margin-left:8px"></span>counted from taps in this app (episodes only, hours aren't known)</div>`:''}
     </div>`;
     if(MARATHONS.length){
       h+=`<div class="bsec"><div class="blbl">Biggest marathons (TV Time's own calc)</div><div class="hlg">${MARATHONS.map(m=>`<div class="hl"><div class="hl-l">${esc(m.name)}</div><div class="hl-v">Season ${m.season}</div><div class="hl-s">${m.count} episodes in one day</div></div>`).join('')}</div></div>`;
@@ -1265,6 +1362,8 @@ function renderPanels(){
       </div>
     </div>`;
     document.getElementById('vs-panel').innerHTML=h;
+    const sc=document.getElementById('pace-scroll');
+    if(sc) sc.scrollLeft=keepLeft!=null?keepLeft:sc.scrollWidth;
   }
 }
 
@@ -1297,6 +1396,8 @@ function applyTheme(theme){
   const btn=document.getElementById('theme-toggle');
   btn.textContent=theme==='light'?'🌙':'☀️';
   btn.setAttribute('aria-label',theme==='light'?'Switch to dark theme':'Switch to light theme');
+  const tc=document.getElementById('theme-color');
+  if(tc) tc.setAttribute('content',theme==='light'?'#eef0f5':'#12141c');
 }
 function initTheme(){
   const saved=getStoredTheme();
@@ -1487,10 +1588,45 @@ function renderNewReleases(){
   el.innerHTML=`<div class="nr-banner-body">
     <div class="nr-banner-title">${title}</div>
     <div class="nr-banner-list">${fresh.slice(0,8).map(r=>
-      `${esc(r.title)} — ${r.newSeason?`Season ${r.season}`:`S${r.season}·E${r.ep}`}${r.airDate?` (${fmtDateShort(r.airDate)})`:''}`
-    ).join('<br>')}${fresh.length>8?`<br><em>+${fresh.length-8} more</em>`:''}</div>
+      `<button type="button" class="nr-link" data-fkey="nrgo-${r.id}" onclick="goToShow(${r.id})" aria-label="Go to ${esc(r.title)}">${esc(r.title)} — ${r.newSeason?`Season ${r.season}`:`S${r.season}·E${r.ep}`}${r.airDate?` (${fmtDateShort(r.airDate)})`:''}</button>`
+    ).join('')}${fresh.length>8?`<em>+${fresh.length-8} more</em>`:''}</div>
   </div>
   <button type="button" class="nr-dismiss" onclick='dismissReleases(${JSON.stringify(fresh.map(releaseKey))})'>Got it</button>`;
+}
+
+// Banner line -> that show's card. Falls back step by step if it isn't on screen: a filter that hides
+// it is cleared, the collapsed Caught up list is opened, and as a last resort the show is searched by
+// title (it may be a show whose status keeps it out of the default view).
+// Visible only: while a filter is on, #default-sections is hidden but keeps its old cards.
+const cardFor=id=>[...document.querySelectorAll(`.card[data-show="${id}"]`)].find(c=>c.getClientRects().length)||null;
+function goToShow(id){
+  let card=cardFor(id);
+  if(!card&&(filterState.query||filterState.status!=='all')){ clearFilters(); card=cardFor(id); }
+  if(!card&&!open.cu){ tog('cu'); card=cardFor(id); }
+  if(!card){
+    const g=liveShows().find(x=>x.id===id);
+    if(g){ document.getElementById('search').value=g.t; filterState.query=g.t; filterState.status='all'; render(); card=cardFor(id); }
+  }
+  if(!card) return;
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  card.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});
+  card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+  setTimeout(()=>card.classList.remove('flash'),1900);
+}
+// A render that was not caused by her own tap (a sync response, a stale-tab refresh) can change
+// what sits above the viewport. Hold the first card she can see where it is, so the page doesn't
+// slide under her thumb. Not used for taps: marking a show re-sorts it, and chasing it is wrong.
+function renderKeepingPosition(){
+  if(window.scrollY<=0) return render();
+  const vh=window.innerHeight;
+  const anchor=[...document.querySelectorAll('.card[data-show]')].find(c=>{ const r=c.getBoundingClientRect(); return r.bottom>0&&r.top<vh; });
+  const id=anchor&&anchor.dataset.show, top=anchor&&anchor.getBoundingClientRect().top;
+  render();
+  if(!id) return;
+  const again=cardFor(id);
+  if(!again) return;
+  const delta=again.getBoundingClientRect().top-top;
+  if(Math.abs(delta)>1) window.scrollBy({top:delta,behavior:'instant'});
 }
 
 // ─── Sync ──────────────────────────────────────────────
@@ -1531,7 +1667,7 @@ function adoptProgress(merged){
   // Picks up TMDB data another device already found for a custom show she added there —
   // without this, this device would show that show poster-less until it re-looked it up.
   hydrateCustomTmdbData();
-  render();
+  renderKeepingPosition();
 }
 async function pushSync(){
   if(!SYNC.url) return;
@@ -1614,8 +1750,61 @@ async function enrichCustomShow(id,title){
   hydrateCustomTmdbData();
   render();
 }
-document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden') flushSync(); });
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='hidden') flushSync();
+  else refreshIfStale();
+});
 window.addEventListener('pagehide',flushSync);
+window.addEventListener('focus',refreshIfStale);
+window.addEventListener('pageshow',e=>{ if(e.persisted) refreshIfStale(); });   // back-forward cache restore
+// A dialog that was open when the tab came back is skipped (below); try again once it closes.
+// `close` doesn't bubble, hence capture.
+document.addEventListener('close',()=>setTimeout(refreshIfStale,0),true);
+
+// ─── Stale open tab ──────────────────────────────────────
+// She leaves this tab open on her phone for days. The static JSON and the sync pull only ran at
+// page load, so a tab like that never saw new episodes, the new-releases banner, or progress from
+// her other device. When the tab comes back (visible / focus / pageshow) and the last refresh is an
+// hour or more old, fetch the JSON again and run the normal sync.
+//
+// Quiet by design: nothing changes while a dialog is open (it is retried on close), an edit still
+// in flight is protected by pushSync's lastLocalEdit guard, the render holds her scroll position,
+// focus is restored by data-fkey as usual, and every failure (offline, Worker down) just leaves
+// what is already on screen and tries again at the next trigger, not more than every 5 minutes.
+const STALE_MS=60*60*1000, RETRY_MS=5*60*1000;
+let lastRefresh=Date.now(), lastRefreshTry=0, refreshing=false;
+const fetchJson=(url,fallback)=>fetch(url,{cache:'no-cache'}).then(r=>r.ok?r.json():fallback).catch(()=>fallback);
+async function refreshData(){
+  const [showsData,postersData,episodeCountsData,metaData,tmdbMapData]=await Promise.all([
+    fetchJson('shows.json',null),fetchJson('posters.json',null),fetchJson('episode-counts.json',null),
+    fetchJson('show-meta.json',null),fetchJson('tmdb-map.json',null)
+  ]);
+  // shows.json is the one that must arrive intact; the rest keep their old copy if they didn't.
+  if(!Array.isArray(showsData)) throw new Error('shows.json unavailable');
+  SH=showsData;
+  if(postersData) POSTERS=postersData;
+  if(episodeCountsData) EPISODE_COUNTS=episodeCountsData;
+  if(metaData) SHOW_META=metaData;
+  if(tmdbMapData) TMDB_MAP=tmdbMapData;
+  hydrateCustomTmdbData();
+}
+async function refreshIfStale(){
+  if(refreshing||document.visibilityState!=='visible') return;
+  const now=Date.now();
+  if(now-lastRefresh<STALE_MS||now-lastRefreshTry<RETRY_MS) return;
+  if(document.querySelector('dialog[open]')) return;
+  refreshing=true; lastRefreshTry=now;
+  try{
+    await refreshData();
+    lastRefresh=Date.now();
+    renderKeepingPosition();
+    pushSync();   // the sync pull: merges, and adopts the result unless an edit landed meanwhile
+  }catch(e){
+    console.warn('stale-tab refresh skipped',e);
+  }finally{
+    refreshing=false;
+  }
+}
 
 // ─── Hide top bar on scroll down, show on scroll up ────────
 (function(){
@@ -1782,10 +1971,24 @@ async function openRecap(id){
   }
 }
 
+// ─── Phone layout: stats + breakdown below the watch lists ─────────────────────
+// At 390px the app bar, Westley, the banners, six tiles and the breakdown bar put the first Ready to
+// watch card about a screen down. Moving the DOM (rather than reordering with CSS) keeps tab order
+// the same as what she sees. Desktop keeps the stats on top.
+const narrowMq=window.matchMedia('(max-width:600px)');
+function placeOverview(){
+  const ov=document.getElementById('overview'), main=document.querySelector('main');
+  if(!ov||!main) return;
+  const anchor=narrowMq.matches?document.querySelector('.cr-primary'):document.getElementById('default-sections');
+  if(anchor&&ov.nextElementSibling!==anchor) main.insertBefore(ov,anchor);
+}
+narrowMq.addEventListener?narrowMq.addEventListener('change',placeOverview):narrowMq.addListener(placeOverview);
+
 // ─── Bootstrap ─────────────────────────────────────────
 // Theme goes first and synchronously: it only depends on localStorage, so waiting on
 // the show fetch just means a visible flash of the wrong palette on every load.
 initTheme();
+placeOverview();
 rotateLoveBanner();
 setInterval(rotateLoveBanner,45000);
 Promise.all([
@@ -1801,6 +2004,7 @@ Promise.all([
   SHOW_META=metaData;
   TMDB_MAP=tmdbMapData;
   hydrateCustomTmdbData();
+  lastRefresh=Date.now();
   render();
   // Pull on load by pushing: the Worker merges and hands back the truth. This is what
   // restores her progress on a browser whose storage was cleared, and what picks up
