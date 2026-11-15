@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-15T01:47:34.031Z",
+  "updatedAt": "2026-11-15T01:47:39.670Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -128,11 +128,11 @@
     },
     "190": {
       "season": 3,
-      "ep": 1,
-      "epsWatched": 17,
-      "lastWatched": "2026-07-19",
+      "ep": 2,
+      "epsWatched": 18,
+      "lastWatched": "2026-11-14",
       "dormant": false,
-      "updatedAt": "2026-07-20T02:10:00.626Z"
+      "updatedAt": "2026-11-15T01:47:37.878Z"
     },
     "194": {
       "season": 52,
@@ -735,6 +735,14 @@
     }
   },
   "history": [
+    {
+      "id": 190,
+      "title": "The Lord of the Rings: The Rings of Power",
+      "action": "watched",
+      "season": 3,
+      "ep": 2,
+      "at": "2026-11-15T01:47:37.877Z"
+    },
     {
       "id": 337,
       "title": "Animal Control",
