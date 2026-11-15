@@ -2498,7 +2498,8 @@
         "AMC+ Roku Premium Channel",
         "AMC+",
         "Spectrum On Demand",
-        "The Roku Channel"
+        "The Roku Channel",
+        "Plex"
       ],
       "link": "https://www.themoviedb.org/tv/57276-turn-washington-s-spies/watch?locale=US"
     }
@@ -3143,13 +3144,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 52,
-      "ep": 5,
-      "airDate": "2026-11-07"
+      "ep": 6,
+      "airDate": "2026-11-14"
     },
     "nextAir": {
       "season": 52,
-      "ep": 6,
-      "airDate": "2026-11-14"
+      "ep": 7,
+      "airDate": "2026-12-05"
     },
     "watch": {
       "on": [
