@@ -1884,13 +1884,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 4,
-      "ep": 2,
-      "airDate": "2026-11-08"
+      "ep": 3,
+      "airDate": "2026-11-15"
     },
     "nextAir": {
       "season": 4,
-      "ep": 3,
-      "airDate": "2026-11-15"
+      "ep": 4,
+      "airDate": "2026-11-22"
     },
     "watch": {
       "on": [
@@ -2431,7 +2431,9 @@
     },
     "nextAir": null,
     "watch": {
-      "on": [],
+      "on": [
+        "YouTube Free"
+      ],
       "link": "https://www.themoviedb.org/tv/734-magnum-p-i/watch?locale=US"
     }
   },
@@ -3256,6 +3258,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -3836,14 +3839,14 @@
   "237": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 5,
-      "ep": 8,
-      "airDate": "2025-06-29"
+      "season": 6,
+      "ep": 3,
+      "airDate": "2026-11-15"
     },
     "nextAir": {
       "season": 6,
-      "ep": 1,
-      "airDate": "2026-11-15"
+      "ep": 4,
+      "airDate": "2026-11-22"
     },
     "watch": {
       "on": [
@@ -4077,7 +4080,9 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Angel Studios"
+        "Amazon Prime Video",
+        "Angel Studios",
+        "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/256560-the-promised-land/watch?locale=US"
     }
@@ -5420,13 +5425,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 5,
-      "ep": 6,
-      "airDate": "2026-11-08"
+      "ep": 7,
+      "airDate": "2026-11-15"
     },
     "nextAir": {
       "season": 5,
-      "ep": 7,
-      "airDate": "2026-11-15"
+      "ep": 8,
+      "airDate": "2026-11-22"
     },
     "watch": {
       "on": [
