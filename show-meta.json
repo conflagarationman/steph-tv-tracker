@@ -388,7 +388,6 @@
     "watch": {
       "on": [
         "Disney Plus",
-        "fuboTV",
         "YouTube TV",
         "Freeform"
       ],
@@ -498,7 +497,6 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "Philo",
         "Xumo Play"
       ],
       "link": "https://www.themoviedb.org/tv/7482-leverage/watch?locale=US"
@@ -1259,7 +1257,6 @@
     "watch": {
       "on": [
         "Netflix",
-        "Hulu",
         "fuboTV",
         "Paramount Plus Premium",
         "Paramount Plus Essential",
@@ -2044,7 +2041,11 @@
       "ep": 3,
       "airDate": "2025-12-16"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 7,
+      "ep": 1,
+      "airDate": "2026-12-15"
+    },
     "watch": {
       "on": [
         "Netflix",
@@ -3659,7 +3660,6 @@
     "watch": {
       "on": [
         "Hulu",
-        "fuboTV",
         "HBO Max Amazon Channel",
         "Philo",
         "YouTube TV",
