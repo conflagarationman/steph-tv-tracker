@@ -388,6 +388,7 @@
     "watch": {
       "on": [
         "Disney Plus",
+        "fuboTV",
         "YouTube TV",
         "Freeform"
       ],
@@ -1246,13 +1247,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 24,
-      "ep": 5,
-      "airDate": "2026-11-10"
+      "ep": 6,
+      "airDate": "2026-11-17"
     },
     "nextAir": {
       "season": 24,
-      "ep": 6,
-      "airDate": "2026-11-17"
+      "ep": 7,
+      "airDate": "2026-12-01"
     },
     "watch": {
       "on": [
@@ -2195,7 +2196,6 @@
         "Netflix",
         "Disney Plus",
         "Hulu",
-        "Philo",
         "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/61381-black-ish/watch?locale=US"
@@ -2301,7 +2301,7 @@
     "nextAir": {
       "season": 2,
       "ep": 9,
-      "airDate": "2026-11-25"
+      "airDate": "2026-12-02"
     },
     "watch": {
       "on": [
@@ -3660,6 +3660,7 @@
     "watch": {
       "on": [
         "Hulu",
+        "fuboTV",
         "HBO Max Amazon Channel",
         "Philo",
         "YouTube TV",
