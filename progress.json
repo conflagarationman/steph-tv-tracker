@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T04:37:25.263Z",
+  "updatedAt": "2026-11-18T05:05:52.303Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -88,11 +88,11 @@
     },
     "143": {
       "season": 2,
-      "ep": 7,
-      "epsWatched": 16,
-      "lastWatched": "2026-11-08",
+      "ep": 8,
+      "epsWatched": 17,
+      "lastWatched": "2026-11-18",
       "dormant": false,
-      "updatedAt": "2026-11-08T15:50:55.555Z"
+      "updatedAt": "2026-11-18T05:05:49.828Z"
     },
     "149": {
       "season": 11,
@@ -735,6 +735,14 @@
     }
   },
   "history": [
+    {
+      "id": 143,
+      "title": "Scrubs (2026)",
+      "action": "watched",
+      "season": 2,
+      "ep": 8,
+      "at": "2026-11-18T05:05:49.825Z"
+    },
     {
       "id": 190,
       "title": "The Lord of the Rings: The Rings of Power",
