@@ -1754,7 +1754,11 @@
       "ep": 8,
       "airDate": "2026-04-22"
     },
-    "nextAir": null,
+    "nextAir": {
+      "season": 5,
+      "ep": 1,
+      "airDate": "2027-02-17"
+    },
     "watch": {
       "on": [
         "Amazon Prime Video",
@@ -2196,6 +2200,7 @@
         "Netflix",
         "Disney Plus",
         "Hulu",
+        "Philo",
         "Netflix Standard with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/61381-black-ish/watch?locale=US"
@@ -3064,13 +3069,13 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 3,
-      "ep": 4,
-      "airDate": "2026-11-11"
+      "ep": 6,
+      "airDate": "2026-11-18"
     },
     "nextAir": {
       "season": 3,
-      "ep": 5,
-      "airDate": "2026-11-18"
+      "ep": 7,
+      "airDate": "2026-11-25"
     },
     "watch": {
       "on": [
