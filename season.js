@@ -47,7 +47,7 @@ var TVSeason = (function () {
     '.season-fx i:nth-child(6){left:61%;font-size:24px;animation-duration:25s;animation-delay:-11s}',
     '.season-fx i:nth-child(7){left:72%;font-size:15px;animation-duration:20s;animation-delay:-17s}',
     '.season-fx i:nth-child(8){left:83%;font-size:21px;animation-duration:23s;animation-delay:-6s}',
-    '.season-fx i:nth-child(9){left:93%;font-size:17px;animation-duration:26s;animation-delay:-23s}',
+    '.season-fx i:nth-child(9){left:88%;font-size:17px;animation-duration:26s;animation-delay:-23s}',
     '@keyframes season-fall{0%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(28px,58vh) rotate(160deg)}100%{transform:translate(-12px,118vh) rotate(320deg)}}',
     '@media (prefers-reduced-motion:reduce){.season-fx i{animation:none!important}',
     '  .season-fx i:nth-child(odd){top:18%}.season-fx i:nth-child(3n){top:52%}.season-fx i:nth-child(4n){top:78%}}',
@@ -66,7 +66,7 @@ var TVSeason = (function () {
     'html[data-season="christmas"] .season-fx i{color:#fff;opacity:.8;text-shadow:0 0 6px rgba(160,200,255,.9)}',
     'html[data-season="christmas"] .season-fx i::before{content:"\\2744\\FE0E"}',
     // This site's light theme is a toggle (<html data-theme="light">), not the system setting.
-    'html[data-theme="light"][data-season="christmas"] .season-fx i{color:#5e9fe0;opacity:.9;text-shadow:0 0 3px rgba(255,255,255,.95)}'
+    'html[data-theme="light"][data-season="christmas"] .season-fx i{color:#3f7fc4;opacity:.95;text-shadow:0 0 3px rgba(255,255,255,.95)}'
   ].join('\n');
 
   function apply(doc, loc, now) {

@@ -83,7 +83,7 @@ await test("375px christmas, light theme: snowflakes switch to their light-theme
   const { page, ctx, errors } = await open(375, "christmas", "light");
   ok(await page.getAttribute("html", "data-theme") === "light", "light theme not on");
   const c = await page.evaluate(() => getComputedStyle(document.querySelector(".season-fx i")).color);
-  ok(c === "rgb(94, 159, 224)", "snow colour " + c);
+  ok(c === "rgb(63, 127, 196)", "snow colour " + c);
   ok(!errors.length, errors.join("; "));
   await ctx.close();
 });
