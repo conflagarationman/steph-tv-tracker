@@ -278,7 +278,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .pace-bar.app{background:var(--blue);}
 .pace-key{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:baseline;}
 .pace-labels{display:flex;gap:3px;width:max-content;}
-.pace-lbl{font-size:0.5rem;color:var(--dim);width:14px;flex-shrink:0;text-align:center;white-space:nowrap;overflow:visible;}
+.pace-lbl{font-size:0.5rem;color:var(--dim);width:14px;flex-shrink:0;text-align:left;white-space:nowrap;}
 .rewatch-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.4rem;}
 .rewatch-pill{font-size:0.62rem;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--purple-bg);color:var(--purple);}
 
@@ -308,6 +308,28 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .recap-say{font-size:0.85rem;font-weight:700;color:var(--yellow);}
 .recap-text{font-size:0.84rem;line-height:1.5;margin:0 0 1rem;}
 .recap-text b{display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.3rem;}
+/* Touch screens: every control is at least 44x44 so a thumb lands where she means it to (the visual
+   critic's gate measures this at 390px). Buttons that carry a background grow for real and their
+   labels go up to a readable 12px; text-only targets (a show's title, the streaming pills link,
+   Westley) grow an invisible hit area with padding and an equal negative margin, so the card layout
+   doesn't move. Fields are 16px so iOS doesn't zoom the page when one is tapped. */
+@media (pointer:coarse){
+  .theme-toggle{width:44px;height:44px;}
+  .search-input{min-height:44px;font-size:16px;}
+  .chip{min-height:44px;font-size:0.75rem;padding:0 0.95rem;}
+  .action-btn{min-height:44px;font-size:0.75rem;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;}
+  .action-btn.icon{min-width:44px;padding:0 10px;}
+  .card-actions{gap:8px;}
+  .legend-item,.clear-btn,.nr-dismiss,.undo-btn,.undo-x{min-height:44px;}
+  .legend-item{font-size:0.72rem;padding:0 12px;}
+  .undo-x{min-width:44px;}
+  .cr{min-height:44px;}
+  .nr-link{min-height:44px;display:flex;align-items:center;padding:0;}
+  .edit-fields input,.edit-fields select{min-height:44px;font-size:16px;}
+  .gtitle[role=button]{padding-block:13px;margin-block:-13px;position:relative;z-index:1;}
+  .watch-link{padding-block:14px;margin-block:-14px;min-width:44px;align-items:center;position:relative;z-index:1;}
+  .westley-btn{padding:0 6px;margin:0 -6px;}
+}
 </style>
 </head>
 <body>
@@ -1333,7 +1355,9 @@ function renderPanels(){
     const sum=TvLogic.paceSummary(series);
     const maxEps=Math.max(...series.map(p=>p.eps),1);
     const chart=series.map(p=>`<div class="pace-bar-wrap"><div class="pace-bar${p.app?' app':''}" style="height:${Math.max(Math.round(p.eps/maxEps*60),2)}px" title="${p.m}: ${p.eps} episode${p.eps===1?'':'s'}${p.hrs==null?' (hours not tracked in the app)':`, ${p.hrs}h`}"></div></div>`).join('');
-    const labels=series.map((p,i)=>`<div class="pace-lbl">${i%3===0?p.m.slice(2):''}</div>`).join('');
+    // One label per quarter, in a box as wide as its three bars so the text fits inside it. A last
+    // quarter of a single month is too narrow for a label and goes without.
+    const labels=series.filter((p,i)=>i%3===0).map((p,j)=>{ const k=Math.min(3,series.length-j*3); return `<div class="pace-lbl" style="width:${k*14+(k-1)*3}px">${k>1?p.m.slice(2):''}</div>`; }).join('');
     // Keep the chart where she left it across re-renders (every tap rebuilds this panel); the
     // first time, start at the newest month rather than March 2023.
     const prev=document.getElementById('pace-scroll');
