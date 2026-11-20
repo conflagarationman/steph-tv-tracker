@@ -151,7 +151,19 @@ Test status after every round: `westley.test.mjs` 27/27, `tmdb.test.mjs` 17/17, 
 (also with `KOROK_JS`). No test pinned a decision this loop changed. `worker/` is untouched. One
 browser-test run crashed at launch mid-loop and passed unchanged on the rerun.
 
-## Open taste questions for Jonny
+## Jonny's answers (2026-11-20) and the follow-up
+
+- **On hold gets its own group.** Done: Ready to watch (and its count) now holds only the shows she
+  is actively watching; dormant shows with episodes left are an "On hold" group under Up next, with
+  the on-hold purple dot. Caught-up shows, dormant or not, stay in Caught up. With the committed
+  show list, 13 shows moved and Ready to watch went from 36 to 23. The group isn't drawn when empty.
+- **Phone cards can be smaller.** Done without shrinking any target: on phones the poster sits
+  beside the title and details and the buttons span the whole card in one row; "Previously on..."
+  becomes a rewind icon there (its words stay as the accessible name and tooltip). A ready card is
+  about 36px shorter than in round 5. All gates pass on the full capture afterwards; tests unchanged.
+- **The Undo bar** and **the "24-12" chart labels** stay as they are.
+
+## Open taste questions for Jonny (before his answers)
 
 - **Card height on phones.** 44px buttons make a ready card about 40px taller (the second row of
   buttons wraps as before, just bigger). Worth it for one-handed tapping, but say if you'd rather
