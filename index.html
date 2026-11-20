@@ -168,7 +168,10 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 
 /* Episode titles dialog — wider than the edit dialogs and scrolls internally, since a show
    can have hundreds of episodes across many seasons. */
-#episodes-dialog{max-width:460px;max-height:80vh;display:flex;flex-direction:column;}
+#episodes-dialog{max-width:460px;max-height:80vh;flex-direction:column;}
+/* Flex only while open: a bare display:flex beat the browser's own dialog:not([open]){display:none}
+   and left an empty "Episodes" box with a Close button at the foot of the page. */
+#episodes-dialog[open]{display:flex;}
 .ep-sub{font-size:0.72rem;color:var(--dim);margin:-0.6rem 0 0.9rem;}
 .ep-scroll{overflow-y:auto;}
 .ep-season-block{margin-bottom:1.1rem;}
@@ -186,6 +189,9 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .edit-fields label{flex:1;display:flex;flex-direction:column;gap:4px;font-size:0.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
 .edit-fields input,.edit-fields select{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
 .edit-fields input:focus,.edit-fields select:focus{outline:none;border-color:var(--yellow);}
+/* No browser spinner arrows: Season showed them when focused and Episode beside it didn't. */
+.edit-fields input[type=number]{-moz-appearance:textfield;appearance:textfield;}
+.edit-fields input[type=number]::-webkit-inner-spin-button,.edit-fields input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
 .dialog-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;}
 .dialog-actions .spacer{margin-right:auto;}
 

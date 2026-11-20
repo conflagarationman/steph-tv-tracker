@@ -298,6 +298,9 @@ async function measure({ phone, scope }) {
     const inScroller = (() => { for (let a = el.parentElement; a; a = a.parentElement) { const o = getComputedStyle(a).overflowX; if (o === "auto" || o === "scroll") return true; } return false; })();
     if (phone && !inScroller && (r.right > innerWidth + 1 || r.left < -1) && cs.position !== "fixed") out.offscreen.push(`${label(el)} off the side of the screen (x ${Math.round(r.left)}..${Math.round(r.right)})`);
   }
+  // A closed dialog must take no space (round 1: CSS display:flex left the closed episode list
+  // showing as an empty box at the foot of the page).
+  if (!scope) for (const d of document.querySelectorAll("dialog:not([open])")) if (d.getClientRects().length) out.clipped.push(`closed ${label(d).slice(0, 40)} is still drawn on the page`);
   const text = root.innerText || "";
   for (const m of text.matchAll(/(^|[^\w])(NaN|undefined|null|Infinity|\[object Object\])(?![\w])/g)) {
     const i = m.index; out.badText.push(`"${m[2]}" in: …${text.slice(Math.max(0, i - 30), i + 30).replace(/\s+/g, " ")}…`);
@@ -354,7 +357,7 @@ const WEIGHT_BUDGET = Math.round(WEIGHT_TODAY * 1.1);
 // look inside it and the shot is the viewport with it open).
 const BOTH = ["phone", "laptop"], PHONE = ["phone"];
 const chip = (key) => async p => { await p.click(`[data-fkey="chip-${key}"]`); await p.waitForTimeout(250); };
-const panel = (k) => async p => { await p.click(`[aria-controls="${k}-panel"]`); await p.waitForTimeout(300); await p.evaluate(k => { const b = document.querySelector(`[aria-controls="${k}-panel"]`); scrollTo(0, b.getBoundingClientRect().top + scrollY - 70); }, k); await p.waitForTimeout(250); };
+const panel = (k) => async p => { await p.click(`[aria-controls="${k}-panel"]`); await p.waitForTimeout(300); await p.evaluate(k => { const b = document.querySelector(`[aria-controls="${k}-panel"]`); scrollTo(0, b.getBoundingClientRect().top + scrollY - 180); }, k); await p.waitForTimeout(250); };
 
 const states = [
   { name: "home", label: "Home screen as it opens on an ordinary day, scrolled screen by screen from the top", vps: BOTH, slices: true, maxSlices: 8, weight: true },

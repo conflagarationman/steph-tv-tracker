@@ -50,7 +50,10 @@ var TVSeason = (function () {
     '.season-fx i:nth-child(9){left:88%;font-size:17px;animation-duration:26s;animation-delay:-23s}',
     '@keyframes season-fall{0%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(28px,58vh) rotate(160deg)}100%{transform:translate(-12px,118vh) rotate(320deg)}}',
     '@media (prefers-reduced-motion:reduce){.season-fx i{animation:none!important}',
-    '  .season-fx i:nth-child(odd){top:18%}.season-fx i:nth-child(3n){top:52%}.season-fx i:nth-child(4n){top:78%}}',
+    '  .season-fx i:nth-child(odd){top:18%}.season-fx i:nth-child(3n){top:52%}.season-fx i:nth-child(4n){top:78%}',
+    // Standing still, the first one rested on the "Rebuilt from…" caption on a laptop. It waits up
+    // behind the header bar instead (the other eight stay in view).
+    '  .season-fx i:nth-child(1){top:8%}}',
     // Thanksgiving: warm harvest light, a thin harvest ribbon, a few leaves.
     'html[data-season="thanksgiving"] .season-glow{background:radial-gradient(60% 42% at 12% 0%,rgba(255,140,40,.24),transparent 62%),radial-gradient(52% 38% at 88% 6%,rgba(200,60,50,.18),transparent 60%),radial-gradient(46% 34% at 62% 96%,rgba(230,170,60,.16),transparent 62%)}',
     'html[data-season] h1::after{margin-left:.3em;font-size:.85em}',
