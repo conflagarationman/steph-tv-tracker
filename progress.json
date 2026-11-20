@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-20T04:48:20.520Z",
+  "updatedAt": "2026-11-20T05:40:21.375Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -73,11 +73,11 @@
     },
     "117": {
       "season": 4,
-      "ep": 2,
-      "epsWatched": 27,
-      "lastWatched": "2026-11-09",
+      "ep": 3,
+      "epsWatched": 28,
+      "lastWatched": "2026-11-20",
       "dormant": false,
-      "updatedAt": "2026-11-10T04:40:30.185Z"
+      "updatedAt": "2026-11-20T05:40:18.939Z"
     },
     "137": {
       "ep": 7,
@@ -735,6 +735,14 @@
     }
   },
   "history": [
+    {
+      "id": 117,
+      "title": "The Gilded Age",
+      "action": "watched",
+      "season": 4,
+      "ep": 3,
+      "at": "2026-11-20T05:40:18.938Z"
+    },
     {
       "id": 190,
       "title": "The Lord of the Rings: The Rings of Power",
