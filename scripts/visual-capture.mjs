@@ -301,6 +301,16 @@ async function measure({ phone, scope }) {
   // A closed dialog must take no space (round 1: CSS display:flex left the closed episode list
   // showing as an empty box at the foot of the page).
   if (!scope) for (const d of document.querySelectorAll("dialog:not([open])")) if (d.getClientRects().length) out.clipped.push(`closed ${label(d).slice(0, 40)} is still drawn on the page`);
+  // An open dialog sits in the middle of the screen (round 2: a margin reset pinned every dialog to
+  // the top-left corner) and nothing in it, form fields included, sticks out past its edges (the
+  // Episode field ran past the right edge; the text gates skip inputs).
+  const dlg = document.querySelector("dialog[open]");
+  if (dlg) {
+    const d = dlg.getBoundingClientRect();
+    if (Math.abs((d.left + d.right) / 2 - innerWidth / 2) > 4) out.clipped.push(`open ${label(dlg).slice(0, 40)} is not centred (x ${Math.round(d.left)}..${Math.round(d.right)} on a ${innerWidth}px screen)`);
+    if (d.height < innerHeight - 8 && Math.abs((d.top + d.bottom) / 2 - innerHeight / 2) > 4) out.clipped.push(`open ${label(dlg).slice(0, 40)} is not centred vertically (y ${Math.round(d.top)}..${Math.round(d.bottom)})`);
+    for (const el of dlg.querySelectorAll("*")) { const r = el.getBoundingClientRect(); if (r.width && (r.right > d.right + 1 || r.left < d.left - 1)) out.clipped.push(`${label(el)} sticks out of the dialog (x ${Math.round(r.left)}..${Math.round(r.right)}, dialog ${Math.round(d.left)}..${Math.round(d.right)})`); }
+  }
   const text = root.innerText || "";
   for (const m of text.matchAll(/(^|[^\w])(NaN|undefined|null|Infinity|\[object Object\])(?![\w])/g)) {
     const i = m.index; out.badText.push(`"${m[2]}" in: …${text.slice(Math.max(0, i - 30), i + 30).replace(/\s+/g, " ")}…`);

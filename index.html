@@ -69,7 +69,7 @@ h1{flex:1;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;color:var(--te
 }
 .chip{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-size:0.7rem;font-weight:700;padding:0.42rem 0.75rem;border-radius:99px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:border-color 0.15s,color 0.15s,background 0.15s;}
 .chip:hover{color:var(--text);border-color:var(--border2);}
-.chip.active{background:var(--yellow);border-color:var(--yellow);color:var(--chip-ink);}
+.chip.active{background:var(--badge-yellow);border-color:var(--badge-yellow);color:var(--chip-ink);}
 .chip:focus-visible,.clear-btn:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
 
 .stats-row{display:flex;gap:0.6rem;margin-bottom:1.1rem;flex-wrap:wrap;}
@@ -162,7 +162,9 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .action-btn.danger{color:var(--red);}
 .action-btn.danger:hover{border-color:var(--red);color:var(--red);}
 
-.edit-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:14px;padding:1.1rem;max-width:320px;width:90vw;box-shadow:0 12px 32px var(--shadow);}
+/* margin:auto is the browser's own centring for a modal dialog; the *{margin:0} reset above had
+   pinned every dialog to the top-left corner. */
+.edit-dialog{margin:auto;background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:14px;padding:1.1rem;max-width:320px;width:90vw;box-shadow:0 12px 32px var(--shadow);}
 .edit-dialog::backdrop{background:rgba(0,0,0,0.5);}
 .edit-dialog h3{font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.9rem;}
 
@@ -187,7 +189,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .ep-loading{font-size:0.78rem;color:var(--dim);padding:0.5rem 0;}
 .edit-fields{display:flex;gap:10px;margin-bottom:1rem;}
 .edit-fields label{flex:1;display:flex;flex-direction:column;gap:4px;font-size:0.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
-.edit-fields input,.edit-fields select{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
+.edit-fields input,.edit-fields select{width:100%;min-width:0;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
 .edit-fields input:focus,.edit-fields select:focus{outline:none;border-color:var(--yellow);}
 /* No browser spinner arrows: Season showed them when focused and Episode beside it didn't. */
 .edit-fields input[type=number]{-moz-appearance:textfield;appearance:textfield;}
@@ -276,7 +278,9 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .nr-dismiss{background:rgba(20,21,28,0.12);border:none;color:var(--chip-ink);font-weight:700;font-size:0.68rem;padding:5px 10px;border-radius:8px;cursor:pointer;font-family:inherit;flex-shrink:0;}
 .nr-dismiss:hover{background:rgba(20,21,28,0.22);}
 
-.pace-scroll{overflow-x:auto;margin-bottom:0.4rem;}
+/* Opens scrolled to the newest month, so the oldest visible bar and label are usually part-way off
+   the left edge; a soft fade there says "more this way" instead of looking like a cut-off label. */
+.pace-scroll{overflow-x:auto;margin-bottom:0.4rem;-webkit-mask-image:linear-gradient(to right,transparent,#000 28px);mask-image:linear-gradient(to right,transparent,#000 28px);}
 .pace-chart{display:flex;align-items:flex-end;gap:3px;height:70px;margin:0.5rem 0 4px;padding-bottom:2px;width:max-content;}
 .pace-bar-wrap{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;flex-shrink:0;width:14px;height:100%;}
 .pace-bar{width:9px;border-radius:2px 2px 0 0;background:var(--yellow);opacity:0.85;}
@@ -1481,9 +1485,11 @@ function renderBreakdown(counts){
     {key:'dropped', label:'Dropped', value:counts.dropped, color:'var(--cat-dropped)'}
   ];
   const total=segs.reduce((s,x)=>s+x.value,0)||1;
-  const bar=segs.map(s=>`<div class="seg" style="width:${s.value/total*100}%;background:${s.color}" data-tip="${esc(s.label)}: ${s.value} (${Math.round(s.value/total*100)}%)"></div>`).join('');
+  // Only categories that have shows: an empty one still drew a 2px tick (min-width), so a brand-new
+  // log showed a cluster of stray colours. With no shows at all there is no bar, just the legend.
+  const bar=segs.filter(s=>s.value>0).map(s=>`<div class="seg" style="width:${s.value/total*100}%;background:${s.color}" data-tip="${esc(s.label)}: ${s.value} (${Math.round(s.value/total*100)}%)"></div>`).join('');
   const legend=segs.map(s=>`<button type="button" class="legend-item${filterState.status===s.key?' active':''}" data-fkey="legend-${s.key}" onclick="setStatusFilter('${s.key}')"><span class="swatch" style="background:${s.color}"></span>${esc(s.label)}<span class="legend-n">${s.value}</span></button>`).join('');
-  document.getElementById('breakdown').innerHTML=`<div class="breakdown-bar">${bar}</div><div class="legend-row">${legend}</div>`;
+  document.getElementById('breakdown').innerHTML=`${bar?`<div class="breakdown-bar">${bar}</div>`:''}<div class="legend-row">${legend}</div>`;
 }
 
 // ─── Search/filter results (mixes every status into one list) ──
