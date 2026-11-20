@@ -69,7 +69,8 @@ h1{flex:1;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;color:var(--te
 }
 .chip{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-size:0.7rem;font-weight:700;padding:0.42rem 0.75rem;border-radius:99px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:border-color 0.15s,color 0.15s,background 0.15s;}
 .chip:hover{color:var(--text);border-color:var(--border2);}
-.chip.active{background:var(--yellow);border-color:var(--yellow);color:var(--chip-ink);}
+.chip:disabled{opacity:0.5;cursor:default;}
+.chip.active{background:var(--badge-yellow);border-color:var(--badge-yellow);color:var(--chip-ink);}
 .chip:focus-visible,.clear-btn:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
 
 .stats-row{display:flex;gap:0.6rem;margin-bottom:1.1rem;flex-wrap:wrap;}
@@ -97,6 +98,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .slabel:first-of-type{margin-top:0;}
 .slabel .dot{width:7px;height:7px;border-radius:50%;background:var(--yellow);}
 .slabel .count{color:var(--dim);font-weight:600;}
+.slabel-onhold .dot{background:var(--cat-onhold);} /* the on-hold purple, as in the breakdown bar */
 .results-head{display:flex;align-items:center;justify-content:space-between;gap:8px;}
 .clear-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:0.68rem;font-weight:700;padding:5px 10px;border-radius:8px;cursor:pointer;font-family:inherit;margin-top:1.6rem;height:fit-content;transition:border-color 0.15s,color 0.15s;}
 .clear-btn:hover{color:var(--text);border-color:var(--border2);}
@@ -162,13 +164,18 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .action-btn.danger{color:var(--red);}
 .action-btn.danger:hover{border-color:var(--red);color:var(--red);}
 
-.edit-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:14px;padding:1.1rem;max-width:320px;width:90vw;box-shadow:0 12px 32px var(--shadow);}
+/* margin:auto is the browser's own centring for a modal dialog; the *{margin:0} reset above had
+   pinned every dialog to the top-left corner. */
+.edit-dialog{margin:auto;background:var(--surface);color:var(--text);border:1px solid var(--border2);border-radius:14px;padding:1.1rem;max-width:320px;width:90vw;box-shadow:0 12px 32px var(--shadow);}
 .edit-dialog::backdrop{background:rgba(0,0,0,0.5);}
 .edit-dialog h3{font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.9rem;}
 
 /* Episode titles dialog — wider than the edit dialogs and scrolls internally, since a show
    can have hundreds of episodes across many seasons. */
-#episodes-dialog{max-width:460px;max-height:80vh;display:flex;flex-direction:column;}
+#episodes-dialog{max-width:460px;max-height:80vh;flex-direction:column;}
+/* Flex only while open: a bare display:flex beat the browser's own dialog:not([open]){display:none}
+   and left an empty "Episodes" box with a Close button at the foot of the page. */
+#episodes-dialog[open]{display:flex;}
 .ep-sub{font-size:0.72rem;color:var(--dim);margin:-0.6rem 0 0.9rem;}
 .ep-scroll{overflow-y:auto;}
 .ep-season-block{margin-bottom:1.1rem;}
@@ -184,8 +191,13 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .ep-loading{font-size:0.78rem;color:var(--dim);padding:0.5rem 0;}
 .edit-fields{display:flex;gap:10px;margin-bottom:1rem;}
 .edit-fields label{flex:1;display:flex;flex-direction:column;gap:4px;font-size:0.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
-.edit-fields input,.edit-fields select{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
+.edit-fields input,.edit-fields select{width:100%;min-width:0;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
 .edit-fields input:focus,.edit-fields select:focus{outline:none;border-color:var(--yellow);}
+/* The status menu matches the fields around it instead of the browser's stock control. */
+.edit-fields select{-webkit-appearance:none;appearance:none;padding-right:2rem;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px;background-repeat:no-repeat;}
+/* No browser spinner arrows: Season showed them when focused and Episode beside it didn't. */
+.edit-fields input[type=number]{-moz-appearance:textfield;appearance:textfield;}
+.edit-fields input[type=number]::-webkit-inner-spin-button,.edit-fields input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
 .dialog-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;}
 .dialog-actions .spacer{margin-right:auto;}
 
@@ -200,6 +212,8 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .row2{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;}
 .eps-pill{font-size:0.62rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface2);color:var(--muted);white-space:nowrap;}
 .dormant-pill{font-size:0.6rem;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--surface2);color:var(--dim);white-space:nowrap;}
+/* On hold wears the same purple as its slice of the breakdown bar and its legend dot. */
+.onhold-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:color-mix(in srgb,var(--cat-onhold) 22%,transparent);color:var(--purple);white-space:nowrap;}
 .dropped-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--red-bg);color:var(--red);white-space:nowrap;}
 .caught-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--green-bg);color:var(--green);white-space:nowrap;}
 .waiting-pill{font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--surface2);color:var(--muted);white-space:nowrap;}
@@ -218,6 +232,11 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .panel{animation:panelIn 0.18s ease;}
 @keyframes panelIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
 .empty{color:var(--dim);font-size:0.85rem;padding:0.6rem 0;}
+/* The show list never arrived: one clear note instead of empty headings and (0) rows. Cleared by
+   the next successful render (the stale-tab refresh retries). */
+body.load-failed #default-sections>:not(#now),body.load-failed main>.cr,body.load-failed main>.panel,body.load-failed #overview{display:none!important;}
+.load-error{background:var(--surface);border:1px dashed var(--border2);border-radius:14px;padding:1.1rem 1rem;color:var(--muted);font-size:0.88rem;line-height:1.45;}
+.load-error b{display:block;color:var(--text);font-family:'Poppins',sans-serif;font-size:0.95rem;margin-bottom:0.25rem;}
 
 .bsec{margin-bottom:0.85rem;}
 .blbl{font-size:0.64rem;color:var(--dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;font-weight:700;}
@@ -270,7 +289,9 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .nr-dismiss{background:rgba(20,21,28,0.12);border:none;color:var(--chip-ink);font-weight:700;font-size:0.68rem;padding:5px 10px;border-radius:8px;cursor:pointer;font-family:inherit;flex-shrink:0;}
 .nr-dismiss:hover{background:rgba(20,21,28,0.22);}
 
-.pace-scroll{overflow-x:auto;margin-bottom:0.4rem;}
+/* Opens scrolled to the newest month, so the oldest visible bar and label are usually part-way off
+   the left edge; a soft fade there says "more this way" instead of looking like a cut-off label. */
+.pace-scroll{overflow-x:auto;margin-bottom:0.4rem;-webkit-mask-image:linear-gradient(to right,transparent,#000 28px);mask-image:linear-gradient(to right,transparent,#000 28px);}
 .pace-chart{display:flex;align-items:flex-end;gap:3px;height:70px;margin:0.5rem 0 4px;padding-bottom:2px;width:max-content;}
 .pace-bar-wrap{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;flex-shrink:0;width:14px;height:100%;}
 .pace-bar{width:9px;border-radius:2px 2px 0 0;background:var(--yellow);opacity:0.85;}
@@ -278,7 +299,7 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .pace-bar.app{background:var(--blue);}
 .pace-key{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:baseline;}
 .pace-labels{display:flex;gap:3px;width:max-content;}
-.pace-lbl{font-size:0.5rem;color:var(--dim);width:14px;flex-shrink:0;text-align:center;white-space:nowrap;overflow:visible;}
+.pace-lbl{font-size:0.62rem;color:var(--dim);width:14px;flex-shrink:0;text-align:left;white-space:nowrap;}
 .rewatch-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.4rem;}
 .rewatch-pill{font-size:0.62rem;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--purple-bg);color:var(--purple);}
 
@@ -308,6 +329,47 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .recap-say{font-size:0.85rem;font-weight:700;color:var(--yellow);}
 .recap-text{font-size:0.84rem;line-height:1.5;margin:0 0 1rem;}
 .recap-text b{display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.3rem;}
+/* Touch screens: every control is at least 44x44 so a thumb lands where she means it to (the visual
+   critic's gate measures this at 390px). Buttons that carry a background grow for real and their
+   labels go up to a readable 12px; text-only targets (a show's title, the streaming pills link,
+   Westley) grow an invisible hit area with padding and an equal negative margin, so the card layout
+   doesn't move. Fields are 16px so iOS doesn't zoom the page when one is tapped. */
+@media (pointer:coarse){
+  .theme-toggle{width:44px;height:44px;}
+  .search-input{min-height:44px;font-size:16px;}
+  .chip{min-height:44px;font-size:0.75rem;padding:0 0.95rem;}
+  .action-btn{min-height:44px;font-size:0.75rem;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;}
+  .action-btn.icon{min-width:44px;padding:0 10px;}
+  .card-actions{gap:8px;}
+  .legend-item,.clear-btn,.nr-dismiss,.undo-btn,.undo-x{min-height:44px;}
+  .legend-item{font-size:0.72rem;padding:0 12px;}
+  .undo-x{min-width:44px;}
+  .cr{min-height:44px;}
+  .nr-link{min-height:44px;display:flex;align-items:center;padding:0;}
+  .edit-fields input,.edit-fields select{min-height:44px;font-size:16px;}
+  .gtitle[role=button]{padding-block:13px;margin-block:-13px;position:relative;z-index:1;}
+  .watch-link{padding-block:14px;margin-block:-14px;min-width:44px;align-items:center;position:relative;z-index:1;}
+  .westley-btn{padding:0 6px;margin:0 -6px;}
+}
+/* Phone: the main button has its own full row and the small ones share the next, so the edit and
+   reset icons never split across two lines (they did when there was no "Previously on…"). */
+.recap-ico{display:none;}
+/* Phone cards, compact (Jonny, 2026-11-20: "phone cards can be smaller"). Every button keeps its
+   44px; the saving is one row instead of two. The poster sits beside the title and details, and the
+   buttons span the whole card underneath it in a single row: the main button takes what's left and
+   "Previously on…" shrinks to an icon (its words stay as its accessible name and tooltip). */
+@media (pointer:coarse) and (max-width:480px){
+  .card.now,.card.dormant{display:grid;grid-template-columns:auto 1fr;align-items:start;}
+  .card.now .card-content,.card.dormant .card-content{display:contents;}
+  .card.now .poster,.card.dormant .poster{grid-row:1 / span 2;width:44px;min-width:44px;height:62px;margin:10px 10px 0;}
+  .card.now .row1,.card.dormant .row1{grid-column:2;padding:0.65rem 0.9rem 0 0;}
+  .card.now .row2,.card.dormant .row2{grid-column:2;padding:4px 0.9rem 0 0;}
+  .card.now .card-actions,.card.dormant .card-actions{grid-column:1 / -1;flex-wrap:nowrap;gap:6px;padding:8px 10px 10px;margin:0;}
+  .card-actions .action-btn.primary{flex:1 1 auto;min-width:0;white-space:nowrap;}
+  .recap-btn{min-width:44px;padding:0 10px;}
+  .recap-btn .recap-txt{display:none;}
+  .recap-btn .recap-ico{display:inline;}
+}
 </style>
 </head>
 <body>
@@ -345,6 +407,8 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
   <div class="show-list grid" id="now"></div>
   <h2 class="slabel"><span class="dot" aria-hidden="true"></span>Up next</h2>
   <div class="show-list grid" id="queue"></div>
+  <h2 class="slabel slabel-onhold" id="onhold-head" style="display:none"><span class="dot" aria-hidden="true"></span>On hold <span class="count" id="onhold-count"></span></h2>
+  <div class="show-list grid" id="onhold-list" style="display:none"></div>
   <button class="cr" type="button" onclick="tog('cu')" aria-expanded="false" aria-controls="cu-panel"><span class="chev" aria-hidden="true">▶</span><span id="cu-lbl">Caught up (0)</span></button>
   <div id="cu-panel" class="panel" style="display:none;margin-top:0.75rem;"></div>
 </div>
@@ -1195,11 +1259,11 @@ function nowC(g){
         ${startEl(g)}
         ${caught?(waiting?'<span class="waiting-pill">⏳ caught up</span>':'<span class="caught-pill">✓ series finished</span>'):''}
         ${nextAirEl(g)}
-        ${g.dormant?'<span class="dormant-pill">💤 on hold</span>':lastWatchedEl(g)}
+        ${g.dormant?'<span class="onhold-pill">💤 on hold</span>':lastWatchedEl(g)}
       </div>
       <div class="card-actions">
         ${primary}
-        ${!caught&&g.season!=null&&g.ep!=null&&getTmdbId(g.id)?`<button type="button" class="action-btn" onclick="openRecap(${g.id})">Previously on…</button>`:''}
+        ${!caught&&g.season!=null&&g.ep!=null&&getTmdbId(g.id)?`<button type="button" class="action-btn recap-btn" onclick="openRecap(${g.id})" aria-label="Previously on…" title="Previously on…"><span class="recap-ico" aria-hidden="true">&#x23EA;&#xFE0E;</span><span class="recap-txt">Previously on…</span></button>`:''}
         <button type="button" class="action-btn icon" onclick="openEdit(${g.id})" aria-label="Edit season and episode">✎</button>
         ${hasOverride?`<button type="button" class="action-btn icon" onclick="resetShow(${g.id})" aria-label="Reset to original snapshot">↺</button>`:''}
         ${g.custom?`<button type="button" class="action-btn icon" onclick="removeCustomShow(${g.id})" aria-label="Remove this show">🗑</button>`:''}
@@ -1323,7 +1387,7 @@ function renderPanels(){
     const fin=shows.filter(g=>(g.s==='done'||g.s==='dropped')&&g.cy);
     const by={};fin.forEach(g=>{(by[g.cy]=by[g.cy]||[]).push(g);});
     const yrs=Object.keys(by).sort((a,b)=>b-a);
-    document.getElementById('yl-panel').innerHTML=yrs.length?yrs.map(yr=>{const list=by[yr];return `<div class="yg"><div class="yhead">${yr}<span class="ysub">${list.length} shows</span></div>${ystats(list)}<div class="show-list grid">${list.map(g=>aC(g)).join('')}</div></div>`;}).join(''):'<div class="empty">No archived shows yet.</div>';
+    document.getElementById('yl-panel').innerHTML=yrs.length?yrs.map(yr=>{const list=by[yr];return `<div class="yg"><div class="yhead">${yr}<span class="ysub">${list.length} show${list.length===1?'':'s'}</span></div>${ystats(list)}<div class="show-list grid">${list.map(g=>aC(g)).join('')}</div></div>`;}).join(''):'<div class="empty">No archived shows yet.</div>';
   }
   if(open.vs){
     // The export ends at its last full month; months after it come from her own in-app history
@@ -1333,7 +1397,9 @@ function renderPanels(){
     const sum=TvLogic.paceSummary(series);
     const maxEps=Math.max(...series.map(p=>p.eps),1);
     const chart=series.map(p=>`<div class="pace-bar-wrap"><div class="pace-bar${p.app?' app':''}" style="height:${Math.max(Math.round(p.eps/maxEps*60),2)}px" title="${p.m}: ${p.eps} episode${p.eps===1?'':'s'}${p.hrs==null?' (hours not tracked in the app)':`, ${p.hrs}h`}"></div></div>`).join('');
-    const labels=series.map((p,i)=>`<div class="pace-lbl">${i%3===0?p.m.slice(2):''}</div>`).join('');
+    // One label per quarter, in a box as wide as its three bars so the text fits inside it. A last
+    // quarter of a single month is too narrow for a label and goes without.
+    const labels=series.filter((p,i)=>i%3===0).map((p,j)=>{ const k=Math.min(3,series.length-j*3); return `<div class="pace-lbl" style="width:${k*14+(k-1)*3}px">${k>1?p.m.slice(2):''}</div>`; }).join('');
     // Keep the chart where she left it across re-renders (every tap rebuilds this panel); the
     // first time, start at the newest month rather than March 2023.
     const prev=document.getElementById('pace-scroll');
@@ -1451,9 +1517,11 @@ function renderBreakdown(counts){
     {key:'dropped', label:'Dropped', value:counts.dropped, color:'var(--cat-dropped)'}
   ];
   const total=segs.reduce((s,x)=>s+x.value,0)||1;
-  const bar=segs.map(s=>`<div class="seg" style="width:${s.value/total*100}%;background:${s.color}" data-tip="${esc(s.label)}: ${s.value} (${Math.round(s.value/total*100)}%)"></div>`).join('');
+  // Only categories that have shows: an empty one still drew a 2px tick (min-width), so a brand-new
+  // log showed a cluster of stray colours. With no shows at all there is no bar, just the legend.
+  const bar=segs.filter(s=>s.value>0).map(s=>`<div class="seg" style="width:${s.value/total*100}%;background:${s.color}" data-tip="${esc(s.label)}: ${s.value} (${Math.round(s.value/total*100)}%)"></div>`).join('');
   const legend=segs.map(s=>`<button type="button" class="legend-item${filterState.status===s.key?' active':''}" data-fkey="legend-${s.key}" onclick="setStatusFilter('${s.key}')"><span class="swatch" style="background:${s.color}"></span>${esc(s.label)}<span class="legend-n">${s.value}</span></button>`).join('');
-  document.getElementById('breakdown').innerHTML=`<div class="breakdown-bar">${bar}</div><div class="legend-row">${legend}</div>`;
+  document.getElementById('breakdown').innerHTML=`${bar?`<div class="breakdown-bar">${bar}</div>`:''}<div class="legend-row">${legend}</div>`;
 }
 
 // ─── Search/filter results (mixes every status into one list) ──
@@ -1487,6 +1555,7 @@ function render(){
     prefix=fkey.split('-')[0];
     idx=[...document.querySelectorAll(`[data-fkey^="${prefix}-"]`)].indexOf(el);
   }
+  document.body.classList.remove('load-failed');
   renderAll();
   westleyRefresh();
   if(!fkey) return;
@@ -1530,8 +1599,16 @@ function renderAll(){
     // Split the watching list by whether there's actually anything left to watch. Most
     // of the list is shows she finished and never unfollowed in TV Time — surfacing all
     // of them here buries the handful she could actually put on tonight.
-    const ready=watching.filter(g=>!isCaughtUp(g));
+    // On hold (dormant, with episodes left) is its own group under Up next (Jonny, 2026-11-20),
+    // so Ready to watch and its count are only the shows she's actually watching. Caught-up
+    // shows, dormant or not, stay in Caught up. No on-hold shows: the group isn't drawn.
+    const ready=watching.filter(g=>!isCaughtUp(g)&&!g.dormant);
+    const paused=watching.filter(g=>!isCaughtUp(g)&&g.dormant);
     const caught=watching.filter(g=>isCaughtUp(g));
+    document.getElementById('onhold-head').style.display=paused.length?'':'none';
+    document.getElementById('onhold-list').style.display=paused.length?'':'none';
+    document.getElementById('onhold-count').textContent=`(${paused.length})`;
+    document.getElementById('onhold-list').innerHTML=paused.map(nowC).join('');
     document.getElementById('now-count').textContent=`(${ready.length})`;
     document.getElementById('now').innerHTML=ready.length?ready.map(nowC).join(''):'<div class="empty">Nothing with unwatched episodes — you\'re caught up on everything.</div>';
     document.getElementById('queue').innerHTML=queue.length?queue.map((g,i)=>qC(g,i+1)).join(''):'<div class="empty">Nothing up next.</div>';
@@ -2013,7 +2090,12 @@ Promise.all([
   pushSync();
 }).catch(err=>{
   console.error('Failed to load show data', err);
-  document.getElementById('now').innerHTML='<div class="empty">Couldn\'t load show data — try refreshing the page.</div>';
+  document.body.classList.add('load-failed');
+  document.getElementById('now').innerHTML='<div class="load-error"><b>Couldn\'t load your shows</b>The list didn\'t arrive, probably a bad connection. Your progress is safe on this device; refresh the page to try again.</div>';
+  // The chips stay so the header looks like itself; they have nothing to filter yet.
+  renderChips();
+  document.querySelectorAll('#chip-row .chip').forEach(c=>{ c.disabled=true; });
+  westleySay('The list is lost at sea. Try a refresh in a moment.',2e9);
 });
 </script>
 <script src="https://conflagarationman.github.io/game-tracker/korok.js" data-repo="steph-tv-tracker" data-total="12" data-spots="index:70%,index-hang:25%:top"></script>
