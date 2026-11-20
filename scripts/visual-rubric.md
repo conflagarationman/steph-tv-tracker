@@ -118,6 +118,13 @@ chips and buttons. It should feel like a small, polished phone app made with lov
   names.
 - **On a phone, the stat tiles and breakdown bar sit below the lists on purpose**, so Ready to watch
   is near the top.
+- **Light theme accents:** gold fills (buttons, the banner, the episode badge, the selected chip)
+  stay gold in both themes. Where yellow would be text, a dot or a chart bar on a light background
+  (section dots, the "Active now" number, the monthly pace bars), the light theme uses a deep amber
+  instead so it stays readable. That pairing is intended; report it only if one of them is hard to
+  read.
+- **The monthly pace chart scrolls sideways** and opens at the newest month, so its left edge fades
+  out over older months on purpose.
 
 ## Severity
 

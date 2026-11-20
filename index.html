@@ -69,6 +69,7 @@ h1{flex:1;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;color:var(--te
 }
 .chip{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-size:0.7rem;font-weight:700;padding:0.42rem 0.75rem;border-radius:99px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:border-color 0.15s,color 0.15s,background 0.15s;}
 .chip:hover{color:var(--text);border-color:var(--border2);}
+.chip:disabled{opacity:0.5;cursor:default;}
 .chip.active{background:var(--badge-yellow);border-color:var(--badge-yellow);color:var(--chip-ink);}
 .chip:focus-visible,.clear-btn:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
 
@@ -191,6 +192,8 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .edit-fields label{flex:1;display:flex;flex-direction:column;gap:4px;font-size:0.68rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
 .edit-fields input,.edit-fields select{width:100%;min-width:0;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.5rem;color:var(--text);font-family:inherit;font-size:0.9rem;text-transform:none;}
 .edit-fields input:focus,.edit-fields select:focus{outline:none;border-color:var(--yellow);}
+/* The status menu matches the fields around it instead of the browser's stock control. */
+.edit-fields select{-webkit-appearance:none;appearance:none;padding-right:2rem;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px;background-repeat:no-repeat;}
 /* No browser spinner arrows: Season showed them when focused and Episode beside it didn't. */
 .edit-fields input[type=number]{-moz-appearance:textfield;appearance:textfield;}
 .edit-fields input[type=number]::-webkit-inner-spin-button,.edit-fields input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
@@ -226,6 +229,11 @@ button.stat.active{border-color:var(--yellow);background:var(--surface2);}
 .panel{animation:panelIn 0.18s ease;}
 @keyframes panelIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
 .empty{color:var(--dim);font-size:0.85rem;padding:0.6rem 0;}
+/* The show list never arrived: one clear note instead of empty headings and (0) rows. Cleared by
+   the next successful render (the stale-tab refresh retries). */
+body.load-failed #default-sections>:not(#now),body.load-failed main>.cr,body.load-failed main>.panel,body.load-failed #overview{display:none!important;}
+.load-error{background:var(--surface);border:1px dashed var(--border2);border-radius:14px;padding:1.1rem 1rem;color:var(--muted);font-size:0.88rem;line-height:1.45;}
+.load-error b{display:block;color:var(--text);font-family:'Poppins',sans-serif;font-size:0.95rem;margin-bottom:0.25rem;}
 
 .bsec{margin-bottom:0.85rem;}
 .blbl{font-size:0.64rem;color:var(--dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;font-weight:700;}
@@ -1355,7 +1363,7 @@ function renderPanels(){
     const fin=shows.filter(g=>(g.s==='done'||g.s==='dropped')&&g.cy);
     const by={};fin.forEach(g=>{(by[g.cy]=by[g.cy]||[]).push(g);});
     const yrs=Object.keys(by).sort((a,b)=>b-a);
-    document.getElementById('yl-panel').innerHTML=yrs.length?yrs.map(yr=>{const list=by[yr];return `<div class="yg"><div class="yhead">${yr}<span class="ysub">${list.length} shows</span></div>${ystats(list)}<div class="show-list grid">${list.map(g=>aC(g)).join('')}</div></div>`;}).join(''):'<div class="empty">No archived shows yet.</div>';
+    document.getElementById('yl-panel').innerHTML=yrs.length?yrs.map(yr=>{const list=by[yr];return `<div class="yg"><div class="yhead">${yr}<span class="ysub">${list.length} show${list.length===1?'':'s'}</span></div>${ystats(list)}<div class="show-list grid">${list.map(g=>aC(g)).join('')}</div></div>`;}).join(''):'<div class="empty">No archived shows yet.</div>';
   }
   if(open.vs){
     // The export ends at its last full month; months after it come from her own in-app history
@@ -1523,6 +1531,7 @@ function render(){
     prefix=fkey.split('-')[0];
     idx=[...document.querySelectorAll(`[data-fkey^="${prefix}-"]`)].indexOf(el);
   }
+  document.body.classList.remove('load-failed');
   renderAll();
   westleyRefresh();
   if(!fkey) return;
@@ -2049,7 +2058,12 @@ Promise.all([
   pushSync();
 }).catch(err=>{
   console.error('Failed to load show data', err);
-  document.getElementById('now').innerHTML='<div class="empty">Couldn\'t load show data — try refreshing the page.</div>';
+  document.body.classList.add('load-failed');
+  document.getElementById('now').innerHTML='<div class="load-error"><b>Couldn\'t load your shows</b>The list didn\'t arrive, probably a bad connection. Your progress is safe on this device; refresh the page to try again.</div>';
+  // The chips stay so the header looks like itself; they have nothing to filter yet.
+  renderChips();
+  document.querySelectorAll('#chip-row .chip').forEach(c=>{ c.disabled=true; });
+  westleySay('The list is lost at sea. Try a refresh in a moment.',2e9);
 });
 </script>
 <script src="https://conflagarationman.github.io/game-tracker/korok.js" data-repo="steph-tv-tracker" data-total="12" data-spots="index:70%,index-hang:25%:top"></script>
