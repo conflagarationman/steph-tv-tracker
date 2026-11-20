@@ -123,6 +123,9 @@ chips and buttons. It should feel like a small, polished phone app made with lov
   (section dots, the "Active now" number, the monthly pace bars), the light theme uses a deep amber
   instead so it stays readable. That pairing is intended; report it only if one of them is hard to
   read.
+- **Cards in one grid row are always the same height** (measured), with their content centred
+  top to bottom, so a card with fewer lines has more space above and below its content. Report it only
+  if a card's edges really don't line up with its neighbours'.
 - **The monthly pace chart scrolls sideways** and opens at the newest month, so its left edge fades
   out over older months on purpose.
 
