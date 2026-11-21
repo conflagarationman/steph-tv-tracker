@@ -3973,14 +3973,14 @@
   "245": {
     "status": "Returning Series",
     "lastAired": {
-      "season": 2,
-      "ep": 8,
-      "airDate": "2026-01-21"
+      "season": 3,
+      "ep": 2,
+      "airDate": "2026-11-20"
     },
     "nextAir": {
       "season": 3,
-      "ep": 1,
-      "airDate": "2026-11-20"
+      "ep": 3,
+      "airDate": "2026-11-27"
     },
     "watch": {
       "on": [
