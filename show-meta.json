@@ -498,6 +498,7 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
+        "Philo",
         "Xumo Play"
       ],
       "link": "https://www.themoviedb.org/tv/7482-leverage/watch?locale=US"
@@ -1104,8 +1105,7 @@
         "AMC+",
         "Spectrum On Demand",
         "Netflix Standard with Ads",
-        "Amazon Prime Video with Ads",
-        "The Roku Channel"
+        "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/128904-dark-winds/watch?locale=US"
     }
@@ -1845,7 +1845,6 @@
         "HISTORY Vault Amazon Channel",
         "Amazon Prime Video with Ads",
         "History",
-        "The Roku Channel",
         "Tubi TV"
       ],
       "link": "https://www.themoviedb.org/tv/113085-history-s-greatest-mysteries/watch?locale=US"
@@ -3706,8 +3705,7 @@
         "Philo",
         "MGM Plus Roku Premium Channel",
         "MGM Plus",
-        "Spectrum On Demand",
-        "The Roku Channel"
+        "Spectrum On Demand"
       ],
       "link": "https://www.themoviedb.org/tv/272418-robin-hood/watch?locale=US"
     }
