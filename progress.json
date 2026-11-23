@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-23T04:15:48.372Z",
+  "updatedAt": "2026-11-23T04:37:43.430Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -185,6 +185,14 @@
       "lastWatched": "2026-11-16",
       "dormant": false,
       "updatedAt": "2026-11-17T04:32:01.343Z"
+    },
+    "213": {
+      "season": 6,
+      "ep": 1,
+      "epsWatched": 95,
+      "lastWatched": "2026-11-22",
+      "dormant": false,
+      "updatedAt": "2026-11-23T04:37:41.085Z"
     },
     "240": {
       "season": 1,
@@ -735,6 +743,14 @@
     }
   },
   "history": [
+    {
+      "id": 213,
+      "title": "Ghosts (US)",
+      "action": "watched",
+      "season": 6,
+      "ep": 1,
+      "at": "2026-11-23T04:37:41.084Z"
+    },
     {
       "id": 337,
       "title": "Animal Control",
