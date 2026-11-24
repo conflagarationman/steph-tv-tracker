@@ -3263,6 +3263,7 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
+        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
@@ -4689,7 +4690,6 @@
       "on": [
         "Amazon Prime Video",
         "Amazon Prime Video with Ads",
-        "The Roku Channel",
         "Amazon Prime Video Free with Ads",
         "Amazon MX Player"
       ],
@@ -5010,11 +5010,13 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Peacock Premium",
         "Philo",
         "YouTube TV",
         "Investigation Discovery",
         "HBO Max",
-        "Discovery +"
+        "Discovery +",
+        "Peacock Premium Plus"
       ],
       "link": "https://www.themoviedb.org/tv/245902-quiet-on-set-the-dark-side-of-kids-tv/watch?locale=US"
     }
