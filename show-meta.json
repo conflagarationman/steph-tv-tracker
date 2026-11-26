@@ -1348,8 +1348,7 @@
     "nextAir": null,
     "watch": {
       "on": [
-        "Netflix",
-        "Netflix Standard with Ads"
+        "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/68799-gilmore-girls-a-year-in-the-life/watch?locale=US"
     }
@@ -3068,14 +3067,10 @@
     "status": "Returning Series",
     "lastAired": {
       "season": 3,
-      "ep": 6,
-      "airDate": "2026-11-18"
-    },
-    "nextAir": {
-      "season": 3,
-      "ep": 7,
+      "ep": 8,
       "airDate": "2026-11-25"
     },
+    "nextAir": null,
     "watch": {
       "on": [
         "Amazon Prime Video",
@@ -3247,6 +3242,7 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Disney Plus",
         "Hulu"
       ],
       "link": "https://www.themoviedb.org/tv/258902-english-teacher/watch?locale=US"
@@ -4352,6 +4348,7 @@
     "nextAir": null,
     "watch": {
       "on": [
+        "Disney Plus",
         "Hulu",
         "YouTube TV",
         "USA Network"
