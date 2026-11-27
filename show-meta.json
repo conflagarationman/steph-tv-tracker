@@ -3068,7 +3068,7 @@
     "lastAired": {
       "season": 3,
       "ep": 8,
-      "airDate": "2026-11-25"
+      "airDate": "2026-11-24"
     },
     "nextAir": null,
     "watch": {
@@ -3259,7 +3259,6 @@
     "watch": {
       "on": [
         "Amazon Prime Video",
-        "Philo",
         "Amazon Prime Video with Ads"
       ],
       "link": "https://www.themoviedb.org/tv/66786-timeless/watch?locale=US"
