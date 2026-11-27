@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-27T03:29:41.137Z",
+  "updatedAt": "2026-11-27T03:29:52.342Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -188,11 +188,11 @@
     },
     "213": {
       "season": 6,
-      "ep": 1,
-      "epsWatched": 95,
-      "lastWatched": "2026-11-22",
+      "ep": 2,
+      "epsWatched": 96,
+      "lastWatched": "2026-11-26",
       "dormant": false,
-      "updatedAt": "2026-11-23T04:37:41.085Z"
+      "updatedAt": "2026-11-27T03:29:50.622Z"
     },
     "237": {
       "season": 6,
@@ -751,6 +751,14 @@
     }
   },
   "history": [
+    {
+      "id": 213,
+      "title": "Ghosts (US)",
+      "action": "watched",
+      "season": 6,
+      "ep": 2,
+      "at": "2026-11-27T03:29:50.621Z"
+    },
     {
       "id": 237,
       "title": "The Chosen",
