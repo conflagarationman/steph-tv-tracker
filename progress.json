@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-27T04:13:29.372Z",
+  "updatedAt": "2026-11-27T04:13:40.264Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -320,11 +320,11 @@
     },
     "1792727189147": {
       "season": 1,
-      "ep": 4,
-      "epsWatched": 4,
-      "lastWatched": "2026-10-23",
+      "ep": 5,
+      "epsWatched": 5,
+      "lastWatched": "2026-11-26",
       "dormant": false,
-      "updatedAt": "2026-10-23T18:55:05.747Z"
+      "updatedAt": "2026-11-27T04:13:38.089Z"
     }
   },
   "customShows": {
@@ -751,6 +751,14 @@
     }
   },
   "history": [
+    {
+      "id": 1792727189147,
+      "title": "VisionQuest",
+      "action": "watched",
+      "season": 1,
+      "ep": 5,
+      "at": "2026-11-27T04:13:38.087Z"
+    },
     {
       "id": 213,
       "title": "Ghosts (US)",
