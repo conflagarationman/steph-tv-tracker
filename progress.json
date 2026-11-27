@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-27T04:33:32.416Z",
+  "updatedAt": "2026-11-27T04:33:36.352Z",
   "overrides": {
     "3": {
       "season": 3,
@@ -128,11 +128,11 @@
     },
     "190": {
       "season": 3,
-      "ep": 5,
-      "epsWatched": 21,
-      "lastWatched": "2026-11-22",
+      "ep": 6,
+      "epsWatched": 22,
+      "lastWatched": "2026-11-26",
       "dormant": false,
-      "updatedAt": "2026-11-22T05:03:12.841Z"
+      "updatedAt": "2026-11-27T04:33:34.537Z"
     },
     "194": {
       "season": 52,
@@ -751,6 +751,14 @@
     }
   },
   "history": [
+    {
+      "id": 190,
+      "title": "The Lord of the Rings: The Rings of Power",
+      "action": "watched",
+      "season": 3,
+      "ep": 6,
+      "at": "2026-11-27T04:33:34.536Z"
+    },
     {
       "id": 1792727189147,
       "title": "VisionQuest",
